@@ -16,6 +16,7 @@ public class Main {
 		System.out.println("Introduce un número double, por favor");
 		cadena=teclado.nextLine();
 		double miDouble= Double.parseDouble(cadena);
+		System.out.println(miEntero + miDecimal + miDouble);
 		System.out.println("Introduce un boolean, por favor");
 		cadena=teclado.nextLine();
 		boolean miboolean= Boolean.parseBoolean(cadena);
