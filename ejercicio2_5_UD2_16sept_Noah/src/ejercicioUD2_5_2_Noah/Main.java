@@ -28,6 +28,11 @@ public class Main {
 			}
 			teclado.nextLine();
 			opt = Integer.parseInt(entrada);
+			while (opt < 0 || opt > 5) {
+				System.out.println("Por favor, solo 6 o 7 (o 0 para salir).");
+				teclado.nextLine();
+				opt = Integer.parseInt(entrada);
+			}
 		}
 	}
 

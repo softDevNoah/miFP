@@ -13,6 +13,9 @@ public class Main {
 		teclado.nextLine();
 		int opt = Integer.parseInt(entrada);
 		
+		/*mientras se ponga un numero entre el 1 y el 5, se mantiene
+		 * abierto ejecutando los ejercicios que se indiquen, gracias a usar
+		 * un while y dentro un switch*/ 
 		while (opt !=0) {
 			switch (opt) {
 			
@@ -35,20 +38,21 @@ public class Main {
 			teclado.nextLine();
 			opt = Integer.parseInt(entrada);
 			while (opt < 0 || opt > 5) {
-				System.out.println("Por favor, solo un número del 1 al 5.");
+				System.out.println("Por favor, solo un número del 1 al 5 (o 0 para salir).");
 				teclado.nextLine();
 				opt = Integer.parseInt(entrada);
 			}
-				
 		}
-
+		teclado.close();
 	}
 
+	private static void ejercicio1() {
 	/*1. Ingresar el sueldo de una persona, si supera los
 	 * 3000 euros mostrar un mensaje en pantalla indicando que
-	 * debe abonar impuestos.*/
-	private static void ejercicio1() {
+	 * debe abonar impuestos.*/	
+		
 		System.out.println("Escribe un salario:");
+		
 		entrada = teclado.nextLine();
 		num = Integer.parseInt(entrada);
 		if (num > 3000)
@@ -57,9 +61,11 @@ public class Main {
 			System.out.println("No debe abonar impuestos.");
 	}
 	
-	/*2. Pedir la edad por teclado y decir si es mayor de edad o no.*/
 	private static void ejercicio2() {
+	/*2. Pedir la edad por teclado y decir si es mayor de edad o no.*/	
+	
 		System.out.println("Dime tu edad:");
+		
 		entrada = teclado.nextLine();
 		num = Integer.parseInt(entrada);
 		if (num >= 18)
@@ -67,6 +73,8 @@ public class Main {
 		else
 			System.out.println("Eres menor de edad.");
 	}
+	
+	private static void ejercicio3() {
 	/*3. Pedir una nota por teclado y mostrar un mensaje en pantalla con la nota en formato texto, en función del rango que se muestra a continuación:
 			● 1-2: Necesita mejorar
 			● 3-4: Necesita afianzar
@@ -74,12 +82,13 @@ public class Main {
 			● 6: Bien
 			● 7-8: Muy bien
 			● 9-10: Perfecto
-			● Resto de opciones: Dato incorrecto.*/
-	private static void ejercicio3() {
+			● Resto de opciones: Dato incorrecto.*/	
+		
 		System.out.println("¿Qué nota me das?");
+		
 		entrada = teclado.nextLine();
 		num = Integer.parseInt(entrada);
-		
+		//en el ejercicio 3 lo realizo con if porque el ejercicio 5 lo requiere con switch 
 		if (num == 1 || num == 2)
 			System.out.println("Necesita mejorar.");
 		else if (num == 3 || num == 4)
@@ -96,61 +105,66 @@ public class Main {
 			System.out.println("Dato incorrecto.");
 	}
 	
-	/*4. Pedir tres números por teclado y mostrar en pantalla el mayor de los tres.*/
 	private static void ejercicio4() {
-		//un array para simplificar líneas de códico usando un for para asignar valores a tres int
-		int nums[] = {0,0,0};
+	/*4. Pedir tres números por teclado y mostrar en pantalla el mayor de los tres.*/	
+		
+	/*aunque no pide especificamente usar un array (aun no lo hemos visto en clase)
+	 * lo he usado para repasar lo que sabia sobre ellos, para poder poner en práctica
+	 * el uso de la estructura de control repetitiva for*/
+
+		int nums[] = {0,0,0};	//aqui declaro e inicializo con valor 0 un array de tres int
+	
+		/*aqui uso un for para iterar tres veces, leer cada vez un numero del teclado y 
+		 * asignarlo a cada int del array, en orden secuencial */
 		for (int iter=0; iter < 3; iter++) {
 			System.out.println("Dame un número:");
 			entrada = teclado.nextLine();
-			nums[iter] = Integer.parseInt(entrada);
+			nums[iter] = Integer.parseInt(entrada);/*en esta linea es donde se guarda el numero
+						 							leido en la posicion actual del array*/
 		}
 		if (nums[0] == nums[1] && nums[0] == nums[2])
 			System.out.println("Oye, que son todos iguales...");
-		//sea igual alguno entre si o no, se mira si el num1 es el mayor
 		else if (nums[0] >= nums[1] && nums[0] >= nums[2])
-			//estas lineas de abajo sobran si pongo ">=" en vez de solo ">" en la condicion de arriba:
-				/*|| (nums[0] == nums[1] && nums[0] > nums[2])
-				//|| (nums[0] == nums[2] && nums[0] > nums [1]))*/
+			/*el >= y no solo > es para abarcar casos con uno de los numeros repetidos*/
 			System.out.println(nums[0] +" es el mayor de los tres números.");
-		//sea igual alguno entre si o no, se mira si el num2 es el mayor
 		else if (nums[1] >= nums[0] && nums[1] >= nums[2])
-				//aqui sucede los mismo que antes:
-				/*|| (nums[1] == nums[0] && nums[1] > nums[2])
-				//|| (nums[1] == nums[2] && nums[1] > nums [0]))*/
 			System.out.println(nums[1] +" es el mayor de los tres números.");
-		//todos los casos revisados, solo puede ser el num3:
+		//todos los casos revisados, el mayor solo puede ser el num3:
 		else
 			System.out.println(nums[2] +" es el mayor de los tres números.");
 		}
 	
-	//5. Realizar el ejercicio 3 utilizando la estructura Switch.
+	
 	private static void ejercicio5() {
+	//5. Realizar el ejercicio 3 utilizando la estructura Switch.
+		
 		System.out.println("¿Qué nota me das?");
+		
 		entrada = teclado.nextLine();
 		num = Integer.parseInt(entrada);
+		
 		switch (num){
-		case 1,2:
-			System.out.println("Necesita mejorar.");
-			break;
-		case 3,4:
-			System.out.println("Necesita afianzar.");
-			break;
-		case 5:
-			System.out.println("Suficiente.");
-			break;
-		case 6:
-			System.out.println("Bien.");
-			break;
-		case 7,8:
-			System.out.println("Muy bien.");
-			break;
-		case 9,10:
-			System.out.println("Perfecto.");
-			break;
-		default:
-			System.out.println("Dato incorrecto.");
-			break;
+			case 1,2:	//se puede poner varios case en la misma linea, separados por ',' 
+				System.out.println("Necesita mejorar.");
+				break;
+			case 3,4:
+				System.out.println("Necesita afianzar.");
+				break;
+			case 5:
+				System.out.println("Suficiente.");
+				break;
+			case 6:
+				System.out.println("Bien.");
+				break;
+			case 7,8:
+				System.out.println("Muy bien.");
+				break;
+			case 9,10:
+				System.out.println("Perfecto.");
+				break;
+			default:
+				System.out.println("Dato incorrecto.");
+				break;
 		}
 	}
 }
