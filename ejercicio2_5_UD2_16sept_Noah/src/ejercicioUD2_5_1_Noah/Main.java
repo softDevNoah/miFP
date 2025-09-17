@@ -6,17 +6,19 @@ public class Main {
 
 	private static Scanner	teclado = new Scanner(System.in);
 	private static String	entrada;
+	private static String	numEjercicio;
 	private static int		num;
 	
 	public static void main(String[] args) {
 		
-		teclado.nextLine();
-		int opt = Integer.parseInt(entrada);
+		System.out.println("Escribe un nº del 1 al 5 (o 0 para salir).");
+		numEjercicio = teclado.nextLine();
+		int opt = Integer.parseInt(numEjercicio);
 		
 		/*mientras se ponga un numero entre el 1 y el 5, se mantiene
 		 * abierto ejecutando los ejercicios que se indiquen, gracias a usar
 		 * un while y dentro un switch*/ 
-		while (opt !=0) {
+		while (opt != 0) {
 			switch (opt) {
 			
 				case 1:
@@ -34,13 +36,10 @@ public class Main {
 				case 5:
 					ejercicio5();
 					break;
-			}
-			teclado.nextLine();
-			opt = Integer.parseInt(entrada);
-			while (opt < 0 || opt > 5) {
-				System.out.println("Por favor, solo un número del 1 al 5 (o 0 para salir).");
-				teclado.nextLine();
-				opt = Integer.parseInt(entrada);
+				default:
+					System.out.println("Por favor, solo un número del 1 al 5 (o 0 para salir).");
+					numEjercicio = teclado.nextLine();
+					opt = Integer.parseInt(numEjercicio);
 			}
 		}
 		teclado.close();
