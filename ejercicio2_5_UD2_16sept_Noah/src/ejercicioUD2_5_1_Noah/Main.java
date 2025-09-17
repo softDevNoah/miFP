@@ -2,6 +2,9 @@ package ejercicioUD2_5_1_Noah;
 
 import java.util.Scanner;
 
+/*Entrega 1 de 4 (5 contando con los ejercicios extra) de los ejercicios del Tema 2.
+ * En este paquete se desarrollan los ejercicios del 1 al 5*/
+
 public class Main {
 
 	private static Scanner	teclado = new Scanner(System.in);
@@ -11,16 +14,18 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		int opt;
+		
 		System.out.println("Escribe un nº del 1 al 5 (o 0 para salir).");
+		
 		numEjercicio = teclado.nextLine();
-		int opt = Integer.parseInt(numEjercicio);
+		opt = Integer.parseInt(numEjercicio);
 		
 		/*mientras se ponga un numero entre el 1 y el 5, se mantiene
 		 * abierto ejecutando los ejercicios que se indiquen, gracias a usar
 		 * un while y dentro un switch*/ 
 		while (opt != 0) {
 			switch (opt) {
-			
 				case 1:
 					ejercicio1();
 					break;
