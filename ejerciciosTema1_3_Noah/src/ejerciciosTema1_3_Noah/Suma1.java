@@ -13,6 +13,5 @@ public class Suma1 {
 		n3 = 20;
 		suma=suma+n3;
 		System.out.println("LA NUEVA SUMA ES: "+suma);//actualizo el msg impreso por pantalla
-	
 	}
 }

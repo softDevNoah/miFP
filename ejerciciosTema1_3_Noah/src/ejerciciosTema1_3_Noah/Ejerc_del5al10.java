@@ -23,13 +23,13 @@ public class Ejerc_del5al10 {
 		ejercicio9();
 		System.out.println("\nEjercicio 10: ");
 		ejercicio10();
-		teclado.close();
+		teclado.close();//se debe cerrar siempre
 	}
 	
 	/*5. Realiza un programa en Java que calcule la longitud de una circunferencia de radio de 3 metros y la muestre por pantalla.*/
 	private static void ejercicio5() {
 		
-		double	radio=3;
+		double	radio = 3;	//al multiplicar con el número pi, se usa un tipo decimal y no entero
 		double	diametro = radio * 2;
 		double	longitud = diametro * 3.1415;
 		
@@ -39,7 +39,7 @@ public class Ejerc_del5al10 {
 	/*6. Realiza un programa en Java que calcule el área de una circunferencia de radio 5,2 centímetros y la muestre por pantalla.*/
 	private static void ejercicio6() {
 		
-		double	radio=5.2;
+		double	radio = 5.2;
 		double	area = (radio + radio) * 3.1415;
 		
 		System.out.println("El área de una circunsferencia de 5,2 centímetros de radio es: " + area + " centímetros.");
@@ -54,7 +54,7 @@ public class Ejerc_del5al10 {
 		
 		System.out.println("A es "+ a + " y B es " +b);
 		
-		tmp = a;
+		tmp = a;	//se usa tmp para guardar temporalmente el valor de una de las otras variables y poder hacer el intercambio
 		a = b;
 		b = tmp;
 		
@@ -93,7 +93,7 @@ public class Ejerc_del5al10 {
 		entrada = teclado.nextLine();
 		b=Integer.parseInt(entrada);
 		
-		if (a == b)
+		if (a == b)	//si son iguales, que evite parte del código
 			System.out.println("Son iguales.");
 		else {
 			if (a < b)
@@ -112,6 +112,7 @@ public class Ejerc_del5al10 {
 		
 		System.out.println("Escriba tres números, uno después del otro por favor:");
 		
+		//se asignan valores a las variables a, b y c leidas del teclado:
 		entrada = teclado.nextLine();
 		a=Integer.parseInt(entrada);
 		entrada = teclado.nextLine();
@@ -119,7 +120,7 @@ public class Ejerc_del5al10 {
 		entrada = teclado.nextLine();
 		c=Integer.parseInt(entrada);
 		
-		if (a == b && a == c)
+		if (a == b && a == c)	//si son los tres iguales, que evite este bloque del código
 			System.out.println("Los tres números son iguales.");
 		else {
 			if (a >= b && a >= c) {
