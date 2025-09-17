@@ -2,6 +2,8 @@ package programApuntes2223;
 
 import java.util.Scanner;
 
+//Todo lo realizado en este archivo, son ejercicios para practicar, pero no son para entregar.
+
 public class PracticasDia11 {
 	private static Scanner	teclado =  new Scanner(System.in);
 	private static int		num1;
