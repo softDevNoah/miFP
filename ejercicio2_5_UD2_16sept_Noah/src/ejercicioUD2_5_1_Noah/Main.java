@@ -36,10 +36,12 @@ public class Main {
 				case 5:
 					ejercicio5();
 					break;
-				default:
-					System.out.println("Por favor, solo un número del 1 al 5 (o 0 para salir).");
-					numEjercicio = teclado.nextLine();
-					opt = Integer.parseInt(numEjercicio);
+			}
+			if (opt != 0) {
+				System.out.println("-------------------------------------------------------------------------------------");
+				System.out.println("Escribe un nº del 1 al 5 (o 0 para salir).");
+				numEjercicio = teclado.nextLine();
+				opt = Integer.parseInt(numEjercicio);
 			}
 		}
 		teclado.close();
