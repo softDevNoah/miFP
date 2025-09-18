@@ -39,52 +39,55 @@ public class Main {
 		}
 	}
 
-	/*6. Leer por pantalla un número del 1 al 7 y mostrar por pantalla
-	 * el día de la semana correspondiente.*/
 	private static void ejercicio6() {
+	/*6. Leer por pantalla un número del 1 al 7 y mostrar por pantalla el día de la semana correspondiente.*/
+		
 		System.out.println("Dime un número del 1 al 7:");
 		entrada = teclado.nextLine();
 		num = Integer.parseInt(entrada);
+		
 		switch (num){
-		case 1:
-			System.out.println("Lunes.");
-			break;
-		case 2:
-			System.out.println("Martes.");
-			break;
-		case 3:
-			System.out.println("Miércoles.");
-			break;
-		case 4:
-			System.out.println("Jueves.");
-			break;
-		case 5:
-			System.out.println("Viernes.");
-			break;
-		case 6:
-			System.out.println("Sábado.");
-			break;
-		case 7:
-			System.out.println("Domingo.");
-			break;
-		default:
-			System.out.println("Dato incorrecto.");	//cualquier otro valor de entrada es incorrecto
-			break;
+			case 1:
+				System.out.println("Lunes.");
+				break;
+			case 2:
+				System.out.println("Martes.");
+				break;
+			case 3:
+				System.out.println("Miércoles.");
+				break;
+			case 4:
+				System.out.println("Jueves.");
+				break;
+			case 5:
+				System.out.println("Viernes.");
+				break;
+			case 6:
+				System.out.println("Sábado.");
+				break;
+			case 7:
+				System.out.println("Domingo.");
+				break;
+			default:
+				System.out.println("Dato incorrecto.");	//cualquier otro valor de entrada es incorrecto
+				break;
 		}
 	}
-	
-	/*7. Un postulante a un empleo, realiza un test de capacitación, se obtuvo la siguiente información: cantidad total de preguntas que se le realizaron y la cantidad de preguntas que contestó correctamente. Se pide confeccionar un programa que ingrese los dos datos por teclado e informe el nivel del mismo según el porcentaje de respuestas correctas que ha obtenido, y sabiendo que:
+		
+	private static void ejercicio7() {
+		/*7. Un postulante a un empleo, realiza un test de capacitación, se obtuvo la siguiente información: cantidad total
+		 * de preguntas que se le realizaron y la cantidad de preguntas que contestó correctamente. Se pide confeccionar un
+		 * programa que ingrese los dos datos por teclado e informe el nivel del mismo según el porcentaje de respuestas
+		 * correctas que ha obtenido, y sabiendo que:
 			∙Nivel máximo: Porcentaje>=90%.
 			∙Nivel medio: Porcentaje>=75% y <90%.
 			∙Nivel regular: Porcentaje>=50% y <75%.
 			∙Fuera de nivel: Porcentaje<50%.*/
-	private static void ejercicio7() {
 		
 		double	numPreguntas;
 		double	numAciertos;
 		double	resultado;
-		//las variables son de tipo Double para abracar resultados que no sean enteros, p. ej 5aciertos/9preguntas
-		
+		//las variables son de tipo Double para abarcar resultados que no sean enteros, p. ej 5aciertos/9preguntas
 		
 		System.out.println("¿De cuántas preguntas constaba el test?");
 		entrada = teclado.nextLine();
@@ -94,18 +97,17 @@ public class Main {
 		entrada = teclado.nextLine();
 		numAciertos = Double.parseDouble(entrada);
 		
-		resultado = (numAciertos / numPreguntas);
-		
-		System.out.println(resultado);
+		resultado = (numAciertos / numPreguntas) * 100;
+	
 		if (numAciertos < 0 || numPreguntas <= 0 || numAciertos > numPreguntas)
-			System.out.println("Cálculo no realizado por datos incorrectos.");
+			System.out.println("Cálculo no realizado por datos incorrectos.");	//se revisa si los datos son válidos primero
 		else {
 			System.out.print("Su resultado fue un ");
 			if (resultado < 50)
 				System.out.printf("%.2f", resultado);
-			else if (resultado <75)
+			else if (resultado < 75)
 				System.out.printf("%.2f", resultado);
-			else if (resultado <90)
+			else if (resultado < 90)
 				System.out.printf("%.2f", resultado);
 			else 
 				System.out.printf("%.2f", resultado);
