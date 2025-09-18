@@ -119,19 +119,37 @@ public class Main {
 		
 		System.out.println("La tabla del 5 es:\n");
 		
-		for(int iter = 1; iter <11; iter++) {
+		for(int iter = 1; iter <11; iter++)
 			System.out.printf("5 * %d = %d\n", iter, iter * 5);
-		}
 	}
 	
 	private static void ejercicio10() {
 		/*10. Hacer la tabla de multiplicar un número pedido por teclado (while, do while, for).*/
 		
+		System.out.println("Escribe un número y se mostrará su tabla de multiplicar: ");
+		entrada = teclado.nextLine();
+		num = Integer.parseInt(entrada);
+		
+		for(int iter = 1; iter <11; iter++)
+			System.out.printf("%d * %d = %d\n", num, iter, iter * num);
 	}
 	
 	private static void ejercicio11() {
 		/*11. Desarrollar un programa que permita cargar n números enteros y luego nos informe
 		 * cuántos valores fueron pares y cuántos impares. Solicitar antes el número de enteros a tratar.*/
+		int	nNum, nPares = 0, nImpares = 0;
+		
+		System.out.println("Escribe la cantidad de números que desea introducir: ");
+		entrada = teclado.nextLine();
+		nNum = Integer.parseInt(entrada);
+		int listaNum[] = new int[nNum];
+	
+		while (nNum > 0) {
+			System.out.printf("Faltan %d números por introducir. ");
+			
+			nNum--;
+		}
+		
 		
 	}
 	
