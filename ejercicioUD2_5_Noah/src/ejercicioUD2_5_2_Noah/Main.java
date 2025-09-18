@@ -102,13 +102,13 @@ public class Main {
 		else {
 			System.out.print("Su resultado fue un ");
 			if (resultado < 50)
-				System.out.print("%.2f", resultado);
+				System.out.printf("%.2f", resultado);
 			else if (resultado <75)
-				System.out.print(resultado);
+				System.out.printf("%.2f", resultado);
 			else if (resultado <90)
-				System.out.print(resultado);
+				System.out.printf("%.2f", resultado);
 			else 
-				System.out.print(resultado);
+				System.out.printf("%.2f", resultado);
 			System.out.println("% de aciertos en su test.");
 		}
 	}
