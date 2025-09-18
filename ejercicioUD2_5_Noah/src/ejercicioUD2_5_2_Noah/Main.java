@@ -2,23 +2,27 @@ package ejercicioUD2_5_2_Noah;
 
 import java.util.Scanner;
 
+/*Entrega 2 de 4 (5 contando con los ejercicios extra) de los ejercicios del Tema 2.
+ * En este paquete se desarrollan los ejercicios 6 y 7*/
+
 public class Main {
 
 	private static Scanner	teclado = new Scanner(System.in);
 	private static String	entrada;
+	private static String	numEjercicio;
 	private static int		num;
 	
 	public static void main(String[] args) {
 		
-		teclado.nextLine();
-		int opt = Integer.parseInt(entrada);
+		int opt;
+		
+		System.out.println("Escribe 6 o 7 (o 0 para salir).");
+		
+		numEjercicio = teclado.nextLine();
+		opt = Integer.parseInt(numEjercicio);
 		
 		while (opt !=0) {
 			switch (opt) {
-			
-				case 1,2,3,4,5:
-					System.out.println("Solo 6 o 7 por favor.");
-					break;
 				case 6:
 					ejercicio6();
 					break;
@@ -26,12 +30,11 @@ public class Main {
 					ejercicio7();
 					break;
 			}
-			teclado.nextLine();
-			opt = Integer.parseInt(entrada);
-			while (opt < 0 || opt > 5) {
-				System.out.println("Por favor, solo 6 o 7 (o 0 para salir).");
-				teclado.nextLine();
-				opt = Integer.parseInt(entrada);
+			if (opt != 0) {
+				System.out.println("-------------------------------------------------------------------------------------");
+				System.out.println("Escribe 6 o 7 (o 0 para salir).");
+				numEjercicio = teclado.nextLine();
+				opt = Integer.parseInt(numEjercicio);
 			}
 		}
 	}
@@ -65,7 +68,7 @@ public class Main {
 			System.out.println("Domingo.");
 			break;
 		default:
-			System.out.println("Dato incorrecto.");
+			System.out.println("Dato incorrecto.");	//cualquier otro valor de entrada es incorrecto
 			break;
 		}
 	}
@@ -76,22 +79,30 @@ public class Main {
 			∙Nivel regular: Porcentaje>=50% y <75%.
 			∙Fuera de nivel: Porcentaje<50%.*/
 	private static void ejercicio7() {
+		
+		double	numPreguntas;
+		double	numAciertos;
+		double	resultado;
+		//las variables son de tipo Double para abracar resultados que no sean enteros, p. ej 5aciertos/9preguntas
+		
+		
 		System.out.println("¿De cuántas preguntas constaba el test?");
 		entrada = teclado.nextLine();
-		int numPreguntas = Integer.parseInt(entrada);
-		System.out.println(numPreguntas);
+		numPreguntas = Double.parseDouble(entrada);
+		
 		System.out.println("¿Cuántas preguntas se respondieron correctamente?");
 		entrada = teclado.nextLine();
-		int numAciertos = Integer.parseInt(entrada);
-		System.out.println(numAciertos);
-		int resultado = (numAciertos / numPreguntas);
+		numAciertos = Double.parseDouble(entrada);
+		
+		resultado = (numAciertos / numPreguntas);
+		
 		System.out.println(resultado);
 		if (numAciertos < 0 || numPreguntas <= 0 || numAciertos > numPreguntas)
 			System.out.println("Cálculo no realizado por datos incorrectos.");
 		else {
 			System.out.print("Su resultado fue un ");
 			if (resultado < 50)
-				System.out.print(resultado);
+				System.out.print("%.2f", resultado);
 			else if (resultado <75)
 				System.out.print(resultado);
 			else if (resultado <90)
