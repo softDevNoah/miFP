@@ -68,6 +68,51 @@ public class Main {
 			Introduce la opción deseada:
 			El programa mostrará la operación y su resultado: Ejemplo 3+4=7 */
 		
+		int	num1, num2, result, opcDeseada;
+		
+		System.out.print("*****************\n\nCalculadora\n\n*****************\n");
+		
+		System.out.print("Introduce en número 1: ");
+		entrada = teclado.nextLine();
+		num1 = Integer.parseInt(entrada);
+		
+		System.out.print("Introduce el número 2: ");
+		entrada = teclado.nextLine();
+		num2 = Integer.parseInt(entrada);
+		
+		System.out.print("Introduce la opción deseada:\n\t\t1. Suma\n\t\t2. Resta\n\t\t3. Producto\n\t\t4. División\n\t\t5. Salir\n");
+		
+		System.out.print("Introduce la opción deseada: ");
+		entrada = teclado.nextLine();
+		opcDeseada = Integer.parseInt(entrada);
+		
+		switch (opcDeseada) {
+			case 1:
+				result = num1 + num2;
+				System.out.printf("%d+%d=%d", num1, num2, result);
+				break;
+			case 2:
+				result = num1 + num2;
+				System.out.printf("%d-%d=%d", num1, num2, result);
+				break;
+			case 3:
+				result = num1 * num2;
+				System.out.printf("%d*%d=%d", num1, num2, result);
+				break;
+			case 4:
+				if (num2 != 0) {
+					result = num1 / num2;
+					System.out.printf("%d/%d=%d", num1, num2, result);
+				}
+				else
+					System.out.println("Error, un número no puede dividirse entre 0");
+				break;
+			case 5:
+				break;
+			
+		}
+		System.out.println();
+		
 	}
 	
 	private static void ejercicio9() {
