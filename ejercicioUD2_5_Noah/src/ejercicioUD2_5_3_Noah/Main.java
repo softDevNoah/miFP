@@ -112,12 +112,16 @@ public class Main {
 			
 		}
 		System.out.println();
-		
 	}
 	
 	private static void ejercicio9() {
 		/*9. Mostrar la tabla de multiplicar del número 5. Mostrar sólo los 10 primeros valores.*/
 		
+		System.out.println("La tabla del 5 es:\n");
+		
+		for(int iter = 1; iter <11; iter++) {
+			System.out.printf("5 * %d = %d\n", iter, iter * 5);
+		}
 	}
 	
 	private static void ejercicio10() {
