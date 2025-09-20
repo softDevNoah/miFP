@@ -10,7 +10,6 @@ public class Main {
 	private static Scanner	teclado = new Scanner(System.in);
 	private static String	entrada;
 	private static String	numEjercicio;
-	private static int		num;
 	
 	public static void main(String[] args) {
 		
@@ -126,30 +125,93 @@ public class Main {
 	
 	private static void ejercicio15() {
 		/*15. Realizar un programa que implemente cuatro operaciones básicas de una calculadora: suma, resta, producto y división.
-	Mostrar en pantalla el siguiente menú:
+		Mostrar en pantalla el siguiente menú:
 
-		*******************
-			Calculadora
-		*******************
-	1. Suma
-	2. Resta
-	3. Producto
-	4. División
-	5. Salir
+		 	*******************
+				Calculadora
+		 	*******************
+		1. Suma
+		2. Resta
+		3. Producto
+		4. División
+		5. Salir
 	
-	Introduce la opción deseada:
+		Introduce la opción deseada:
 
-	En función de la opción introducida por el usuario, se realizará lo siguiente:
-		a. Opciones entre 1 y 4: en todos ellos se solicitará introducir dos números por teclado y se realizará la operación matemática indicada por el número de opción de menú. En pantalla se mostrará lo siguiente:
-		Operación seleccionada: nombre operación en texto
-		Operando1 operación Operando2 = resultado
-		Ejemplo:
-			Operación seleccionada: Suma
-			5+1=6
-		b. Hasta que se pulse el número 5, la calculadora estará ejecutándose constantemente. Una vez realizada una operación, el menú volverá a mostrarse para que el usuario pueda seleccionar una nueva opción.
-		c. Si selecciona la opción 5, el programa terminará.
-		d. Si se pulsa un número fuera del rango del 1 al 5, se mostrará un mensaje por pantalla: Opción X no disponible, vuelva a intentarlo. A continuación, volver a mostrar el menú para que pueda continuar.*/
+		En función de la opción introducida por el usuario, se realizará lo siguiente:
+			a. Opciones entre 1 y 4: en todos ellos se solicitará introducir dos números por teclado y se realizará la operación matemática
+			indicada por el número de opción de menú. En pantalla se mostrará lo siguiente:
+				Operación seleccionada: nombre operación en texto
+				Operando1 operación Operando2 = resultado
+			Ejemplo:
+				Operación seleccionada: Suma
+				5+1=6
+			b. Hasta que se pulse el número 5, la calculadora estará ejecutándose constantemente. Una vez realizada una operación, el menú
+			volverá a mostrarse para que el usuario pueda seleccionar una nueva opción.
+			c. Si selecciona la opción 5, el programa terminará.
+			d. Si se pulsa un número fuera del rango del 1 al 5, se mostrará un mensaje por pantalla: Opción X no disponible, vuelva a intentarlo.
+			A continuación, volver a mostrar el menú para que pueda continuar.*/
 		
+		int		num1, num2, result, opcDeseada;
+				
+		do {		//con un do-while siempre me aseguro de imprimir la calculadora y pedir la opcion deseada primero y evaluar y ejecutar despues
+			System.out.print("*****************\n\nCalculadora\n\n*****************\n");
+			System.out.print("\t\t1. Suma\n"
+							+ "\t\t2. Resta\n"
+							+ "\t\t3. Producto\n"
+							+ "\t\t4. División\n"
+							+ "\t\t5. Salir\n");
+			System.out.print("Introduce la opción deseada: ");
 		
+			entrada = teclado.nextLine();
+			opcDeseada = Integer.parseInt(entrada);
+
+			if (opcDeseada < 1 || opcDeseada > 5) {//primero se analiza si sale de los márgenes 
+		
+				do {
+					System.out.printf("Opción %d no disponible, vuelva a intentarlo.\n", opcDeseada);	
+					System.out.print("Introduce la opción deseada: ");
+				
+					entrada = teclado.nextLine();
+					opcDeseada = Integer.parseInt(entrada);
+				
+				} while (opcDeseada < 1 || opcDeseada > 5);	//si sale de los márgenes, se queda en bucle hasta que sea un valor valido
+			}
+			
+			if (opcDeseada != 5) { //si opcDeseada == 5, se sale directamente de aqui
+				System.out.print("Introduce un nº: ");
+				entrada = teclado.nextLine();
+				num1 = Integer.parseInt(entrada);
+		
+				System.out.print("Introduce otro nº: ");
+				entrada = teclado.nextLine();
+				num2 = Integer.parseInt(entrada);		
+		
+				System.out.print("Operación seleccionada: ");
+				switch (opcDeseada) {	
+					case 1:
+						result = num1 + num2;
+						System.out.printf("Suma.\n%d+%d=%d", num1, num2, result);
+						break;
+					case 2:
+						result = num1 + num2;
+						System.out.printf("Resta.\n%d-%d=%d", num1, num2, result);
+						break;
+					case 3:
+						result = num1 * num2;
+						System.out.printf("Producto.\n%d*%d=%d", num1, num2, result);
+						break;
+					case 4:
+						if (num2 != 0) {
+							result = num1 / num2;
+							System.out.printf("División.\n%d/%d=%d", num1, num2, result);
+						}
+						else
+							System.out.println("Error, un número no puede dividirse entre 0"); //unico caso imposible de division
+						break;
+				}
+			}
+			System.out.println();
+		} while (opcDeseada != 5);
 	}
 }
