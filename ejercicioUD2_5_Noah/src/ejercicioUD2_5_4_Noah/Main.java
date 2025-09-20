@@ -51,7 +51,38 @@ public class Main {
 				● 'Nulo' si el saldo es =0.
 			b) La suma total de los saldos acreedores.*/
 		
+		long	 cuenta, saldo, total = 0; //usé tipo long por si el número de cuenta o el saldo es muy largo o alto respectivamente
 		
+		do { 	/*aunque use while o do-while, debo incluir un if dentro de aqui para poder asegurarme de que la cuenta tiene valor >= 0.
+		 		La diferencia en usar do-while aqui, está en que así me evito inicializar las variables cuenta y saldo antes de esta 
+		 		estructura. Así, si o si se pedirá al menos una vez que se ingresen los datos de cuenta y saldo*/
+			
+			System.out.println("Por favor, introduzca el número de cuenta: ");
+			
+			entrada = teclado.nextLine();
+			cuenta = Long.parseLong(entrada);
+			
+			if (cuenta >= 0) {	//me aseguro de que cuenta es >= 0
+				System.out.println("Por favor, introduzca el saldo: ");
+			
+				entrada = teclado.nextLine();
+				saldo = Long.parseLong(entrada);
+				
+				System.out.print("Cuenta: " + cuenta + "\nEstado: ");
+				if (saldo > 0) {
+					System.out.println("Acreedor");
+					total += saldo;
+				}
+				else if (saldo == 0)
+					System.out.println("Nulo");
+				else
+					System.out.println("Deudor");
+				System.out.println("Saldo total de los acreedores: " + total + "\n");
+			
+			}
+			else
+				System.out.println("Salida del programa exitosa.");//indico salida al ingresar un valor negativo
+		} while (cuenta >= 0); //condicion para poder seguir funcionando el programa
 		
 	}
 	private static void ejercicio14() {
