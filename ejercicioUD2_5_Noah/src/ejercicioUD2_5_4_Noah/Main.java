@@ -3,7 +3,7 @@ package ejercicioUD2_5_4_Noah;
 import java.util.Scanner;
 
 /*Entrega 4 de 4 (5 contando con los ejercicios extra) de los ejercicios del Tema 2.
- * En este paquete se desarrollan los ejercicios 13 y 14*/
+ * En este paquete se desarrollan los ejercicios 13, 14 y 15*/
 
 public class Main {
 	
@@ -28,6 +28,9 @@ public class Main {
 					break;
 				case 14:
 					ejercicio14();
+					break;
+				case 15:
+					ejercicio15();
 					break;
 			}
 			if (opt != 0) {
@@ -85,9 +88,40 @@ public class Main {
 		} while (cuenta >= 0); //condicion para poder seguir funcionando el programa
 		
 	}
+	
+	
 	private static void ejercicio14() {
 		/*14. Escribir un programa que lea 10 notas de alumnos y nos informe cuántos tienen notas
 		 * mayores o iguales a 7 y cuántos menores.*/
+		
+		
+	}
+	
+	private static void ejercicio15() {
+		/*15. Realizar un programa que implemente cuatro operaciones básicas de una calculadora: suma, resta, producto y división.
+	Mostrar en pantalla el siguiente menú:
+
+		*******************
+			Calculadora
+		*******************
+	1. Suma
+	2. Resta
+	3. Producto
+	4. División
+	5. Salir
+	
+	Introduce la opción deseada:
+
+	En función de la opción introducida por el usuario, se realizará lo siguiente:
+		a. Opciones entre 1 y 4: en todos ellos se solicitará introducir dos números por teclado y se realizará la operación matemática indicada por el número de opción de menú. En pantalla se mostrará lo siguiente:
+		Operación seleccionada: nombre operación en texto
+		Operando1 operación Operando2 = resultado
+		Ejemplo:
+			Operación seleccionada: Suma
+			5+1=6
+		b. Hasta que se pulse el número 5, la calculadora estará ejecutándose constantemente. Una vez realizada una operación, el menú volverá a mostrarse para que el usuario pueda seleccionar una nueva opción.
+		c. Si selecciona la opción 5, el programa terminará.
+		d. Si se pulsa un número fuera del rango del 1 al 5, se mostrará un mensaje por pantalla: Opción X no disponible, vuelva a intentarlo. A continuación, volver a mostrar el menú para que pueda continuar.*/
 		
 		
 	}
