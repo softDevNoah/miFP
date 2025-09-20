@@ -16,7 +16,7 @@ public class Main {
 		
 		int opt;
 		
-		System.out.println("Escribe 13 o 14 (o 0 para salir).");
+		System.out.println("Escribe 13, 14 o 15 (o 0 para salir).");
 		
 		numEjercicio = teclado.nextLine();
 		opt = Integer.parseInt(numEjercicio);
@@ -35,7 +35,7 @@ public class Main {
 			}
 			if (opt != 0) {
 				System.out.println("-------------------------------------------------------------------------------------");
-				System.out.println("Escribe 13 o 14 (o 0 para salir).");
+				System.out.println("Escribe 13, 14 o 15 (o 0 para salir).");
 				numEjercicio = teclado.nextLine();
 				opt = Integer.parseInt(numEjercicio);
 			}
@@ -94,7 +94,34 @@ public class Main {
 		/*14. Escribir un programa que lea 10 notas de alumnos y nos informe cuántos tienen notas
 		 * mayores o iguales a 7 y cuántos menores.*/
 		
+		int notas[] = new int[10]; //como se sabe el nº de alumnos, simplifico creando un array. Funcionará parecido al ejercicio11();
+		int	mayorDe7 = 0, menorDe7 = 0; //realmente son contadores
 		
+		System.out.println("Introduzca las notas de sus 10 alumnos: ");
+		
+		for (int alumno= 0; alumno < 10; alumno++){
+			
+			System.out.printf("Faltan %d notas por introducir. Escriba una ahora: ", 10 - alumno); //se asigna valores a cada int del array
+			
+			entrada = teclado.nextLine();
+			notas[alumno] = Integer.parseInt(entrada);
+			
+			if (notas[alumno] <0 || notas[alumno] > 10) //se analiza si sale de los márgenes
+			{
+				do {
+					System.out.print("Por favor, una nota válida de 0 a 10: ");	/*se ejecuta al menos una vez y se queda en bucle para asegurarse
+																				  de que los datos de entrada son válidos antes de procesarlos*/
+					entrada = teclado.nextLine();
+					notas[alumno] = Integer.parseInt(entrada);
+					
+				} while (notas[alumno] <0 || notas[alumno] > 10);
+			}
+			if (notas[alumno] >= 7)
+				mayorDe7++;
+			else
+				menorDe7++;
+		}
+		System.out.printf("\n%d alumnos sacaron al menos un 7 (o más) y %d sacaron una nota de menos de un 7.\n", mayorDe7, menorDe7);
 	}
 	
 	private static void ejercicio15() {
