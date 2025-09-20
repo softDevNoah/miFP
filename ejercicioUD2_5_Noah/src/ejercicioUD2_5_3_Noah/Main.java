@@ -137,24 +137,33 @@ public class Main {
 	private static void ejercicio11() {
 		/*11. Desarrollar un programa que permita cargar n números enteros y luego nos informe
 		 * cuántos valores fueron pares y cuántos impares. Solicitar antes el número de enteros a tratar.*/
-		int	nNum, nPares = 0, nImpares = 0;
+		int	nNum = 0, nPares=0, nImpares = 0;
 		
 		System.out.println("Escribe la cantidad de números que desea introducir: ");
+		
 		entrada = teclado.nextLine();
 		nNum = Integer.parseInt(entrada);
+		
 		int listaNum[] = new int[nNum];
 	
-		while (nNum > 0) {
-			System.out.printf("Faltan %d números por introducir. ");
+		for (int iter= 0; iter < nNum; iter++){
 			
-			nNum--;
+			System.out.printf("Faltan %d números por introducir. Escriba uno ahora: ", nNum - iter);
+			
+			entrada = teclado.nextLine();
+			listaNum[iter] = Integer.parseInt(entrada);
+			if (listaNum[iter] % 2 ==  0)
+				nPares++;
+			else
+				nImpares++;
 		}
-		
-		
+		System.out.printf("\nDe la lista de números ofrecidos: %d son pares y %d son impares\n", nPares, nImpares);
 	}
 	
 	private static void ejercicio12() {
 		/*12. Mostrar la tabla de multiplicar (mostrar sólo los 10 primeros valores.) de los 10 primeros números.*/
+		
+		
 		
 	}
 }
