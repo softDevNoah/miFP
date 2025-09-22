@@ -80,13 +80,18 @@ public class Main {
 		entrada = teclado.nextLine();
 		num2 = Integer.parseInt(entrada);
 		
-		System.out.print("Introduce la opción deseada:\n\t\t1. Suma\n\t\t2. Resta\n\t\t3. Producto\n\t\t4. División\n\t\t5. Salir\n");
+		System.out.print("Introduce la opción deseada:\n" //lo puse asi por legibilidad ya que se usa printf
+							+ "\t\t1. Suma\n"
+							+ "\t\t2. Resta\n"
+							+ "\t\t3. Producto\n"
+							+ "\t\t4. División\n"
+							+ "\t\t5. Salir\n");
 		
 		System.out.print("Introduce la opción deseada: ");
 		entrada = teclado.nextLine();
 		opcDeseada = Integer.parseInt(entrada);
 		
-		switch (opcDeseada) {
+		switch (opcDeseada) {	//usamos switch para abarcar cada operación segun se indique por teclado
 			case 1:
 				result = num1 + num2;
 				System.out.printf("%d+%d=%d", num1, num2, result);
@@ -105,12 +110,16 @@ public class Main {
 					System.out.printf("%d/%d=%d", num1, num2, result);
 				}
 				else
-					System.out.println("Error, un número no puede dividirse entre 0");
+					System.out.println("Error, un número no puede dividirse entre 0"); //unico caso imposible de division
 				break;
-			case 5:
+			case 5:		
 				break;
-			
 		}
+		/*el enunciado indica solo opciones del 1 al 5, pero no pide desarrollar casos de error como introducir un 6.
+		prefiero aunque sea imprimir un mensaje de error en caso de introducir una opcion fuera de los margenes*/
+		
+		if (opcDeseada <1 || opcDeseada > 5)
+			System.out.println("Error, opción no válida, vuelva a empezar.");
 		System.out.println();
 	}
 	
@@ -137,24 +146,42 @@ public class Main {
 	private static void ejercicio11() {
 		/*11. Desarrollar un programa que permita cargar n números enteros y luego nos informe
 		 * cuántos valores fueron pares y cuántos impares. Solicitar antes el número de enteros a tratar.*/
-		int	nNum, nPares = 0, nImpares = 0;
+		
+		int	nNum = 0, nPares=0, nImpares = 0;
 		
 		System.out.println("Escribe la cantidad de números que desea introducir: ");
+		
 		entrada = teclado.nextLine();
 		nNum = Integer.parseInt(entrada);
-		int listaNum[] = new int[nNum];
+		
+		int listaNum[] = new int[nNum];	//se crea un array (de ints) del tamaño indicado desde el teclado (nNum)
 	
-		while (nNum > 0) {
-			System.out.printf("Faltan %d números por introducir. ");
+		for (int iter= 0; iter < nNum; iter++){
 			
-			nNum--;
+			System.out.printf("Faltan %d números por introducir. Escriba uno ahora: ", nNum - iter); //se asigna valores a cada int del array
+			
+			entrada = teclado.nextLine();
+			listaNum[iter] = Integer.parseInt(entrada);
+			
+			if (listaNum[iter] % 2 ==  0)	//se usa contadores para ir contabilizando sobre la marcha cuántos números hay pares e impares
+				nPares++;
+			else
+				nImpares++;
 		}
-		
-		
+		System.out.printf("\nDe la lista de números ofrecidos: %d son pares y %d son impares\n", nPares, nImpares);	//uso de printf por comodidad
 	}
 	
 	private static void ejercicio12() {
 		/*12. Mostrar la tabla de multiplicar (mostrar sólo los 10 primeros valores.) de los 10 primeros números.*/
 		
+		//usando un for dentro de otro conseguimos iterar 10 veces por cada número del 1 al 10 y asi mostramos sus tablas de multiplicar correspondientes
+		
+		for (int n = 1; n < 11; n++) {
+			System.out.printf("Tabla del %d:\n", n);
+			for (int x = 1; x < 11; x++) {
+				System.out.printf("\t%d * %d = %d\n", n, x, n*x);	//cuando llega a 10 pasa a la siguiente tabla de multiplicar
+			}
+			System.out.println();
+		}
 	}
 }
