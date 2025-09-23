@@ -19,7 +19,7 @@ public class Main {
 		numEjercicio = teclado.nextLine();
 		opt = Integer.parseInt(numEjercicio);
 		
-		while (opt !=0) {
+		while (opt != 0) {
 			switch (opt) {
 				case 1:
 					ejercicio1();
@@ -36,13 +36,12 @@ public class Main {
 			}
 			if (opt != 0) {
 				System.out.println("-------------------------------------------------------------------------------------");
-				System.out.println("Escribe 13, 14 o 15 (o 0 para salir).");
+				System.out.println("Escribe 1, 2, 3 o 4 (o 0 para salir).");
 				numEjercicio = teclado.nextLine();
 				opt = Integer.parseInt(numEjercicio);
 			}
 		}
-	
-		
+		teclado.close();
 	}
 
 	private static void ejercicio1() {
@@ -54,7 +53,66 @@ public class Main {
 			Valide que no se puedan retirar más fondos de los disponibles
 			Permita realizar múltiples operaciones hasta que el usuario elija salir
 			Muestre un mensaje de despedida al finalizar*/
+		
+		double	saldo = 1000;
+		double	movimiento;
+
+		String 	operacion[] = {"Operación seleccionada:\t", "Consultar saldo", "Ingresar", "Retirar", "Salir"};
+		int		seleccion;
+		
+		System.out.println("Ongi etorri al mejor cajero!\nPor favor, seleccione la operación que desee realizar:");
+		System.out.println("\n\t1.- Consultar saldo.\n\t2.- Ingresar.\n\t3.- Retirar.\n\t4.- Salir.");
+	
+		entrada = teclado.nextLine();
+		seleccion = Integer.parseInt(entrada);
+		
+		while (seleccion != 4) {
+						
+			if (seleccion > 0 && seleccion < 5) {	//que se imprima esto al principio si la opcion introducida es valida
+				System.out.println("............................................................................................");
+				System.out.print(operacion[0]);
+			}
+
+			switch (seleccion) {
+				case 1:
+					System.out.println(operacion[1]);
+					System.out.println("Saldo actual: " + saldo + "€.");
+					break;
+				case 2:
+					System.out.println(operacion[2]);
+					System.out.println("Por favor escriba la cantidad (en números) que desea ingresar:");
+					entrada = teclado.nextLine();
+					movimiento = Double.parseDouble(entrada);
+					saldo += movimiento;
+					System.out.println("Ingreso realizado satisfactoriamente.");
+					break;
+				case 3:
+					System.out.println(operacion[3]);
+					System.out.println("Por favor escriba la cantidad (en números) que desea retirar:");
+					entrada = teclado.nextLine();
+					movimiento = Double.parseDouble(entrada);
+					if ((saldo - movimiento) < 0)	//que no sea posible que la cuenta quede en negativo
+						System.out.println("No hay suficiente liquidez en su cuenta.");
+					else {
+						saldo -= movimiento;
+						System.out.println("Retirada realizada satisfactoriamente.");
+					}
+					break;	
+			}
+			if (seleccion != 4) { //para datos introducidos no válidos
+				System.out.println("............................................................................................");
+				System.out.println("\t\tPor favor, seleccione la operación que desee realizar:");
+				System.out.println("\n\t1.- Consultar saldo.\n\t2.- Ingresar.\n\t3.- Retirar.\n\t4.- Salir.");
+				
+				entrada = teclado.nextLine();
+				seleccion = Integer.parseInt(entrada);
+			}
+			if (seleccion == 4) {	//salida del cajero
+				System.out.println("Gracias por venir. Hasta la próxima!");
+			}
 		}
+		
+	}
 		
 		
 		private static void ejercicio2() {
@@ -68,6 +126,8 @@ public class Main {
 			El número mayor y el menor
 			Cuántos números son pares e impares
 			Cuántos números son primos*/
+			
+			
 		}
 		
 		private static void ejercicio3() {
