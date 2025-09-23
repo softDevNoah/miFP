@@ -39,6 +39,7 @@ public class Main {
 				opt = Integer.parseInt(numEjercicio);
 			}
 		}
+		teclado.close();
 	}
 	
 	private static void ejercicio13() {
