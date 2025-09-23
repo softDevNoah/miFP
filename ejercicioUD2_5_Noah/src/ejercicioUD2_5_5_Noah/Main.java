@@ -2,7 +2,9 @@ package ejercicioUD2_5_5_Noah;
 
 import java.util.Scanner;
 
-/*Entrega extra del Tema 2, con los ejercicios 1, 2, 3 y 4*/
+/*Entrega extra del Tema 2, con los ejercicios 1, 2, 3 y 4.
+  Solo realizo al final los dos primeros porque los ultimos me parecen dificiles
+  y no me queda mucho tiempo para intentarlo */
 
 public class Main {
 
