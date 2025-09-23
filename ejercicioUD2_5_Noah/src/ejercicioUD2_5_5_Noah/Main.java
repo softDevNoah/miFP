@@ -127,7 +127,73 @@ public class Main {
 			Cuántos números son pares e impares
 			Cuántos números son primos*/
 			
+			int		numList[] = new int[10];
+			int		total = 0,	max, 	min;
+			int		pares = 0, impares = 0, primos = 0;
+			boolean	primo = true;
+			System.out.println("Por favor ingrese 10 números:");
 			
+			//lectura de datos
+			for (int i = 0; i < 10; i++) {
+				entrada = teclado.nextLine();
+				numList[i] = Integer.parseInt(entrada);
+			}
+			
+			
+			for (int i = 0; i < 10; i++) {
+				//calculo del total
+				total += numList[i]; 
+				
+				if (numList[i] % 2 == 0)	{
+					pares++;
+					if (numList[i] == 2)//el 2 es el unico numero primo par
+						primos++;
+				}
+				else {
+					impares++;
+					
+					//conteo de numeros primos
+					primo = true; //partimos de la premisa de que es un nº primo
+					
+					for (int j = 3; j <= Math.sqrt(numList[i]); j += 2) {	//Math.sqrt calcula la raiz cuadrada de un numero
+						if (numList[i] % j == 0) {
+			            		primo = false; //solo es false si se encuentra un divisor
+			            		break;	//si se encuentra un divisor, no hace falta seguir buscando ya que no es primo
+						}
+			        }
+					if (primo == true && numList[i] > 1)	//si es 1 o negativo no puede ser primo
+						primos++;
+				}
+			}
+			
+			//conteo de numero primos
+			
+			
+			//inicializo para poder usarlas
+			max = numList[0];
+			min = numList[0];
+
+			//busqueda de mayor y menor
+			for (int i = 0; i < 9; i++) {
+				if (max < numList[i])
+					max = numList[i];
+				if (min > numList[i])
+					min = numList[i];
+			}
+			
+				
+		
+			System.out.println("Suma total:\t" + total);
+			System.out.println("Promedio:\t" + (total /10));	// el promedio se calcula directamente aqui
+			if (min != max) {
+				System.out.println("El menor nº es:\t" + min);
+				System.out.println("El mayor nº es:\t" + max);
+			}
+			else
+				System.out.println("Todos los números son iguales.");
+			System.out.println("Hay " + pares + " números pares.");
+			System.out.println("Hay " + impares + " números impares.");
+			System.out.println("Hay " + primos + " números primos.");
 		}
 		
 		private static void ejercicio3() {
