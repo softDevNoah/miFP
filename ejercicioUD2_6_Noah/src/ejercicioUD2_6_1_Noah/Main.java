@@ -7,9 +7,10 @@ import java.util.Scanner;
 
 public class Main {
 
-	private static Scanner	teclado = new Scanner(System.in);
-	private static String	entrada;
-	private static String	numEjercicio;
+	private static	Scanner	teclado = new Scanner(System.in);
+	private static	String	entrada;
+	private static	String	numEjercicio;
+	private static	String text1, text2;
 	//private static int		num;
 	
 	public static void main(String[] args) {
@@ -105,17 +106,46 @@ public class Main {
 	
 	private static void ejercicio3() {
 		
+		String	invertido = "";
+		
+		System.out.println("Introduzca el texto que quiera: ");
+		entrada = teclado.nextLine();
+		
+			
+		for (int i = 0; i < entrada.length(); i++) {
+			invertido = entrada.charAt(i) + invertido;
+		}
+		System.out.println("El texto introducido si fuera invertido es: " + invertido);
 		
 	}
 	
 	private static void ejercicio4() {
 		
+		System.out.println("Introduzca el texto que quiera: ");
+		entrada = teclado.nextLine();
+		text1 = entrada;
 		
+		System.out.println("Introduzca el texto que quiera una segunda vez: ");
+		entrada = teclado.nextLine();
+		text2 = entrada;
+		
+		System.out.println("El texto concatenado es: " + text1.concat(text2));
 	}
 	
 	private static void ejercicio5() {
 		
+		System.out.println("Introduzca el texto que quiera: ");
+		entrada = teclado.nextLine();
+		text1 = entrada;
 		
+		System.out.println("Introduzca el texto que quiera una segunda vez: ");
+		entrada = teclado.nextLine();
+		text2 = entrada;
+		
+		if (text1.equals(text2))
+			System.out.println("Los textos son iguales.");
+		else
+			System.out.println("Los textos son diferentes.");
 	}
 	
 	private static void ejercicio6() {
