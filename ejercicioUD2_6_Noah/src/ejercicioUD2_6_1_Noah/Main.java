@@ -7,10 +7,11 @@ import java.util.Scanner;
 
 public class Main {
 
-	private static Scanner	teclado = new Scanner(System.in);
-	private static String	entrada;
-	private static String	numEjercicio;
-	//private static int		num;
+	private static	Scanner	teclado = new Scanner(System.in);
+	private static	String	entrada;
+	private static	String	numEjercicio;
+	private static	String	text1, text2;
+
 	
 	public static void main(String[] args) {
 		
@@ -54,25 +55,17 @@ public class Main {
 
 	private static void ejercicio1() {
 		
-		int		stringLen = 0;
-		char	charInIndex;
-		
 		do {
 			System.out.println("Introduzca el texto que quiera: ");
-			
 			entrada = teclado.nextLine();
-			
-		} while (entrada == "");
+		} while (entrada == "");		//mientras no se introduzca nada, sale el mensaje en pantalla
 		
 		System.out.println("Calculando la longitud del texto introducido...:");
-		stringLen = entrada.length();
-		System.out.println("\tLa longitud de tu texto es de " + stringLen + " caracteres.");
+		System.out.println("\tLa longitud de tu texto es de " + entrada.length() + " caracteres.");
 		
 		System.out.println("Buscando el carácter en la posición 7 del texto...:");
-		if (stringLen >= 8) {
-			charInIndex = entrada.charAt(7);
-			System.out.println("\tEl carácter que se encuentra en la posición 7 de tu String es \'" + charInIndex + "\'");
-		}
+		if (entrada.length() >= 8) 
+			System.out.println("\tEl carácter que se encuentra en la posición 7 de tu String es \'" + entrada.charAt(7) + "\'");
 		else
 			System.out.println("\tTu texto no es tan largo para ver qué caracter hay en la posición 7.");
 		
@@ -82,18 +75,19 @@ public class Main {
 		}
 		else
 			System.out.println("\tCarácter no encontrado");
+		
 		System.out.println("Cambiando el texto original todo a mayúsculas...:");
 		System.out.println(entrada.toUpperCase());
 	}
 	
 	private static void ejercicio2() {
 		
-		int		contador = 0;
+		int	contador = 0;
 		
 		System.out.println("Introduzca el texto que quiera: ");
 		entrada = teclado.nextLine();
 		
-		while (entrada.indexOf('a') != -1) {
+		while (entrada.indexOf('a') != -1) {		//
 			contador++;
 			entrada = entrada.substring(entrada.indexOf('a') + 1, entrada.length());
 		}
@@ -105,22 +99,74 @@ public class Main {
 	
 	private static void ejercicio3() {
 		
+		String	invertido = "";
+		
+		System.out.println("Introduzca el texto que quiera: ");
+		entrada = teclado.nextLine();
+		
+			
+		for (int i = 0; i < entrada.length(); i++) {
+			invertido = entrada.charAt(i) + invertido; //se concatena lo nuevo mas lo guardado, caracter por caracter
+		}
+		System.out.println("El texto introducido si fuera invertido es: " + invertido);
 		
 	}
 	
 	private static void ejercicio4() {
 		
+		System.out.println("Introduzca el texto que quiera: ");
+		entrada = teclado.nextLine();
+		text1 = entrada;
 		
+		System.out.println("Introduzca el texto que quiera una segunda vez: ");
+		entrada = teclado.nextLine();
+		text2 = entrada;
+		
+		System.out.println("El texto concatenado es: " + text1.concat(text2));	//otra forma de concatenar
 	}
 	
 	private static void ejercicio5() {
 		
+		System.out.println("Introduzca el texto que quiera: ");
+		entrada = teclado.nextLine();
+		text1 = entrada;
 		
+		System.out.println("Introduzca el texto que quiera una segunda vez: ");
+		entrada = teclado.nextLine();
+		text2 = entrada;
+		
+		if (text1.equals(text2))
+			System.out.println("Los textos son iguales.");
+		else
+			System.out.println("Los textos son diferentes.");
 	}
 	
 	private static void ejercicio6() {
 		
+		String	invertido;
 		
+		invertido = "";
+		text1 = "";
+		
+		System.out.println("Introduzca el texto que quiera: ");
+		entrada = teclado.nextLine();
+		
+		//primero hago una copia del original y le quito espacios y tabulaciones
+		for (int i = 0; i < entrada.length(); i++) {
+			if (entrada.charAt(i) != '\t' && entrada.charAt(i) != ' ')
+				text1 = text1 + entrada.charAt(i);
+		}
+		//System.out.println(text1);		//para ver en pantalla el resultado
+		
+		//invierto la copia limpia del texto ya sin espacios ni tabulaciones
+		for (int i = 0; i < text1.length(); i++) {
+				invertido = text1.charAt(i) + invertido;
+		}
+		//System.out.println(invertido);	//para ver en pantalla el resultado
+		if (text1.equals(invertido))
+			System.out.println("Uy, es un palíndromo.");
+		else
+			System.out.println("No carris, no es un pelíndromo.");
 	}
 	
 }
