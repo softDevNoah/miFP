@@ -1,6 +1,6 @@
 package ejercicioUD2_8_Noah;
 
-public class Main {
+public class Citas {
 
 	public static void main(String[] args) {
 		
