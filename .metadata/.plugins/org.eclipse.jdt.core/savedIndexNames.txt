@@ -1,9 +1,0 @@
-INDEX VERSION 1.134+/home/boreskar/Desktop/miFP/.metadata/.plugins/org.eclipse.jdt.core
-252029845.index
-1942003073.index
-2233612756.index
-2237160896.index
-2436719343.index
-1581622264.index
-63713134.index
-629253480.index
