@@ -10,13 +10,12 @@ public class Main {
 	private static Scanner	teclado = new Scanner(System.in);
 	private static String	entrada;
 	private static String	numEjercicio;
-	private static int		num;
 	
 	public static void main(String[] args) {
 		
 		int opt;
 		
-		System.out.println("Escribe un nº del 1 al 5 (o 0 para salir).");
+		System.out.println("Escribe 7 u 8 (o 0 para salir).");
 		
 		numEjercicio = teclado.nextLine();
 		opt = Integer.parseInt(numEjercicio);
@@ -33,7 +32,7 @@ public class Main {
 			}
 			if (opt != 0) {
 				System.out.println("-------------------------------------------------------------------------------------");
-				System.out.println("Escribe un nº del 1 al 5 (o 0 para salir).");
+				System.out.println("Escribe 7 u 8 (o 0 para salir).");
 				numEjercicio = teclado.nextLine();
 				opt = Integer.parseInt(numEjercicio);
 			}
@@ -42,12 +41,41 @@ public class Main {
 	}
 
 	private static void ejercicio7() {
+		/*7. El programa recibirá una oración y nos dirá cuántas palabras tiene. Las palabras que el usuario introduzca,
+		 * estarán separadas a través de un espacio y una oración nunca comenzará con un espacio.*/
 		
+		int		numWords = 0;
+		
+		System.out.println("Introduzca el texto que quiera: ");
+		entrada = teclado.nextLine().trim();
+		if (entrada.length() > 0) //si no estaba vacio, al menos hay una palabra
+			numWords++;
+		for (int i = 0; i < entrada.length(); i++) {	//solo sumara si hay mas de una palabra
+			if (entrada.charAt(i) == ' ' && entrada.charAt(i + 1) != ' ')
+				numWords++;
+		}
+		System.out.println("En el texto hay " + numWords + " palabras.");
+		
+		//System.out.println(entrada); //ver el texto trimeado
 		
 	}
 	
 	private static void ejercicio8() {
+		/*8. El programa recibirá un texto y extraerá sus siglas. Por ejemplo: Tren Articulado Ligero Goikoetxea Oriol: TALGO*/
 		
+		String siglas = "";
 		
+		System.out.println("Introduzca el texto que quiera: ");
+		entrada = teclado.nextLine();
+		
+		if (entrada.charAt(0) != ' ' && entrada.charAt(0) != '\t') //si la primera no es un espacio tambien la debe coger
+			siglas = siglas + entrada.charAt(0);
+		
+		for (int i = 0; i < entrada.length(); i++) {	
+			if (entrada.charAt(i) == ' ' && entrada.charAt(i + 1) != ' ')
+				siglas = siglas + entrada.charAt(i + 1);
+		}
+		
+		System.out.println("Las siglas de tu texto son :" + siglas.toUpperCase());
 	}
 }
