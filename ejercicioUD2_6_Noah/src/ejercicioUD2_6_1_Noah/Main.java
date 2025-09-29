@@ -87,9 +87,9 @@ public class Main {
 		System.out.println("Introduzca el texto que quiera: ");
 		entrada = teclado.nextLine();
 		
-		while (entrada.indexOf('a') != -1) {		//
+		while (entrada.indexOf('a') != -1) {		// es decir, mientras se encuentre alguna 'a'
 			contador++;
-			entrada = entrada.substring(entrada.indexOf('a') + 1, entrada.length());
+			entrada = entrada.substring(entrada.indexOf('a') + 1, entrada.length()); //se crea un substring a partir de la siguiente letra hasta el final
 		}
 		if (contador > 0)
 			System.out.println("Hay " + contador + " letras \'a\' en el texto introducido.");
@@ -106,7 +106,7 @@ public class Main {
 		
 			
 		for (int i = 0; i < entrada.length(); i++) {
-			invertido = entrada.charAt(i) + invertido; //se concatena lo nuevo mas lo guardado, caracter por caracter
+			invertido = entrada.charAt(i) + invertido; //se concatena lo nuevo a lo previamente guardado, caracter por caracter
 		}
 		System.out.println("El texto introducido si fuera invertido es: " + invertido);
 		
@@ -116,7 +116,7 @@ public class Main {
 		
 		System.out.println("Introduzca el texto que quiera: ");
 		entrada = teclado.nextLine();
-		text1 = entrada;
+		text1 = entrada; 
 		
 		System.out.println("Introduzca el texto que quiera una segunda vez: ");
 		entrada = teclado.nextLine();
@@ -145,8 +145,8 @@ public class Main {
 		
 		String	invertido;
 		
-		invertido = "";
 		text1 = "";
+		invertido = "";
 		
 		System.out.println("Introduzca el texto que quiera: ");
 		entrada = teclado.nextLine();
@@ -156,13 +156,13 @@ public class Main {
 			if (entrada.charAt(i) != '\t' && entrada.charAt(i) != ' ')
 				text1 = text1 + entrada.charAt(i);
 		}
-		//System.out.println(text1);		//para ver en pantalla el resultado
+		//System.out.println(text1);		//si quiero ver en pantalla el resultado
 		
 		//invierto la copia limpia del texto ya sin espacios ni tabulaciones
 		for (int i = 0; i < text1.length(); i++) {
 				invertido = text1.charAt(i) + invertido;
 		}
-		//System.out.println(invertido);	//para ver en pantalla el resultado
+		//System.out.println(invertido);	//si quiero ver en pantalla el resultado
 		if (text1.equals(invertido))
 			System.out.println("Uy, es un palíndromo.");
 		else
