@@ -56,7 +56,7 @@ public class Citas {
 		
 		int		selec;
 		
-		while (volver == true) {
+		while (volver == true) { //usando una variable boolean puedo volver o no al inicio cuando se precise
 			do {
 				System.out.println("Inserta el TIS:");
 				entrada = teclado.nextLine();
