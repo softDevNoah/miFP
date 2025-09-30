@@ -1,5 +1,0 @@
-INDEX VERSION 1.134+C:\Users\aurgu\Desktop\miFP\.metadata\.plugins\org.eclipse.jdt.core
-2835081785.index
-3695370055.index
-1504532716.index
-1865797976.index
