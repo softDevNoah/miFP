@@ -1,0 +1,121 @@
+85package programApuntes2223;
+
+import java.util.Scanner;
+
+public class PracticasDia11 {
+	private static Scanner	teclado =  new Scanner(System.in);
+	private static int		num1;
+	private static int		num2;
+	private static Double	dnum;
+	private static String	entrada;
+
+	public	static void main(String[] args) {
+		
+		// Llama a los ejercicios del 19 al X
+		
+		valorabs();
+		parimpar();
+		calcuiva();
+		nxn();
+		mayormenor();
+		retesue1();
+		//retesue2();
+
+		teclado.close();
+	}
+	
+	/**
+	 * 
+	 */
+	private static void valorabs() {
+		/*19.Realiza la clase Java Valorabs que lee el valor de un número real por teclado y muestra su valor absoluto por pantalla.*/
+		
+		System.out.println("Vamos a calcular el valor aboluto de un número.");
+		System.out.println("Introduce un número:");
+		entrada = teclado.nextLine();
+		num1 = Integer.parseInt(entrada);
+		if (num1 < 0) {
+		//	System.out.println("El número es el: "+num);
+			num1 *= (-1);
+		}	
+		System.out.println("El valor absoluto de ese número es: "+ num1 + "\n");
+	}
+	
+	private static void parimpar() {
+		/*20.Realiza la clase Java Parimpar que lee el valor de un número entero por teclado y muestra por pantalla si es par o impar.*/
+		
+		System.out.println("Escriba un número y le diré si es par o impar:");
+		entrada = teclado.nextLine();
+		num1 = Integer.parseInt(entrada);
+		if (num1 % 2 !=0) 
+			System.out.printf("El número %d es impar\n\n", num1);
+		else
+			System.out.printf("El número %d es par\n\n", num1);
+	}
+	
+	private static void calcuiva() {
+	/*  21.Realiza la clase Java Calcuiva que lee una cantidad en euros por teclado y muestra por pantalla su IVA
+	*   sabiendo que si la cantidad es menor que 20000 el IVA es el 7% y sino del 16%.*/
+		
+		System.out.println("Vamos a calcular el I.V.A.");
+		System.out.println("Introduce un número (cantidad de euros):");
+		entrada = teclado.nextLine();
+		dnum = Double.parseDouble(entrada);
+		if (dnum < 20000)
+			System.out.printf("El IVA de %.2f€ son %.2f€\n\n", dnum, dnum * 0.07);
+		else
+			System.out.printf("El IVA de %.2f€ son %.2f€\n\n", dnum, dnum * 0.16);
+	}
+	
+	private static void nxn() {
+		/*22.Realiza la clase Java Nxn que lee un número por teclado y calcula el cuadrado de ese número. Si el
+		cuadrado es mayor que 100 se le restara 100 y se mostrara por pantalla. Si no es mayor que 100, se
+		mostrara lo que le falta para llegar a 100.*/
+		System.out.println("Introduce un número:");
+		entrada = teclado.nextLine();
+		num1 = Integer.parseInt(entrada);
+		if ((num1 * num1) > 100)
+			System.out.println("El cuadrado de ese número - 100 es : " + ((num1 * num1) -100));
+		else
+			System.out.println("El cuadrado de ese número es : " +(num1 * num1));
+	}
+
+	private static void mayormenor() {
+		System.out.println("Introduce un primer número:");
+		entrada = teclado.nextLine();
+		num1 = Integer.parseInt(entrada);
+		System.out.println("Introduce un segundo número:");
+		entrada = teclado.nextLine();
+		num2 = Integer.parseInt(entrada);
+		if (num1 ==num2)
+			System.out.println("Los números introducidos son iguales: " +num1);
+		else if (num1 > num2)
+			System.out.println(num1 + " es mayor que " + num2);
+		else
+			System.out.println(num1 + " es menor que " + num2);
+	}
+	
+	private static void retesue1() {
+		/*24.Realiza la clase Java Retesuel que lee el sueldo de un trabajador por teclado y muestra por pantalla la
+		retención que se le aplica sabiendo que si
+		sueldo < 1000.00 retencion 10%
+		sueldo 1000.00 retencion 12%
+		sueldo > 1000.00 retencion 14%*/
+		System.out.println("Vamos a calcular la retención de un sueldo.");
+		System.out.println("Dime cuánto cobras:");
+		entrada = teclado.nextLine();
+		dnum = Double.parseDouble(entrada);
+		if (dnum <=0)
+			System.out.println("Qué miseria tu situación...");
+		else {
+			System.out.println("La retención correspondiente sería:");
+			if (dnum < 1000)
+				System.out.println((dnum * 0.1) + "€");
+			else if (dnum == 1000)
+				System.out.println("120.00€");
+			else
+				System.out.println((dnum * 0.14) + "€");
+		}
+	}
+	
+}

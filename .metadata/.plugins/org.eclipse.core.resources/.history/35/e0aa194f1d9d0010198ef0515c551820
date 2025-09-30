@@ -1,0 +1,65 @@
+package ejercicioUD2_6_2_Noah;
+
+import java.util.Scanner;
+
+/*Entrega 2 de 2 de los ejercicios del Tema 2 (Ejercicios String).
+ * En este paquete se desarrollan los ejercicios 7 y 8*/
+
+public class Main {
+
+	private static Scanner	teclado = new Scanner(System.in);
+	private static String	entrada;
+	private static String	numEjercicio;
+	
+	public static void main(String[] args) {
+		
+		int opt;
+		
+		System.out.println("Escribe 7 u 8 (o 0 para salir).");
+		
+		numEjercicio = teclado.nextLine();
+		opt = Integer.parseInt(numEjercicio);
+		
+		while (opt != 0) {
+			switch (opt) {
+				case 7:
+					ejercicio7();
+					break;
+				case 8:
+					ejercicio8();
+					break;
+
+			}
+			if (opt != 0) {
+				System.out.println("-------------------------------------------------------------------------------------");
+				System.out.println("Escribe 7 u 8 (o 0 para salir).");
+				numEjercicio = teclado.nextLine();
+				opt = Integer.parseInt(numEjercicio);
+			}
+		}
+		teclado.close();
+	}
+
+	private static void ejercicio7() {
+		/*7. El programa recibirá una oración y nos dirá cuántas palabras tiene. Las palabras que el usuario introduzca,
+		 * estarán separadas a través de un espacio y una oración nunca comenzará con un espacio.*/
+		int		numWords = 0;
+		
+		System.out.println("Introduzca el texto que quiera: ");
+		entrada = teclado.nextLine().trim();
+		
+		for (int i = 0; i < entrada.length(); i++) {
+			if (entrada.charAt(i) == ' ' && entrada.charAt(i + 1) != ' ')
+				numWords++;
+		}
+		System.out.println("En el texto hay " + numWords + " palabras.");
+		
+		System.out.println(entrada);
+		
+	}
+	
+	private static void ejercicio8() {
+		/*8. El programa recibirá un texto y extraerá sus siglas. Por ejemplo: Tren Articulado Ligero Goikoetxea Oriol: TALGO*/
+		
+	}
+}
