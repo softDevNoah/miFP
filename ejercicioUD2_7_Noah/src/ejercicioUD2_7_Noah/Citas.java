@@ -1,7 +1,12 @@
 package ejercicioUD2_7_Noah;
 
 
-import java.util.Scanner;
+import	java.util.Scanner;
+
+//estas librerías son para validar mas facilmente las fechas
+import	java.time.*;
+import 	java.time.format.DateTimeFormatter;
+import 	java.time.format.DateTimeParseException;
 
 /*Entrega del ejercicio 2.7 - Citas*/
 
@@ -61,27 +66,28 @@ public class Citas {
 		boolean	volver = true;
 		
 		
-		while (volver == true) { //usando una variable boolean puedo volver o no al inicio cuando se precise
+		while (volver) { //usando una variable boolean puedo volver o no al inicio cuando se precise
 			
 			do {
 				System.out.println("Inserta el TIS:");
 				entrada = teclado.nextLine();
 				cadenaTis = entrada.trim();
-				System.out.println(cadenaTis);
 				
-			} while (validacion(cadenaTis) < 0);
+			} while (validacionTis(cadenaTis) < 0);
 			
 			do {
 				System.out.println("Inserta el primer apellido:");
-				apellido = teclado.nextLine();
+				entrada = teclado.nextLine();
+				apellido = entrada.trim();
 				
-			} while (apellido.length() <= 0);
+			} while (!validacionApellido(apellido));
 			
 			do {
-				System.out.println("Inserta la fecha:");
-				nacim = teclado.nextLine();
+				System.out.println("Inserta la fecha (dd/mm/aaaa o dd-mm-aaaa):");
+				entrada = teclado.nextLine();
+				nacim = entrada.trim();
 				
-			} while (nacim.length() != 10);
+			} while (!validacionFecha(nacim));
 			
 			do { 
 				System.out.println("Elige servicio:");
@@ -101,14 +107,17 @@ public class Citas {
 
 	private static boolean anularCita() {
 		
-		int	numCita;
+		String	numCita;
+		int		cleanNumCita;
+		
 		do {
 			System.out.println("Inserta el número de la cita:");
 			entrada = teclado.nextLine();
-			numCita = Integer.parseInt(entrada);
-		} while (numCita <= 0);
+			numCita = entrada.trim();
+		} while (!validacionNumCita(numCita));
 		
-		System.out.println("Cita con el número " + numCita + " anulada.");
+		cleanNumCita = Integer.parseInt(numCita);
+		System.out.println("Cita con el número " + cleanNumCita + " anulada.");
 		return (false);
 	}
 	
@@ -155,18 +164,40 @@ public class Citas {
 		return (false);
 	}
 	
-	private static long validacion(String cadenaTis) {
+	private static boolean validacionNumCita(String numCita) {
 		
-		if (checkOnlyNums(cadenaTis) == false)
+		for (int i = 0; i < numCita.length(); i++) {
+			
+			char c = numCita.charAt(i);
+
+			if (!Character.isDigit(c)) {
+				System.out.println("Error: solo se admite un número de cita.");
+				return (false);
+			}
+		}
+		return (true);
+	}
+	
+	private static long validacionTis(String cadenaTis) {
+		
+		String cleanTis;
+		if (!checkOnlyNums(cadenaTis))
 			return (-1);
-		tis = Long.parseLong(cadenaTis);
 		
-		if (tis < 0)
+		cleanTis = cleanNumTis(cadenaTis);
+		
+		if (cleanTis.length() < 12) {
+			System.out.println("Error: deben ser 12 dígitos.");
+			return(-1);
+		}
+		
+		tis = Long.parseLong(cleanTis);
+		
+		if (tis < 0 || !algoLuhn(tis)) {
+			System.out.println("Error: nº de TIS incorrecto.");			
 			return (-1);
-		
-		if (algoLuhn(tis) == false)
-			return (-1);
-		
+		}
+	
 		return (tis);
 	}
 	
@@ -178,20 +209,93 @@ public class Citas {
 			
 			char c = cadena.charAt(i);
 
-			if (!Character.isDigit(c)) {
-				System.out.println("Solo se permite números para el TIS.");
+			if (!Character.isDigit(c) && c != ' ' && c != '\t') {
+				System.out.println("Error: Solo se permite números para el TIS.");
 				return (false);
 			}
 		}
 		return (true);
 	}
+	
+	private static String cleanNumTis(String cadenaConEspacios) {
+		
+		String	copia = "";
+		
+		for (int i = 0; i < cadenaConEspacios.length(); i++) {
+			if (Character.isDigit(cadenaConEspacios.charAt(i)))
+				copia = copia + cadenaConEspacios.charAt(i);
+		}
+		return (copia);
+	}
 
 	private static boolean algoLuhn(long tis) {
 		
-		boolean valido = true;
+		long	sum = 0;
+		long	numControl = tis % 10;
+		long	result;
+		long	last;
 		
+		tis = tis / 10;
+		while (tis > 9) {
 		
-		return (valido);
+			//posicion impar
+			last = tis % 10;
+			last *= 2;
+			if (last > 9)
+				last -= 9;
+			sum += last;
+			tis = tis / 10;
+
+			//posicion par
+			last = tis % 10;
+			sum += last;
+			tis = tis / 10;
+		}
+		tis *= 2;
+		if (tis > 9)
+			tis -= 9;
+		sum += tis;
+		result = (10 - (sum % 10)) % 10;
+		if (result == numControl)
+			return (true);
+		return (false);
+	}
+	
+	private static boolean validacionApellido(String apellido) {
+		if (apellido.length() <= 0) {
+			System.out.println("Error: dato incorrecto, inténtalo de nuevo.");//solo debe ser un apellido (una palabra).
+			return (false);
+		}
+		for (int i = 0; i < apellido.length(); i++) {
+			if (!Character.isLetter(apellido.charAt(i))) {
+				System.out.println("Error: datos incorrectos, inténtelo de nuevo (un apellido, solo una palabra).");
+				return (false);
+			}
+		}
+		return (true);
+	}
+	
+	private static boolean validacionFecha(String nacim) {
+		
+		if (nacim.length() != 10)
+			return (false);
+		
+		DateTimeFormatter	formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter	formatter2 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		
+		try {
+			LocalDate.parse(nacim, formatter1);
+			return (true);
+		} catch (DateTimeParseException excep1) {
+			
+			try {
+				LocalDate.parse(nacim, formatter2);
+				return (true);
+			} catch (DateTimeParseException excep2) {
+				System.out.println("Error: fecha incorrecta.");
+				return (false);
+			}
+		}
 	}
 	
 }
