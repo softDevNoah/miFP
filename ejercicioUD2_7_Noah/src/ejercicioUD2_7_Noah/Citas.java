@@ -55,7 +55,7 @@ public class Citas {
 
 	private static Scanner	teclado = new Scanner(System.in);
 	private static String	entrada;
-	private static long		tis;
+	private static long		tis;	//como son 12 digitos debe ser long
 	
 	public static void main(String[] args) {
 		
@@ -71,22 +71,19 @@ public class Citas {
 			do {
 				System.out.println("Inserta el TIS:");
 				entrada = teclado.nextLine();
-				cadenaTis = entrada.trim();
-				
+				cadenaTis = entrada.trim();	
 			} while (validacionTis(cadenaTis) < 0);
 			
 			do {
 				System.out.println("Inserta el primer apellido:");
 				entrada = teclado.nextLine();
 				apellido = entrada.trim();
-				
 			} while (!validacionApellido(apellido));
 			
 			do {
 				System.out.println("Inserta la fecha (dd/mm/aaaa o dd-mm-aaaa):");
 				entrada = teclado.nextLine();
 				nacim = entrada.trim();
-				
 			} while (!validacionFecha(nacim));
 			
 			do { 
@@ -95,24 +92,26 @@ public class Citas {
 				System.out.println("2.- Concierta una cita.");
 				entrada = teclado.nextLine();
 				selec = Integer.parseInt(entrada);
-				
 			} while (selec != 1 && selec != 2);
 			
+			//si llega aqui es que los datos ingresados son correctos
 			if (selec == 1)
 				volver = anularCita();
 			else
 				volver = concertarCita(tis, apellido, nacim);
 		}
+		teclado.close();
 	}
 
+	//metodo para anular cita
 	private static boolean anularCita() {
 		
 		String	numCita;
 		int		cleanNumCita;
 		
 		do {
-			System.out.println("Inserta el número de la cita:");
-			entrada = teclado.nextLine();
+			System.out.println("Inserta el número de la cita:");	//esto solo se verifica si se quiere anular cita
+			entrada = teclado.nextLine();							//por eso no lo puse en el main
 			numCita = entrada.trim();
 		} while (!validacionNumCita(numCita));
 		
@@ -121,6 +120,20 @@ public class Citas {
 		return (false);
 	}
 	
+	//se revisa ya que para ser valido deben ser solo numeros
+	private static boolean validacionNumCita(String numCita) {
+		
+		for (int i = 0; i < numCita.length(); i++) {
+			
+			if (!Character.isDigit(numCita.charAt(i))) {	//solo pueden ser numeros, y un solo numero
+				System.out.println("Error: solo se admite un número de cita.");
+				return (false);
+			}
+		}
+		return (true);
+	}
+	
+	//metodo para concertar cita
 	private static boolean concertarCita(long tis, String apellido, String nacim) {
 		
 		int	selec;
@@ -136,7 +149,7 @@ public class Citas {
 		} while (selec < 0 || selec > 3);
 		
 		if (selec == 3)
-			return (true);
+			return (true);	//esto asigna true a la boolean 'volver'
 		
 		do {
 			System.out.println("Indica tipo de contacto:");
@@ -148,7 +161,7 @@ public class Citas {
 		} while (selec < 0 || selec > 3);
 		
 		if (servic == 3)
-			return (true);
+			return (true);	
 		
 		System.out.print("Ha concertado usted una cita con su ");
 		if (selec == 1)
@@ -161,23 +174,11 @@ public class Citas {
 		else
 			System.out.println("telefónica con los datos:");
 		System.out.println("TIS: " + tis + "\nApellido: " + apellido + "\nAño de nacimiento: " + nacim);
-		return (false);
-	}
-	
-	private static boolean validacionNumCita(String numCita) {
 		
-		for (int i = 0; i < numCita.length(); i++) {
-			
-			char c = numCita.charAt(i);
-
-			if (!Character.isDigit(c)) {
-				System.out.println("Error: solo se admite un número de cita.");
-				return (false);
-			}
-		}
-		return (true);
+		return (false);	//retornamos false indicando que no es necesario regresar el menu de inicio y resetear 'volver'
 	}
-	
+		
+	//funcion que revisa si el numero de tis ingresado es valido
 	private static long validacionTis(String cadenaTis) {
 		
 		String cleanTis;
@@ -190,6 +191,10 @@ public class Citas {
 			System.out.println("Error: deben ser 12 dígitos.");
 			return(-1);
 		}
+		/* Es curioso porque el enunciado del ejercicio pide que sean exactamente doce digitos pero en el
+		 * documento con ejecuciones de ejemplo (1 y 2), ponen numeros de tis de 5 digitos nada mas.
+		 * Me he ceñido al requisito en vez de al ejemplo de ejecucion.  */
+		
 		
 		tis = Long.parseLong(cleanTis);
 		
@@ -201,15 +206,17 @@ public class Citas {
 		return (tis);
 	}
 	
-//para detectar si contiene algo diferente a un digito del 0 al 9
+	//para detectar si contiene algo diferente a un digito del 0 al 9
 	private static boolean checkOnlyNums(String cadena) {
 		
 		
 		for (int i = 0; i < cadena.length(); i++) {
 			
-			char c = cadena.charAt(i);
-
-			if (!Character.isDigit(c) && c != ' ' && c != '\t') {
+			/*para esta validacion he dado por bueno si se ponen espacios o tabulaciones en medio,
+			 * simplemente los quito mas tarde para unificar el numero de tis
+			 */
+			
+			if (!Character.isDigit(cadena.charAt(i)) && cadena.charAt(i) != ' ' && cadena.charAt(i) != '\t') {
 				System.out.println("Error: Solo se permite números para el TIS.");
 				return (false);
 			}
@@ -217,6 +224,7 @@ public class Citas {
 		return (true);
 	}
 	
+	//para eliminar espacios o tabulaciones dentro del numero de tis
 	private static String cleanNumTis(String cadenaConEspacios) {
 		
 		String	copia = "";
@@ -228,6 +236,7 @@ public class Citas {
 		return (copia);
 	}
 
+	//implementacion del algoritmo de Luhn para revisar si el ultimo numero de control es correcto
 	private static boolean algoLuhn(long tis) {
 		
 		long	sum = 0;
@@ -238,7 +247,7 @@ public class Citas {
 		tis = tis / 10;
 		while (tis > 9) {
 		
-			//posicion impar
+			//posicion impar opera
 			last = tis % 10;
 			last *= 2;
 			if (last > 9)
@@ -246,11 +255,12 @@ public class Citas {
 			sum += last;
 			tis = tis / 10;
 
-			//posicion par
+			//posicion par solo se suma
 			last = tis % 10;
 			sum += last;
 			tis = tis / 10;
 		}
+		//ultimo digito debe operarse tambien
 		tis *= 2;
 		if (tis > 9)
 			tis -= 9;
@@ -261,6 +271,7 @@ public class Citas {
 		return (false);
 	}
 	
+	//no admite apellidos compuestos realmente pero revisa que sean letras y solo una palabra
 	private static boolean validacionApellido(String apellido) {
 		if (apellido.length() <= 0) {
 			System.out.println("Error: dato incorrecto, inténtalo de nuevo.");//solo debe ser un apellido (una palabra).
@@ -275,6 +286,7 @@ public class Citas {
 		return (true);
 	}
 	
+	//se revisa el formato y tambien que sea una fecha valida, no se revisa la edad y si es posible (ej: 11/11/1850 ya estaria muerto)
 	private static boolean validacionFecha(String nacim) {
 		
 		if (nacim.length() != 10)
@@ -283,6 +295,7 @@ public class Citas {
 		DateTimeFormatter	formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		DateTimeFormatter	formatter2 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		
+		//he querido dar por valido dos formatos diferentes
 		try {
 			LocalDate.parse(nacim, formatter1);
 			return (true);
