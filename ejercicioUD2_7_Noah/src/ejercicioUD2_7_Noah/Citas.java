@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 /*Entrega del ejercicio 2.7 - Citas*/
 
-/*EJECUCIÓN 1
+/*Enunciado:
+ * EJECUCIÓN 1
 	Inserta el TIS
 		78956
 	Inserta el primer apellido
@@ -32,45 +33,54 @@ import java.util.Scanner;
 		Año de nacimiento 03-05-1990
 
 EJECUCIÓN 2
-Inserta el TIS 78945
-Inserta el primer apellido ETXEBARRIA
-Inserta la fecha 03-08-2023
-Elige servicio 1-Anula una cita
-2-Concierta una cita 1
-Inserta el numero de cita 789
-Cita con numero 789 anulada
+	Inserta el TIS 78945
+	Inserta el primer apellido ETXEBARRIA
+	Inserta la fecha 03-08-2023
+	Elige servicio
+		1-Anula una cita
+		2-Concierta una cita
+			1
+	Inserta el numero de cita
+		789
+	Cita con numero 789 anulada
 
 Se han de validar todos los menus y el número de TIS (número)*/
 
 public class Citas {
 
 	private static Scanner	teclado = new Scanner(System.in);
-	private static String	entrada;	
+	private static String	entrada;
+	private static long		tis;
 	
 	public static void main(String[] args) {
 		
-		int		tis;
+		String	cadenaTis;
 		String	apellido;
 		String	nacim;
+		int		selec;
 		boolean	volver = true;
 		
-		int		selec;
 		
 		while (volver == true) { //usando una variable boolean puedo volver o no al inicio cuando se precise
+			
 			do {
 				System.out.println("Inserta el TIS:");
 				entrada = teclado.nextLine();
-				tis = Integer.parseInt(entrada);
-			} while (tis < 0 || tis > 999999);
+				cadenaTis = entrada.trim();
+				System.out.println(cadenaTis);
+				
+			} while (validacion(cadenaTis) < 0);
 			
 			do {
 				System.out.println("Inserta el primer apellido:");
 				apellido = teclado.nextLine();
+				
 			} while (apellido.length() <= 0);
 			
 			do {
 				System.out.println("Inserta la fecha:");
 				nacim = teclado.nextLine();
+				
 			} while (nacim.length() != 10);
 			
 			do { 
@@ -79,6 +89,7 @@ public class Citas {
 				System.out.println("2.- Concierta una cita.");
 				entrada = teclado.nextLine();
 				selec = Integer.parseInt(entrada);
+				
 			} while (selec != 1 && selec != 2);
 			
 			if (selec == 1)
@@ -101,7 +112,7 @@ public class Citas {
 		return (false);
 	}
 	
-	private static boolean concertarCita(int tis, String apellido, String nacim) {
+	private static boolean concertarCita(long tis, String apellido, String nacim) {
 		
 		int	selec;
 		int	servic;
@@ -143,4 +154,44 @@ public class Citas {
 		System.out.println("TIS: " + tis + "\nApellido: " + apellido + "\nAño de nacimiento: " + nacim);
 		return (false);
 	}
+	
+	private static long validacion(String cadenaTis) {
+		
+		if (checkOnlyNums(cadenaTis) == false)
+			return (-1);
+		tis = Long.parseLong(cadenaTis);
+		
+		if (tis < 0)
+			return (-1);
+		
+		if (algoLuhn(tis) == false)
+			return (-1);
+		
+		return (tis);
+	}
+	
+//para detectar si contiene algo diferente a un digito del 0 al 9
+	private static boolean checkOnlyNums(String cadena) {
+		
+		
+		for (int i = 0; i < cadena.length(); i++) {
+			
+			char c = cadena.charAt(i);
+
+			if (!Character.isDigit(c)) {
+				System.out.println("Solo se permite números para el TIS.");
+				return (false);
+			}
+		}
+		return (true);
+	}
+
+	private static boolean algoLuhn(long tis) {
+		
+		boolean valido = true;
+		
+		
+		return (valido);
+	}
+	
 }
