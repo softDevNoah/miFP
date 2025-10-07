@@ -63,8 +63,9 @@ public class Funciones {
 		teclado.close();
 	}
 
+	//método auxiliar
 	/**
-	 * Esta función te pide un número entero por teclado y revisa que efectivamente son solamente dígitos.
+	 * Este método te pide un número entero por teclado y revisa que efectivamente son solamente dígitos.
 	 * En caso de no serlo, sigue pidiendo un número.
 	 * Cuando ya es válido, lo transforma en int y lo devuelve.
 	 * @return int num1
@@ -90,10 +91,26 @@ public class Funciones {
 	private static void calculadora() {
 		
 	}
+
+	//ejercicio 1
+	/**
+	 * Este método analiza un número entero recibido y analiza si es par o impar.
+	 * 
+	 * @param num1
+	 * @return boolean par
+	 */
+	private static boolean esPar(int num1) {
+		boolean par;
+		if (num1 % 2 == 0)
+			par = true;
+		else
+			par = false;
+		return par;
+	}
 	
 	//ejercicio 2
 	/**
-	 * Esta función genera diez números enteros aleatorios entre el 1 y el 100 y cuenta cuántos de ellos son pares.
+	 * Este método genera diez números enteros aleatorios entre el 1 y el 100 y cuenta cuántos de ellos son pares.
 	 * Muestra el resultado por pantalla.
 	 */
 	private static void conteoDePares() {
@@ -110,25 +127,9 @@ public class Funciones {
 		System.out.println("\n" + pares + " de esos números son pares.");
 	}
 	
-	//ejercicio 1
-	/**
-	 * Esta función analiza un número entero recibido y analiza si es par o impar.
-	 * 
-	 * @param num1
-	 * @return boolean par
-	 */
-	private static boolean esPar(int num1) {
-		boolean par;
-		if (num1 % 2 == 0)
-			par = true;
-		else
-			par = false;
-		return par;
-	}
-	
 	//ejercicio 3
 	/**
-	 * Esta función recibe dos números enteros y devuelve el mayor de los dos. Si fueran iguales devuelve num2.
+	 * Este método recibe dos números enteros y devuelve el mayor de los dos. Si fueran iguales devuelve num2.
 	 * @param num1
 	 * @param num2
 	 * @return El número mayor.
@@ -143,22 +144,22 @@ public class Funciones {
 	
 	//ejercicio 4_1
 	/**
-	 * Esta función recibe un número entero y analiza si es primo o no. 
-	 * @param num1
+	 * Este método recibe un número entero y analiza si es primo o no. 
+	 * @param num
 	 * @return Boolean primo
 	 */
-	private static boolean esPrimo(int num1) {
+	private static boolean esPrimo(int num) {
 		boolean primo = true;
 	
-		if (num1 == 2)
+		if (num == 2)
 			return (primo);
-		else if (num1 < 2 || num1 % 2 == 0) {
+		else if (num < 2 || num % 2 == 0) {
 			primo = false;
 			return (primo);
 		}
 		//bucle para buscar si hay divisores o si es primo:
-		for (int i = 3; i <= Math.sqrt(num1); i += 2) {	//Math.sqrt calcula la raiz cuadrada de un nº
-			if (num1 % i == 0) {
+		for (int i = 3; i <= Math.sqrt(num); i += 2) {	//Math.sqrt calcula la raiz cuadrada de un nº
+			if (num % i == 0) {
             		primo = false; //cuando encuentra un divisor se sabe que NO es primo
             		break;
 			}
@@ -167,13 +168,17 @@ public class Funciones {
 	}
 	
 	//ejercicio 4_2
-	
-	
-	private static void muestraPrimos(int num1) {
+	/**
+	 * Este método recibe un número y genera esa cantidad de números primos por pantalla.
+	 * Utiliza el método esPrimo(int num) para verificar cuál es primo y cuál no.
+	 * @param cantidad
+	 */
+	private static void muestraPrimos(int cantidad) {
 		int	primos = 0;
 		int num = 0;
 		
-		while(primos < num1) {
+		while(primos < cantidad) {
+		
 			if(esPrimo(num)) {
 				System.out.print(num + " ");
 				primos++;
