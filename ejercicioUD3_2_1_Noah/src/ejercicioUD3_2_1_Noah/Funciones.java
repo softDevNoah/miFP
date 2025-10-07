@@ -2,7 +2,7 @@ package ejercicioUD3_2_1_Noah;
 
 import java.util.Scanner;
 
-public class Main {
+public class Funciones {
 
 	private static Scanner	teclado = new Scanner(System.in);
 	private static String	entrada;
@@ -46,10 +46,8 @@ public class Main {
 					break;
 				case 4:
 					num1 = checkNum();
-					if (esPrimo(num1))
-						System.out.println("El nº introducido es primo.");
-					else
-						System.out.println("El nº introducido no es primo.");
+					System.out.println("Se procede a generar los primeros " + num1 + " números primos:");
+					muestraPrimos(num1);
 					break;
 				case 5:
 						
@@ -66,7 +64,7 @@ public class Main {
 	}
 
 	/**
-	 * Esta función te pide un número por teclado y revisa que efectivamente son solamente dígitos.
+	 * Esta función te pide un número entero por teclado y revisa que efectivamente son solamente dígitos.
 	 * En caso de no serlo, sigue pidiendo un número.
 	 * Cuando ya es válido, lo transforma en int y lo devuelve.
 	 * @return int num1
@@ -93,8 +91,9 @@ public class Main {
 		
 	}
 	
+	//ejercicio 2
 	/**
-	 * Esta función genera diez números aleatorios entre el 1 y el 100 y cuenta cuántos de ellos son pares.
+	 * Esta función genera diez números enteros aleatorios entre el 1 y el 100 y cuenta cuántos de ellos son pares.
 	 * Muestra el resultado por pantalla.
 	 */
 	private static void conteoDePares() {
@@ -111,6 +110,7 @@ public class Main {
 		System.out.println("\n" + pares + " de esos números son pares.");
 	}
 	
+	//ejercicio 1
 	/**
 	 * Esta función analiza un número entero recibido y analiza si es par o impar.
 	 * 
@@ -126,6 +126,7 @@ public class Main {
 		return par;
 	}
 	
+	//ejercicio 3
 	/**
 	 * Esta función recibe dos números enteros y devuelve el mayor de los dos. Si fueran iguales devuelve num2.
 	 * @param num1
@@ -140,6 +141,12 @@ public class Main {
 			return (num2);
 	}
 	
+	//ejercicio 4_1
+	/**
+	 * Esta función recibe un número entero y analiza si es primo o no. 
+	 * @param num1
+	 * @return Boolean primo
+	 */
 	private static boolean esPrimo(int num1) {
 		boolean primo = true;
 	
@@ -157,6 +164,30 @@ public class Main {
 			}
         }
 		return (primo);
+	}
+	
+	//ejercicio 4_2
+	
+	
+	private static void muestraPrimos(int num1) {
+		int	primos = 0;
+		int num = 0;
+		
+		while(primos < num1) {
+			if(esPrimo(num)) {
+				System.out.print(num + " ");
+				primos++;
+			}
+			num++;
+		}
+	
+		/*
+		for (int num = 0; primos < num1; num++) {
+			if (esPrimo(num)) {
+				System.out.print(n + " ");
+				primos++;
+			}
+		}*/
 	}
 	
 	private static int suma(int num1, int num2) {
