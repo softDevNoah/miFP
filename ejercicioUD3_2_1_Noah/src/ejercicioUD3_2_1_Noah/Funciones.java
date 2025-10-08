@@ -80,8 +80,11 @@ public class Funciones {
 			entrada = teclado.nextLine();
 			for (int i = 0; i < entrada.length(); i++) {
 				if (!Character.isDigit(entrada.charAt(i))) {
-					validInput = false;
-					break;
+					if ((i == 0 && entrada.charAt(i) != '-') || i > 0) {//con este if verifico que sean validos los negativos
+						validInput = false;
+						break;
+					}
+					
 				}
 			}
 		} while (!validInput);
