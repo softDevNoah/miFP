@@ -50,7 +50,7 @@ public class Funciones {
 					muestraPrimos(num1);
 					break;
 				case 5:
-						
+					calculadora();
 					break;
 				case 0:
 						
@@ -72,6 +72,7 @@ public class Funciones {
 	 */
 	private static int checkNum() {
 		boolean	validInput;
+		int		num;
 		do {
 			validInput = true;	//es importante resetear en true, para evitar quedar en un posible bucle infinito
 			System.out.println("________________________");
@@ -84,14 +85,10 @@ public class Funciones {
 				}
 			}
 		} while (!validInput);
-		num1 = Integer.parseInt(entrada);
-		return (num1);
+		num = Integer.parseInt(entrada);
+		return (num);
 	}
 	
-	private static void calculadora() {
-		
-	}
-
 	//ejercicio 1
 	/**
 	 * Este método analiza un número entero recibido y analiza si es par o impar.
@@ -170,7 +167,7 @@ public class Funciones {
 	//ejercicio 4_2
 	/**
 	 * Este método recibe un número y genera esa cantidad de números primos por pantalla.
-	 * Utiliza el método esPrimo(int num) para verificar cuál es primo y cuál no.
+	 * Utiliza el método esPrimo(int num) internamente.
 	 * @param cantidad
 	 */
 	private static void muestraPrimos(int cantidad) {
@@ -179,8 +176,13 @@ public class Funciones {
 		
 		while(primos < cantidad) {
 		
-			if(esPrimo(num)) {
-				System.out.print(num + " ");
+			//lo divido en dos condiciones para imprimirlo más 'elegante'
+			if(esPrimo(num) && primos < (cantidad - 1)) {
+				System.out.print(num + ", ");
+				primos++;
+			}
+			else if(esPrimo(num) && primos >= (cantidad - 1)) {
+				System.out.print(num + ".");
 				primos++;
 			}
 			num++;
@@ -195,26 +197,113 @@ public class Funciones {
 		}*/
 	}
 	
+	//ejercicio 5
+	/**
+	 * Este método es una pequeña y sencilla calculadora, que recoge números enteros desde el teclado
+	 * y despliega un menú de operaciones y según se seleccione, ejecuta dicha operación.
+	 * Si no recibe un número entero, volverá a pedir un número.
+	 */
+	private static void calculadora() {
+		int		num1, num2, opcDeseada;
+		
+		do {
+			System.out.print("*****************\n\nCalculadora\n\n*****************\n");
+			System.out.print("\t\t1. Suma\n"
+							+ "\t\t2. Resta\n"
+							+ "\t\t3. Producto\n"
+							+ "\t\t4. División\n"
+							+ "\t\t5. Salir\n");
+		
+			opcDeseada = checkNum();
+
+			if (opcDeseada < 1 || opcDeseada > 5) {//primero se analiza si sale de los márgenes 
+		
+				do {
+					System.out.printf("Opción %d no disponible, vuelva a intentarlo.\n", opcDeseada);	
+					opcDeseada = checkNum();
+					
+				} while (opcDeseada < 1 || opcDeseada > 5);	//si sale de los márgenes, se queda en bucle hasta que sea un valor valido
+			}
+			
+			if (opcDeseada != 5) { //si opcDeseada == 5, se sale directamente de aqui
+			
+				num1 = checkNum();
+				num2 = checkNum();		
+				System.out.print("Operación seleccionada: ");
+				switch (opcDeseada) {	
+					case 1:
+						suma(num1, num2);
+						System.out.printf("Suma.\n%d + %d = %d", num1, num2, suma(num1, num2));
+						break;
+					case 2:
+						resta(num1, num2);
+						System.out.printf("Resta.\n%d - %d = %d", num1, num2, resta(num1, num2));
+						break;
+					case 3:
+						multiplicacion(num1, num2);
+						System.out.printf("Producto.\n%d * %d = %d", num1, num2, multiplicacion(num1, num2));
+						break;
+					case 4:
+						if (num2 != 0) {
+							division(num1, num2);
+							System.out.printf("División.\n%d / %d = %d", num1, num2, division(num1, num2));
+						}
+						else
+							System.out.println("Error, un número no puede dividirse entre 0"); //unico caso imposible de division
+						break;
+				}
+			}
+			System.out.println();
+		} while (opcDeseada != 5);
+		System.out.println("Se ha cerrado la calculadora adecuadamente.");
+	}
+	
+	//ejercicio 5 - suma
+	/**
+	 * Este método recibe dos enteros como parámetros y devuelve la suma de ambos números.
+	 * @param num1
+	 * @param num2
+	 * @return resultado
+	 */
 	private static int suma(int num1, int num2) {
-		int	resultado = 0;
-		
+		int	resultado = num1 + num2;
 		return (resultado);
 	}
 	
+	//ejercicio 5 - resta
+	/**
+	 * Este método recibe dos enteros como parámetros y devuelve la diferencia entre ambos números.
+	 * @param num1
+	 * @param num2
+	 * @return resultado
+	 */
 	private static int resta(int num1, int num2) {
-		int	resultado = 0;
-		
+		int	resultado = num1 - num2;
 		return (resultado);
 	}
 	
+	//ejercicio 5 - producto
+	/**
+	 * Este método recibe dos enteros como parámetros y devuelve el producto de ambos números.
+	 * @param num1
+	 * @param num2
+	 * @return resultado
+	 */
 	private static int multiplicacion(int num1, int num2) {
-		int	resultado = 0;
+		int	resultado = num1 * num2;
 		
 		return (resultado);
 	}
 	
+	//ejercicio 5 - división
+	/**
+	 * Este método recibe dos enteros como parámetros y devuelve la división entre ambos números.
+	 * @param num1
+	 * @param num2
+	 * @return resultado
+	 */
 	private static int division(int num1, int num2) {
-		int	resultado = 0;
+		int	resultado = num1 / num2;
 		
 		return (resultado);
 	}
