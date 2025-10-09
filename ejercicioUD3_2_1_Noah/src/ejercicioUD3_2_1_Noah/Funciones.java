@@ -46,8 +46,12 @@ public class Funciones {
 					break;
 				case 4:
 					num1 = checkNum();
-					System.out.println("Se procede a generar los primeros " + num1 + " números primos:");
-					muestraPrimos(num1);
+					if (num1 >= 1) {
+						System.out.println("Se procede a generar los primeros " + num1 + " números primos:");
+						muestraPrimos(num1);
+					}
+					else
+						System.out.println("Error: debe ser un nº igual o mayor que 1.");
 					break;
 				case 5:
 					calculadora();
