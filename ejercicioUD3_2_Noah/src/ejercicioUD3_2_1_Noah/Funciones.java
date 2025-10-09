@@ -56,9 +56,6 @@ public class Funciones {
 				case 5:
 					calculadora();
 					break;
-				case 0:
-						
-					break;
 				}
 
 		} while (opt != 0);
