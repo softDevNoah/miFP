@@ -110,18 +110,23 @@ public class StringFunciones {
 			boolean	validInput;
 			int		num;
 			do {
-				validInput = true;	//es importante resetear en true, para evitar quedar en un posible bucle infinito
+				validInput = true;
 				System.out.println("________________________");
 				System.out.print("Introduzca un número: ");
 				entrada = teclado.nextLine();
-				for (int i = 0; i < entrada.length(); i++) {
-					if (!Character.isDigit(entrada.charAt(i))) {
-						if ((i == 0 && entrada.charAt(i) != '-') || i > 0) {//con este if verifico que sean validos los negativos
-							validInput = false;
-							break;
+				if (!entrada.isEmpty()) {	//he añadido esta verificación para evitar fallo si se da enter sin ningún input
+					for (int i = 0; i < entrada.length(); i++) {
+						if (!Character.isDigit(entrada.charAt(i))) {
+							if ((i == 0 && entrada.charAt(i) != '-') || i > 0) {
+								validInput = false;
+								break;
+							}
 						}
-						
 					}
+				}
+				else {
+					System.out.println("Error: no ha escrito nada.");
+					validInput = false;
 				}
 			} while (!validInput);
 			num = Integer.parseInt(entrada);
