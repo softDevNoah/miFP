@@ -9,17 +9,9 @@ public class StringFunciones {
 	
 	public static void main(String[] args) {
 		
-		menu();
-		teclado.close();
-	}
-
-	
-	private static void menu() {
-		
-		int		opt = checkNum();
-		String	c;
+		int		opt;
+		String	cadena;
 		int		num;
-		String	frase;
 		
 		do {
 			System.out.println("******************************************");
@@ -31,54 +23,88 @@ public class StringFunciones {
 			System.out.println("\t5 - Convertir frase a mayúscula.\n\t\t- Se mostrará en mayúsculas la frase que introduzcas.");
 			System.out.println("\t6 - Salir del programa.");
 			
+			opt = checkNum();
 			switch (opt) {
 			
 				case 1:
-					c = checkChar();
+					System.out.println("1.- Pintar línea:");
+					cadena = checkCadena(1);
 					num = checkNum();
-					pintar_linea(c.charAt(0), num);
+					if (num > 0)
+						pintar_linea(cadena.charAt(0), num);
+					else
+						System.out.println("Error: no se pudo pintar porque el número era 0 o menos de 0.");
 					break;
 				case 2:
-					c = checkChar();
-					pasar_minuscula(c);
+					System.out.println("2.- Convertir letra a minúscula.");
+					cadena = checkCadena(1);
+					System.out.println("Ahora el caracter es:\n\t" + pasar_minuscula(cadena));
 					break;
 				case 3:
-					c = checkChar();
-					pasar_mayuscula(c);
+					System.out.println("3.- Convertir letra a mayúscula.");
+					cadena = checkCadena(1);
+					System.out.println("Ahora el caracter es:\n\t" + pasar_mayuscula(cadena));
 					break;
 				case 4:
-					entrada = teclado.nextLine();
-					pasar_minuscula(entrada);
+					System.out.println("4.- Convertir frase a minúscula.");
+					cadena = checkCadena(2);
+					System.out.println("Ahora el texto es:\n\t" + pasar_minuscula(cadena));
 					break;
 				case 5:
-					entrada = teclado.nextLine();
-					pasar_mayuscula(entrada);
+					System.out.println("5.- Convertir frase a mayúscula.");
+					cadena = checkCadena(2);
+					System.out.println("Ahora el texto es:\n\t" + pasar_mayuscula(cadena));
 					break;
 			}
 			
-		} while (opt != 0);
-		
-		
+		} while (opt != 6);
+		System.out.println("Se ha cerrado el programa satisfactoriamente.");
+		teclado.close();
 	}
 
+
+		/**
+		 * Método que recibe una letra y un número entero, e imprime en pantalla dicha letra tantas veces como indique el número.
+		 * @param c		Letra
+		 * @param num	Número de veces a pintar
+		 */
 		private static void pintar_linea(char c, int num) {
 			
+			for (int i = 0; i < num; i++) {
+				System.out.print(c);
+			}
+			System.out.println();
 		}
 		
-		private static void pasar_minuscula(String entrada) {
+		/**
+		 * Método que recibe una cadena, la pasa a minúsculas, y la devuelve.
+		 * @param entrada		Cadena original
+		 * @return resultado	Cadena en minúsculas
+		 */
+		private static String pasar_minuscula(String entrada) {
+			
+			String resultado = entrada.toLowerCase();
+			return (resultado);
 			
 		}
 		
-		private static void pasar_mayuscula(String entrada) {
+		/**
+		 * Método que recibe una cadena, la pasa a mayúsculas, y la devuelve.
+		 * @param entrada		Cadena original
+		 * @return resultado	Cadena en mayúsculas
+		 */
+		private static String pasar_mayuscula(String entrada) {
 			
+			String resultado = entrada.toUpperCase();
+			return (resultado);
 		}
 		
 		//método auxiliar
 		/**
 		 * Este método te pide un número entero por teclado y revisa que efectivamente son solamente dígitos.
 		 * En caso de no serlo, sigue pidiendo un número.
-		 * Cuando ya es válido, lo transforma en int y lo devuelve.
-		 * @return int num1
+		 * Cuando es válido, lo transforma en int y lo devuelve.
+		 * @return num1	Número entero verificado
 		 */
 		private static int checkNum() {
 			boolean	validInput;
@@ -104,31 +130,34 @@ public class StringFunciones {
 		
 		//método auxiliar
 		/**
-		 * Este método te pide un número entero por teclado y revisa que efectivamente son solamente dígitos.
-		 * En caso de no serlo, sigue pidiendo un número.
-		 * Cuando ya es válido, lo transforma en int y lo devuelve.
-		 * @return int num1
+		 * Método que recibe un entero. Éste indica si se debe pedir por teclado una letra (tipo == 1) o un texto (tipo == 2). 
+		 * Solamente devuelve la cadena si es válida y contiene solo una letra o solo texto. Cuando es un texto, es válido que no sean únicamente letras,
+		 * por tanto no se revisa con .isAlphabetic().
+		 * @param tipo		Número que indica qué condición se aplicará.
+		 * @return entrada	Cadena de texto ya validada.
 		 */
-		private static int checkChar() {
+		private static String checkCadena(int tipo) {
 			boolean	validInput;
-			int		num;
-			do {
-				validInput = true;	//es importante resetear en true, para evitar quedar en un posible bucle infinito
+
+			if (tipo == 1) {
+				do {
+					validInput = true;
+					System.out.println("________________________");
+					System.out.print("Introduzca un solo caracter: ");
+					entrada = teclado.nextLine();
+					if (entrada.length() != 1) 
+						validInput = false;
+					if (entrada.length() == 1 && !Character.isAlphabetic(entrada.charAt(0)))
+						validInput = false;
+					
+				} while (!validInput);
+			}
+			else if (tipo == 2) {
 				System.out.println("________________________");
-				System.out.print("Introduzca un número: ");
+				System.out.print("Introduzca un texto: ");
 				entrada = teclado.nextLine();
-				for (int i = 0; i < entrada.length(); i++) {
-					if (!Character.isDigit(entrada.charAt(i))) {
-						if ((i == 0 && entrada.charAt(i) != '-') || i > 0) {//con este if verifico que sean validos los negativos
-							validInput = false;
-							break;
-						}
-						
-					}
-				}
-			} while (!validInput);
-			num = Integer.parseInt(entrada);
-			return (num);
+			}
+			return (entrada);
 		}
 		
 }
