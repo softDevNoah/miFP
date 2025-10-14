@@ -10,6 +10,7 @@ public class MetodAux {
 	
 	public static boolean decideSioNo() {
 		
+		
 		boolean	introducirEdades = false;
 		do {
 			System.out.println("***Solo escriba \"S\" (Sí) o \"N\" (No), por favor.");
@@ -23,7 +24,10 @@ public class MetodAux {
 	
 	private static boolean checkSN(String entrada) {
 		
-		if (!entrada.equals("S") && !entrada.equals("N"))
+		String si = "S";
+		String no = "N";
+		
+		if (!entrada.equals(si) && !entrada.equals(no))
 			return (false);
 		else
 			return (true);

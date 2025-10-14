@@ -1,6 +1,6 @@
 package EjercUD5_2_Arrays_Noah;
 
-public class UD5_2_Array_Ejercicio1 {
+public class Ejercicio1 {
 
 	public static void	ejercicio1() {
 		
