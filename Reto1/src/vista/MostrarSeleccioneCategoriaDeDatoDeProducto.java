@@ -1,12 +1,6 @@
 package vista;
 
-import modelo.*;
-import main.*;
-import controlador.*;
-import vista.*;
-import utiles.*;
-
-public class MostrarMensaje {
+public class MostrarSeleccioneCategoriaDeDatoDeProducto {
 
 	public static void msgSeleccioneCategoria() {
 		System.out.println("*******************************************");
