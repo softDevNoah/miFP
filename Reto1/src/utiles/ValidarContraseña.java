@@ -3,9 +3,9 @@ package utiles;
 import modelo.*;
 import vista.*;
 
-public class ValidarUsuario {
+public class ValidarContraseña {
 
-	public static boolean checkUsuario(String entrada, Usuario administradores[]) {
+public static boolean checkContraseña(String entrada, Usuario administradores[]) {
 		
 		boolean existe = true;
 		if (entrada.isEmpty()) {
@@ -14,4 +14,5 @@ public class ValidarUsuario {
 		}
 		return (existe);
 	}
+	
 }

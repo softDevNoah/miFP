@@ -9,6 +9,7 @@ public class CodigoAdmin {
 		
 		while (sesionIniciada) {
 			//MostrarMenuAdmin.
+			//programa admin
 		}
 		return (baseDeDatosMasActual);
 	}
