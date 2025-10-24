@@ -8,7 +8,7 @@ public class IniciarSesion {
 		
 		boolean	sesionIniciada = false;
 		
-		if (RecogerUsuarioYContraseña.recogerUsuario(administradores) && RecogerUsuarioYContraseña.recogerContraseña(administradores))
+		if (RecogerUsuarioYContraseña.recogerUsuarioYContraseña(administradores))
 				sesionIniciada = true;
 		
 		return (sesionIniciada);

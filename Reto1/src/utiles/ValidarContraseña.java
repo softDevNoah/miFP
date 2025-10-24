@@ -5,7 +5,7 @@ import vista.*;
 
 public class ValidarContraseña {
 
-public static boolean checkContraseña(String entrada, Usuario administradores[]) {
+	public static boolean checkContraseña(String entrada, Usuario administradores[]) {
 		
 		boolean existe = true;
 		if (entrada.isEmpty()) {

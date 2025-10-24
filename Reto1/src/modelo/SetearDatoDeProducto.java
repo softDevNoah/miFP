@@ -9,20 +9,20 @@ public class SetearDatoDeProducto {
 		String categorias[] = {"tipo1", "tipo2", "tipo3", "tipo4"};
 		
 		if (conOutput) {
-			categoria = RecogerDatoDeProducto.recogerCategoria();
+			categoria = RecogerDatoDeProducto.recogerCategoria(categorias);
 			producto.categoria = categorias[categoria];
 		}
 		else {
 			switch (categoria) {
 			
-			case 1:
-				producto.categoria = categorias[0];
-			case 2:
-				producto.categoria = categorias[1];
-			case 3:
-				producto.categoria = categorias[2];
-			case 4:
-				producto.categoria = categorias[3];
+				case 1:
+					producto.categoria = categorias[0];
+				case 2:
+					producto.categoria = categorias[1];
+				case 3:
+					producto.categoria = categorias[2];
+				case 4:
+					producto.categoria = categorias[3];
 			}
 		}
 	}

@@ -8,7 +8,7 @@ import vista.*;
 
 public class RecogerUsuarioYContraseña {
 
-	public static boolean recogerUsuario(Usuario administradores[]) {
+	public static boolean recogerUsuarioYContraseña(Usuario administradores[]) {
 		
 		boolean	esValido = false;
 		Scanner	teclado = new Scanner(System.in);
@@ -22,26 +22,18 @@ public class RecogerUsuarioYContraseña {
 			}
 		}while (!esValido);
 		
-		teclado.close();
-		
-		return (esValido);
-	}
-	
-	public static boolean recogerContraseña(Usuario administradores[]) {
-		boolean	esValida = false;
-		Scanner	teclado = new Scanner(System.in);
-		String	entrada;
+		esValido = false;
 		
 		do {
 			MostrarMensajeDePeticion.msgIntroduzcaContraseña();
 			entrada = teclado.nextLine();
 			if (ValidarContraseña.checkContraseña(entrada, administradores)) {
-				esValida = true;
+				esValido = true;
 			}
-		}while (!esValida);
+		}while (!esValido);
 		
 		teclado.close();
 		
-		return (esValida);
+		return (esValido);
 	}
 }

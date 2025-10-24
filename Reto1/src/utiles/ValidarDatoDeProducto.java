@@ -4,51 +4,51 @@ import vista.*;
 
 public class ValidarDatoDeProducto {
 
-	public static boolean checkCategoria(String entrada) {
+	public static boolean checkCategoria(String entrada, String categorias[]) {
 		
-		boolean	esValida = true;
+		boolean	esCorrecto = false;
 		
-		if (!entrada.isEmpty()) {
-			MostrarMensajeDeError.entradaVacia();
-			return (false);
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada)) {
+			
+			
+			esCorrecto = true;
 		}
-		
-		return (esValida);
+		return (esCorrecto);
 	}
 	
 	public static boolean checkIDUnico(String entrada) {
 		
-		boolean	esValida = false;
+boolean	esCorrecto = false;
 		
-		if (!entrada.isEmpty()) {
-			MostrarMensajeDeError.entradaVacia();
-			return (false);
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada)) {
+			
+			
+			esCorrecto = true;
 		}
-		
-		return (esValida);
+		return (esCorrecto);
 	}
 	
 	public static boolean checkNombre(String entrada) {
 	
-		boolean	esValida = false;
-	
-		if (!entrada.isEmpty()) {
-			MostrarMensajeDeError.entradaVacia();
-			return (false);
-		}
+boolean	esCorrecto = false;
 		
-		return (esValida);
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada)) {
+			
+			
+			esCorrecto = true;
+		}
+		return (esCorrecto);
 	}
 	
 	public static boolean checkPrecio(String entrada) {
 	
-		boolean	esValida = false;
-	
-		if (!entrada.isEmpty()) {
-			MostrarMensajeDeError.entradaVacia();
-			return (false);
-		}
+boolean	esCorrecto = false;
 		
-		return (esValida);
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada)) {
+			
+			
+			esCorrecto = true;
+		}
+		return (esCorrecto);
 	}
 }

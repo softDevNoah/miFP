@@ -14,23 +14,23 @@ public class RecogerDatoDeProducto {
 		//Es Valido => devolvemos dato desde aqui
 		//No es valido => mensaje de error (tipificado)
 	
-	public static int recogerCategoria() {
+	public static int recogerCategoria(String categorias[]) {
 		
 		Scanner	teclado = new Scanner(System.in);
 		String	entrada = teclado.nextLine(); 
 		
 		int		categoria = -1;
-		boolean	esValida = false;
+		boolean	esCorrecto = false;
 		
 		do {
 			MostrarMensajeDePeticion.msgAsigneCategoria();
 			
-			if (ValidarDatoDeProducto.checkCategoria(entrada)) {
+			if (ValidarDatoDeProducto.checkCategoria(entrada, categorias)) {
 				categoria = determinaCategoria(entrada);
-				esValida = true;
+				esCorrecto = true;
 			}
 			
-		} while (!esValida);
+		} while (!esCorrecto);
 		
 		teclado.close();
 		
@@ -59,17 +59,17 @@ public class RecogerDatoDeProducto {
 		String	entrada = teclado.nextLine(); 
 		
 		int		idUnico = -1;
-		boolean	esValida = false;
+		boolean	esCorrecto = false;
 		
 		do {
 			MostrarMensajeDePeticion.msgAsigneIDUnico();
 			
 			if (ValidarDatoDeProducto.checkIDUnico(entrada)) {
 				idUnico = Integer.parseInt(entrada);
-				esValida = true;
+				esCorrecto = true;
 			}
 			
-		} while (!esValida);
+		} while (!esCorrecto);
 		
 		teclado.close();
 		
@@ -82,17 +82,17 @@ public class RecogerDatoDeProducto {
 		String	entrada = teclado.nextLine(); 
 		
 		String	nombre = "VACIO";
-		boolean	esValida = false;
+		boolean	esCorrecto = false;
 		
 		do {
 			MostrarMensajeDePeticion.msgAsigneNombre();
 			
 			if (ValidarDatoDeProducto.checkNombre(entrada)) {
 				nombre = entrada;
-				esValida = true;
+				esCorrecto = true;
 			}
 			
-		} while (!esValida);
+		} while (!esCorrecto);
 		
 		teclado.close();
 		
@@ -105,17 +105,17 @@ public class RecogerDatoDeProducto {
 		String	entrada = teclado.nextLine(); 
 		
 		double	precio = -1.00;
-		boolean	esValida = false;
+		boolean	esCorrecto = false;
 		
 		do {
 			MostrarMensajeDePeticion.msgAsignePrecio();
 			
 			if (ValidarDatoDeProducto.checkPrecio(entrada)) {
 				precio = Double.parseDouble(entrada);
-				esValida = true;
+				esCorrecto = true;
 			}
 			
-		} while (!esValida);
+		} while (!esCorrecto);
 		
 		teclado.close();
 		
