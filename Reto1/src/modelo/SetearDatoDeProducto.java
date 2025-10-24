@@ -6,7 +6,7 @@ public class SetearDatoDeProducto {
 
 	public static void setearCategoria(Producto producto, int categoria, boolean conOutput) {
 		
-		String categorias[] = {"tipo1", "tipo2", "tipo3", "tipo4"};
+		String categorias[] = {"catUno", "catDos", "catTres", "catCuatro"};
 		
 		if (conOutput) {
 			categoria = RecogerDatoDeProducto.recogerCategoria(categorias);

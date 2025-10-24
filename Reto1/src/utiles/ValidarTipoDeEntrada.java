@@ -18,7 +18,7 @@ public class ValidarTipoDeEntrada {
 		return (esCorrecto);
 	}
 	
-	public static boolean checkSoloTexto(String entrada) {
+	public static boolean checkSoloLetras(String entrada) {
 		
 		boolean esCorrecto = true;
 

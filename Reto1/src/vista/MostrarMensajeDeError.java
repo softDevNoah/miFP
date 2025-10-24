@@ -42,4 +42,10 @@ public class MostrarMensajeDeError {
 		System.out.println("------------------ERROR:\tinserte solamente sí o no, por favor.--------------------------------------------------");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
+	
+	public static void categoriaIncorrecta() {
+		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
+		System.out.println("------------------ERROR:\tcategoría incorrecta, por favor inténtelo de nuevo.------------------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
+	}
 }

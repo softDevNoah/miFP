@@ -8,19 +8,22 @@ public class ValidarDatoDeProducto {
 		
 		boolean	esCorrecto = false;
 		
-		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada)) {
-			
-			
-			esCorrecto = true;
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloLetras(entrada)) {
+			for(int i = 0; i < 4; i++) {
+				if (entrada.equals(categorias[i]))
+					esCorrecto = true;	
+			}
 		}
+		if (!esCorrecto)
+			MostrarMensajeDeError.categoriaIncorrecta();
 		return (esCorrecto);
 	}
 	
-	public static boolean checkIDUnico(String entrada) {
+	public static boolean checkIDUnico(String entrada, ) {
 		
-boolean	esCorrecto = false;
+		boolean	esCorrecto = false;
 		
-		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada)) {
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
 			
 			
 			esCorrecto = true;
@@ -30,7 +33,7 @@ boolean	esCorrecto = false;
 	
 	public static boolean checkNombre(String entrada) {
 	
-boolean	esCorrecto = false;
+		boolean	esCorrecto = false;
 		
 		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada)) {
 			
@@ -42,7 +45,7 @@ boolean	esCorrecto = false;
 	
 	public static boolean checkPrecio(String entrada) {
 	
-boolean	esCorrecto = false;
+		boolean	esCorrecto = false;
 		
 		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada)) {
 			
