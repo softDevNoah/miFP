@@ -1,21 +1,16 @@
 package modelo;
 
-//import controlador.*;
-//import vista.*;
-//import utiles.*;
-
 public class CodigoAdmin {
 
-	public static void ejecutarAdmin(Producto productos[]) {
+	public static BaseDeDatos ejecutarAdmin(BaseDeDatos baseDeDatosMasActual) {
 		
-		boolean		sesionIniciada;
-				
-		sesionIniciada = IniciarSesion.intentoDeInicio();
+		boolean		sesionIniciada;	
+		sesionIniciada = IniciarSesion.intentoDeInicio(baseDeDatosMasActual.administradores);
 		
 		while (sesionIniciada) {
 			//MostrarMenuAdmin.
 		}
-		
+		return (baseDeDatosMasActual);
 	}
 	
 }

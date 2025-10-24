@@ -1,21 +1,15 @@
 package modelo;
 
-import controlador.LeerCategoriaDeDatoDeProducto;
+import controlador.*;
 
-//import controlador.*;
-//import vista.*;
-//import utiles.*;
+public class SetearDatoDeProducto {
 
-public class SetearCategoriaProducto {
-
-	
-	
 	public static void setearCategoria(Producto producto, int categoria, boolean conOutput) {
 		
 		String categorias[] = {"tipo1", "tipo2", "tipo3", "tipo4"};
 		
 		if (conOutput) {
-			categoria = LeerCategoriaDeDatoDeProducto.recogerCategoria();
+			categoria = RecogerDatoDeProducto.recogerCategoria();
 			producto.categoria = categorias[categoria];
 		}
 		else {
@@ -36,8 +30,25 @@ public class SetearCategoriaProducto {
 	public static void setearID(Producto producto, int id, boolean conOutput) {
 		
 		if (conOutput)
-			producto.idUnico = LeerCategoriaDeDatoDeProducto.recogerCategoria();
+			producto.idUnico = RecogerDatoDeProducto.recogerIDUnico();
 		else
 			producto.idUnico = id + 1;
+	}
+	
+	public static void setearNombre(Producto producto, String nombre, boolean conOutput) {
+		
+		if (conOutput)
+			producto.nombre = RecogerDatoDeProducto.recogerNombre();
+		else
+			producto.nombre = nombre;
+	}
+	
+	
+	public static void setearPrecio(Producto producto, double precio, boolean conOutput) {
+		
+		if (conOutput)
+			producto.precio = RecogerDatoDeProducto.recogerPrecio();
+		else
+			producto.precio = precio;
 	}
 }

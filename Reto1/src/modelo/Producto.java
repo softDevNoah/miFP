@@ -1,9 +1,5 @@
 package modelo;
 
-/*import controlador.*;
-import vista.*;
-import utiles.*;
-*/
 public class Producto {
 
 	public String	categoria;

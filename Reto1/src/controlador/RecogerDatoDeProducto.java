@@ -3,11 +3,9 @@ package controlador;
 import java.util.Scanner;
 
 import vista.*;
-//import modelo.*;
-//import controlador.*;
 import utiles.*;
 
-public class LeerCategoriaDeDatoDeProducto {
+public class RecogerDatoDeProducto {
 	
 	//PSEUDOCODIGO:
 		//mensaje Introduzca una categoria de producto
@@ -55,20 +53,19 @@ public class LeerCategoriaDeDatoDeProducto {
 		return (numCategoria);
 	}
 	
-	
 	public static int recogerIDUnico() {
 		
 		Scanner	teclado = new Scanner(System.in);
 		String	entrada = teclado.nextLine(); 
 		
-		int		categoria = -1;
+		int		idUnico = -1;
 		boolean	esValida = false;
 		
 		do {
-			MostrarMensajeDePeticion.msgAsigneCategoria();
+			MostrarMensajeDePeticion.msgAsigneIDUnico();
 			
-			if (ValidarDatoDeProducto.checkCategoria(entrada)) {
-				categoria = determinaCategoria(entrada);
+			if (ValidarDatoDeProducto.checkIDUnico(entrada)) {
+				idUnico = Integer.parseInt(entrada);
 				esValida = true;
 			}
 			
@@ -76,6 +73,52 @@ public class LeerCategoriaDeDatoDeProducto {
 		
 		teclado.close();
 		
-		return (categoria);
+		return (idUnico);
+	}
+	
+	public static String recogerNombre() {
+		
+		Scanner	teclado = new Scanner(System.in);
+		String	entrada = teclado.nextLine(); 
+		
+		String	nombre = "VACIO";
+		boolean	esValida = false;
+		
+		do {
+			MostrarMensajeDePeticion.msgAsigneNombre();
+			
+			if (ValidarDatoDeProducto.checkNombre(entrada)) {
+				nombre = entrada;
+				esValida = true;
+			}
+			
+		} while (!esValida);
+		
+		teclado.close();
+		
+		return (nombre);
+	}
+	
+	public static double recogerPrecio() {
+		
+		Scanner	teclado = new Scanner(System.in);
+		String	entrada = teclado.nextLine(); 
+		
+		double	precio = -1.00;
+		boolean	esValida = false;
+		
+		do {
+			MostrarMensajeDePeticion.msgAsignePrecio();
+			
+			if (ValidarDatoDeProducto.checkPrecio(entrada)) {
+				precio = Double.parseDouble(entrada);
+				esValida = true;
+			}
+			
+		} while (!esValida);
+		
+		teclado.close();
+		
+		return (precio);
 	}
 }
