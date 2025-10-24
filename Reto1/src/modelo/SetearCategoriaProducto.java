@@ -33,5 +33,11 @@ public class SetearCategoriaProducto {
 		}
 	}
 	
-	
+	public static void setearID(Producto producto, int id, boolean conOutput) {
+		
+		if (conOutput)
+			producto.idUnico = LeerCategoriaDeDatoDeProducto.recogerCategoria();
+		else
+			producto.idUnico = id + 1;
+	}
 }

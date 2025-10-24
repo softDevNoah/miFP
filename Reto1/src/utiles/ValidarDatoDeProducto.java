@@ -43,7 +43,6 @@ public class ValidarDatoDeProducto {
 	public static boolean checkPrecio(String entrada) {
 	
 		boolean	esValida = false;
-		double precio = -1.00;
 	
 		if (!entrada.isEmpty()) {
 			MostrarMensajeError.entradaVacia();

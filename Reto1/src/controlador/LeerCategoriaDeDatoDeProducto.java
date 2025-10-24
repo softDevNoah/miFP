@@ -55,4 +55,27 @@ public class LeerCategoriaDeDatoDeProducto {
 		return (numCategoria);
 	}
 	
+	
+	public static int recogerIDUnico() {
+		
+		Scanner	teclado = new Scanner(System.in);
+		String	entrada = teclado.nextLine(); 
+		
+		int		categoria = -1;
+		boolean	esValida = false;
+		
+		do {
+			MostrarMensajeDePeticion.msgAsigneCategoria();
+			
+			if (ValidarDatoDeProducto.checkCategoria(entrada)) {
+				categoria = determinaCategoria(entrada);
+				esValida = true;
+			}
+			
+		} while (!esValida);
+		
+		teclado.close();
+		
+		return (categoria);
+	}
 }

@@ -12,4 +12,9 @@ public class MostrarMensajeDePeticion {
 		System.out.println("*******************************************");
 		System.out.print("\t\tAsigne una categoría al producto, por favor: ");
 	}
+	
+	public static void msgAsigneIDUnico() {
+		System.out.println("*******************************************");
+		System.out.print("\t\tAsigne un ID Único al producto, por favor: ");
+	}
 }
