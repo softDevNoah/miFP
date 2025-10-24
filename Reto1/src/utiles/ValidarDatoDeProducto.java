@@ -9,7 +9,7 @@ public class ValidarDatoDeProducto {
 		boolean	esValida = true;
 		
 		if (!entrada.isEmpty()) {
-			MostrarMensajeError.entradaVacia();
+			MostrarMensajeDeError.entradaVacia();
 			return (false);
 		}
 		
@@ -21,7 +21,7 @@ public class ValidarDatoDeProducto {
 		boolean	esValida = false;
 		
 		if (!entrada.isEmpty()) {
-			MostrarMensajeError.entradaVacia();
+			MostrarMensajeDeError.entradaVacia();
 			return (false);
 		}
 		
@@ -33,7 +33,7 @@ public class ValidarDatoDeProducto {
 		boolean	esValida = false;
 	
 		if (!entrada.isEmpty()) {
-			MostrarMensajeError.entradaVacia();
+			MostrarMensajeDeError.entradaVacia();
 			return (false);
 		}
 		
@@ -45,7 +45,7 @@ public class ValidarDatoDeProducto {
 		boolean	esValida = false;
 	
 		if (!entrada.isEmpty()) {
-			MostrarMensajeError.entradaVacia();
+			MostrarMensajeDeError.entradaVacia();
 			return (false);
 		}
 		
