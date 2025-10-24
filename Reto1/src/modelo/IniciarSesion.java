@@ -2,7 +2,10 @@ package modelo;
 
 public class IniciarSesion {
 
-	public static void iniciarSesion() {
+	public static boolean intentoDeInicio() {
 		
+		boolean	sesionIniciada = false;
+		
+		return (sesionIniciada);
 	}
 }

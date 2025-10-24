@@ -1,6 +1,6 @@
 package vista;
 
-import modelo.*;
+//import modelo.*;
 //import main.*;
 //import controlador.*;
 //import vista.*;

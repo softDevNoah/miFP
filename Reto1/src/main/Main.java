@@ -1,17 +1,21 @@
 package main;
 
 import modelo.*;
-//import main.*;
-//import controlador.*;
-//import vista.*;
-//import utiles.*;
-
 
 public class Main {
-
+	
 	public static void main(String[] args) {
 		
-		EjecutarCodigoAdmin.ejecutarAdmin();
+		Producto	productos[] = new Producto[16];
+		productos = BaseDeDatos.setearBaseDeDatosInicial(productos);
+		
+		//BUCLE: pantalla bienvenida (do-while?)
+		//pulse cualquier tecla para comenzar
+		//quiere comprar un producto o administrar maquina expendedora (if)
+		//selecciona opcion 1 o 2
+		
+		//opcion2:
+		CodigoAdmin.ejecutarAdmin(productos);
 	}
 
 }

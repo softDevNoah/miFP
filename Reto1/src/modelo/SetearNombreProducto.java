@@ -4,6 +4,6 @@ package modelo;
 //import vista.*;
 //import utiles.*;
 
-public class NuevoProducto {
+public class SetearNombreProducto {
 
 }
