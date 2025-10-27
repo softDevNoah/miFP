@@ -15,17 +15,24 @@ public class CodigoAdmin {
 		while (sesionIniciada) {
 			
 			MostrarMenuAdmin.msgSeleccionaOperacion();
-			opcionElegida = LeerOpcionMenu.checkOpcionMenu();
+			opcionElegida = LeerOpcionMenu.lecturaOpcionMenu();
 			
 			switch (opcionElegida) {
 				case 1:
 					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(1);
+					if (Operaciones.nuevoProducto(baseDeDatosMasActual.productos))
+						MostrarMensajeOperacionCorrecta.msgProductoCreadoCorrectamente();
+					
 					break;
 				case 2:
 					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(2);
+					if (Operaciones.modificarProducto(baseDeDatosMasActual.productos))
+						MostrarMensajeOperacionCorrecta.msgProductoModificadoCorrectamente();
 					break;
 				case 3:
 					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(3);
+					if (Operaciones.eliminarProducto(baseDeDatosMasActual.productos))
+						MostrarMensajeOperacionCorrecta.msgProductoEliminadoCorrectamente();
 					break;
 				case 4:
 					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(4);
