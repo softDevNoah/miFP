@@ -19,15 +19,16 @@ public class CodigoAdmin {
 			
 			switch (opcionElegida) {
 				case 1:
-					//nuevoProducto + volver + validaciones
+					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(1);
 					break;
 				case 2:
-					//modificarProducto + volver + validaciones
+					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(2);
 					break;
 				case 3:
-					//eliminarProducto + volver + validaciones
+					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(3);
 					break;
 				case 4:
+					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(4);
 					MostrarMensajeOperacionCorrecta.msgSesionFinalizada();
 					sesionIniciada = false;
 					break;

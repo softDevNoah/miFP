@@ -10,9 +10,6 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		
-		
-		//la BD va en el verdadero main, fuera del bucle de bienvenida etc
 		BaseDeDatos baseDeDatos = new BaseDeDatos();
 		
 		//antes de aqui va:
