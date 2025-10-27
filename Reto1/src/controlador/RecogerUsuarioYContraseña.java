@@ -1,7 +1,6 @@
 package controlador;
 
-import java.util.Scanner;
-
+import main.Main;
 import modelo.*;
 import utiles.*;
 import vista.*;
@@ -11,12 +10,11 @@ public class RecogerUsuarioYContraseña {
 	public static boolean recogerUsuarioYContraseña(Usuario administradores[]) {
 		
 		boolean	esValido = false;
-		Scanner	teclado = new Scanner(System.in);
 		String	entrada;
 		
 		do {
 			MostrarMensajeDePeticion.msgIntroduzcaUsuario();
-			entrada = teclado.nextLine();
+			entrada = Main.teclado.nextLine();
 			if (ValidarUsuario.checkUsuario(entrada, administradores)) {
 				esValido = true;
 			}
@@ -26,13 +24,11 @@ public class RecogerUsuarioYContraseña {
 		
 		do {
 			MostrarMensajeDePeticion.msgIntroduzcaContraseña();
-			entrada = teclado.nextLine();
+			entrada = Main.teclado.nextLine();
 			if (ValidarContraseña.checkContraseña(entrada, administradores)) {
 				esValido = true;
 			}
 		}while (!esValido);
-		
-		teclado.close();
 		
 		return (esValido);
 	}

@@ -9,7 +9,7 @@ public class CodigoAdmin {
 		
 		boolean	sesionIniciada;
 		int		opcionElegida = -1;
-
+		
 		sesionIniciada = IniciarSesion.intentoDeInicio(baseDeDatosMasActual.administradores);
 		
 		while (sesionIniciada) {

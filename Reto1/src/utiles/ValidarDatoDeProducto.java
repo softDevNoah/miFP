@@ -1,5 +1,6 @@
 package utiles;
 
+import modelo.*;
 import vista.*;
 
 public class ValidarDatoDeProducto {
@@ -19,19 +20,22 @@ public class ValidarDatoDeProducto {
 		return (esCorrecto);
 	}
 	
-	public static boolean checkIDUnico(String entrada, ) {
+	public static boolean checkIDUnico(int id, Producto productos[]) {
 		
 		boolean	esCorrecto = false;
-		
-		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
-			
-			
-			esCorrecto = true;
+		int		totalProductos = BaseDeDatos.cantidadProductosActual(productos);		
+//		
+		for (int i = 0; i < totalProductos; i++) {
+			if (id == productos[i].idUnico) {
+				esCorrecto = false;
+				MostrarMensajeDeError.datoRepetido(productos[i].idUnico);
+			}
 		}
+		
 		return (esCorrecto);
 	}
 	
-	public static boolean checkNombre(String entrada) {
+	public static boolean checkNombre(String entrada, Producto productos[]) {
 	
 		boolean	esCorrecto = false;
 		
@@ -43,7 +47,7 @@ public class ValidarDatoDeProducto {
 		return (esCorrecto);
 	}
 	
-	public static boolean checkPrecio(String entrada) {
+	public static boolean checkPrecio(String entrada, Producto productos[]) {
 	
 		boolean	esCorrecto = false;
 		

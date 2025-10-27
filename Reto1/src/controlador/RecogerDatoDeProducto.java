@@ -2,8 +2,10 @@ package controlador;
 
 import java.util.Scanner;
 
+import modelo.*;
 import vista.*;
 import utiles.*;
+import main.Main;
 
 public class RecogerDatoDeProducto {
 	
@@ -53,33 +55,30 @@ public class RecogerDatoDeProducto {
 		return (numCategoria);
 	}
 	
-	public static int recogerIDUnico() {
+	public static int recogerIDUnico(Producto productos[]) {
 		
-		Scanner	teclado = new Scanner(System.in);
-		String	entrada = teclado.nextLine(); 
+		String entrada; 
 		
 		int		idUnico = -1;
 		boolean	esCorrecto = false;
 		
 		do {
 			MostrarMensajeDePeticion.msgAsigneIDUnico();
-			
-			if (ValidarDatoDeProducto.checkIDUnico(entrada)) {
+			entrada = Main.teclado.nextLine();
+			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
 				idUnico = Integer.parseInt(entrada);
-				esCorrecto = true;
+				if (ValidarDatoDeProducto.checkIDUnico(idUnico, productos))
+					esCorrecto = true;
 			}
 			
 		} while (!esCorrecto);
 		
-		teclado.close();
-		
 		return (idUnico);
 	}
 	
-	public static String recogerNombre() {
+	public static String recogerNombre(Producto productos[]) {
 		
-		Scanner	teclado = new Scanner(System.in);
-		String	entrada = teclado.nextLine(); 
+		String	entrada = Main.teclado.nextLine(); 
 		
 		String	nombre = "VACIO";
 		boolean	esCorrecto = false;
@@ -87,22 +86,19 @@ public class RecogerDatoDeProducto {
 		do {
 			MostrarMensajeDePeticion.msgAsigneNombre();
 			
-			if (ValidarDatoDeProducto.checkNombre(entrada)) {
+			if (ValidarDatoDeProducto.checkNombre(entrada, productos)) {
 				nombre = entrada;
 				esCorrecto = true;
 			}
 			
 		} while (!esCorrecto);
-		
-		teclado.close();
-		
+	
 		return (nombre);
 	}
 	
-	public static double recogerPrecio() {
+	public static double recogerPrecio(Producto productos[]) {
 		
-		Scanner	teclado = new Scanner(System.in);
-		String	entrada = teclado.nextLine(); 
+		String	entrada = Main.teclado.nextLine(); 
 		
 		double	precio = -1.00;
 		boolean	esCorrecto = false;
@@ -110,14 +106,12 @@ public class RecogerDatoDeProducto {
 		do {
 			MostrarMensajeDePeticion.msgAsignePrecio();
 			
-			if (ValidarDatoDeProducto.checkPrecio(entrada)) {
+			if (ValidarDatoDeProducto.checkPrecio(entrada, productos)) {
 				precio = Double.parseDouble(entrada);
 				esCorrecto = true;
 			}
 			
 		} while (!esCorrecto);
-		
-		teclado.close();
 		
 		return (precio);
 	}

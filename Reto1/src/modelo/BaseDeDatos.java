@@ -38,11 +38,30 @@ public class BaseDeDatos {
 				SetearDatoDeProducto.setearCategoria(productos[i], 3, false);
 			else if (i < 16)
 				SetearDatoDeProducto.setearCategoria(productos[i], 4, false);
-			SetearDatoDeProducto.setearID(productos[i], i, false);
-			SetearDatoDeProducto.setearNombre(productos[i], nombresIniciales[i], false);
-			SetearDatoDeProducto.setearPrecio(productos[i], precios[i], false);
+			SetearDatoDeProducto.setearID(productos, productos[i], i, false);
+			SetearDatoDeProducto.setearNombre(productos, productos[i], nombresIniciales[i], false);
+			SetearDatoDeProducto.setearPrecio(productos, productos[i], precios[i], false);
 		}
 		return (productos);
+	}
+	
+	public static int cantidadProductosActual(Producto productos[]) {
+		
+		int		total = 0;
+		boolean	finalDelConteo = false;
+		int		i = 0;
+		
+		while (!finalDelConteo) {
+			if (productos[i] != null) {
+				while (productos[i + 1] != null) {
+					total++;
+					i++;
+				}
+				total++;
+			}
+			finalDelConteo = true;
+		}
+		return (total);
 	}
 	
 }

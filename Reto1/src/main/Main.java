@@ -2,13 +2,19 @@ package main;
 
 import modelo.*;
 
+import java.util.Scanner;
+
 public class Main {
+	
+	public static Scanner teclado = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		
+		
+		
 		//la BD va en el verdadero main, fuera del bucle de bienvenida etc
 		BaseDeDatos baseDeDatos = new BaseDeDatos();
-			
+		
 		//antes de aqui va:
 			//BUCLE: pantalla bienvenida (do-while?)
 			//pulse cualquier tecla para comenzar
@@ -17,6 +23,7 @@ public class Main {
 		
 		//opcion2:
 		CodigoAdmin.ejecutarAdmin(baseDeDatos);
+		teclado.close();
 	}
 
 }

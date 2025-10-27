@@ -27,27 +27,27 @@ public class SetearDatoDeProducto {
 		}
 	}
 	
-	public static void setearID(Producto producto, int id, boolean conOutput) {
+	public static void setearID(Producto productos[], Producto producto, int id, boolean conOutput) {
 		
 		if (conOutput)
-			producto.idUnico = RecogerDatoDeProducto.recogerIDUnico();
+			producto.idUnico = RecogerDatoDeProducto.recogerIDUnico(productos);
 		else
 			producto.idUnico = id + 1;
 	}
 	
-	public static void setearNombre(Producto producto, String nombre, boolean conOutput) {
+	public static void setearNombre(Producto productos[], Producto producto, String nombre, boolean conOutput) {
 		
 		if (conOutput)
-			producto.nombre = RecogerDatoDeProducto.recogerNombre();
+			producto.nombre = RecogerDatoDeProducto.recogerNombre(productos);
 		else
 			producto.nombre = nombre;
 	}
 	
 	
-	public static void setearPrecio(Producto producto, double precio, boolean conOutput) {
+	public static void setearPrecio(Producto productos[], Producto producto, double precio, boolean conOutput) {
 		
 		if (conOutput)
-			producto.precio = RecogerDatoDeProducto.recogerPrecio();
+			producto.precio = RecogerDatoDeProducto.recogerPrecio(productos);
 		else
 			producto.precio = precio;
 	}
