@@ -1,9 +1,9 @@
 package modelo;
 
 import main.Main;
-import utiles.ValidarContraseña;
-import utiles.ValidarUsuario;
+import utiles.ValidarUsuarioYContraseña;
 import vista.MostrarMensajeDePeticion;
+import vista.MostrarMensajeOperacionCorrecta;
 
 public class IniciarSesion {
 
@@ -21,25 +21,31 @@ public class IniciarSesion {
 		
 		boolean	esCorrecto = false;
 		String	entrada;
+		int		numUsuario = 0;
 		
 		do {
 			MostrarMensajeDePeticion.msgIntroduzcaUsuario();
 			entrada = Main.teclado.nextLine();
-			if (ValidarUsuario.checkUsuario(entrada, administradores)) {
+			if (ValidarUsuarioYContraseña.checkUsuario(entrada, administradores)) {
 				esCorrecto = true;
+				//numUsuario = buscarCoincidenciaEnUsuarios
 			}
 		}while (!esCorrecto);
 		
-		esCorrecto = false;
-		
-		do {
-			MostrarMensajeDePeticion.msgIntroduzcaContraseña();
-			entrada = Main.teclado.nextLine();
-			if (ValidarContraseña.checkContraseña(entrada, administradores)) {
-				esCorrecto = true;
-			}
-		} while (!esCorrecto);
-		
+		if (esCorrecto) {
+			numUsuario = ValidarUsuarioYContraseña.indiceUsuario(entrada, administradores);
+			
+			esCorrecto = false;
+			
+			do {
+				MostrarMensajeDePeticion.msgIntroduzcaContraseña();
+				entrada = Main.teclado.nextLine();
+				if (ValidarUsuarioYContraseña.checkContraseña(entrada, administradores, numUsuario))
+					esCorrecto = true;
+			} while (!esCorrecto);
+		}
+		if (esCorrecto)
+			MostrarMensajeOperacionCorrecta.msgInicioSesionCorrecto();
 		return (esCorrecto);
 	}
 }

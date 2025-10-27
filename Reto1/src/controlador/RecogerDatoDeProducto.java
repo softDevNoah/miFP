@@ -1,7 +1,5 @@
 package controlador;
 
-import java.util.Scanner;
-
 import modelo.*;
 import vista.*;
 import utiles.*;
@@ -9,17 +7,9 @@ import main.Main;
 
 public class RecogerDatoDeProducto {
 	
-	//PSEUDOCODIGO:
-		//mensaje Introduzca una categoria de producto
-		//leer
-		//validar (analizar diversos tipos de error)
-		//Es Valido => devolvemos dato desde aqui
-		//No es valido => mensaje de error (tipificado)
-	
 	public static int recogerCategoria(String categorias[]) {
 		
-		Scanner	teclado = new Scanner(System.in);
-		String	entrada = teclado.nextLine(); 
+		String	entrada = Main.teclado.nextLine(); 
 		
 		int		categoria = -1;
 		boolean	esCorrecto = false;
@@ -33,8 +23,6 @@ public class RecogerDatoDeProducto {
 			}
 			
 		} while (!esCorrecto);
-		
-		teclado.close();
 		
 		return (categoria);
 	}

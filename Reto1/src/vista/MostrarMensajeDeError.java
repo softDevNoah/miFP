@@ -39,7 +39,7 @@ public class MostrarMensajeDeError {
 	}
 	public static void noEsSoloUnNumeroDecimal() {
 		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
-		System.out.println("------------------ERROR:\tinserte solamente sí o no, por favor.--------------------------------------------------");
+		System.out.println("------------------ERROR:\tinserte un nº decimal positivo, por favor.---------------------------------------------");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 	
@@ -52,6 +52,18 @@ public class MostrarMensajeDeError {
 	public static void datoRepetido(int numProducto) {
 		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
 		System.out.printf("------------------ERROR:\tel producto con id: %d tiene ya ese dato identificativo, por favor use otro.------------\n");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
+	}
+	
+	public static void usuarioNoExiste(String nombreDeUsuario) {
+		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
+		System.out.printf("------------------ERROR:\tel usuario %s no existe, por favor pruebe otro.----------------------------\n", nombreDeUsuario);
+		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
+	}
+	
+	public static void contraseñaIncorrecta() {
+		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
+		System.out.printf("------------------ERROR:\tcontraseña incorrecta, por favor inténtelo de nuevo.------------------------------------\n");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 }

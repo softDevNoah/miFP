@@ -93,4 +93,20 @@ public class ValidarTipoDeEntrada {
 			MostrarMensajeDeError.noEsSoloUnNumero();
 		return (esCorrecto);
 	}
+	
+	public static boolean checkSoloNumeroDecimal(String entrada) {
+		
+		boolean esCorrecto = true;
+		int		numPuntos = 0;
+
+		for (int i = 0; i < entrada.length(); i++) {
+			if (!Character.isDigit(entrada.charAt(i)) && entrada.charAt(i) != '.')
+				esCorrecto = false;
+			if (entrada.charAt(i) == '.')
+				numPuntos++;
+		}
+		if (!esCorrecto || numPuntos > 1)
+			MostrarMensajeDeError.noEsSoloUnNumeroDecimal();
+		return (esCorrecto);
+	}
 }

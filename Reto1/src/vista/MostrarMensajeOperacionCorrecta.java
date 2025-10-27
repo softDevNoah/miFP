@@ -38,6 +38,11 @@ public class MostrarMensajeOperacionCorrecta {
 		System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
 		System.out.println("\t- Se ha creado un producto nuevo correctamente.	*	*	*	*	*	*	*	*	*	*	*");
 		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");	
-}
+	}
 	
+	public static void msgInicioSesionCorrecto() {
+			System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
+			System.out.println("*	*	*	*	*	*	*	*	Sesión iniciada adecuadamente. Bienvenidx!*	*	*	*	*	*	*	*	*	*	*");
+			System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");	
+		}
 }

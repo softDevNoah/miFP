@@ -37,13 +37,19 @@ public class ValidarDatoDeProducto {
 	
 	public static boolean checkNombre(String entrada, Producto productos[]) {
 	
-		boolean	esCorrecto = false;
+		boolean	esCorrecto = true;
+		int		totalProductos = BaseDeDatos.cantidadProductosActual(productos);
 		
-		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada)) {
-			
-			
-			esCorrecto = true;
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && (ValidarTipoDeEntrada.checkSoloAlfanumerico(entrada))) {
+			for (int i = 0; i < totalProductos; i++) {
+				if (entrada.equals(productos[i].nombre)) {
+					esCorrecto = false;
+					MostrarMensajeDeError.datoRepetido(productos[i].idUnico);
+				}
+			}
 		}
+		else
+			esCorrecto = false;
 		return (esCorrecto);
 	}
 	
@@ -51,11 +57,8 @@ public class ValidarDatoDeProducto {
 	
 		boolean	esCorrecto = false;
 		
-		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada)) {
-			
-			
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroDecimal(entrada)) 
 			esCorrecto = true;
-		}
 		return (esCorrecto);
 	}
 }

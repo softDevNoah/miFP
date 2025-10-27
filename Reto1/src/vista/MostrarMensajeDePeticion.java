@@ -11,8 +11,6 @@ public class MostrarMensajeDePeticion {
 		System.out.print("\n\tIntroduzca la contraseña, por favor: ");
 	}
 	
-
-	
 	public static void msgAsigneCategoria() {
 		System.out.println("****************************************************************************************************************");
 		System.out.print("\tAsigne una categoría al producto, por favor: ");
