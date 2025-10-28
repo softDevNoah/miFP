@@ -55,9 +55,9 @@ public class MostrarMensajeDeError {
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 	
-	public static void datoRepetido(int numProducto) {
+	public static void idYaEnUso(int numProducto) {
 		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
-		System.out.printf("------------------ERROR:\tel producto con id: %d tiene ya ese dato identificativo, por favor use otro.------------\n");
+		System.out.printf("------------------ERROR:\tel id: %d tiene ya está asigando a otro producto, por favor elija otro.-----------------\n");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 	
@@ -76,6 +76,18 @@ public class MostrarMensajeDeError {
 	public static void opcionIncorrecta() {
 		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
 		System.out.println("------------------ERROR:\topción incorrecta, por favor inténtelo de nuevo.---------------------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
+	}
+	
+	public static void noHayNingunProducto() {
+		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
+		System.out.println("------------------ERROR:\tNo existe ningún producto actualmente, esta máquina está vacía.------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
+	}
+	
+	public static void noHayNingunProductoConEsteCriterioDeBusqueda() {
+		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
+		System.out.println("------------------ERROR:\tNo se ha encontrado un producto acorde a este criterio de búsqueda.--------------------");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 }

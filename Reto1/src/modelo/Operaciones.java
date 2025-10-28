@@ -27,4 +27,23 @@ public class Operaciones {
 		return (eliminadoCorrectamente);
 	}
 
+	public static int contarTotalProductosActual(Producto productos[]) {
+		
+		int		total = 0;
+		boolean	finalDelConteo = false;
+		int		i = 0;
+		
+		while (!finalDelConteo) {
+			if (productos[i] != null) {
+				while (productos[i + 1] != null) {
+					total++;
+					i++;
+				}
+				total++;
+			}
+			finalDelConteo = true;
+		}
+		return (total);
+	}
+	
 }
