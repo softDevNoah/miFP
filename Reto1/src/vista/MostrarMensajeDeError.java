@@ -10,7 +10,7 @@ public class MostrarMensajeDeError {
 	
 	public static void entradaDemasiadoExtensa() {
 		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
-		System.out.println("------------------ERROR:\tDemasiados datos introducidos, son más de 8 caracteres), por favor inténtelo de nuevo.-");
+		System.out.println("------------------ERROR:\tDemasiados datos, debe ser máximo 8 caracteres, por favor inténtelo de nuevo.----------");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 	
@@ -23,6 +23,12 @@ public class MostrarMensajeDeError {
 	public static void noEsSoloUnNumero() {
 		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
 		System.out.println("------------------ERROR:\tinserte solamente un número, por favor.------------------------------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
+	}
+	
+	public static void noEsSoloUnNumeroPositivo() {
+		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
+		System.out.println("------------------ERROR:\tinserte un número positivo, por favor.-------------------------------------------------");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 	
@@ -64,6 +70,12 @@ public class MostrarMensajeDeError {
 	public static void contraseñaIncorrecta() {
 		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
 		System.out.printf("------------------ERROR:\tcontraseña incorrecta, por favor inténtelo de nuevo.------------------------------------\n");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
+	}
+	
+	public static void opcionIncorrecta() {
+		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
+		System.out.println("------------------ERROR:\topción incorrecta, por favor inténtelo de nuevo.---------------------------------------");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 }

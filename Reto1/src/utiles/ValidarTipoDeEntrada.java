@@ -90,7 +90,7 @@ public class ValidarTipoDeEntrada {
 				esCorrecto = false;
 		}
 		if (!esCorrecto)
-			MostrarMensajeDeError.noEsSoloUnNumero();
+			MostrarMensajeDeError.noEsSoloUnNumeroPositivo();
 		return (esCorrecto);
 	}
 	

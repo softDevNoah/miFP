@@ -2,9 +2,15 @@ package vista;
 
 public class MostrarMensajeOperacionCorrecta {
 
+	public static void msgInicioSesionCorrecto(String usuario) {
+			System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
+			System.out.printf("								Sesión iniciada adecuadamente. Bienvenidx, %s!\n", usuario);
+			System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*\n\n");	
+	}
+	
 	public static void msgSesionFinalizada() {
 		System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
-		System.out.println("*	*	*	*	*	*	*	*	Sesión finalizada adecuadamente. Hasta la próxima!	*	*	*	*	*	*	*	*	*	*	*");
+		System.out.println("*	*	*	*	*	*	*	*	Sesión finalizada adecuadamente. Hasta la próxima!	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
 		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");	
 	}
 	
@@ -22,27 +28,22 @@ public class MostrarMensajeOperacionCorrecta {
 	public static void msgProductoCreadoCorrectamente() {
 		
 		System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
-		System.out.println("\t- Se ha creado un producto nuevo correctamente.	*	*	*	*	*	*	*	*	*	*	*");
-		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");	
+		System.out.println("\t- Se ha creado un producto nuevo correctamente.	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
+		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*\n\n");	
 	}
 	
 	public static void msgProductoModificadoCorrectamente() {
 		
 		System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
-		System.out.println("\t- Se ha creado un producto nuevo correctamente.	*	*	*	*	*	*	*	*	*	*	*");
-		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");	
+		System.out.println("\t- Se ha modificado un producto correctamente.	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
+		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*\n\n");	
 	}
 
 	public static void msgProductoEliminadoCorrectamente() {
 	
 		System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
-		System.out.println("\t- Se ha creado un producto nuevo correctamente.	*	*	*	*	*	*	*	*	*	*	*");
-		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");	
+		System.out.println("\t- Se ha eliminado un producto correctamente.	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
+		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*\n\n");	
 	}
 	
-	public static void msgInicioSesionCorrecto() {
-			System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
-			System.out.println("*	*	*	*	*	*	*	*	Sesión iniciada adecuadamente. Bienvenidx!*	*	*	*	*	*	*	*	*	*	*");
-			System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");	
-		}
 }

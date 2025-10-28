@@ -14,9 +14,9 @@ public class ValidarUsuarioYContraseña {
 				if (entrada.equals(administradores[i].nombre))
 					existe = true;
 			}
+			if (!existe)
+				MostrarMensajeDeError.usuarioNoExiste(entrada);
 		}
-		if (!existe)
-			MostrarMensajeDeError.usuarioNoExiste(entrada);
 		return (existe);
 	}
 	
@@ -41,6 +41,8 @@ public class ValidarUsuarioYContraseña {
 				MostrarMensajeDeError.contraseñaIncorrecta();
 			}
 		}
+		else
+			existe = false;
 		return (existe);
 	}
 }

@@ -1,7 +1,7 @@
 package controlador;
 
-import vista.MostrarMensajeDeError;
 import main.Main;
+import utiles.ValidarTipoDeEntrada;
 
 public class LeerOpcionMenu {
 
@@ -14,27 +14,14 @@ public class LeerOpcionMenu {
 		
 		do {
 			entrada = Main.teclado.nextLine();
-			if (checkOpcion(entrada)) {
+			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
 				opcionMenu = Integer.parseInt(entrada);
 				opcionValida = true;
 			}
 		}while (!opcionValida);
-
+		
+		System.out.println("*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *");
+		
 		return (opcionMenu);
-	}
-	
-	public static boolean checkOpcion(String entrada) {
-		
-		boolean esCorrecto = true;
-		
-		if (entrada.isEmpty()) {
-			MostrarMensajeDeError.entradaVacia();
-			esCorrecto = false;
-		}
-		else if (entrada.equals("1")  && entrada.equals("2")  && entrada.equals("3")  && entrada.equals("4")) {
-			MostrarMensajeDeError.categoriaIncorrecta();
-			esCorrecto = false;
-		}
-		return (esCorrecto);
 	}
 }

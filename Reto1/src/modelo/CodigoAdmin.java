@@ -40,6 +40,8 @@ public class CodigoAdmin {
 					sesionIniciada = false;
 					break;
 			}
+			if (opcionElegida < 1 || opcionElegida > 4)
+				MostrarMensajeDeError.opcionIncorrecta();
 		}
 		
 		return (baseDeDatosMasActual);

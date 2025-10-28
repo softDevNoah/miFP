@@ -45,7 +45,7 @@ public class IniciarSesion {
 			} while (!esCorrecto);
 		}
 		if (esCorrecto)
-			MostrarMensajeOperacionCorrecta.msgInicioSesionCorrecto();
+			MostrarMensajeOperacionCorrecta.msgInicioSesionCorrecto(administradores[numUsuario].nombre);
 		return (esCorrecto);
 	}
 }
