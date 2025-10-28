@@ -55,9 +55,9 @@ public class MostrarMensajeDeError {
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 	
-	public static void idYaEnUso(int numProducto) {
+	public static void nombreYaEnUso(String nombreProducto) {
 		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
-		System.out.printf("------------------ERROR:\tel id: %d tiene ya está asigando a otro producto, por favor elija otro.-----------------\n");
+		System.out.printf("------------------ERROR:\tel nombre \"%s\" ya está asigando a otro producto, por favor elija otro.----------------\n");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 	

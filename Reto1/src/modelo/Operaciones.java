@@ -1,16 +1,40 @@
 package modelo;
 
+import controlador.RecogerDatoDeProducto;
+import vista.MostrarMensajeDePeticion;
+import vista.MostrarMensajeOperacionCorrecta;
+
 //import controlador.*;
 //import vista.*;
 //import utiles.*;
 
 public class Operaciones {
 
-	public static boolean nuevoProducto(Producto productos[]) {
+	public static Producto[] nuevoProducto(Producto productos[]) {
 		
-		boolean creadoCorrectamente = true;
+		int			numProductosActual;
+		boolean		volverAtras;
+		Producto	nuevoProducto;
+		Producto	productosActualizados[];
 		
-		return (creadoCorrectamente);
+		numProductosActual = Operaciones.contarTotalProductosActual(productos);
+		volverAtras = false;
+		nuevoProducto = new Producto();
+				
+		nuevoProducto.nombre = RecogerDatoDeProducto.recogerNombre(productos);
+		nuevoProducto.categoria = RecogerDatoDeProducto.recogerCategoria(nuevoProducto.categorias);
+		nuevoProducto.precio = RecogerDatoDeProducto.recogerPrecio();
+		//volverAtras = condicionDeseaVolver
+		if (volverAtras) {
+			//msgVolverCorrecto
+			return (productos);
+		}
+		
+		productosActualizados = new Producto[numProductosActual + 1];
+		//copiar los primeros 16
+		//asignar valores nuevos al nº 17
+		MostrarMensajeOperacionCorrecta.msgProductoCreadoCorrectamente();
+		return (productosActualizados);
 	}
 	
 	public static boolean modificarProducto(Producto productos[]) {

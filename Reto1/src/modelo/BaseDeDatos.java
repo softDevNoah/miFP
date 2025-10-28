@@ -31,16 +31,17 @@ public class BaseDeDatos {
 		
 			productos[i] = new Producto();
 			if (i < 4)
-				SetearDatoDeProducto.setearCategoria(productos[i], 1, false);
+				productos[i].categoria = productos[i].categorias[0];
 			else if (i < 8)
-				SetearDatoDeProducto.setearCategoria(productos[i], 2, false);
+				productos[i].categoria = productos[i].categorias[1];
 			else if (i < 12)
-				SetearDatoDeProducto.setearCategoria(productos[i], 3, false);
+				productos[i].categoria = productos[i].categorias[2];
 			else if (i < 16)
-				SetearDatoDeProducto.setearCategoria(productos[i], 4, false);
-			SetearDatoDeProducto.setearID(productos, productos[i], i, false);
-			SetearDatoDeProducto.setearNombre(productos, productos[i], nombresIniciales[i], false);
-			SetearDatoDeProducto.setearPrecio(productos, productos[i], precios[i], false);
+				productos[i].categoria = productos[i].categorias[3];
+			
+			productos[i].idUnico = i + 1;
+			productos[i].nombre = nombresIniciales[i];
+			productos[i].precio = precios[i];
 		}
 		return (productos);
 	}

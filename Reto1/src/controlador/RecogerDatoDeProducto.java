@@ -7,18 +7,18 @@ import main.Main;
 
 public class RecogerDatoDeProducto {
 	
-	public static int recogerCategoria(String categorias[]) {
+	public static String recogerCategoria(String categorias[]) {
 		
 		String	entrada = Main.teclado.nextLine(); 
 		
-		int		categoria = -1;
+		String	categoria = "VACIO";
 		boolean	esCorrecto = false;
 		
 		do {
-			MostrarMensajeDePeticion.msgAsigneCategoria();
+			MostrarMensajeDePeticion.msgAsigneCategoria(categorias);
 			
 			if (ValidarDatoDeProducto.checkCategoria(entrada, categorias)) {
-				categoria = determinaCategoria(entrada);
+				categoria = entrada;
 				esCorrecto = true;
 			}
 			
@@ -27,22 +27,8 @@ public class RecogerDatoDeProducto {
 		return (categoria);
 	}
 	
-	private static int determinaCategoria(String categoria) {
-		
-		int	numCategoria = -1;
-		switch (categoria) {
-			case "tipo1":
-				numCategoria = 0;
-			case "tipo2":
-				numCategoria = 1;
-			case "tipo3":
-				numCategoria = 2;
-			case "tipo4":
-				numCategoria = 3;
-		}
-		return (numCategoria);
-	}
 	
+	/*
 	public static int recogerIDUnico(Producto productos[]) {
 		
 		String entrada; 
@@ -62,7 +48,7 @@ public class RecogerDatoDeProducto {
 		} while (!esCorrecto);
 		
 		return (idUnico);
-	}
+	}*/
 	
 	public static String recogerNombre(Producto productos[]) {
 		
@@ -84,7 +70,7 @@ public class RecogerDatoDeProducto {
 		return (nombre);
 	}
 	
-	public static double recogerPrecio(Producto productos[]) {
+	public static double recogerPrecio() {
 		
 		String	entrada = Main.teclado.nextLine(); 
 		
@@ -94,7 +80,7 @@ public class RecogerDatoDeProducto {
 		do {
 			MostrarMensajeDePeticion.msgAsignePrecio();
 			
-			if (ValidarDatoDeProducto.checkPrecio(entrada, productos)) {
+			if (ValidarDatoDeProducto.checkPrecio(entrada)) {
 				precio = Double.parseDouble(entrada);
 				esCorrecto = true;
 			}

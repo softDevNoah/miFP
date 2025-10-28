@@ -20,9 +20,7 @@ public class CodigoAdmin {
 			switch (opcionElegida) {
 				case 1:
 					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(1);
-					if (Operaciones.nuevoProducto(baseDeDatosMasActual.productos))
-						MostrarMensajeOperacionCorrecta.msgProductoCreadoCorrectamente();
-					
+					baseDeDatosMasActual.productos = Operaciones.nuevoProducto(baseDeDatosMasActual.productos);
 					break;
 				case 2:
 					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(2);

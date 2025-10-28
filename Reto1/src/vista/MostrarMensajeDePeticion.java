@@ -11,9 +11,10 @@ public class MostrarMensajeDePeticion {
 		System.out.print("\n\tIntroduzca la contraseña, por favor: ");
 	}
 	
-	public static void msgAsigneCategoria() {
+	public static void msgAsigneCategoria(String categorias[]) {
 		System.out.println("****************************************************************************************************************");
-		System.out.print("\tAsigne una categoría al producto, por favor: ");
+		System.out.print("\tAsigne una categoría al producto, por favor. ");
+		System.out.printf("Categorías posibles: %s, %s, %s, %s: ", categorias[0], categorias[1], categorias[2], categorias[3]);
 	}
 	
 	public static void msgAsigneIDUnico() {

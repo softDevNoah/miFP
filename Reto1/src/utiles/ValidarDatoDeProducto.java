@@ -22,13 +22,12 @@ public class ValidarDatoDeProducto {
 	
 	public static boolean checkIDUnico(int id, Producto productos[]) {
 		
-		boolean	esCorrecto = false;
+		boolean	esCorrecto = true;
 		int		totalProductos = Operaciones.contarTotalProductosActual(productos);		
-//		
+		
 		for (int i = 0; i < totalProductos; i++) {
 			if (id == productos[i].idUnico) {
 				esCorrecto = false;
-				MostrarMensajeDeError.idYaEnUso(productos[i].idUnico);
 			}
 		}
 		
@@ -44,7 +43,7 @@ public class ValidarDatoDeProducto {
 			for (int i = 0; i < totalProductos; i++) {
 				if (entrada.equals(productos[i].nombre)) {
 					esCorrecto = false;
-					MostrarMensajeDeError.idYaEnUso(productos[i].idUnico);
+					MostrarMensajeDeError.nombreYaEnUso(productos[i].nombre);
 				}
 			}
 		}
@@ -53,7 +52,7 @@ public class ValidarDatoDeProducto {
 		return (esCorrecto);
 	}
 	
-	public static boolean checkPrecio(String entrada, Producto productos[]) {
+	public static boolean checkPrecio(String entrada) {
 	
 		boolean	esCorrecto = false;
 		
