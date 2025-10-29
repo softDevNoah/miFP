@@ -14,26 +14,12 @@ public class ValidarDatoDeProducto {
 				if (entrada.equals(categorias[i]))
 					esCorrecto = true;	
 			}
-		}
-		if (!esCorrecto)
+			if (!esCorrecto)
 			MostrarMensajeDeError.categoriaIncorrecta();
-		return (esCorrecto);
-	}
-	
-	public static boolean checkIDUnico(int id, Producto productos[]) {
-		
-		boolean	esCorrecto = true;
-		int		totalProductos = Operaciones.contarTotalProductosActual(productos);		
-		
-		for (int i = 0; i < totalProductos; i++) {
-			if (id == productos[i].idUnico) {
-				esCorrecto = false;
-			}
 		}
-		
 		return (esCorrecto);
 	}
-	
+		
 	public static boolean checkNombre(String entrada, Producto productos[]) {
 	
 		boolean	esCorrecto = true;
@@ -58,6 +44,20 @@ public class ValidarDatoDeProducto {
 		
 		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroDecimal(entrada)) 
 			esCorrecto = true;
+		return (esCorrecto);
+	}
+	
+	public static boolean checkIDUnico(Producto productos[], int id) {
+		
+		boolean	esCorrecto = true;
+		int		totalProductos = Operaciones.contarTotalProductosActual(productos);		
+		
+		for (int i = 0; i < totalProductos; i++) {
+			if (id == productos[i].idUnico) {
+				esCorrecto = false;
+			}
+		}
+		
 		return (esCorrecto);
 	}
 }

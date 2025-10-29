@@ -10,13 +10,13 @@ public class MostrarMensajeDeError {
 	
 	public static void entradaDemasiadoExtensa() {
 		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
-		System.out.println("------------------ERROR:\tDemasiados datos, debe ser máximo 8 caracteres, por favor inténtelo de nuevo.----------");
+		System.out.println("------------------ERROR:\tSolo se permiten hasta 8 caracteres, por favor inténtelo de nuevo.----------");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 	
 	public static void noEsSoloTexto() {
 		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
-		System.out.println("------------------ERROR:\tinserte solamente letras y espacios, por favor.----------------------------------------");
+		System.out.println("------------------ERROR:\tinserte solamente letras, por favor.----------------------------------------");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 	
@@ -57,7 +57,7 @@ public class MostrarMensajeDeError {
 	
 	public static void nombreYaEnUso(String nombreProducto) {
 		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
-		System.out.printf("------------------ERROR:\tel nombre \"%s\" ya está asigando a otro producto, por favor elija otro.----------------\n");
+		System.out.printf("------------------ERROR:\tel nombre \"%s\" ya está asigando a otro producto, por favor elija otro.----------------\n", nombreProducto);
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n\n");
 	}
 	

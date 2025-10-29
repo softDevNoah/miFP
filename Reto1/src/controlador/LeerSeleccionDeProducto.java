@@ -16,14 +16,15 @@ public class LeerSeleccionDeProducto {
 			System.out.printf("\t------>>>>>>\t¿Qué producto desea %s?\t<<<<<<------\n", opcion);
 			System.out.print("\tEscriba únicamente el ID del producto:\t");
 			entrada = Main.teclado.nextLine();
-			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada))
+			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
 				seleccionProducto = Integer.parseInt(entrada);
-				if (!ValidarDatoDeProducto.checkIDUnico(seleccionProducto, productos)) {
+				if (!ValidarDatoDeProducto.checkIDUnico(productos, seleccionProducto)) {
 					indiceProducto = busquedaPorIdUnico(productos, seleccionProducto);
 					esCorrecto = true;
 				}
 				else
 					MostrarMensajeDeError.noHayNingunProductoConEsteCriterioDeBusqueda();
+			}
 		} while (!esCorrecto);
 		
 		return (indiceProducto);

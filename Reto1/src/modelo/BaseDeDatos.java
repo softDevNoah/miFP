@@ -10,8 +10,8 @@ public class BaseDeDatos {
 		this.productos = new Producto[16];
 		this.administradores = new Usuario[4];
 		
-		String	nombres[] = {"user1", "user2", "user3", "user4"};
-		String	contraseñas[] = {"1234", "qwer", "qwer1234", "1234qwer"};
+		String	nombres[] = {"Maitane", "Rodny", "Esti", "Noah"};
+		String	contraseñas[] = {"mait1", "rodn2", "esti3", "noah4"};
 		
 		productos = setearProductosIniciales(productos);
 		
@@ -24,7 +24,8 @@ public class BaseDeDatos {
 	
 	private Producto[] setearProductosIniciales(Producto productos[]) {
 		
-		String	nombresIniciales[] = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o"};
+		String	nombresIniciales[] = {"agua", "aquarius", "zumo", "juguito", "vegano", "sandwich", "vegetal", "mixto",
+									"donete", "zebra", "palmera", "croisant", "kitkat", "mars", "kinder", "twix"};
 		double	precios[] = {1.20, 0.6, 0.85, 0.45, 2.2, 2.15, 1.85, 1.20, 0.6, 0.85, 0.45, 2.2, 2.15, 1.85, 1.0, 1.35};
 	
 		for (int i = 0; i < 16; i++) {
