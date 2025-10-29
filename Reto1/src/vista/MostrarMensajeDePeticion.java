@@ -39,8 +39,8 @@ public class MostrarMensajeDePeticion {
 		String	entrada;
 		boolean	afirmativo = false;
 
-		System.out.println("------>>>>>>\t¿Desea cancelar la operación?\t<<<<<<------");
-		System.out.print("\t\t\tSi desea cancelar escriba \"S\":\t");
+		System.out.println("------>>>>>> ¿Desea cancelar la operación?");
+		System.out.print("\t\tSi desea cancelar escriba \"S\":\t");
 		entrada = Main.teclado.nextLine();
 		if (entrada.equals("S")) {
 			afirmativo = true;
@@ -53,8 +53,8 @@ public class MostrarMensajeDePeticion {
 		String	entrada;
 		boolean	afirmativo = false;
 
-		System.out.println("------>>>>>>\t¿Desea volver al menú?\t<<<<<<------");
-		System.out.print("\t\t\tSi desea volver escriba \"S\":\t");
+		System.out.println("------>>>>>> ¿Desea volver al menú?");
+		System.out.print("\t\tSi desea volver escriba \"S\":\t");
 		entrada = Main.teclado.nextLine();
 		if (entrada.equals("S")) {
 			afirmativo = true;
@@ -67,8 +67,8 @@ public class MostrarMensajeDePeticion {
 		String	entrada;
 		boolean	afirmativo = false;
 
-		System.out.println("------>>>>>>\t¿Desea continuar modificando datos de este producto?\t<<<<<<------");
-		System.out.print("\t\t\tSi desea continuar escriba \"S\":\t");
+		System.out.println("------>>>>>> ¿Desea continuar modificando datos de este producto?");
+		System.out.print("\t\tSi desea continuar escriba \"S\":\t");
 		entrada = Main.teclado.nextLine();
 		if (entrada.equals("S")) {
 			afirmativo = true;
@@ -81,8 +81,8 @@ public class MostrarMensajeDePeticion {
 		String	entrada;
 		boolean	afirmativo = false;
 
-		System.out.println("[[[[[[\t¿Estás segurx de eliminar este producto?\t]]]]]]");
-		System.out.print("\t\t\tSi desea continuar escriba \"S\":\t");
+		System.out.println("------>>>>>> ¿Estás segurx de eliminar este producto?");
+		System.out.print("\t\tSi desea continuar escriba \"S\":\t");
 		entrada = Main.teclado.nextLine();
 		if (entrada.equals("S")) {
 			afirmativo = true;

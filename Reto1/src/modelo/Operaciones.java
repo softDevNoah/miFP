@@ -42,7 +42,7 @@ public class Operaciones {
 		return (productosActualizados);
 	}
 	
-	public static Producto[] modificarProducto(Producto productos[]) {
+	public static Producto[] modificarproducto(Producto productos[]) {
 		
 		Producto	nuevoProducto;
 		int			indiceProductoSeleccionado;
@@ -54,6 +54,7 @@ public class Operaciones {
 			MostrarListaDeProductos.mostrarListaCompleta(productos);
 			indiceProductoSeleccionado = LeerSeleccionDeProducto.seleccionarProducto(productos, "modificar");
 			nuevoProducto = productos[indiceProductoSeleccionado];
+			
 			do {
 				tipoDato = LeerSeleccionDeProducto.eleccionTipoDato(nuevoProducto);
 				switch (tipoDato) {
@@ -68,18 +69,62 @@ public class Operaciones {
 						break;
 				}
 			} while (MostrarMensajeDePeticion.condicionDeseaContinuar());
-			
-		} while (!MostrarMensajeDePeticion.condicionDeseaCancelar());
+				
+			if (MostrarMensajeDePeticion.condicionDeseaCancelar())
+				nuevoProducto = productos[indiceProductoSeleccionado];
+			else {
+				productos[indiceProductoSeleccionado] = nuevoProducto;
+				MostrarMensajeOperacionCorrecta.msgProductoModificadoCorrectamente();
+			}
+		} while (!MostrarMensajeDePeticion.condicionDeseaVolver());
 		
-		if (MostrarMensajeDePeticion.condicionDeseaCancelar())
-			return (productos);
-		
-		productos[indiceProductoSeleccionado] = nuevoProducto;
-		
-		MostrarMensajeOperacionCorrecta.msgProductoModificadoCorrectamente();
 		return (productos);
 	}
 
+	//alternativa mas sencilla
+	public static Producto[] modificarProducto(Producto[] productos) {
+		int			indiceProducto;
+		int			tipoDato = -1;
+		String		nombreOriginal;
+		String		categoriaOriginal;
+		double		precioOriginal;
+
+		do {
+			MostrarListaDeProductos.mostrarListaCompleta(productos);
+			indiceProducto = LeerSeleccionDeProducto.seleccionarProducto(productos, "modificar");
+			
+			nombreOriginal = productos[indiceProducto].nombre;
+			categoriaOriginal =	productos[indiceProducto].categoria;
+			precioOriginal = productos[indiceProducto].precio;
+			do {
+				tipoDato = LeerSeleccionDeProducto.eleccionTipoDato(productos[indiceProducto]);
+				switch (tipoDato) {
+					case 1:
+						productos[indiceProducto].nombre = RecogerDatoDeProducto.recogerNombre(productos);
+						break;
+					case 2:
+						productos[indiceProducto].categoria = RecogerDatoDeProducto.recogerCategoria(productos[indiceProducto].categorias);
+						break;
+					case 3:
+						productos[indiceProducto].precio = RecogerDatoDeProducto.recogerPrecio();
+						break;
+				}
+				
+				
+			} while (MostrarMensajeDePeticion.condicionDeseaContinuar());
+				
+			if (MostrarMensajeDePeticion.condicionDeseaCancelar()) {
+					productos[indiceProducto].nombre = nombreOriginal;
+					productos[indiceProducto].categoria = categoriaOriginal;
+					productos[indiceProducto].precio = precioOriginal;
+				}
+			else 
+				MostrarMensajeOperacionCorrecta.msgProductoModificadoCorrectamente();
+			
+		} while (!MostrarMensajeDePeticion.condicionDeseaVolver());
+		
+		return (productos);
+	}
 	public static Producto[] eliminarProducto(Producto productos[]) {
 	
 		Producto	productosActualizados[];
