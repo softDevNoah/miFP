@@ -1,73 +1,117 @@
 package modelo;
 
-import controlador.RecogerDatoDeProducto;
-import vista.MostrarMensajeDePeticion;
-import vista.MostrarMensajeOperacionCorrecta;
-
-//import controlador.*;
-//import vista.*;
-//import utiles.*;
+import controlador.*;
+import vista.*;
 
 public class Operaciones {
 
 	public static Producto[] nuevoProducto(Producto productos[]) {
 		
-		int			numProductosActual;
-		boolean		volverAtras;
 		Producto	nuevoProducto;
 		Producto	productosActualizados[];
+		int			cantidadActual;
 		
-		numProductosActual = Operaciones.contarTotalProductosActual(productos);
-		volverAtras = false;
+		cantidadActual = Operaciones.contarTotalProductosActual(productos);
 		nuevoProducto = new Producto();
 				
 		nuevoProducto.nombre = RecogerDatoDeProducto.recogerNombre(productos);
 		nuevoProducto.categoria = RecogerDatoDeProducto.recogerCategoria(nuevoProducto.categorias);
 		nuevoProducto.precio = RecogerDatoDeProducto.recogerPrecio();
-		//volverAtras = condicionDeseaVolver
-		if (volverAtras) {
-			//msgVolverCorrecto
-			return (productos);
-		}
 		
-		productosActualizados = new Producto[numProductosActual + 1];
-		//copiar los primeros 16
-		//asignar valores nuevos al nº 17
+		if (MostrarMensajeDePeticion.condicionDeseaVolver())
+			return (productos);
+		
+		productosActualizados = new Producto[cantidadActual + 1];
+		
+		for (int i = 0; i < cantidadActual; i++) 
+			productosActualizados[i] = productos[i];
+		productosActualizados[cantidadActual] = nuevoProducto;
+		
 		MostrarMensajeOperacionCorrecta.msgProductoCreadoCorrectamente();
 		return (productosActualizados);
 	}
 	
-	public static boolean modificarProducto(Producto productos[]) {
+	public static Producto[] modificarProducto(Producto productos[]) {
 		
-		boolean modificadoCorrectamente = true;
+		Producto	nuevoProducto;
+		int			indiceProductoSeleccionado;
+		int			tipoDato = -1;
+
+		nuevoProducto = new Producto();
+
+		do {
+			MostrarListaDeProductos.mostrarListaCompleta(productos);
+			indiceProductoSeleccionado = LeerSeleccionDeProducto.seleccionarProducto(productos, "modificar");
+			nuevoProducto = productos[indiceProductoSeleccionado];
+			do {
+				tipoDato = LeerSeleccionDeProducto.eleccionTipoDato(nuevoProducto);
+				switch (tipoDato) {
+					case 1:
+						nuevoProducto.nombre = RecogerDatoDeProducto.recogerNombre(productos);
+						break;
+					case 2:
+						nuevoProducto.categoria = RecogerDatoDeProducto.recogerCategoria(nuevoProducto.categorias);
+						break;
+					case 3:
+						nuevoProducto.precio = RecogerDatoDeProducto.recogerPrecio();
+						break;
+				}
+			} while (MostrarMensajeDePeticion.condicionDeseaContinuar());
+		} while (!MostrarMensajeDePeticion.condicionDeseaVolver());
 		
-		return (modificadoCorrectamente);
+		if (MostrarMensajeDePeticion.condicionDeseaVolver())
+			return (productos);
+		
+		productos[indiceProductoSeleccionado] = nuevoProducto;
+		
+		MostrarMensajeOperacionCorrecta.msgProductoModificadoCorrectamente();
+		return (productos);
 	}
 
-	public static boolean eliminarProducto(Producto productos[]) {
+	public static Producto[] eliminarProducto(Producto productos[]) {
 	
-		boolean eliminadoCorrectamente = true;
-		
-		return (eliminadoCorrectamente);
+		Producto	productosActualizados[];
+		int			cantidadActual;
+		int			indiceProductoSeleccionado = -1;
+		cantidadActual = Operaciones.contarTotalProductosActual(productos);
+
+		indiceProductoSeleccionado = LeerSeleccionDeProducto.seleccionarProducto(productos, "eliminar");
+		if (MostrarMensajeDePeticion.condicionConfirmaEliminar()) {
+			productosActualizados = new Producto[cantidadActual - 1];
+			int j = 0;
+			for (int i = 0; i < cantidadActual; i++) {
+					if (i != indiceProductoSeleccionado) {
+						productosActualizados[j] = productos[i];
+						j++;
+					}
+				}
+			MostrarMensajeOperacionCorrecta.msgProductoEliminadoCorrectamente();
+			return (productosActualizados);
+		}
+		System.out.println("\n\t\t------->>>>\tCancelando...\t<<<<-------\n");
+		return (productos);
 	}
 
 	public static int contarTotalProductosActual(Producto productos[]) {
 		
 		int		total = 0;
-		boolean	finalDelConteo = false;
-		int		i = 0;
 		
-		while (!finalDelConteo) {
-			if (productos[i] != null) {
-				while (productos[i + 1] != null) {
+		for (int i = 0; i < productos.length; i++) {
+			if (productos[i] != null) 
 					total++;
-					i++;
-				}
-				total++;
-			}
-			finalDelConteo = true;
 		}
 		return (total);
 	}
 	
+	public static int buscarPorID(Producto productos[], int idUnico) {
+		
+		int		cantidadActual = Operaciones.contarTotalProductosActual(productos);
+		int		indiceActualProducto = -1;
+		
+		for (int i = 0; i < cantidadActual; i++) {
+			if (idUnico == productos[i].idUnico)
+				indiceActualProducto = i;
+		}
+		return (indiceActualProducto);
+	}
 }

@@ -9,77 +9,45 @@ public class RecogerDatoDeProducto {
 	
 	public static String recogerCategoria(String categorias[]) {
 		
-		String	entrada = Main.teclado.nextLine(); 
-		
-		String	categoria = "VACIO";
+		String	entrada; 
 		boolean	esCorrecto = false;
 		
 		do {
 			MostrarMensajeDePeticion.msgAsigneCategoria(categorias);
-			
-			if (ValidarDatoDeProducto.checkCategoria(entrada, categorias)) {
-				categoria = entrada;
-				esCorrecto = true;
-			}
-			
-		} while (!esCorrecto);
-		
-		return (categoria);
-	}
-	
-	
-	/*
-	public static int recogerIDUnico(Producto productos[]) {
-		
-		String entrada; 
-		
-		int		idUnico = -1;
-		boolean	esCorrecto = false;
-		
-		do {
-			MostrarMensajeDePeticion.msgAsigneIDUnico();
 			entrada = Main.teclado.nextLine();
-			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
-				idUnico = Integer.parseInt(entrada);
-				if (ValidarDatoDeProducto.checkIDUnico(idUnico, productos))
-					esCorrecto = true;
-			}
-			
+			if (ValidarDatoDeProducto.checkCategoria(entrada, categorias))
+				esCorrecto = true;
 		} while (!esCorrecto);
 		
-		return (idUnico);
-	}*/
+		return (entrada);
+	}
 	
 	public static String recogerNombre(Producto productos[]) {
 		
-		String	entrada = Main.teclado.nextLine(); 
+		String	entrada; 
 		
-		String	nombre = "VACIO";
 		boolean	esCorrecto = false;
 		
 		do {
 			MostrarMensajeDePeticion.msgAsigneNombre();
-			
-			if (ValidarDatoDeProducto.checkNombre(entrada, productos)) {
-				nombre = entrada;
-				esCorrecto = true;
-			}
-			
+			entrada = Main.teclado.nextLine();
+			if (ValidarDatoDeProducto.checkNombre(entrada, productos))
+				esCorrecto = true;			
 		} while (!esCorrecto);
 	
-		return (nombre);
+		return (entrada);
 	}
 	
 	public static double recogerPrecio() {
 		
-		String	entrada = Main.teclado.nextLine(); 
+		String	entrada; 
 		
 		double	precio = -1.00;
 		boolean	esCorrecto = false;
 		
 		do {
 			MostrarMensajeDePeticion.msgAsignePrecio();
-			
+			entrada = Main.teclado.nextLine();
 			if (ValidarDatoDeProducto.checkPrecio(entrada)) {
 				precio = Double.parseDouble(entrada);
 				esCorrecto = true;

@@ -1,5 +1,7 @@
 package vista;
 
+import main.Main;
+
 public class MostrarMensajeDePeticion {
 
 	public static void msgIntroduzcaUsuario() {
@@ -32,4 +34,46 @@ public class MostrarMensajeDePeticion {
 		System.out.print("\tAsigne un precio al producto, por favor: ");
 	}
 	
+	
+	public static boolean condicionDeseaVolver() {
+		String	entrada;
+		boolean	afirmativo = false;
+
+		System.out.println("[[[[[[\t¿Desea cancelar la operación y regresar al menú?\t]]]]]]");
+		System.out.print("\t\t\tSi desea cancelar escriba \"S\":\t");
+		entrada = Main.teclado.nextLine();
+		if (entrada.equals("S")) {
+			afirmativo = true;
+			System.out.println("\n\t\t------->>>>\tCancelando...\t<<<<-------\n");
+		}
+		return (afirmativo);
+	}
+	
+	public static boolean condicionDeseaContinuar() {
+		String	entrada;
+		boolean	afirmativo = false;
+
+		System.out.println("[[[[[[\t¿Desea continuar modificando datos de este producto?\t]]]]]]");
+		System.out.print("\t\t\tSi desea continuar escriba \"S\":\t");
+		entrada = Main.teclado.nextLine();
+		if (entrada.equals("S")) {
+			afirmativo = true;
+			System.out.println("\n\t\t------->>>>\tContinuamos...\t<<<<-------\n");
+		}
+		return (afirmativo);
+	}
+	
+	public static boolean condicionConfirmaEliminar() {
+		String	entrada;
+		boolean	afirmativo = false;
+
+		System.out.println("[[[[[[\t¿Estás segurx de eliminar este producto?\t]]]]]]");
+		System.out.print("\t\t\tSi desea continuar escriba \"S\":\t");
+		entrada = Main.teclado.nextLine();
+		if (entrada.equals("S")) {
+			afirmativo = true;
+			System.out.println("\n\t\t------->>>>\tEliminando...\t<<<<-------\n");
+		}
+		return (afirmativo);
+	}
 }

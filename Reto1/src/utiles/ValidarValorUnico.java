@@ -1,7 +1,6 @@
 package utiles;
 
-import modelo.Operaciones;
-import modelo.Producto;
+import modelo.*;
 
 public class ValidarValorUnico{
 

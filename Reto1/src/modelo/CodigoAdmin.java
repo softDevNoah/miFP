@@ -24,13 +24,14 @@ public class CodigoAdmin {
 					break;
 				case 2:
 					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(2);
-					if (Operaciones.modificarProducto(baseDeDatosMasActual.productos))
-						MostrarMensajeOperacionCorrecta.msgProductoModificadoCorrectamente();
+					baseDeDatosMasActual.productos = Operaciones.modificarProducto(baseDeDatosMasActual.productos);						MostrarMensajeOperacionCorrecta.msgProductoModificadoCorrectamente();
 					break;
 				case 3:
 					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(3);
-					if (Operaciones.eliminarProducto(baseDeDatosMasActual.productos))
-						MostrarMensajeOperacionCorrecta.msgProductoEliminadoCorrectamente();
+					if (Operaciones.contarTotalProductosActual(baseDeDatosMasActual.productos) > 0)
+						baseDeDatosMasActual.productos = Operaciones.eliminarProducto(baseDeDatosMasActual.productos);
+					else
+						MostrarMensajeDeError.noHayNingunProducto();
 					break;
 				case 4:
 					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(4);
