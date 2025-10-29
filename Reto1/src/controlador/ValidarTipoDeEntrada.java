@@ -58,30 +58,6 @@ public class ValidarTipoDeEntrada {
 		return (esCorrecto);
 	}
 	
-	public static boolean checkSoloSiONo(String entrada) {
-	
-		boolean esCorrecto = true;
-
-		if (entrada.length() == 2) {
-			if (entrada.charAt(0) != 'S' && entrada.charAt(0) != 's') {
-				if (entrada.charAt(1) != 'i' && entrada.charAt(1) != 'I'
-						&& entrada.charAt(1) != 'í' && entrada.charAt(1) != 'Í')
-					esCorrecto = false;
-			}
-			else if  (entrada.charAt(0) != 'N' && entrada.charAt(0) != 'n')
-				if (entrada.charAt(1) != 'O' && entrada.charAt(1) != 'o') {
-					esCorrecto = false;
-			}
-		}
-		else
-			esCorrecto = false;
-		
-		if (!esCorrecto)
-			MostrarMensajeDeError.noEsSoloSiONo();
-
-		return (esCorrecto);
-	}
-		
 	public static boolean checkSoloNumeroPositivoEntero(String entrada) {
 		boolean esCorrecto = true;
 

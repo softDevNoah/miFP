@@ -10,8 +10,9 @@ public class MostrarListaDeProductos {
 		
 		if (numActualProductos > 0) {
 			System.out.printf("-------------->>>>>>Lista de productos actual, %d productos<<<<<<--------------\n", numActualProductos);
+			System.out.println("\n\tNombre\t\tID\t\tCategoría\tPrecio");
 			for (int i = 0; i < numActualProductos; i++)
-				System.out.printf("\t#%d:\t\t%s\t(id -> %d,\t\tcategoría -> %s,\t\tprecio -> %.2f€)\n\n", i, productos[i].nombre, productos[i].idUnico, productos[i].categoria, productos[i].precio);
+				System.out.printf("\t\t%s\t\t%.2f€)\n\n", i, productos[i].nombre, productos[i].idUnico, productos[i].categoria, productos[i].precio);
 		}
 		else
 			MostrarMensajeDeError.noHayNingunProducto();

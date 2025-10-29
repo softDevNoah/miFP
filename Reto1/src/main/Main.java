@@ -19,7 +19,7 @@ public class Main {
 			//selecciona opcion 1 o 2
 		
 		//opcion2:
-		CodigoAdmin.ejecutarAdmin(baseDeDatos);
+		MenuAdmin.ejecutarAdmin(baseDeDatos);
 		teclado.close();
 	}
 

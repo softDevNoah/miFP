@@ -37,50 +37,10 @@ public class Operaciones {
 			else
 				id++;
 		}
-		MostrarMensajeInformativo.msgProductoCreadoCorrectamente();
+		MostrarMensajeInformativo.msgOperacionRealizadaCorrectamente(1);
 		return (productosActualizados);
 	}
-	
-	public static Producto[] modificarproducto(Producto productos[]) {
-		
-		Producto	nuevoProducto;
-		int			indiceProductoSeleccionado;
-		int			tipoDato = -1;
 
-		nuevoProducto = new Producto();
-
-		do {
-			MostrarListaDeProductos.mostrarListaCompleta(productos);
-			indiceProductoSeleccionado = LeerSeleccionDeProducto.seleccionarProducto(productos, "modificar");
-			nuevoProducto = productos[indiceProductoSeleccionado];
-			
-			do {
-				tipoDato = LeerSeleccionDeProducto.eleccionTipoDato(nuevoProducto);
-				switch (tipoDato) {
-					case 1:
-						nuevoProducto.nombre = RecogerDatoDeProducto.recogerNombre(productos);
-						break;
-					case 2:
-						nuevoProducto.categoria = RecogerDatoDeProducto.recogerCategoria(nuevoProducto.categorias);
-						break;
-					case 3:
-						nuevoProducto.precio = RecogerDatoDeProducto.recogerPrecio();
-						break;
-				}
-			} while (MostrarMensajeDePeticion.condicionDeseaContinuar());
-				
-			if (MostrarMensajeDePeticion.condicionDeseaCancelar())
-				nuevoProducto = productos[indiceProductoSeleccionado];
-			else {
-				productos[indiceProductoSeleccionado] = nuevoProducto;
-				MostrarMensajeInformativo.msgProductoModificadoCorrectamente();
-			}
-		} while (!MostrarMensajeDePeticion.condicionDeseaVolver());
-		
-		return (productos);
-	}
-
-	//alternativa mas sencilla
 	public static Producto[] modificarProducto(Producto[] productos) {
 		int			indiceProducto;
 		int			tipoDato = -1;
@@ -119,7 +79,7 @@ public class Operaciones {
 						productos[indiceProducto].precio = precioOriginal;
 					}
 				else 
-					MostrarMensajeInformativo.msgProductoModificadoCorrectamente();
+					MostrarMensajeInformativo.msgOperacionRealizadaCorrectamente(2);
 				
 			} while (!MostrarMensajeDePeticion.condicionDeseaVolver());
 		}
@@ -145,7 +105,7 @@ public class Operaciones {
 							j++;
 						}
 					}
-				MostrarMensajeInformativo.msgProductoEliminadoCorrectamente();
+				MostrarMensajeInformativo.msgOperacionRealizadaCorrectamente(3);
 				return (productosActualizados);
 			}
 			System.out.println("\n\t\t------->>>>\tCancelando...\t<<<<-------\n");

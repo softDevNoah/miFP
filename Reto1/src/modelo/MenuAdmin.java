@@ -4,7 +4,7 @@ import	vista.*;
 import	controlador.*;
 import main.Main;
 
-public class CodigoAdmin {
+public class MenuAdmin {
 
 	public static BaseDeDatos ejecutarAdmin(BaseDeDatos baseDeDatosMasActual) {
 		
