@@ -1,6 +1,7 @@
 package modelo;
 
 import controlador.*;
+import utiles.*;
 import vista.*;
 
 public class Operaciones {
@@ -10,6 +11,8 @@ public class Operaciones {
 		Producto	nuevoProducto;
 		Producto	productosActualizados[];
 		int			cantidadActual;
+		boolean		idUnico = false;
+		int			id = 1;
 		
 		cantidadActual = Operaciones.contarTotalProductosActual(productos);
 		nuevoProducto = new Producto();
@@ -18,7 +21,7 @@ public class Operaciones {
 		nuevoProducto.categoria = RecogerDatoDeProducto.recogerCategoria(nuevoProducto.categorias);
 		nuevoProducto.precio = RecogerDatoDeProducto.recogerPrecio();
 		
-		if (MostrarMensajeDePeticion.condicionDeseaVolver())
+		if (MostrarMensajeDePeticion.condicionDeseaCancelar())
 			return (productos);
 		
 		productosActualizados = new Producto[cantidadActual + 1];
@@ -27,6 +30,14 @@ public class Operaciones {
 			productosActualizados[i] = productos[i];
 		productosActualizados[cantidadActual] = nuevoProducto;
 		
+		while (!idUnico) {
+			if (ValidarDatoDeProducto.checkIDUnico(id, productosActualizados)) {
+				nuevoProducto.idUnico = id;
+				idUnico = true;
+			}
+			else
+				id++;
+		}
 		MostrarMensajeOperacionCorrecta.msgProductoCreadoCorrectamente();
 		return (productosActualizados);
 	}
@@ -57,9 +68,10 @@ public class Operaciones {
 						break;
 				}
 			} while (MostrarMensajeDePeticion.condicionDeseaContinuar());
-		} while (!MostrarMensajeDePeticion.condicionDeseaVolver());
+			
+		} while (!MostrarMensajeDePeticion.condicionDeseaCancelar());
 		
-		if (MostrarMensajeDePeticion.condicionDeseaVolver())
+		if (MostrarMensajeDePeticion.condicionDeseaCancelar())
 			return (productos);
 		
 		productos[indiceProductoSeleccionado] = nuevoProducto;
