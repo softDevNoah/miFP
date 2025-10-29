@@ -1,4 +1,4 @@
-package utiles;
+package controlador;
 
 import vista.*;
 

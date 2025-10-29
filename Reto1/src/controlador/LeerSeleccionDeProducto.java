@@ -2,7 +2,6 @@ package controlador;
 
 import main.Main;
 import modelo.*;
-import utiles.*;
 import vista.*;
 
 public class LeerSeleccionDeProducto {

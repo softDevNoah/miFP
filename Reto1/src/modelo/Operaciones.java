@@ -1,7 +1,6 @@
 package modelo;
 
 import controlador.*;
-import utiles.*;
 import vista.*;
 
 public class Operaciones {

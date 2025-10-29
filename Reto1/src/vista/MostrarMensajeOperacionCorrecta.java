@@ -3,9 +3,9 @@ package vista;
 public class MostrarMensajeOperacionCorrecta {
 
 	public static void msgInicioSesionCorrecto(String usuario) {
-			System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
-			System.out.printf("								Sesión iniciada adecuadamente. Bienvenidx, %s!\n", usuario);
-			System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*\n\n");	
+		System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
+		System.out.printf("								Sesión iniciada adecuadamente. Bienvenidx, %s!\n", usuario);
+		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*\n\n");	
 	}
 	
 	public static void msgSesionFinalizada() {

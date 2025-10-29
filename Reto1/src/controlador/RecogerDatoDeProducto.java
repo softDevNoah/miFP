@@ -2,7 +2,6 @@ package controlador;
 
 import modelo.*;
 import vista.*;
-import utiles.*;
 import main.Main;
 
 public class RecogerDatoDeProducto {

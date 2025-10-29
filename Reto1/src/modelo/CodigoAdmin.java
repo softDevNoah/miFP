@@ -2,6 +2,7 @@ package modelo;
 
 import	vista.*;
 import	controlador.*;
+import main.Main;
 
 public class CodigoAdmin {
 
@@ -15,7 +16,7 @@ public class CodigoAdmin {
 		while (sesionIniciada) {
 			
 			MostrarMenuAdmin.msgSeleccionaOperacion();
-			opcionElegida = LeerOpcionMenu.lecturaOpcionMenu();
+			opcionElegida = lecturaOpcionMenu();
 			
 			switch (opcionElegida) {
 				case 1:
@@ -41,6 +42,26 @@ public class CodigoAdmin {
 		}
 		
 		return (baseDeDatosMasActual);
+	}
+	
+	public static int lecturaOpcionMenu() {
+		
+		boolean opcionValida = false;
+		int		opcionMenu = -1;
+		
+		String entrada;
+		
+		do {
+			entrada = Main.teclado.nextLine();
+			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
+				opcionMenu = Integer.parseInt(entrada);
+				opcionValida = true;
+			}
+		}while (!opcionValida);
+		
+		System.out.println("*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *");
+		
+		return (opcionMenu);
 	}
 	
 }

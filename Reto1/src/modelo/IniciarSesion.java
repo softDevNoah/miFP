@@ -1,7 +1,7 @@
 package modelo;
 
+import controlador.ValidarUsuarioYContraseña;
 import main.Main;
-import utiles.ValidarUsuarioYContraseña;
 import vista.MostrarMensajeDePeticion;
 import vista.MostrarMensajeOperacionCorrecta;
 
