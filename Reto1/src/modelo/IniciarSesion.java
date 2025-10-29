@@ -3,7 +3,7 @@ package modelo;
 import controlador.ValidarUsuarioYContraseña;
 import main.Main;
 import vista.MostrarMensajeDePeticion;
-import vista.MostrarMensajeOperacionCorrecta;
+import vista.MostrarMensajeInformativo;
 
 public class IniciarSesion {
 
@@ -45,7 +45,7 @@ public class IniciarSesion {
 			} while (!esCorrecto);
 		}
 		if (esCorrecto)
-			MostrarMensajeOperacionCorrecta.msgInicioSesionCorrecto(administradores[numUsuario].nombre);
+			MostrarMensajeInformativo.msgInicioSesionCorrecto(administradores[numUsuario].nombre);
 		return (esCorrecto);
 	}
 }

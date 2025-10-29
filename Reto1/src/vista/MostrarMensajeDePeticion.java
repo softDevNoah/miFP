@@ -34,7 +34,6 @@ public class MostrarMensajeDePeticion {
 		System.out.print("\tAsigne un precio al producto, por favor: ");
 	}
 	
-	
 	public static boolean condicionDeseaCancelar() {
 		String	entrada;
 		boolean	afirmativo = false;

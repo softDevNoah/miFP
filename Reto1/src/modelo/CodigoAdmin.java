@@ -15,25 +15,25 @@ public class CodigoAdmin {
 		
 		while (sesionIniciada) {
 			
-			MostrarMenuAdmin.msgSeleccionaOperacion();
+			MostrarMensajeInformativo.msgSeleccionaOperacion();
 			opcionElegida = lecturaOpcionMenu();
 			
 			switch (opcionElegida) {
 				case 1:
-					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(1);
+					MostrarMensajeInformativo.msgOperacionSeleccionada(1);
 					baseDeDatosMasActual.productos = Operaciones.nuevoProducto(baseDeDatosMasActual.productos);
 					break;
 				case 2:
-					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(2);
+					MostrarMensajeInformativo.msgOperacionSeleccionada(2);
 					baseDeDatosMasActual.productos = Operaciones.modificarProducto(baseDeDatosMasActual.productos);
 					break;
 				case 3:
-					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(3);
+					MostrarMensajeInformativo.msgOperacionSeleccionada(3);
 					baseDeDatosMasActual.productos = Operaciones.eliminarProducto(baseDeDatosMasActual.productos);
 					break;
 				case 4:
-					MostrarMensajeOperacionCorrecta.msgOperacionSeleccionada(4);
-					MostrarMensajeOperacionCorrecta.msgSesionFinalizada();
+					MostrarMensajeInformativo.msgOperacionSeleccionada(4);
+					MostrarMensajeInformativo.msgSesionFinalizada();
 					sesionIniciada = false;
 					break;
 			}
@@ -63,5 +63,6 @@ public class CodigoAdmin {
 		
 		return (opcionMenu);
 	}
+	
 	
 }

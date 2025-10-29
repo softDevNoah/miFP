@@ -37,7 +37,7 @@ public class Operaciones {
 			else
 				id++;
 		}
-		MostrarMensajeOperacionCorrecta.msgProductoCreadoCorrectamente();
+		MostrarMensajeInformativo.msgProductoCreadoCorrectamente();
 		return (productosActualizados);
 	}
 	
@@ -73,7 +73,7 @@ public class Operaciones {
 				nuevoProducto = productos[indiceProductoSeleccionado];
 			else {
 				productos[indiceProductoSeleccionado] = nuevoProducto;
-				MostrarMensajeOperacionCorrecta.msgProductoModificadoCorrectamente();
+				MostrarMensajeInformativo.msgProductoModificadoCorrectamente();
 			}
 		} while (!MostrarMensajeDePeticion.condicionDeseaVolver());
 		
@@ -119,7 +119,7 @@ public class Operaciones {
 						productos[indiceProducto].precio = precioOriginal;
 					}
 				else 
-					MostrarMensajeOperacionCorrecta.msgProductoModificadoCorrectamente();
+					MostrarMensajeInformativo.msgProductoModificadoCorrectamente();
 				
 			} while (!MostrarMensajeDePeticion.condicionDeseaVolver());
 		}
@@ -145,7 +145,7 @@ public class Operaciones {
 							j++;
 						}
 					}
-				MostrarMensajeOperacionCorrecta.msgProductoEliminadoCorrectamente();
+				MostrarMensajeInformativo.msgProductoEliminadoCorrectamente();
 				return (productosActualizados);
 			}
 			System.out.println("\n\t\t------->>>>\tCancelando...\t<<<<-------\n");
