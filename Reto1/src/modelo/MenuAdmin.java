@@ -15,7 +15,6 @@ public class MenuAdmin {
 		
 		while (sesionIniciada) {
 			
-			MostrarMensajeInformativo.msgSeleccionaOperacion();
 			opcionElegida = lecturaOpcionMenu();
 			
 			switch (opcionElegida) {
@@ -52,6 +51,7 @@ public class MenuAdmin {
 		String entrada;
 		
 		do {
+			MostrarMensajeInformativo.msgSeleccionaOperacion();
 			entrada = Main.teclado.nextLine();
 			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
 				opcionMenu = Integer.parseInt(entrada);
