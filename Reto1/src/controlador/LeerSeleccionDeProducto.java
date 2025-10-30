@@ -20,6 +20,7 @@ public class LeerSeleccionDeProducto {
 				if (!ValidarDatoDeProducto.checkIDUnico(productos, seleccionProducto)) {
 					indiceProducto = busquedaPorIdUnico(productos, seleccionProducto);
 					esCorrecto = true;
+					System.out.println();
 				}
 				else
 					MostrarMensajeDeError.noHayNingunProductoConEsteCriterioDeBusqueda();

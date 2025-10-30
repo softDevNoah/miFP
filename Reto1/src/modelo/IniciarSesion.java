@@ -26,10 +26,9 @@ public class IniciarSesion {
 		do {
 			MostrarMensajeDePeticion.msgIntroduzcaUsuario();
 			entrada = Main.teclado.nextLine();
-			if (ValidarUsuarioYContraseña.checkUsuario(entrada, administradores)) {
+			if (ValidarUsuarioYContraseña.checkUsuario(entrada, administradores))
 				esCorrecto = true;
-				//numUsuario = buscarCoincidenciaEnUsuarios
-			}
+
 		}while (!esCorrecto);
 		
 		if (esCorrecto) {

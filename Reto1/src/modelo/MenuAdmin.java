@@ -59,7 +59,7 @@ public class MenuAdmin {
 			}
 		}while (!opcionValida);
 		
-		System.out.println("*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *");
+		System.out.println("*\n*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *");
 		
 		return (opcionMenu);
 	}

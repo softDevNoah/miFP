@@ -4,7 +4,7 @@ public class MostrarMensajeInformativo {
 
 	public static void msgInicioSesionCorrecto(String usuario) {
 		System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
-		System.out.printf("												Sesión iniciada adecuadamente. Bienvenidx, %s!\n", usuario);
+		System.out.printf("											Sesión iniciada adecuadamente. Bienvenidx, %s!\n", usuario);
 		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*\n\n");	
 	}
 	
@@ -19,9 +19,9 @@ public class MostrarMensajeInformativo {
 			
 		String opciones[] = {"Nuevo producto", "Modificar producto", "Eliminar producto", "Salir"};
 		
-		System.out.println("\n\n···············································································");
-		System.out.printf("			---------->>>	Operación seleccionada: %s.		<<<<<--------------\n", opciones[opcion - 1]);
-		System.out.println("···············································································\n");	
+		System.out.println("\n\n················································································································");
+		System.out.printf("			---------->>> Operación seleccionada: %s. <<<<<--------------\n", opciones[opcion - 1]);
+		System.out.println("················································································································\n");	
 
 	}	
 	
@@ -29,15 +29,15 @@ public class MostrarMensajeInformativo {
 		
 		String operaciones[] = {"CREADO", "MODIFICADO", "ELIMINADO"};
 		
-		System.out.println("\n\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-		System.out.printf("\t------>>>>>> Se ha %s un producto nuevo CORRECTAMENTE <<<<<<------\n", operaciones[operacion - 1]);
-		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");	
+		System.out.println("\n\n················································································································");
+		System.out.printf("			---------->>> Se ha %s un producto CORRECTAMENTE <<<<<--------------\n", operaciones[operacion - 1]);
+		System.out.println("················································································································\n");
 	}
 	
 	public static void msgSeleccionaOperacion() {
 		
-		System.out.println("*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *");
-		System.out.println("*\tOperaciones disponibles:										*");
+		System.out.println("*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *\n*");
+		System.out.println("*\tOperaciones disponibles:											*");
 		System.out.println("*\t\t1.- Nuevo producto.          									*");
 		System.out.println("*\t\t2.- Modificar producto.             								*");
 		System.out.println("*\t\t3.- Eliminar producto.             								*");
