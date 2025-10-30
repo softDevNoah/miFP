@@ -80,4 +80,24 @@ public class MostrarMensajeDePeticion {
 		}
 		return (afirmativo);
 	}
+	
+	public static int condicionEsClienteOAdministrador() {
+		
+		String	entrada;
+		int		eleccion = 0;
+		
+		System.out.println("\t¿Qué operación desea realizar?");
+		System.out.println("\t\t1.- Comprar productos");
+		System.out.println("\t\t2.- Administrar máquina expendedora");
+		System.out.print("\tIntroduzca el nº de la operación: ");
+		
+		entrada = Main.teclado.nextLine();
+		
+		if (entrada.equals("1"))
+			eleccion = 1;
+		else if (entrada.equals("2"))
+			eleccion = 2;		
+
+		return (eleccion);
+	}
 }

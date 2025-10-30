@@ -1,7 +1,27 @@
 package vista;
 
 public class MostrarMensajeInformativo {
-
+	
+	public static void msgBienvenida() {
+        System.out.println("***********************************************************************");
+        System.out.println("*                                                                     *");
+        System.out.println("*   ###############################################################   *");
+        System.out.println("*   #                                                             #   *");
+        System.out.println("*   #   ★☆★  ¡BIENVENIDX A LA MEJOR MÁQUINA EXPENDEDORA!  ★☆★    #   *");
+        System.out.println("*   #                                                             #   *");
+        System.out.println("*   #          Donde los sueños se compran con monedas...         #   *");
+        System.out.println("*   #              y el antojo nunca queda sin premio.            #   *");
+        System.out.println("*   #                                                             #   *");
+        System.out.println("*   ###############################################################   *");
+        System.out.println("*                                                                     *");
+        System.out.println("*            [☕]  [🍫]  [🥤]  [🍪]  [🍬]  [🍩]  [🧃]  [🥨]             *");
+        System.out.println("*                                                                     *");
+        System.out.println("*              → Pulsa la tecla Enter para continuar ←                *");
+        System.out.println("*                                                                     *");
+        System.out.println("***********************************************************************");
+	}
+	
+	
 	public static void msgInicioSesionCorrecto(String usuario) {
 		System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
 		System.out.printf("											Sesión iniciada adecuadamente. Bienvenidx, %s!\n", usuario);

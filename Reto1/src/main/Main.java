@@ -1,6 +1,7 @@
 package main;
 
 import modelo.*;
+import vista.*;
 
 import java.util.Scanner;
 
@@ -12,15 +13,16 @@ public class Main {
 		
 		BaseDeDatos baseDeDatos = new BaseDeDatos();
 		
-		//antes de aqui va:
-			//BUCLE: pantalla bienvenida (do-while?)
-			//pulse cualquier tecla para comenzar
-			//quiere comprar un producto o administrar maquina expendedora (if)
-			//selecciona opcion 1 o 2
-		
-		//opcion2:
-		MenuAdmin.ejecutarAdmin(baseDeDatos);
-		teclado.close();
+		while (true) {
+			MostrarMensajeInformativo.msgBienvenida();
+			teclado.nextLine();
+//			if (MostrarMensajeDePeticion.condicionEsClienteOAdministrador() == 1)
+//				MenuCliente.ejecutarCliente(baseDeDatos);
+			/*else*/ if (MostrarMensajeDePeticion.condicionEsClienteOAdministrador() == 2)
+				MenuAdmin.ejecutarAdmin(baseDeDatos);
+			else
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		}
 	}
 
 }
