@@ -1,15 +1,70 @@
-package controlador;
+package modelo;
 
 import java.util.Scanner;
-
-import modelo.*;
-import utilidades.*;
-import vista.*;
-
 import java.lang.Thread;
+
+import main.*;
+import vista.*;
 
 public class MenuCliente {
 	
+	public static void menuGeneral(Producto productos[]) {
+		
+		Producto ejemplar = new Producto();
+		
+		String categorias[] = ejemplar.categorias;
+		
+		double precioTotal = 0;
+
+		//aparentemente solo se llama aqui
+		//Menus.imprimirConsola("h2 - Menu tipos");
+		
+		System.out.println("-------------->>>>>>Categorías de productos<<<<<<--------------");
+		System.out.printf("\t---> %s, %s, %s, %s", categorias[0], categorias[1], categorias[2], categorias[3]);
+		
+		//Menus.mostrarTipos();
+		
+		//refactorizable sin texto
+		pedirNumeroRango(1, 4, "Elige un numero") - 1;
+
+		//parecido a operacion seleccionada
+		tipoSeleccionado = tipos[valorTmp];
+		
+		//mostrar productos por categoria elegida
+		Menus.mostrarAvisoTipoElegido(valorTmp);
+		Productos.mostrarProductos(tipoSeleccionado);
+		
+		//añadir producto y seguir o no seguir comprando
+		valorTmp = pedirNumeroRango(1, tipoSeleccionado.length, "Elige un número:");
+		productoSeleccionado = ExpandirArray.elegirProductoDelArray(productoSeleccionado, tipoSeleccionado,
+				valorTmp - 1);
+		listaCompra = ExpandirArray.expandirArrayString(listaCompra, productoSeleccionado);
+		Productos.mostrarProductos(listaCompra);
+		Menus.mostrarMenuIntermedio();
+		valorTmp = pedirNumeroRango(1, 3, "Elige una opcion:");
+
+		//pantalla de pago
+		precioTotal = Calculadora.sumarProductos(listaCompra, 3);
+		Menus.imprimirConsola(String.format("El precio total es: %.2f", precioTotal));
+		Menus.imprimirConsola("Quieres continuar con el pago?");
+		Menus.mostrarMenuAceptarPago();
+		
+		//quiere pagar
+		if (pedirNumeroRango(1, 2, "Elige una opcion:") == 1) {
+			//pagar
+			fasePago(precioTotal);
+			
+			//final de compra
+			Menus.imprimirConsola("Esperando 2 segundos antes de ir al menu principal..");
+			esperarSegundos(2);
+		}
+		//cancela la compra
+		else {
+			Menus.imprimirConsola("ok. Se te llevara al menu principal..");
+			listaCompra = new String[0][0];
+		}
+	}
+
 	public static void fasePago(double precioTotal) {
 		double dineroIntroducido = 0;
 		double faltante;
@@ -31,53 +86,9 @@ public class MenuCliente {
 			Calculadora.desglosarCambio(cambio);
 		}
 		System.out.println("Gracias por su compra.");
-		
-	}
-
-	public static void menuGeneral(Producto productos[]) {
-		
-		double precioTotal = 0;
-
-
-		Menus.imprimirConsola("h2 - Menu tipos");
-
-		Menus.mostrarTipos();
-		
-		pedirNumeroRango(1, 4, "Elige un numero") - 1;
-
-		tipoSeleccionado = tipos[valorTmp];
-		Menus.mostrarAvisoTipoElegido(valorTmp);
-		Productos.mostrarProductos(tipoSeleccionado);
-		valorTmp = pedirNumeroRango(1, tipoSeleccionado.length, "Elige un número:");
-		productoSeleccionado = ExpandirArray.elegirProductoDelArray(productoSeleccionado, tipoSeleccionado,
-				valorTmp - 1);
-		listaCompra = ExpandirArray.expandirArrayString(listaCompra, productoSeleccionado);
-		Productos.mostrarProductos(listaCompra);
-		Menus.mostrarMenuIntermedio();
-		valorTmp = pedirNumeroRango(1, 3, "Elige una opcion:");
-
-
-
-		precioTotal = Calculadora.sumarProductos(listaCompra, 3);
-		Menus.imprimirConsola(String.format("El precio total es: %.2f", precioTotal));
-		Menus.imprimirConsola("Quieres continuar con el pago?");
-		Menus.mostrarMenuAceptarPago();
-		
-		if (pedirNumeroRango(1, 2, "Elige una opcion:") == 1) {
-			//pagar
-			fasePago(precioTotal);
-			
-			Menus.imprimirConsola("Esperando 2 segundos antes de ir al menu principal..");
-			
-			esperarSegundos(2);
-		} else {
-			Menus.imprimirConsola("ok. Se te llevara al menu principal..");
-			listaCompra = new String[0][0];
-			comando = 1;
-		}
-	}
-
 	
+	}
+
 	public static void esperarSegundos(int numero) {
 		try {
 			Thread.sleep(numero * 1000);
@@ -109,7 +120,7 @@ public class MenuCliente {
 
 		do {
 			System.out.printf("\t:: %s ", frase);
-			input = teclado.nextLine().trim();
+			input = Main.teclado.nextLine().trim();
 
 			if (Validador.esEntero(input)) {
 				numeroEntero = Integer.parseInt(input);

@@ -68,4 +68,5 @@ public class MostrarMensajeInformativo {
 		System.out.print("*\tOperación número: ");
 	}
 	
+	
 }

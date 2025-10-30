@@ -16,9 +16,9 @@ public class Main {
 		while (true) {
 			MostrarMensajeInformativo.msgBienvenida();
 			teclado.nextLine();
-//			if (MostrarMensajeDePeticion.condicionEsClienteOAdministrador() == 1)
-//				MenuCliente.ejecutarCliente(baseDeDatos);
-			/*else*/ if (MostrarMensajeDePeticion.condicionEsClienteOAdministrador() == 2)
+			if (MostrarMensajeDePeticion.condicionEsClienteOAdministrador() == 1)
+				MenuCliente.ejecutarCliente(baseDeDatos);
+			else if (MostrarMensajeDePeticion.condicionEsClienteOAdministrador() == 2)
 				baseDeDatos = MenuAdmin.ejecutarAdmin(baseDeDatos);
 			else
 				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
