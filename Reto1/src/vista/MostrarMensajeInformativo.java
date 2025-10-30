@@ -37,7 +37,7 @@ public class MostrarMensajeInformativo {
 	public static void msgSeleccionaOperacion() {
 		
 		System.out.println("*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *\n*");
-		System.out.println("*\tOperaciones disponibles:											*");
+		System.out.println("*\tOperaciones disponibles:										*");
 		System.out.println("*\t\t1.- Nuevo producto.          									*");
 		System.out.println("*\t\t2.- Modificar producto.             								*");
 		System.out.println("*\t\t3.- Eliminar producto.             								*");

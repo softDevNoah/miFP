@@ -2,7 +2,7 @@ package modelo;
 
 public class Producto {
 
-	String categorias[] = {"bebida", "bocata", "bollito", "choco"};
+	String categorias[] = {"bebida", "bocata", "bollo", "chuche"};
 	public String	categoria;
 	public int		idUnico;
 	public String	nombre;

@@ -24,8 +24,8 @@ public class BaseDeDatos {
 	
 	private Producto[] setearProductosIniciales(Producto productos[]) {
 		
-		String	nombresIniciales[] = {"agua", "aquarius", "zumo", "juguito", "vegano", "sandwich", "vegetal", "mixto",
-									"donete", "zebra", "palmera", "croisant", "kitkat", "mars", "kinder", "twix"};
+		String	nombresIniciales[] = {"agua", "aquariu", "zumo", "juguito", "vegano", "sandwi", "vegetal", "mixto",
+									"donete", "zebra", "palmera", "croisan", "kitkat", "mars", "kinder", "twix"};
 		double	precios[] = {1.20, 0.6, 0.85, 0.45, 2.2, 2.15, 1.85, 1.20, 0.6, 0.85, 0.45, 2.2, 2.15, 1.85, 1.0, 1.35};
 	
 		for (int i = 0; i < 16; i++) {

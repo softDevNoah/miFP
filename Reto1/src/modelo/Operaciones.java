@@ -95,6 +95,7 @@ public class Operaciones {
 		cantidadActual = Operaciones.contarTotalProductosActual(productos);
 
 		if (Operaciones.contarTotalProductosActual(productos) > 0) {
+			MostrarListaDeProductos.mostrarListaCompleta(productos);
 			indiceProductoSeleccionado = LeerSeleccionDeProducto.seleccionarProducto(productos, "eliminar");
 			if (MostrarMensajeDePeticion.condicionConfirmaEliminar()) {
 				productosActualizados = new Producto[cantidadActual - 1];

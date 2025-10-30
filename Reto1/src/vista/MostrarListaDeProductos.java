@@ -11,13 +11,15 @@ public class MostrarListaDeProductos {
 		if (numActualProductos > 0) {
 			System.out.printf("-------------->>>>>>Lista de productos actual, %d productos<<<<<<--------------\n", numActualProductos);
 			System.out.println("\n\tNombre\t\tID\t\tCategoría\tPrecio");
+			System.out.println("\t______\t\t__\t\t_________\t______\n");
 			for (int i = 0; i < numActualProductos; i++)
-				System.out.printf("\t\t%s\t\t%.2f€)\n\n", i, productos[i].nombre, productos[i].idUnico, productos[i].categoria, productos[i].precio);
+				System.out.printf("\t%s\t\t%d\t\t%s\t\t%.2f€)\n\n", productos[i].nombre, productos[i].idUnico, productos[i].categoria, productos[i].precio);
 		}
 		else
 			MostrarMensajeDeError.noHayNingunProducto();
 	}
 	
+	//puede que haga falta en la parte de cliente
 	public static void mostrarPorCategoria(Producto productos[], String categoria) {
 		
 		int	numActualProductos = Operaciones.contarTotalProductosActual(productos);
