@@ -113,7 +113,7 @@ public class LeerSeleccion {
 		String categoriaSeleccionada;
 		
 		MostrarListaDeProductos.mostrarCategorias(categorias);
-		categoriaSeleccionada =  categorias[MenuCliente.recogerOpcionNumerica(1, 4, "\tInserte el nº de la categoría: ") - 1];
+		categoriaSeleccionada =  categorias[MenuCliente.recogerOpcionNumerica(1, 4) - 1];
 		
 		System.out.printf("\n\t--->>> Categoría seleccionada: \"%s <<<---\n\n", categoriaSeleccionada);
 		

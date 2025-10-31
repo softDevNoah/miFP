@@ -20,7 +20,7 @@ public class Operaciones {
 		nuevoProducto.categoria = RecogerDatoDeProducto.recogerCategoria(nuevoProducto.categorias);
 		nuevoProducto.precio = RecogerDatoDeProducto.recogerPrecio();
 		
-		if (MostrarMensajeDePeticion.condicionDeseaCancelar())
+		if (MsgPeticion.condicionDeseaCancelar())
 			return (productos);
 		
 		productosActualizados = new Producto[cantidadActual + 1];
@@ -72,9 +72,9 @@ public class Operaciones {
 					}
 					
 					
-				} while (MostrarMensajeDePeticion.condicionDeseaContinuar());
+				} while (MsgPeticion.condicionDeseaContinuar());
 					
-				if (MostrarMensajeDePeticion.condicionDeseaCancelar()) {
+				if (MsgPeticion.condicionDeseaCancelar()) {
 						productos[indiceProducto].nombre = nombreOriginal;
 						productos[indiceProducto].categoria = categoriaOriginal;
 						productos[indiceProducto].precio = precioOriginal;
@@ -82,7 +82,7 @@ public class Operaciones {
 				else 
 					MostrarMensajeInformativo.msgOperacionRealizadaCorrectamente(2);
 				
-			} while (!MostrarMensajeDePeticion.condicionDeseaVolver());
+			} while (!MsgPeticion.condicionDeseaVolver());
 		}
 		else
 			MostrarMensajeDeError.noHayNingunProducto();
@@ -98,7 +98,7 @@ public class Operaciones {
 		if (Operaciones.contarTotalProductosActual(productos) > 0) {
 			MostrarListaDeProductos.mostrarListaCompleta(productos);
 			indiceProductoSeleccionado = LeerSeleccion.seleccionarProducto(productos, "eliminar");
-			if (MostrarMensajeDePeticion.condicionConfirmaEliminar()) {
+			if (MsgPeticion.condicionConfirmaEliminar()) {
 				productosActualizados = new Producto[cantidadActual - 1];
 				int j = 0;
 				for (int i = 0; i < cantidadActual; i++) {
@@ -144,7 +144,7 @@ public class Operaciones {
 		
 		Producto	productosActualizados[];
 		int			cantidadActual;
-		
+		double		precioTotal;
 		cantidadActual = Operaciones.contarTotalProductosActual(cestaDeCompra);
 			
 		productosActualizados = new Producto[cantidadActual + 1];
@@ -153,8 +153,20 @@ public class Operaciones {
 			productosActualizados[i] = cestaDeCompra[i];
 		
 		productosActualizados[cantidadActual] = producto;
-		
-		MostrarMensajeInformativo.msgOperacionRealizadaCorrectamente(1);
+		precioTotal = calcularPrecioTotal(0, cestaDeCompra);
+
+		MostrarListaDeProductos.mostrarCestaCompra(cestaDeCompra);
+		syso
 		return (productosActualizados);
+	}
+	
+	public static double calcularPrecioTotal(int iva, Producto cestaDeCompra[]) {
+		double precioTotal = 0;
+		
+		for (int i = 0; i < cestaDeCompra.length; i++) 
+			precioTotal += cestaDeCompra[i].precio;
+		if (iva == 0)
+			return (precioTotal);
+		return (precioTotal *= 1.21);
 	}
 }

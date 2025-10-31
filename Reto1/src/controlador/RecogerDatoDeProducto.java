@@ -12,7 +12,7 @@ public class RecogerDatoDeProducto {
 		boolean	esCorrecto = false;
 		
 		do {
-			MostrarMensajeDePeticion.msgAsigneCategoria(categorias);
+			MsgPeticion.msgAsigneCategoria(categorias);
 			entrada = Main.teclado.nextLine();
 			if (ValidarDatoDeProducto.checkCategoria(entrada, categorias))
 				esCorrecto = true;
@@ -28,7 +28,7 @@ public class RecogerDatoDeProducto {
 		boolean	esCorrecto = false;
 		
 		do {
-			MostrarMensajeDePeticion.msgAsigneNombre();
+			MsgPeticion.msgAsigneNombre();
 			entrada = Main.teclado.nextLine();
 			if (ValidarDatoDeProducto.checkNombre(entrada, productos))
 				esCorrecto = true;			
@@ -45,7 +45,7 @@ public class RecogerDatoDeProducto {
 		boolean	esCorrecto = false;
 		
 		do {
-			MostrarMensajeDePeticion.msgAsignePrecio();
+			MsgPeticion.msgAsignePrecio();
 			entrada = Main.teclado.nextLine();
 			if (ValidarDatoDeProducto.checkPrecio(entrada)) {
 				precio = Double.parseDouble(entrada);

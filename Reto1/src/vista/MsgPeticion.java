@@ -3,14 +3,24 @@ package vista;
 import main.Main;
 import modelo.*;
 
-public class MostrarMensajeDePeticion {
+public class MsgPeticion {
 
-	public static void menuOpciones(String titulo, String opciones[], String peticion) {
-		System.out.printf("\t------> %s <<<<<<------\n\n");
+	public static int menuOpciones(String titulo, String opciones[], String peticion) {
+		
+		String	siNo[] = {"Sí", "No"};
+		int		decisionTomada;
+		
+		if (opciones == null)
+			opciones = siNo;
+		
+		System.out.printf("\n\t------> %s <<<<<<------\n\n", titulo);
 		for (int i = 0; i < opciones.length; i++) 
-			System.out.printf("\t\t%d.- %s.\n", i, opciones[i]);
-		System.out.printf("\n\t%s:\t%d", peticion, MenuCliente.recogerOpcionNumerica(1, opciones.length));
-		System.out.println("\n--------------------------------------------------------\n");
+			System.out.printf("\t\t%d.- %s.\n", i + 1, opciones[i]);
+		System.out.printf("\n\t%s: ", peticion);
+		decisionTomada = MenuCliente.recogerOpcionNumerica(1, opciones.length);
+		System.out.println("\n-----------------------------------------------------------------------\n");
+		
+		return (decisionTomada - 1);
 	}
 	
 	public static void msgIntroduzcaUsuario() {
@@ -119,7 +129,7 @@ public class MostrarMensajeDePeticion {
 		System.out.println("\t\t3.- Quiero otro producto de esta categoría (%s).");	
 		System.out.print("\tIntroduzca el nº de la operación: ");
 		
-		opcionElegida = MenuCliente.recogerOpcionNumerica(1, 3, "");
+		opcionElegida = MenuCliente.recogerOpcionNumerica(1, 3);
 		
 		return (opcionElegida);
 	}

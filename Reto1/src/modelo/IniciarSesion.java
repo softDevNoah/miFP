@@ -2,7 +2,7 @@ package modelo;
 
 import controlador.ValidarUsuarioYContraseña;
 import main.Main;
-import vista.MostrarMensajeDePeticion;
+import vista.MsgPeticion;
 import vista.MostrarMensajeInformativo;
 
 public class IniciarSesion {
@@ -24,7 +24,7 @@ public class IniciarSesion {
 		int		numUsuario = 0;
 		
 		do {
-			MostrarMensajeDePeticion.msgIntroduzcaUsuario();
+			MsgPeticion.msgIntroduzcaUsuario();
 			entrada = Main.teclado.nextLine();
 			if (ValidarUsuarioYContraseña.checkUsuario(entrada, administradores))
 				esCorrecto = true;
@@ -37,7 +37,7 @@ public class IniciarSesion {
 			esCorrecto = false;
 			
 			do {
-				MostrarMensajeDePeticion.msgIntroduzcaContraseña();
+				MsgPeticion.msgIntroduzcaContraseña();
 				entrada = Main.teclado.nextLine();
 				if (ValidarUsuarioYContraseña.checkContraseña(entrada, administradores, numUsuario))
 					esCorrecto = true;

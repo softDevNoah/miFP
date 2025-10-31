@@ -11,49 +11,48 @@ public class MenuCliente {
 	public static void ejecutarCliente(Producto productos[]) {
 		
 		Producto 	cestaDeCompra[] = new Producto[0];
-		Producto	productoSeleccionado = new Producto();
+		Producto	producto = new Producto();
 		
-		String		categoriaSeleccionada;
+		String		categSelect;
 		double 		precioTotal = 0;
-		boolean		seguirComprandoMismaCategoria = true;
+		boolean		seguirEnMismaCategoria = true;
 		boolean		seguirComprando = true;
 		
 		int			decisionDeCompra = 0;
-		
+		String		opcionesDeCompra[] = {"Terminar la compra y pagar ya", "Comprar otro producto de otra categoría", "Comprar otro producto dentro de esta categoría"};
 		if (Operaciones.contarTotalProductosActual(productos) > 0) {
 				
 			while (seguirComprando) {
 				
-				categoriaSeleccionada = LeerSeleccion.seleccionarCategoria(productoSeleccionado.categorias);
-				seguirComprandoMismaCategoria = true;
+				//categoriaSeleccionada = LeerSeleccion.seleccionarCategoria(productoSeleccionado.categorias);
+				categSelect = producto.categorias[MsgPeticion.menuOpciones("Categorías de productos", producto.categorias, "Elija una categoría")];
+				seguirEnMismaCategoria = true;
 				
-				while (seguirComprandoMismaCategoria) {
+				while (seguirEnMismaCategoria) {
 					
-					productoSeleccionado =  LeerSeleccion.seleccionarProductoDeUnaCategoria(productos, categoriaSeleccionada);
+					producto =  LeerSeleccion.seleccionarProductoDeUnaCategoria(productos, categSelect);
 					
-					if ((precioTotal + productoSeleccionado.precio) < 250.00) {
-						precioTotal += productoSeleccionado.precio;
-						cestaDeCompra = Operaciones.añadirProductoALaCesta(cestaDeCompra, productoSeleccionado);
-						MostrarListaDeProductos.mostrarCestaCompra(cestaDeCompra);
-						decisionDeCompra = MostrarMensajeDePeticion.condicionSeguirComprando(categoriaSeleccionada);
-						if (decisionDeCompra == 1) {
-							seguirComprandoMismaCategoria = false;
+					if ((precioTotal + producto.precio) < 250.00) {
+						precioTotal += producto.precio;
+						cestaDeCompra = Operaciones.añadirProductoALaCesta(cestaDeCompra, producto);
+						decisionDeCompra = MsgPeticion.menuOpciones("Operaciones disponibles", opcionesDeCompra, "Elija una operación");
+						if (decisionDeCompra == 0) {
+							seguirEnMismaCategoria = false;
 							seguirComprando = false;
 						}
-						else if (decisionDeCompra == 2)
-							seguirComprandoMismaCategoria = false;				
+						else if (decisionDeCompra == 1)
+							seguirEnMismaCategoria = false;				
 					}
 					else {
 						MostrarMensajeDeError.noSePuedenAñadirMasProductosALaCesta();
-						seguirComprandoMismaCategoria = false;
+						seguirEnMismaCategoria = false;
 						seguirComprando = false;
 					}
 				}
 			}
 			System.out.printf("\t---> El precio total es: %.2f€\n\t¿Quiere continuar con el pago?\n\t1.- Si\n\t2.- No, cancelar compra.", precioTotal);
 			
-			if (MostrarMensajeDePeticion.menuOpciones("¿Desea realizar el pago?", {"Sí", "No"}, "Introduzca una opción")) {
-			//if (recogerOpcionNumerica(1, 2, "Elige una opcion:") == 1) {
+			if (MsgPeticion.menuOpciones("¿Desea realizar el pago?", null, "Introduzca una opción") == 1) {
 				fasePago(precioTotal);
 				Menus.imprimirConsola("Esperando 10 segundos antes de ir al menu principal..");
 				esperarSegundos(10);
