@@ -20,13 +20,12 @@ public class MenuCliente {
 		if (Operaciones.contarTotalProductosActual(productos) > 0) {
 			
 			System.out.println("-------------->>>>>>Categorías de productos<<<<<<--------------");
-			System.out.printf("\t---> %s, %s, %s, %s", categorias[0], categorias[1], categorias[2], categorias[3]);
+			System.out.printf("\t---> 1.- %s\n\t---> 2.- %s\n\t---> 3.- %s\n\t---> 4.- %s", categorias[0], categorias[1], categorias[2], categorias[3]);
 			
 			//refactorizable sin texto
 			categoriaSeleccionada =  categorias[pedirNumeroRango(1, 4, "Inserte el nº de la categoría: ") - 1];
 			
-			System.out.printf("\n\t- Categoría seleccionada: \"%s\"\n", categoriaSeleccionada);
-			
+			System.out.printf("\n\t- Categoría seleccionada: \"%s\"\n\n", categoriaSeleccionada);
 			MostrarListaDeProductos.mostrarPorCategoria(productos, categoriaSeleccionada);
 			
 			indiceProductoseleccionado = LeerSeleccionDeProducto.seleccionarProductoDeUnaCategoria(productos, categoriaSeleccionada);
@@ -38,20 +37,18 @@ public class MenuCliente {
 			}
 			else
 				MostrarMensajeDeError.noSePuedenAñadirMasProductosALaCesta();
-			
-			
-			
-			
+						
+//			Productos.mostrarProductos(cestaDeCompra);
+
 			//quiere comprar otro producto o desea pagar ya?
 			
-			//opcion1:
-			//de categoria %s  u otra?
-			//misma categoria: volver al punto de mostrar productos de categoria
-			//otra categoria: volver al punto de mostrar las categorias para elegir una
+				//opcion1:
+				//de categoria %s  u otra?
+				//misma categoria: volver al punto de mostrar productos de categoria
+				//otra categoria: volver al punto de mostrar las categorias para elegir una
 			
-			//pagar: pasarela de pago
+				//pagar: pasarela de pago
 			
-//			Productos.mostrarProductos(listaCompra);
 //			Menus.mostrarMenuIntermedio();
 //			valorTmp = pedirNumeroRango(1, 3, "Elige una opcion:");
 //	
