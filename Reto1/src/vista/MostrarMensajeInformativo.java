@@ -24,13 +24,13 @@ public class MostrarMensajeInformativo {
 	
 	public static void msgInicioSesionCorrecto(String usuario) {
 		System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
-		System.out.printf("											Sesión iniciada adecuadamente. Bienvenidx, %s!\n", usuario);
+		System.out.printf("											[✔]Sesión iniciada adecuadamente. Bienvenidx, %s!\n", usuario);
 		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*\n\n");	
 	}
 	
 	public static void msgSesionFinalizada() {
 		System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
-		System.out.println("											Sesión finalizada adecuadamente. Hasta la próxima!");
+		System.out.println("										[✔]Sesión finalizada adecuadamente. Hasta la próxima!");
 		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");	
 	}
 	
@@ -47,10 +47,10 @@ public class MostrarMensajeInformativo {
 	
 	public static void msgOperacionRealizadaCorrectamente(int operacion) {
 		
-		String operaciones[] = {"CREADO", "MODIFICADO", "ELIMINADO"};
+		String operaciones[] = {"AÑADIDO", "MODIFICADO", "ELIMINADO"};
 		
 		System.out.println("\n\n················································································································");
-		System.out.printf("			---------->>> Se ha %s un producto CORRECTAMENTE <<<<<--------------\n", operaciones[operacion - 1]);
+		System.out.printf("			---------->>> Se ha %s un producto CORRECTAMENTE ✔ <<<<<--------------\n", operaciones[operacion - 1]);
 		System.out.println("················································································································\n");
 	}
 	
@@ -77,6 +77,8 @@ public class MostrarMensajeInformativo {
 		System.out.println("*                              											*");
 		System.out.print("*\tOperación número: ");
 	}
+	
+	
 	
 	
 }

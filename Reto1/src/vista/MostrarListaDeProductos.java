@@ -48,4 +48,22 @@ public class MostrarListaDeProductos {
 			MostrarMensajeDeError.noHayNingunProducto();
 	}
 	
+	public static void mostrarCestaCompra(Producto productosCesta[]) {
+		
+		int	cantidadProductos = Operaciones.contarTotalProductosActual(productosCesta);
+		
+		if (cantidadProductos > 0) {
+			System.out.printf("-------------->>>>>>Resumen de compra, cesta con %d productos<<<<<<--------------\n", cantidadProductos);
+			System.out.println("\n\tNombre\t\tCategoría\tPrecio");
+			System.out.println("\t______\t\t_________\t______\n");
+			for (int i = 0; i < cantidadProductos; i++)
+				System.out.printf("\t%s\t\t%s\t\t%.2f€)\n\n", productosCesta[i].nombre, productosCesta[i].categoria, productosCesta[i].precio);
+		}
+	}
+	public static void mostrarCategorias(String categorias[]) {
+	
+		System.out.println("-------------->>>>>>Categorías de productos<<<<<<--------------");
+		for (int i = 0; i < categorias.length; i++)
+			System.out.printf("\t---> 1.- %s\n", categorias[i]);
+	}
 }

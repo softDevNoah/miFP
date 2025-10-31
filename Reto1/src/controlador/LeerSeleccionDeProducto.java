@@ -30,7 +30,7 @@ public class LeerSeleccionDeProducto {
 		return (indiceProducto);
 	}
 	
-	public static int seleccionarProductoDeUnaCategoria(Producto productos[], String categoria) {
+	public static Producto seleccionarProductoDeUnaCategoria(Producto productos[], String categoriaSeleccionada) {
 	
 		String	entrada;
 		int		indiceProducto = 0;
@@ -42,6 +42,8 @@ public class LeerSeleccionDeProducto {
 		int		idProductoSeleccionado = 0;
 		
 		do {
+			MostrarListaDeProductos.mostrarPorCategoria(productos, categoriaSeleccionada);
+			
 			System.out.printf("\t------>>>>>>\t¿Qué producto desea añadir a la cesta?\t<<<<<<------\n");
 			System.out.print("\tEscriba el nº del producto:\t");
 			entrada = Main.teclado.nextLine();
@@ -50,9 +52,9 @@ public class LeerSeleccionDeProducto {
 				indiceProducto = Integer.parseInt(entrada);
 				
 				for (int i = 0; i < numActualProductos; i++) {
-					if (productos[i].categoria.equals(categoria)) {
+					if (productos[i].categoria.equals(categoriaSeleccionada)) {
 						numProductosConCategoria++;
-						if (numProductosConCategoria == indiceProducto)
+						if (numProductosConCategoria == indiceProducto - 1)
 							idProductoSeleccionado = productos[i].idUnico;
 					}
 				}
@@ -64,7 +66,7 @@ public class LeerSeleccionDeProducto {
 					MostrarMensajeDeError.noHayNingunProductoConEsteCriterioDeBusqueda();
 		} while (!esCorrecto);
 		
-		return (idProductoSeleccionado);
+		return (productos[idProductoSeleccionado]);
 	}
 	
 	public static int eleccionTipoDato(Producto producto) {

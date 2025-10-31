@@ -10,65 +10,53 @@ public class MenuCliente {
 	
 	public static void ejecutarCliente(Producto productos[]) {
 		
+		Producto 	cestaDeCompra[] = new Producto[0];
 		Producto	productoSeleccionado = new Producto();
-		String 		categorias[] = productoSeleccionado.categorias;
+		
 		String		categoriaSeleccionada;
-		int			indiceProductoseleccionado = 0;
 		double 		precioTotal = 0;
-		Producto 	cestaDeCompra[];
-			
+		boolean		seguirComprandoMismaCategoria = true;
+		boolean		seguirComprando = true;
+		
+		int			decisionPago = 0;
+		
 		if (Operaciones.contarTotalProductosActual(productos) > 0) {
-			
-			System.out.println("-------------->>>>>>Categorías de productos<<<<<<--------------");
-			System.out.printf("\t---> 1.- %s\n\t---> 2.- %s\n\t---> 3.- %s\n\t---> 4.- %s", categorias[0], categorias[1], categorias[2], categorias[3]);
-			
-			//refactorizable sin texto
-			categoriaSeleccionada =  categorias[pedirNumeroRango(1, 4, "Inserte el nº de la categoría: ") - 1];
-			
-			System.out.printf("\n\t- Categoría seleccionada: \"%s\"\n\n", categoriaSeleccionada);
-			MostrarListaDeProductos.mostrarPorCategoria(productos, categoriaSeleccionada);
-			
-			indiceProductoseleccionado = LeerSeleccionDeProducto.seleccionarProductoDeUnaCategoria(productos, categoriaSeleccionada);
-			productoSeleccionado = productos[indiceProductoseleccionado];
-			
-			if ((precioTotal + productoSeleccionado.precio) < 250.00) {
-				precioTotal += productoSeleccionado.precio;
-				cestaDeCompra = Operaciones.añadirProductoALaCesta(productos, productoSeleccionado);
+				
+			while (seguirComprando) {
+				
+				categoriaSeleccionada = RecogerDatoDeProducto.seleccionarCategoria(productoSeleccionado.categorias);
+				seguirComprandoMismaCategoria = true;
+				
+				while (seguirComprandoMismaCategoria) {
+					
+					productoSeleccionado =  LeerSeleccionDeProducto.seleccionarProductoDeUnaCategoria(productos, categoriaSeleccionada);
+					
+					if ((precioTotal + productoSeleccionado.precio) < 250.00) {
+						precioTotal += productoSeleccionado.precio;
+						cestaDeCompra = Operaciones.añadirProductoALaCesta(cestaDeCompra, productoSeleccionado);
+						MostrarListaDeProductos.mostrarCestaCompra(cestaDeCompra);
+						//condicionQuiereSeguirComprando
+							//misma categoria: no se hace nada
+							//otra categoria: se pone seguirComprandoMismaCategoria = false
+							//no:  se pone seguirComprandoMismaCategoria = false y tambien  se pone seguirComprando = false						
+					}
+					else {
+						MostrarMensajeDeError.noSePuedenAñadirMasProductosALaCesta();
+						// se pone seguirComprandoMismaCategoria = false y tambien  se pone seguirComprando = false
+					}
+				}
 			}
-			else
-				MostrarMensajeDeError.noSePuedenAñadirMasProductosALaCesta();
-						
-//			Productos.mostrarProductos(cestaDeCompra);
-
-			//quiere comprar otro producto o desea pagar ya?
-			
-				//opcion1:
-				//de categoria %s  u otra?
-				//misma categoria: volver al punto de mostrar productos de categoria
-				//otra categoria: volver al punto de mostrar las categorias para elegir una
-			
-				//pagar: pasarela de pago
-			
-//			Menus.mostrarMenuIntermedio();
-//			valorTmp = pedirNumeroRango(1, 3, "Elige una opcion:");
-//	
-//			//pantalla de pago
-//			precioTotal = Calculadora.sumarProductos(listaCompra, 3);
-//			Menus.imprimirConsola(String.format("El precio total es: %.2f", precioTotal));
-//			Menus.imprimirConsola("Quieres continuar con el pago?");
-//			Menus.mostrarMenuAceptarPago();
-//			
-//				fasePago(precioTotal);
-//				
-//				//final de compra
-//				Menus.imprimirConsola("Esperando 2 segundos antes de ir al menu principal..");
-//				esperarSegundos(2);
-//			}
-//			//cancela la compra
-//			else {
-//				Menus.imprimirConsola("ok. Se te llevara al menu principal..");
-//				listaCompra = new String[0][0];
-//			}
+			Menus.imprimirConsola(String.format("El precio total es: %.2f", precioTotal));
+			Menus.imprimirConsola("Quieres continuar con el pago?");
+			Menus.mostrarMenuAceptarPago();
+			decisionPago = pedirNumeroRango(1, 2, "Elige una opcion:");
+			if (decisionPago == 1) {
+				fasePago(precioTotal);
+				Menus.imprimirConsola("Esperando 10 segundos antes de ir al menu principal..");
+				esperarSegundos(10);
+			}
+			else			
+				Menus.imprimirConsola("ok. Se te llevara al menu principal..");
 		}
 		else
 			MostrarMensajeDeError.noHayNingunProducto();
@@ -131,12 +119,12 @@ public class MenuCliente {
 			System.out.printf("\t:: %s ", frase);
 			input = Main.teclado.nextLine().trim();
 
-//			if (Validador.esEntero(input)) {
-//				numeroEntero = Integer.parseInt(input);
-//				esEnteroValido = true;
-//			} else {
-//				Menus.imprimirConsola("error Error, no es un numero valido. Intenta otra vez.");
-//			}
+			if (Validador.esEntero(input)) {
+				numeroEntero = Integer.parseInt(input);
+				esEnteroValido = true;
+			} else {
+				Menus.imprimirConsola("error Error, no es un numero valido. Intenta otra vez.");
+			}
 
 		} while (!esEnteroValido);
 
@@ -148,18 +136,18 @@ public class MenuCliente {
 		String entrada = "";
 		double numero = 0;
 
-//		do {
-//			System.out.printf("\t:: %s ", frasePeticion);
-//			entrada = teclado.nextLine();
-//
-//			if (Validador.esDouble(entrada)) {
-//				numero = Double.parseDouble(entrada);
-//				valido = true;
-//			} else {
-//				System.out.printf("error\n");
-//			}
-//
-//		} while (!valido);
+		do {
+			System.out.printf("\t:: %s ", frasePeticion);
+			entrada = Main.teclado.nextLine();
+
+			if (Validador.esDouble(entrada)) {
+				numero = Double.parseDouble(entrada);
+				valido = true;
+			} else {
+				System.out.printf("error\n");
+			}
+
+		} while (!valido);
 
 		return numero;
 	}

@@ -56,4 +56,16 @@ public class RecogerDatoDeProducto {
 		
 		return (precio);
 	}
+	
+	public static String seleccionarCategoria(String categorias[]) {
+		
+		String categoriaSeleccionada;
+		
+		MostrarListaDeProductos.mostrarCategorias(categorias);
+		categoriaSeleccionada =  categorias[MenuCliente.pedirNumeroRango(1, 4, "Inserte el nº de la categoría: ") - 1];
+		
+		System.out.printf("\n\t- Categoría seleccionada: \"%s\"\n\n", categoriaSeleccionada);
+		
+		return (categoriaSeleccionada);
+	}
 }

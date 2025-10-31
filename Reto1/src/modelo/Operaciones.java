@@ -140,21 +140,21 @@ public class Operaciones {
 		return (indiceActualProducto);
 	}
 	
-	public static Producto[] añadirProductoALaCesta(Producto productos[], Producto producto) {
+	public static Producto[] añadirProductoALaCesta(Producto cestaDeCompra[], Producto producto) {
 		
 		Producto	productosActualizados[];
 		int			cantidadActual;
 		
-		cantidadActual = Operaciones.contarTotalProductosActual(productos);
+		cantidadActual = Operaciones.contarTotalProductosActual(cestaDeCompra);
 			
 		productosActualizados = new Producto[cantidadActual + 1];
 		
 		for (int i = 0; i < cantidadActual; i++) 
-			productosActualizados[i] = productos[i];
+			productosActualizados[i] = cestaDeCompra[i];
 		
 		productosActualizados[cantidadActual] = producto;
 		
-		MostrarMensajeInformativo.msgOperacionRealizadaCorrectamente(5);
+		MostrarMensajeInformativo.msgOperacionRealizadaCorrectamente(1);
 		return (productosActualizados);
 	}
 }
