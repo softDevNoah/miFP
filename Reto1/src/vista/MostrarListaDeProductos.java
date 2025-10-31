@@ -64,6 +64,6 @@ public class MostrarListaDeProductos {
 	
 		System.out.println("-------------->>>>>>Categorías de productos<<<<<<--------------");
 		for (int i = 0; i < categorias.length; i++)
-			System.out.printf("\t---> 1.- %s\n", categorias[i]);
+			System.out.printf("\t---> %d.- %s\n", i + 1, categorias[i]);
 	}
 }

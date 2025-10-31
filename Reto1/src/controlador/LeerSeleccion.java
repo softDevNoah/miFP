@@ -4,7 +4,7 @@ import main.Main;
 import modelo.*;
 import vista.*;
 
-public class LeerSeleccionDeProducto {
+public class LeerSeleccion {
 	
 	public static int seleccionarProducto(Producto productos[], String opcion) {
 		String	entrada;
@@ -50,26 +50,29 @@ public class LeerSeleccionDeProducto {
 			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
 				
 				indiceProducto = Integer.parseInt(entrada);
-				
 				for (int i = 0; i < numActualProductos; i++) {
 					if (productos[i].categoria.equals(categoriaSeleccionada)) {
 						numProductosConCategoria++;
-						if (numProductosConCategoria == indiceProducto - 1)
+						if (numProductosConCategoria == indiceProducto)
 							idProductoSeleccionado = productos[i].idUnico;
 					}
 				}
-				if (idProductoSeleccionado != 0);
+			
+				indiceProducto = Operaciones.buscarPorID(productos, idProductoSeleccionado);
+				
+				if (idProductoSeleccionado >= 0) {
 					esCorrecto = true;
 					System.out.println();
 				}
-				else
-					MostrarMensajeDeError.noHayNingunProductoConEsteCriterioDeBusqueda();
+			else
+				MostrarMensajeDeError.noHayNingunProductoConEsteCriterioDeBusqueda();
+			}
 		} while (!esCorrecto);
 		
-		return (productos[idProductoSeleccionado]);
+		return (productos[indiceProducto]);
 	}
 	
-	public static int eleccionTipoDato(Producto producto) {
+	public static int seleccionTipoDato(Producto producto) {
 		
 		String	entrada;
 		int		tipoDato = -1;
@@ -104,4 +107,17 @@ public class LeerSeleccionDeProducto {
 		
 		return (indiceProducto);
 	}
+	
+	public static String seleccionarCategoria(String categorias[]) {
+		
+		String categoriaSeleccionada;
+		
+		MostrarListaDeProductos.mostrarCategorias(categorias);
+		categoriaSeleccionada =  categorias[MenuCliente.recogerOpcionNumerica(1, 4, "\tInserte el nº de la categoría: ") - 1];
+		
+		System.out.printf("\n\t--->>> Categoría seleccionada: \"%s <<<---\n\n", categoriaSeleccionada);
+		
+		return (categoriaSeleccionada);
+	}
+
 }

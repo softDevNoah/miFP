@@ -18,39 +18,40 @@ public class MenuCliente {
 		boolean		seguirComprandoMismaCategoria = true;
 		boolean		seguirComprando = true;
 		
-		int			decisionPago = 0;
+		int			decisionDeCompra = 0;
 		
 		if (Operaciones.contarTotalProductosActual(productos) > 0) {
 				
 			while (seguirComprando) {
 				
-				categoriaSeleccionada = RecogerDatoDeProducto.seleccionarCategoria(productoSeleccionado.categorias);
+				categoriaSeleccionada = LeerSeleccion.seleccionarCategoria(productoSeleccionado.categorias);
 				seguirComprandoMismaCategoria = true;
 				
 				while (seguirComprandoMismaCategoria) {
 					
-					productoSeleccionado =  LeerSeleccionDeProducto.seleccionarProductoDeUnaCategoria(productos, categoriaSeleccionada);
+					productoSeleccionado =  LeerSeleccion.seleccionarProductoDeUnaCategoria(productos, categoriaSeleccionada);
 					
 					if ((precioTotal + productoSeleccionado.precio) < 250.00) {
 						precioTotal += productoSeleccionado.precio;
 						cestaDeCompra = Operaciones.añadirProductoALaCesta(cestaDeCompra, productoSeleccionado);
 						MostrarListaDeProductos.mostrarCestaCompra(cestaDeCompra);
-						//condicionQuiereSeguirComprando
-							//misma categoria: no se hace nada
-							//otra categoria: se pone seguirComprandoMismaCategoria = false
-							//no:  se pone seguirComprandoMismaCategoria = false y tambien  se pone seguirComprando = false						
+						decisionDeCompra = MostrarMensajeDePeticion.condicionSeguirComprando(categoriaSeleccionada);
+						if (decisionDeCompra == 1) {
+							seguirComprandoMismaCategoria = false;
+							seguirComprando = false;
+						}
+						else if (decisionDeCompra == 2)
+							seguirComprandoMismaCategoria = false;				
 					}
 					else {
 						MostrarMensajeDeError.noSePuedenAñadirMasProductosALaCesta();
-						// se pone seguirComprandoMismaCategoria = false y tambien  se pone seguirComprando = false
+						seguirComprandoMismaCategoria = false;
+						seguirComprando = false;
 					}
 				}
 			}
-			Menus.imprimirConsola(String.format("El precio total es: %.2f", precioTotal));
-			Menus.imprimirConsola("Quieres continuar con el pago?");
-			Menus.mostrarMenuAceptarPago();
-			decisionPago = pedirNumeroRango(1, 2, "Elige una opcion:");
-			if (decisionPago == 1) {
+			System.out.printf("\t---> El precio total es: %.2f€\n\t¿Quiere continuar con el pago?\n\t1.- Si\n\t2.- No, cancelar compra.", precioTotal);
+			if (recogerOpcionNumerica(1, 2, "Elige una opcion:") == 1) {
 				fasePago(precioTotal);
 				Menus.imprimirConsola("Esperando 10 segundos antes de ir al menu principal..");
 				esperarSegundos(10);
@@ -94,43 +95,31 @@ public class MenuCliente {
 		}
 	}
 
-	public static int pedirNumeroRango(int min, int max, String texto) {
-		int numero = 0;
-		boolean fueraDeRango = true;
-		do {
-			numero = pedirNumeroEntero(texto);
-			fueraDeRango = (numero < min) || (numero > max);
-
-			if (fueraDeRango) {
-				Menus.imprimirConsola(String.format("error El numero debe ser entre %d y %d", min, max));
-			}
-
-		} while (fueraDeRango);
-
-		return numero;
-	}
-
-	public static int pedirNumeroEntero(String frase) {
-		boolean esEnteroValido = false;
-		String input = "";
-		int numeroEntero = 0;
+	public static int recogerOpcionNumerica(int min, int max, String texto) {
+		
+		String	entrada;
+		boolean	esCorrecto = true;
+		int		opcionSeleccionada = 0;
 
 		do {
-			System.out.printf("\t:: %s ", frase);
-			input = Main.teclado.nextLine().trim();
+			entrada = Main.teclado.nextLine();
 
-			if (Validador.esEntero(input)) {
-				numeroEntero = Integer.parseInt(input);
-				esEnteroValido = true;
-			} else {
-				Menus.imprimirConsola("error Error, no es un numero valido. Intenta otra vez.");
+			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
+				opcionSeleccionada = Integer.parseInt(entrada);
+				if ((opcionSeleccionada < min) || (opcionSeleccionada > max)) {
+					MostrarMensajeDeError.opcionIncorrecta();
+					esCorrecto = false;
+				}
 			}
+			else 
+				esCorrecto = false;
+				
+		} while (!esCorrecto);
 
-		} while (!esEnteroValido);
-
-		return numeroEntero;
+		return (opcionSeleccionada);
 	}
 
+	
 	public static double pedirNumeroDouble(String frasePeticion) {
 		boolean valido = false;
 		String entrada = "";

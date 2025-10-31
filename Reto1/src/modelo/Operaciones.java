@@ -52,13 +52,13 @@ public class Operaciones {
 		if (Operaciones.contarTotalProductosActual(productos) > 0) {
 			do {
 				MostrarListaDeProductos.mostrarListaCompleta(productos);
-				indiceProducto = LeerSeleccionDeProducto.seleccionarProducto(productos, "modificar");
+				indiceProducto = LeerSeleccion.seleccionarProducto(productos, "modificar");
 				
 				nombreOriginal = productos[indiceProducto].nombre;
 				categoriaOriginal =	productos[indiceProducto].categoria;
 				precioOriginal = productos[indiceProducto].precio;
 				do {
-					tipoDato = LeerSeleccionDeProducto.eleccionTipoDato(productos[indiceProducto]);
+					tipoDato = LeerSeleccion.seleccionTipoDato(productos[indiceProducto]);
 					switch (tipoDato) {
 						case 1:
 							productos[indiceProducto].nombre = RecogerDatoDeProducto.recogerNombre(productos);
@@ -97,7 +97,7 @@ public class Operaciones {
 
 		if (Operaciones.contarTotalProductosActual(productos) > 0) {
 			MostrarListaDeProductos.mostrarListaCompleta(productos);
-			indiceProductoSeleccionado = LeerSeleccionDeProducto.seleccionarProducto(productos, "eliminar");
+			indiceProductoSeleccionado = LeerSeleccion.seleccionarProducto(productos, "eliminar");
 			if (MostrarMensajeDePeticion.condicionConfirmaEliminar()) {
 				productosActualizados = new Producto[cantidadActual - 1];
 				int j = 0;

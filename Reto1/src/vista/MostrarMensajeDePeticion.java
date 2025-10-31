@@ -1,6 +1,7 @@
 package vista;
 
 import main.Main;
+import modelo.*;
 
 public class MostrarMensajeDePeticion {
 
@@ -99,5 +100,19 @@ public class MostrarMensajeDePeticion {
 			eleccion = 2;		
 
 		return (eleccion);
+	}
+	
+	public static int condicionSeguirComprando(String categoria) {
+		int	opcionElegida;
+		
+		System.out.println("\t¿Qué operación desea realizar?");
+		System.out.println("\t\t1.- Terminar la compra y pagar ya.");
+		System.out.println("\t\t2.- Quiero comprar otro producto de otra categoría.");
+		System.out.println("\t\t3.- Quiero otro producto de esta categoría (%s).");	
+		System.out.print("\tIntroduzca el nº de la operación: ");
+		
+		opcionElegida = MenuCliente.recogerOpcionNumerica(1, 3, "");
+		
+		return (opcionElegida);
 	}
 }
