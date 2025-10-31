@@ -51,7 +51,9 @@ public class MenuCliente {
 				}
 			}
 			System.out.printf("\t---> El precio total es: %.2f€\n\t¿Quiere continuar con el pago?\n\t1.- Si\n\t2.- No, cancelar compra.", precioTotal);
-			if (recogerOpcionNumerica(1, 2, "Elige una opcion:") == 1) {
+			
+			if (MostrarMensajeDePeticion.menuOpciones("¿Desea realizar el pago?", {"Sí", "No"}, "Introduzca una opción")) {
+			//if (recogerOpcionNumerica(1, 2, "Elige una opcion:") == 1) {
 				fasePago(precioTotal);
 				Menus.imprimirConsola("Esperando 10 segundos antes de ir al menu principal..");
 				esperarSegundos(10);
@@ -95,7 +97,7 @@ public class MenuCliente {
 		}
 	}
 
-	public static int recogerOpcionNumerica(int min, int max, String texto) {
+	public static int recogerOpcionNumerica(int min, int max) {
 		
 		String	entrada;
 		boolean	esCorrecto = true;

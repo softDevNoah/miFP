@@ -12,13 +12,17 @@ public class Main {
 	public static void main(String[] args) {
 		
 		BaseDeDatos baseDeDatos = new BaseDeDatos();
+		int			seleccionPrograma;
 		
 		while (true) {
 			MostrarMensajeInformativo.msgBienvenida();
 			teclado.nextLine();
-			if (MostrarMensajeDePeticion.condicionEsClienteOAdministrador() == 1)
+			
+			seleccionPrograma = MostrarMensajeDePeticion.condicionEsClienteOAdministrador();
+			
+			if (seleccionPrograma == 1)
 				MenuCliente.ejecutarCliente(baseDeDatos.productos);
-			else if (MostrarMensajeDePeticion.condicionEsClienteOAdministrador() == 2)
+			else if (seleccionPrograma == 2)
 				baseDeDatos = MenuAdmin.ejecutarAdmin(baseDeDatos);
 			else
 				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");

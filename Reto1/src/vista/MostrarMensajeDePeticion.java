@@ -5,6 +5,14 @@ import modelo.*;
 
 public class MostrarMensajeDePeticion {
 
+	public static void menuOpciones(String titulo, String opciones[], String peticion) {
+		System.out.printf("\t------> %s <<<<<<------\n\n");
+		for (int i = 0; i < opciones.length; i++) 
+			System.out.printf("\t\t%d.- %s.\n", i, opciones[i]);
+		System.out.printf("\n\t%s:\t%d", peticion, MenuCliente.recogerOpcionNumerica(1, opciones.length));
+		System.out.println("\n--------------------------------------------------------\n");
+	}
+	
 	public static void msgIntroduzcaUsuario() {
 		System.out.print("*\n\t·····> Introduzca el nombre de usuario, por favor: ");
 	}
