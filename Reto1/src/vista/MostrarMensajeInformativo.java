@@ -54,6 +54,16 @@ public class MostrarMensajeInformativo {
 		System.out.println("················································································································\n");
 	}
 	
+	public static void msgOpcionSeleccionada(int opcion) {
+		
+		String opciones[] = {"Comprar otro producto de esta categoría", "Volver a elegir categoría", "Terminar y pagar ya"};
+		
+		System.out.println("\n\n················································································································");
+		System.out.printf("			---------->>> Opción seleccionada: %s. <<<<<--------------\n", opciones[opcion - 1]);
+		System.out.println("················································································································\n");	
+
+	}
+	
 	public static void msgSeleccionaOperacion() {
 		
 		System.out.println("*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *\n*");

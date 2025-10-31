@@ -2,8 +2,8 @@ package modelo;
 
 public class BaseDeDatos {
 	
-	Producto	productos[];
-	Usuario 	administradores[];
+	public Producto	productos[];
+	public Usuario 	administradores[];
 	
 	public BaseDeDatos() {
 		

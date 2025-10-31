@@ -37,7 +37,7 @@ public class MostrarListaDeProductos {
 				for (int i = 0; i < numActualProductos; i++) {
 					if (productos[i].categoria.equals(categoria)) {
 						j++;
-						System.out.printf("\t#%d: %s (id -> %d, precio -> %.2f€)\n", j, productos[i].nombre, productos[i].idUnico, productos[i].precio);
+						System.out.printf("\t#%d: %s (precio sin I.V.A. -> %.2f€)\n", j, productos[i].nombre, productos[i].precio);
 					}
 				}
 			}

@@ -30,6 +30,43 @@ public class LeerSeleccionDeProducto {
 		return (indiceProducto);
 	}
 	
+	public static int seleccionarProductoDeUnaCategoria(Producto productos[], String categoria) {
+	
+		String	entrada;
+		int		indiceProducto = 0;
+		boolean	esCorrecto = false;
+		
+		int		numActualProductos = Operaciones.contarTotalProductosActual(productos);
+		int		numProductosConCategoria = 0;
+		
+		int		idProductoSeleccionado = 0;
+		
+		do {
+			System.out.printf("\t------>>>>>>\t¿Qué producto desea añadir a la cesta?\t<<<<<<------\n");
+			System.out.print("\tEscriba el nº del producto:\t");
+			entrada = Main.teclado.nextLine();
+			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
+				
+				indiceProducto = Integer.parseInt(entrada);
+				
+				for (int i = 0; i < numActualProductos; i++) {
+					if (productos[i].categoria.equals(categoria)) {
+						numProductosConCategoria++;
+						if (numProductosConCategoria == indiceProducto)
+							idProductoSeleccionado = productos[i].idUnico;
+					}
+				}
+				if (idProductoSeleccionado != 0);
+					esCorrecto = true;
+					System.out.println();
+				}
+				else
+					MostrarMensajeDeError.noHayNingunProductoConEsteCriterioDeBusqueda();
+		} while (!esCorrecto);
+		
+		return (idProductoSeleccionado);
+	}
+	
 	public static int eleccionTipoDato(Producto producto) {
 		
 		String	entrada;

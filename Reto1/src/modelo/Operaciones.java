@@ -27,6 +27,7 @@ public class Operaciones {
 		
 		for (int i = 0; i < cantidadActual; i++) 
 			productosActualizados[i] = productos[i];
+
 		productosActualizados[cantidadActual] = nuevoProducto;
 		
 		while (!idUnico) {
@@ -137,5 +138,23 @@ public class Operaciones {
 				indiceActualProducto = i;
 		}
 		return (indiceActualProducto);
+	}
+	
+	public static Producto[] añadirProductoALaCesta(Producto productos[], Producto producto) {
+		
+		Producto	productosActualizados[];
+		int			cantidadActual;
+		
+		cantidadActual = Operaciones.contarTotalProductosActual(productos);
+			
+		productosActualizados = new Producto[cantidadActual + 1];
+		
+		for (int i = 0; i < cantidadActual; i++) 
+			productosActualizados[i] = productos[i];
+		
+		productosActualizados[cantidadActual] = producto;
+		
+		MostrarMensajeInformativo.msgOperacionRealizadaCorrectamente(5);
+		return (productosActualizados);
 	}
 }

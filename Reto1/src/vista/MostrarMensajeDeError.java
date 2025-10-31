@@ -86,4 +86,11 @@ public class MostrarMensajeDeError {
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n");
 	}
 	
+	public static void noSePuedenAñadirMasProductosALaCesta() {
+		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
+		System.out.println("------------------ERROR: No se pueden añadir más productos a la cesta, ha llegado al máximo permitido.-----------");
+		System.out.println("------------------	Solo se permiten añadir productos mientras no se alcance un total de 250€, lo sentimos.------");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------\n");
+	}
+	
 }

@@ -17,7 +17,7 @@ public class Main {
 			MostrarMensajeInformativo.msgBienvenida();
 			teclado.nextLine();
 			if (MostrarMensajeDePeticion.condicionEsClienteOAdministrador() == 1)
-				MenuCliente.ejecutarCliente(baseDeDatos);
+				MenuCliente.ejecutarCliente(baseDeDatos.productos);
 			else if (MostrarMensajeDePeticion.condicionEsClienteOAdministrador() == 2)
 				baseDeDatos = MenuAdmin.ejecutarAdmin(baseDeDatos);
 			else
