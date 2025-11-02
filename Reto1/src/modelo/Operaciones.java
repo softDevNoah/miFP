@@ -133,6 +133,10 @@ public class Operaciones {
 		int		cantidadActual = Operaciones.contarTotalProductosActual(productos);
 		int		indiceActualProducto = -1;
 		
+		if (idUnico == 0) {
+			MostrarMensajeDeError.noHayNingunProductoConEsteCriterioDeBusqueda();
+			return (0);
+		}
 		for (int i = 0; i < cantidadActual; i++) {
 			if (idUnico == productos[i].idUnico)
 				indiceActualProducto = i;

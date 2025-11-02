@@ -92,5 +92,9 @@ public class MostrarMensajeDeError {
 		System.out.println("------------------	Solo se permiten añadir productos mientras no se alcance un total de 250€, lo sentimos.------");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------\n");
 	}
-	
+	public static void maximoDineroIngresadoAlcanzado() {
+		System.out.println("\n\n-----------------------------------------------------------------------------------------------------------------");
+		System.out.println("--------------[✖]ERROR: Esta máquina no admite ingresar más de 250€.--------------------------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------\n");
+	}
 }

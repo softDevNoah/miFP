@@ -37,7 +37,7 @@ public class LeerSeleccion {
 		boolean	esCorrecto = false;
 		
 		int		numActualProductos = Operaciones.contarTotalProductosActual(productos);
-		int		numProductosConCategoria = 0;
+		int		numProductosConCategoria;
 		
 		int		idProductoSeleccionado = 0;
 		
@@ -45,26 +45,31 @@ public class LeerSeleccion {
 			MostrarListaDeProductos.mostrarPorCategoria(productos, categoriaSeleccionada);
 			
 			System.out.printf("\t------>>>>>> ¿Qué producto desea añadir a la cesta? <<<<<<------\n");
-			System.out.print("\n\tEscriba el nº del producto:\t");
+			System.out.print("\n\tEscriba el nº del producto: ");
+			
 			entrada = Main.teclado.nextLine();
+			
 			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
 				
 				indiceProducto = Integer.parseInt(entrada);
+				
+				numProductosConCategoria = 0;
+				
 				for (int i = 0; i < numActualProductos; i++) {
+					
 					if (productos[i].categoria.equals(categoriaSeleccionada)) {
 						numProductosConCategoria++;
+						
 						if (numProductosConCategoria == indiceProducto)
-							idProductoSeleccionado = productos[i].idUnico;
+							idProductoSeleccionado = productos[i].idUnico;								
 					}
 				}
 			
 				indiceProducto = Operaciones.buscarPorID(productos, idProductoSeleccionado);
 				
-				if (idProductoSeleccionado >= 0) {
+				if (idProductoSeleccionado > 0) {
 					esCorrecto = true;
 				}
-			else
-				MostrarMensajeDeError.noHayNingunProductoConEsteCriterioDeBusqueda();
 			}
 		} while (!esCorrecto);
 		

@@ -2,19 +2,9 @@ package modelo;
 
 public class Calculadora {
 	
-	private static double[] arrEfectivo = { 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200 };
+	private static double[] arrEfectivo = { 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200};
 	public static double[][] arrMonedasContadas = new double[0][2];
 	
-	
-	public static double sumarProductos(String[][] array, int posPrecio) {
-		double resultado = 0;
-
-		for (int i = 0; i < array.length; i++) {
-			resultado += Double.valueOf(array[i][posPrecio]);
-		}
-
-		return resultado;
-	}
 	
 	public static void desglosarCambioD(double cambio) {
 		double valorEfectivo;
@@ -49,12 +39,12 @@ public class Calculadora {
 		int euros=(int) cambio;
 		int cent= (int) Math.round((cambio-euros)*100);
 		
-		System.out.println("Desglose del cambio: ");
+		System.out.println("\t\tDesglose del cambio: ");
 		
 		for (int b: billetes) {
 			int cantidad= euros/b;
 			if(cantidad>0) {
-				System.out.printf(cantidad+"x"+b+"€");
+				System.out.printf("\t\t\t" + cantidad + " x "+ b + "€\n");
 				euros%=b;
 			}
 		}
@@ -62,7 +52,7 @@ public class Calculadora {
 		for (int m: monedas) {
 			int cantidad=cent/m;
 			if(cantidad>0) {
-				System.out.println(cantidad+"x"+m+"cent");
+				System.out.println("\t\t\t" + cantidad + " x " + m + " céntimos");
 				cent%=m;
 			}
 		}
