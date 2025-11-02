@@ -4,7 +4,7 @@ public class MostrarMensajeDeError {
 
 	private static final String LINEA1 = "\n\n-----------------------------------------------------------------------------------------------------------------";
 	private static final String LINEA2 = "--------------[✖]ERROR: ";
-	private static final String LINEA3 = "-----------------------------------------------------------------------------------------------------------------\n";
+	private static final String LINEA3 = "\n-----------------------------------------------------------------------------------------------------------------\n";
 	
 	private static final String	MSG_ERRORES[] = {
 			"Ningún dato introducido, por favor inténtelo de nuevo.----------------------------------",
