@@ -20,10 +20,15 @@ public class Main {
 			teclado.nextLine();
 			
 			seleccionPrograma = MsgPeticion.menuOpciones("Operaciones disponibles", opcionesMenu, "Seleccione una operación");
-			//seleccionPrograma = MsgPeticion.condicionEsClienteOAdministrador();
 			
-			if (seleccionPrograma == 0)
+			if (seleccionPrograma == 0) {
 				MenuCliente.ejecutarCliente(baseDeDatos.productos);
+				try {
+					Thread.sleep(10000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 			else if (seleccionPrograma == 1)
 				baseDeDatos = MenuAdmin.ejecutarAdmin(baseDeDatos);
 			else

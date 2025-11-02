@@ -12,7 +12,7 @@ public class LeerSeleccion {
 		boolean	esCorrecto = false;
 		int		indiceProducto = -1;
 		do {
-			System.out.printf("\t------>>>>>>\t¿Qué producto desea %s?\t<<<<<<------\n", opcion);
+			System.out.printf("\t------>>>>>> ¿Qué producto desea %s? <<<<<<------\n\n", opcion);
 			System.out.print("\tEscriba únicamente el ID del producto:\t");
 			entrada = Main.teclado.nextLine();
 			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
@@ -44,8 +44,8 @@ public class LeerSeleccion {
 		do {
 			MostrarListaDeProductos.mostrarPorCategoria(productos, categoriaSeleccionada);
 			
-			System.out.printf("\t------>>>>>>\t¿Qué producto desea añadir a la cesta?\t<<<<<<------\n");
-			System.out.print("\tEscriba el nº del producto:\t");
+			System.out.printf("\t------>>>>>> ¿Qué producto desea añadir a la cesta? <<<<<<------\n");
+			System.out.print("\n\tEscriba el nº del producto:\t");
 			entrada = Main.teclado.nextLine();
 			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
 				
@@ -62,7 +62,6 @@ public class LeerSeleccion {
 				
 				if (idProductoSeleccionado >= 0) {
 					esCorrecto = true;
-					System.out.println();
 				}
 			else
 				MostrarMensajeDeError.noHayNingunProductoConEsteCriterioDeBusqueda();
@@ -110,12 +109,32 @@ public class LeerSeleccion {
 	
 	public static String seleccionarCategoria(String categorias[]) {
 		
-		String categoriaSeleccionada;
+		String	categoriaSeleccionada;
+		boolean	esCorrecto;
+		String	entrada;
+		int		opcionSeleccionada = 0;
+
+		do {
+			esCorrecto = true;
+			MostrarListaDeProductos.mostrarCategorias(categorias);
+			System.out.printf("\n\t--->>> Categoría seleccionada: ");
+			
+			entrada = Main.teclado.nextLine();
+			
+			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
+				opcionSeleccionada = Integer.parseInt(entrada);
+				if ((opcionSeleccionada < 1) || (opcionSeleccionada > categorias.length)) {
+					MostrarMensajeDeError.opcionIncorrecta();
+					esCorrecto = false;
+				}
+			}
+			else 
+				esCorrecto = false;
+			
+		} while (!esCorrecto);
 		
-		MostrarListaDeProductos.mostrarCategorias(categorias);
-		categoriaSeleccionada =  categorias[MenuCliente.recogerOpcionNumerica(1, 4) - 1];
-		
-		System.out.printf("\n\t--->>> Categoría seleccionada: \"%s <<<---\n\n", categoriaSeleccionada);
+		categoriaSeleccionada = categorias[opcionSeleccionada];
+		System.out.printf("\"%s <<<---\n\n", categoriaSeleccionada);
 		
 		return (categoriaSeleccionada);
 	}

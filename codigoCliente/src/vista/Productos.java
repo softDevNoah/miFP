@@ -11,16 +11,12 @@ public class Productos {
 	}
 
 	public static void mostrarProductos(String[][] array) {
-		String id = "";
-		String tipo = "";
 		String producto = "";
 		String precio = "";
 		String resultado = "";
 
 		for (int i = 0; i < array.length; i++) {
 			for (int j = 0; j < array[0].length; j++) {
-				id = array[i][0];
-				tipo = array[i][1];
 				producto = array[i][2];
 				precio = array[i][3];
 			}

@@ -145,6 +145,7 @@ public class Operaciones {
 		Producto	productosActualizados[];
 		int			cantidadActual;
 		double		precioTotal;
+		
 		cantidadActual = Operaciones.contarTotalProductosActual(cestaDeCompra);
 			
 		productosActualizados = new Producto[cantidadActual + 1];
@@ -153,10 +154,11 @@ public class Operaciones {
 			productosActualizados[i] = cestaDeCompra[i];
 		
 		productosActualizados[cantidadActual] = producto;
-		precioTotal = calcularPrecioTotal(0, cestaDeCompra);
+		
+		precioTotal = calcularPrecioTotal(0, productosActualizados);
 
-		MostrarListaDeProductos.mostrarCestaCompra(cestaDeCompra);
-		syso
+		MostrarListaDeProductos.mostrarCestaCompra(productosActualizados, precioTotal);
+		
 		return (productosActualizados);
 	}
 	

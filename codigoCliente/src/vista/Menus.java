@@ -1,7 +1,5 @@
 package vista;
 
-import java.util.Scanner;
-
 public class Menus {
 	private static String menuBienvenida = "Hola Bievenido";
 	private static String menuTipo = "Snack;Bebida;Dulce;Saludable";
@@ -13,9 +11,6 @@ public class Menus {
 	public static void mostrarMenuBienvenida() {
 		imprimirConsola(String.format("h1 %s", menuBienvenida));
 		System.out.print("Presiona una tecla y presiona enter para continuar: ");
-		Scanner teclado = new Scanner(System.in);
-		String tmp = teclado.nextLine();
-		tmp = "";
 	}
 	
 	public static void mostrarAvisoTipoElegido(int numero) {

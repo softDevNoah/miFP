@@ -1,26 +1,48 @@
 package vista;
 
+import controlador.ValidarTipoDeEntrada;
 import main.Main;
-import modelo.*;
 
 public class MsgPeticion {
 
 	public static int menuOpciones(String titulo, String opciones[], String peticion) {
 		
 		String	siNo[] = {"Sí", "No"};
-		int		decisionTomada;
+		int		opcionSeleccionada = 0;
+		boolean	esCorrecto;
+		String	entrada;
 		
 		if (opciones == null)
 			opciones = siNo;
+		do {
+			esCorrecto = true;
+			System.out.printf("\n\t------> %s <<<<<<------\n\n", titulo);
+			
+			for (int i = 0; i < opciones.length; i++) 
+				System.out.printf("\t\t%d.- %s.\n", i + 1, opciones[i]);
+			
+			System.out.printf("\n\t%s: ", peticion);
+			
+			entrada = Main.teclado.nextLine();
+			
+			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
+				
+				opcionSeleccionada = Integer.parseInt(entrada);
+				
+				if ((opcionSeleccionada < 1) || (opcionSeleccionada > opciones.length)) {
+					MostrarMensajeDeError.opcionIncorrecta();
+					esCorrecto = false;
+				}
+			}
+			else 
+				esCorrecto = false;
+			
+			
+		} while (!esCorrecto);
 		
-		System.out.printf("\n\t------> %s <<<<<<------\n\n", titulo);
-		for (int i = 0; i < opciones.length; i++) 
-			System.out.printf("\t\t%d.- %s.\n", i + 1, opciones[i]);
-		System.out.printf("\n\t%s: ", peticion);
-		decisionTomada = MenuCliente.recogerOpcionNumerica(1, opciones.length);
 		System.out.println("\n-----------------------------------------------------------------------\n");
 		
-		return (decisionTomada - 1);
+		return (opcionSeleccionada - 1);
 	}
 	
 	public static void msgIntroduzcaUsuario() {
@@ -121,16 +143,34 @@ public class MsgPeticion {
 	}
 	
 	public static int condicionSeguirComprando(String categoria) {
-		int	opcionElegida;
 		
-		System.out.println("\t¿Qué operación desea realizar?");
-		System.out.println("\t\t1.- Terminar la compra y pagar ya.");
-		System.out.println("\t\t2.- Quiero comprar otro producto de otra categoría.");
-		System.out.println("\t\t3.- Quiero otro producto de esta categoría (%s).");	
-		System.out.print("\tIntroduzca el nº de la operación: ");
+		boolean	esCorrecto;
+		String	entrada;
+		int		opcionSeleccionada = 0;
 		
-		opcionElegida = MenuCliente.recogerOpcionNumerica(1, 3);
+		do {
+			esCorrecto = true;
+			
+			System.out.println("\t¿Qué operación desea realizar?");
+			System.out.println("\t\t1.- Terminar la compra y pagar ya.");
+			System.out.println("\t\t2.- Quiero comprar otro producto de otra categoría.");
+			System.out.println("\t\t3.- Quiero otro producto de esta categoría (%s).");	
+			System.out.print("\tIntroduzca el nº de la operación: ");
+			
+			entrada = Main.teclado.nextLine();
+
+			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
+				opcionSeleccionada = Integer.parseInt(entrada);
+				if ((opcionSeleccionada < 1) || (opcionSeleccionada > 3)) {
+					MostrarMensajeDeError.opcionIncorrecta();
+					esCorrecto = false;
+				}
+			}
+			else 
+				esCorrecto = false;
+			
+		} while (!esCorrecto);
 		
-		return (opcionElegida);
+		return (opcionSeleccionada);
 	}
 }
