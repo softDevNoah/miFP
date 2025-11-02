@@ -6,7 +6,7 @@ public class MostrarListaDeProductos {
 
 	public static void mostrarListaCompleta(Producto productos[]) {
 		
-		int	numActualProductos = Operaciones.contarTotalProductosActual(productos);
+		int	numActualProductos = productos.length;
 		
 		if (numActualProductos > 0) {
 			System.out.printf("-------------->>>>>>Lista de productos actual, %d productos<<<<<<--------------\n", numActualProductos);
@@ -16,13 +16,12 @@ public class MostrarListaDeProductos {
 				System.out.printf("\t%s\t\t%d\t\t%s\t\t%.2f€)\n\n", productos[i].nombre, productos[i].idUnico, productos[i].categoria, productos[i].precio);
 		}
 		else
-			MostrarMensajeDeError.noHayNingunProducto();
+			MostrarMensajeDeError.mostrarError(9);
 	}
 	
-	//puede que haga falta en la parte de cliente
 	public static void mostrarPorCategoria(Producto productos[], String categoria) {
 		
-		int	numActualProductos = Operaciones.contarTotalProductosActual(productos);
+		int	numActualProductos = productos.length;
 		int	numProductosConCategoria= 0;
 		
 		if (numActualProductos > 0) {
@@ -47,15 +46,15 @@ public class MostrarListaDeProductos {
 				System.out.println();
 			}
 			else
-				MostrarMensajeDeError.noHayNingunProductoConEsteCriterioDeBusqueda();
+				MostrarMensajeDeError.mostrarError(10);
 		}
 		else
-			MostrarMensajeDeError.noHayNingunProducto();
+			MostrarMensajeDeError.mostrarError(9);
 	}
 	
 	public static void mostrarCestaCompra(Producto productosCesta[], double precioTotal) {
 		
-		int	cantidadProductos = Operaciones.contarTotalProductosActual(productosCesta);
+		int	cantidadProductos = productosCesta.length;
 		
 		if (cantidadProductos > 0) {
 			System.out.printf("\n------>>>>>>Resumen de compra, cesta con %d productos<<<<<<------\n", cantidadProductos);

@@ -38,7 +38,7 @@ public class ValidarUsuarioYContraseña {
 		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloAlfanumerico(entrada)) {
 			if (!entrada.equals(administradores[indiceUsuario].contraseña)) {
 				existe = false;
-				MostrarMensajeDeError.contraseñaIncorrecta();
+				MostrarMensajeDeError.mostrarError(7);
 			}
 		}
 		else

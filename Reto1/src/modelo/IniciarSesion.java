@@ -17,7 +17,7 @@ public class IniciarSesion {
 		return (sesionIniciada);
 	}
 	
-	public static boolean recogerUsuarioYContraseña(Usuario administradores[], String usuarioIniciado) {
+	private static boolean recogerUsuarioYContraseña(Usuario administradores[], String usuarioIniciado) {
 		
 		boolean	esCorrecto = false;
 		String	entrada;

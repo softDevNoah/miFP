@@ -13,7 +13,7 @@ public class Operaciones {
 		boolean		idUnico = false;
 		int			id = 1;
 		
-		cantidadActual = Operaciones.contarTotalProductosActual(productos);
+		cantidadActual = productos.length;
 		nuevoProducto = new Producto();
 				
 		nuevoProducto.nombre = RecogerDatoDeProducto.recogerNombre(productos);
@@ -31,7 +31,7 @@ public class Operaciones {
 		productosActualizados[cantidadActual] = nuevoProducto;
 		
 		while (!idUnico) {
-			if (ValidarDatoDeProducto.checkIDUnico(productosActualizados, id)) {
+			if (LeerSeleccion.checkIDUnico(productosActualizados, id)) {
 				nuevoProducto.idUnico = id;
 				idUnico = true;
 			}
@@ -49,7 +49,7 @@ public class Operaciones {
 		String		categoriaOriginal;
 		double		precioOriginal;
 
-		if (Operaciones.contarTotalProductosActual(productos) > 0) {
+		if (productos.length > 0) {
 			do {
 				MostrarListaDeProductos.mostrarListaCompleta(productos);
 				indiceProducto = LeerSeleccion.seleccionarProducto(productos, "modificar");
@@ -57,6 +57,7 @@ public class Operaciones {
 				nombreOriginal = productos[indiceProducto].nombre;
 				categoriaOriginal =	productos[indiceProducto].categoria;
 				precioOriginal = productos[indiceProducto].precio;
+				
 				do {
 					tipoDato = LeerSeleccion.seleccionTipoDato(productos[indiceProducto]);
 					switch (tipoDato) {
@@ -85,7 +86,7 @@ public class Operaciones {
 			} while (MsgPeticion.menuOpciones("¿Desea volver al menú principal?", null, "Introduzca una opción") == 1);
 		}
 		else
-			MostrarMensajeDeError.noHayNingunProducto();
+			MostrarMensajeDeError.mostrarError(9);
 		return (productos);
 	}
 	public static Producto[] eliminarProducto(Producto productos[]) {
@@ -93,9 +94,9 @@ public class Operaciones {
 		Producto	productosActualizados[];
 		int			cantidadActual;
 		int			indiceProductoSeleccionado = -1;
-		cantidadActual = Operaciones.contarTotalProductosActual(productos);
+		cantidadActual = productos.length;
 
-		if (Operaciones.contarTotalProductosActual(productos) > 0) {
+		if (cantidadActual > 0) {
 			MostrarListaDeProductos.mostrarListaCompleta(productos);
 			indiceProductoSeleccionado = LeerSeleccion.seleccionarProducto(productos, "eliminar");
 			if (MsgPeticion.menuOpciones("¿Está segurx de eliminar este producto?", null, "Introduzca una opción") == 0) {
@@ -113,28 +114,17 @@ public class Operaciones {
 			System.out.println("\n\t\t------->>>>\tCancelando...\t<<<<-------\n");
 		}
 		else
-			MostrarMensajeDeError.noHayNingunProducto();
+			MostrarMensajeDeError.mostrarError(9);
 		return (productos);
-	}
-
-	public static int contarTotalProductosActual(Producto productos[]) {
-		
-		int		total = 0;
-		
-		for (int i = 0; i < productos.length; i++) {
-			if (productos[i] != null) 
-					total++;
-		}
-		return (total);
 	}
 	
 	public static int buscarPorID(Producto productos[], int idUnico) {
 		
-		int		cantidadActual = Operaciones.contarTotalProductosActual(productos);
+		int		cantidadActual = productos.length;
 		int		indiceActualProducto = -1;
 		
 		if (idUnico == 0) {
-			MostrarMensajeDeError.noHayNingunProductoConEsteCriterioDeBusqueda();
+			MostrarMensajeDeError.mostrarError(10);
 			return (0);
 		}
 		for (int i = 0; i < cantidadActual; i++) {
@@ -150,7 +140,7 @@ public class Operaciones {
 		int			cantidadActual;
 		double		precioTotal;
 		
-		cantidadActual = Operaciones.contarTotalProductosActual(cestaDeCompra);
+		cantidadActual = cestaDeCompra.length;
 			
 		productosActualizados = new Producto[cantidadActual + 1];
 		

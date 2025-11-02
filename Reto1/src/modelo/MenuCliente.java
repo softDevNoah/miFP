@@ -17,7 +17,7 @@ public class MenuCliente {
 		
 		int			decisionDeCompra = 0;
 		String		opcionesDeCompra[] = {"Terminar la compra y pagar ya", "Comprar otro producto de otra categoría", "Comprar otro producto dentro de esta categoría"};
-		if (Operaciones.contarTotalProductosActual(productos) > 0) {
+		if (productos.length > 0) {
 				
 			while (seguirComprando) {
 				
@@ -40,7 +40,7 @@ public class MenuCliente {
 							seguirEnMismaCategoria = false;				
 					}
 					else {
-						MostrarMensajeDeError.noSePuedenAñadirMasProductosALaCesta();
+						MostrarMensajeDeError.mostrarError(11);
 						seguirEnMismaCategoria = false;
 						seguirComprando = false;
 					}
@@ -58,7 +58,7 @@ public class MenuCliente {
 				System.out.println("\n\t------->>>> Cancelando compra... <<<<-------\n");
 		}
 		else
-			MostrarMensajeDeError.noHayNingunProducto();
+			MostrarMensajeDeError.mostrarError(9);
 	}
 
 		

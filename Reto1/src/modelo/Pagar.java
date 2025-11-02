@@ -32,7 +32,7 @@ public class Pagar {
 						esCorrecto = true;
 						}
 					else
-						MostrarMensajeDeError.maximoDineroIngresadoAlcanzado();
+						MostrarMensajeDeError.mostrarError(12);
 					}
 				System.out.println();
 			} while (!esCorrecto);

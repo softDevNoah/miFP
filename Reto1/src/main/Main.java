@@ -28,10 +28,11 @@ public class Main {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 			}
 			else if (seleccionPrograma == 1)
 				baseDeDatos = MenuAdmin.ejecutarAdmin(baseDeDatos);
+			
+			System.out.println("\n".repeat(50));	
 		}
 	}
 

@@ -8,12 +8,12 @@ public class ValidarTipoDeEntrada {
 		boolean esCorrecto = true;
 		
 		if (entrada.isEmpty()) {
-			MostrarMensajeDeError.entradaVacia();
+			MostrarMensajeDeError.mostrarError(0);
 			esCorrecto = false;
 		}
 		else if (entrada.length() > 8) {
 			esCorrecto =false;
-			MostrarMensajeDeError.entradaDemasiadoExtensa();
+			MostrarMensajeDeError.mostrarError(1);
 		}
 		return (esCorrecto);
 	}
@@ -27,25 +27,10 @@ public class ValidarTipoDeEntrada {
 				esCorrecto = false;
 		}
 		if (!esCorrecto)
-			MostrarMensajeDeError.noEsSoloTexto();
+			MostrarMensajeDeError.mostrarError(2);
 		return (esCorrecto);
 	}
-	
-	public static boolean checkSoloNumeroEntero(String entrada) {
-		boolean esCorrecto = true;
-
-		for (int i = 0; i < entrada.length(); i++) {
-			if (i == 0 && (entrada.charAt(i) == '-' || entrada.charAt(i) == '+'))
-					i++;
-			if (!Character.isDigit(entrada.charAt(i)))
-				esCorrecto = false;
-		}
-
-		if (!esCorrecto)
-			MostrarMensajeDeError.noEsSoloUnNumero();
-		return (esCorrecto);
-	}
-	
+		
 	public static boolean checkSoloAlfanumerico(String entrada) {
 		boolean esCorrecto = true;
 
@@ -54,7 +39,7 @@ public class ValidarTipoDeEntrada {
 				esCorrecto = false;
 		}
 		if (!esCorrecto)
-			MostrarMensajeDeError.noEsSoloAlfanumerico();
+			MostrarMensajeDeError.mostrarError(4);
 		return (esCorrecto);
 	}
 	
@@ -66,7 +51,7 @@ public class ValidarTipoDeEntrada {
 				esCorrecto = false;
 		}
 		if (!esCorrecto)
-			MostrarMensajeDeError.noEsSoloUnNumeroPositivo();
+			MostrarMensajeDeError.mostrarError(3);
 		return (esCorrecto);
 	}
 	
@@ -82,7 +67,7 @@ public class ValidarTipoDeEntrada {
 				numPuntos++;
 		}
 		if (!esCorrecto || numPuntos > 1)
-			MostrarMensajeDeError.noEsSoloUnNumeroDecimal();
+			MostrarMensajeDeError.mostrarError(5);
 		return (esCorrecto);
 	}
 }

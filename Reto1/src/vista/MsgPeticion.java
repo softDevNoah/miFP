@@ -30,7 +30,7 @@ public class MsgPeticion {
 				opcionSeleccionada = Integer.parseInt(entrada);
 				
 				if ((opcionSeleccionada < 1) || (opcionSeleccionada > opciones.length)) {
-					MostrarMensajeDeError.opcionIncorrecta();
+					MostrarMensajeDeError.mostrarError(8);
 					esCorrecto = false;
 				}
 			}

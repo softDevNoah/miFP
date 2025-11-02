@@ -14,7 +14,7 @@ public class RecogerDatoDeProducto {
 		do {
 			MsgPeticion.msgAsigneCategoria(categorias);
 			entrada = Main.teclado.nextLine();
-			if (ValidarDatoDeProducto.checkCategoria(entrada, categorias))
+			if (checkCategoria(entrada, categorias))
 				esCorrecto = true;
 		} while (!esCorrecto);
 		
@@ -30,7 +30,7 @@ public class RecogerDatoDeProducto {
 		do {
 			MsgPeticion.msgAsigneDato(1);
 			entrada = Main.teclado.nextLine();
-			if (ValidarDatoDeProducto.checkNombre(entrada, productos))
+			if (checkNombre(entrada, productos))
 				esCorrecto = true;			
 		} while (!esCorrecto);
 	
@@ -47,7 +47,7 @@ public class RecogerDatoDeProducto {
 		do {
 			MsgPeticion.msgAsigneDato(2);
 			entrada = Main.teclado.nextLine();
-			if (ValidarDatoDeProducto.checkPrecio(entrada)) {
+			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroDecimal(entrada)) {
 				precio = Double.parseDouble(entrada);
 				esCorrecto = true;
 			}
@@ -55,6 +55,39 @@ public class RecogerDatoDeProducto {
 		} while (!esCorrecto);
 		
 		return (precio);
+	}
+	
+	private static boolean checkCategoria(String entrada, String categorias[]) {
+		
+		boolean	esCorrecto = false;
+		
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloLetras(entrada)) {
+			for(int i = 0; i < 4; i++) {
+				if (entrada.equals(categorias[i]))
+					esCorrecto = true;	
+			}
+			if (!esCorrecto)
+			MostrarMensajeDeError.mostrarError(6);
+		}
+		return (esCorrecto);
+	}
+		
+	private static boolean checkNombre(String entrada, Producto productos[]) {
+	
+		boolean	esCorrecto = true;
+		int		totalProductos = productos.length;
+		
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && (ValidarTipoDeEntrada.checkSoloAlfanumerico(entrada))) {
+			for (int i = 0; i < totalProductos; i++) {
+				if (entrada.equals(productos[i].nombre)) {
+					esCorrecto = false;
+					MostrarMensajeDeError.nombreYaEnUso(productos[i].nombre);
+				}
+			}
+		}
+		else
+			esCorrecto = false;
+		return (esCorrecto);
 	}
 	
 	
