@@ -20,7 +20,7 @@ public class Operaciones {
 		nuevoProducto.categoria = RecogerDatoDeProducto.recogerCategoria(nuevoProducto.categorias);
 		nuevoProducto.precio = RecogerDatoDeProducto.recogerPrecio();
 		
-		if (MsgPeticion.condicionDeseaCancelar())
+		if (MsgPeticion.menuOpciones("¿Desea cancelar y volver atrás?", null, "Introduzca una opción") == 0)
 			return (productos);
 		
 		productosActualizados = new Producto[cantidadActual + 1];
@@ -72,9 +72,9 @@ public class Operaciones {
 					}
 					
 					
-				} while (MsgPeticion.condicionDeseaContinuar());
+				} while (MsgPeticion.menuOpciones("¿Desea modificar otro dato de este producto?", null, "Introduzca una opción") == 0);
 					
-				if (MsgPeticion.condicionDeseaCancelar()) {
+				if (MsgPeticion.menuOpciones("¿Desea cancelar la operación?", null, "Introduzca una opción") == 0) {
 						productos[indiceProducto].nombre = nombreOriginal;
 						productos[indiceProducto].categoria = categoriaOriginal;
 						productos[indiceProducto].precio = precioOriginal;
@@ -82,7 +82,7 @@ public class Operaciones {
 				else 
 					MostrarMensajeInformativo.msgOperacionRealizadaCorrectamente(2);
 				
-			} while (!MsgPeticion.condicionDeseaVolver());
+			} while (MsgPeticion.menuOpciones("¿Desea volver al menú principal?", null, "Introduzca una opción") == 1);
 		}
 		else
 			MostrarMensajeDeError.noHayNingunProducto();
@@ -98,7 +98,7 @@ public class Operaciones {
 		if (Operaciones.contarTotalProductosActual(productos) > 0) {
 			MostrarListaDeProductos.mostrarListaCompleta(productos);
 			indiceProductoSeleccionado = LeerSeleccion.seleccionarProducto(productos, "eliminar");
-			if (MsgPeticion.condicionConfirmaEliminar()) {
+			if (MsgPeticion.menuOpciones("¿Está segurx de eliminar este producto?", null, "Introduzca una opción") == 0) {
 				productosActualizados = new Producto[cantidadActual - 1];
 				int j = 0;
 				for (int i = 0; i < cantidadActual; i++) {

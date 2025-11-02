@@ -7,24 +7,24 @@ import vista.MostrarMensajeInformativo;
 
 public class IniciarSesion {
 
-	public static boolean intentoDeInicio(Usuario administradores[]) {
+	public static boolean intentoDeInicio(Usuario administradores[], String usuarioIniciado) {
 		
 		boolean	sesionIniciada = false;
 		
-		if (recogerUsuarioYContraseña(administradores))
+		if (recogerUsuarioYContraseña(administradores, usuarioIniciado))
 				sesionIniciada = true;
 		
 		return (sesionIniciada);
 	}
 	
-	public static boolean recogerUsuarioYContraseña(Usuario administradores[]) {
+	public static boolean recogerUsuarioYContraseña(Usuario administradores[], String usuarioIniciado) {
 		
 		boolean	esCorrecto = false;
 		String	entrada;
 		int		numUsuario = 0;
 		
 		do {
-			MsgPeticion.msgIntroduzcaUsuario();
+			MsgPeticion.msgIntroduzcaDatoSesion(1);
 			entrada = Main.teclado.nextLine();
 			if (ValidarUsuarioYContraseña.checkUsuario(entrada, administradores))
 				esCorrecto = true;
@@ -37,14 +37,15 @@ public class IniciarSesion {
 			esCorrecto = false;
 			
 			do {
-				MsgPeticion.msgIntroduzcaContraseña();
+				MsgPeticion.msgIntroduzcaDatoSesion(2);
 				entrada = Main.teclado.nextLine();
 				if (ValidarUsuarioYContraseña.checkContraseña(entrada, administradores, numUsuario))
 					esCorrecto = true;
 			} while (!esCorrecto);
 		}
 		if (esCorrecto)
-			MostrarMensajeInformativo.msgInicioSesionCorrecto(administradores[numUsuario].nombre);
+			MostrarMensajeInformativo.msgEstadoSesionCorrecto(administradores[numUsuario].nombre, 1);
+		usuarioIniciado = administradores[numUsuario].nombre;
 		return (esCorrecto);
 	}
 }

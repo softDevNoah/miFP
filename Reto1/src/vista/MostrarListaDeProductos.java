@@ -66,12 +66,5 @@ public class MostrarListaDeProductos {
 		}
 		System.out.printf("\tPrecio total sin IVA: %.2f €\n", precioTotal);
 	}
-	
-	
-	public static void mostrarCategorias(String categorias[]) {
-	
-		System.out.println("-------------->>>>>>Categorías de productos<<<<<<--------------");
-		for (int i = 0; i < categorias.length; i++)
-			System.out.printf("\t---> %d.- %s\n", i + 1, categorias[i]);
-	}
+
 }

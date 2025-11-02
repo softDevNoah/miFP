@@ -1,7 +1,6 @@
 package modelo;
 
 import controlador.*;
-import main.Main;
 import vista.*;
 
 public class MenuCliente {
@@ -53,58 +52,15 @@ public class MenuCliente {
 			System.out.printf("\t---> El precio total con IVA incluido es: %.2f€\n", precioTotal);
 			
 			if (MsgPeticion.menuOpciones("¿Desea terminar la compra y realizar el pago ahora?", null, "Introduzca una opción") == 0) {
-				faseDePago(precioTotal);
+				Pagar.pasarelaDePago(precioTotal);
 			}
 			else			
-				System.out.println("\n\t\t------->>>>\tCancelando compra...\t<<<<-------\n");
+				System.out.println("\n\t------->>>> Cancelando compra... <<<<-------\n");
 		}
 		else
 			MostrarMensajeDeError.noHayNingunProducto();
 	}
 
 		
-	public static void faseDePago(double precioTotal) {
-		
-		double	dineroIntroducido = 0.0;
-		double	faltante = precioTotal;
-		String	entrada;
-		boolean esCorrecto = false;
-		double	cambio = 0.0;
-		double	saldoAcumulado = 0.0;
-		
-		while (dineroIntroducido < precioTotal) {
-			do {	
-				System.out.printf("\t------>>>>>> Importe pendiente: %.2f€.\n\n", faltante);
-				System.out.print("\t------>>>>>> Introduzca dinero, por favor: ");
-				
-				entrada = Main.teclado.nextLine();
-
-				if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroDecimal(entrada)) {
-					dineroIntroducido = Double.parseDouble(entrada);
-					if (dineroIntroducido <= 250) {
-						saldoAcumulado += dineroIntroducido;
-						esCorrecto = true;
-						}
-					else
-						MostrarMensajeDeError.maximoDineroIngresadoAlcanzado();
-					}
-				System.out.println();
-			} while (!esCorrecto);
-			
-			if (saldoAcumulado < precioTotal) {
-				faltante = precioTotal - saldoAcumulado;
-			}
-			
-		}
-		
-		cambio = saldoAcumulado - precioTotal;
-		
-		if (cambio > 0) {
-			System.out.printf("\tSu cambio es: %.2f€\n\n", cambio);
-			Calculadora.desglosarCambio(cambio);
-		}
-
-		System.out.println("\n\n\t------>>>>>> Gracias por su compra <<<<<<------");
-	}		
-
+	
 }

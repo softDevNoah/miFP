@@ -1,8 +1,6 @@
 package modelo;
 
 import	vista.*;
-import	controlador.*;
-import main.Main;
 
 public class MenuAdmin {
 
@@ -10,12 +8,14 @@ public class MenuAdmin {
 		
 		boolean	sesionIniciada;
 		int		opcionElegida = -1;
+		String		usuarioIniciado = "";
+		String operaciones[] = {"Nuevo producto", "Modificar producto", "Eliminar producto", "Salir"};
 		
-		sesionIniciada = IniciarSesion.intentoDeInicio(baseDeDatosMasActual.administradores);
+		sesionIniciada = IniciarSesion.intentoDeInicio(baseDeDatosMasActual.administradores, usuarioIniciado);
 		
 		while (sesionIniciada) {
 			
-			opcionElegida = lecturaOpcionMenu();
+			opcionElegida = MsgPeticion.menuOpciones("Operaciones disponibles", operaciones, "Seleccione una operación") + 1;
 			
 			switch (opcionElegida) {
 				case 1:
@@ -32,37 +32,14 @@ public class MenuAdmin {
 					break;
 				case 4:
 					MostrarMensajeInformativo.msgOperacionSeleccionada(4);
-					MostrarMensajeInformativo.msgSesionFinalizada();
+					MostrarMensajeInformativo.msgEstadoSesionCorrecto(usuarioIniciado, 2);
 					sesionIniciada = false;
 					break;
 			}
-			if (opcionElegida < 1 || opcionElegida > 4)
-				MostrarMensajeDeError.opcionIncorrecta();
+
 		}
 		
 		return (baseDeDatosMasActual);
 	}
-	
-	public static int lecturaOpcionMenu() {
-		
-		boolean opcionValida = false;
-		int		opcionMenu = -1;
-		
-		String entrada;
-		
-		do {
-			MostrarMensajeInformativo.msgSeleccionaOperacion();
-			entrada = Main.teclado.nextLine();
-			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
-				opcionMenu = Integer.parseInt(entrada);
-				opcionValida = true;
-			}
-		}while (!opcionValida);
-		
-		System.out.println("*\n*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *");
-		
-		return (opcionMenu);
-	}
-	
 	
 }

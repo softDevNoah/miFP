@@ -28,7 +28,7 @@ public class RecogerDatoDeProducto {
 		boolean	esCorrecto = false;
 		
 		do {
-			MsgPeticion.msgAsigneNombre();
+			MsgPeticion.msgAsigneDato(1);
 			entrada = Main.teclado.nextLine();
 			if (ValidarDatoDeProducto.checkNombre(entrada, productos))
 				esCorrecto = true;			
@@ -45,7 +45,7 @@ public class RecogerDatoDeProducto {
 		boolean	esCorrecto = false;
 		
 		do {
-			MsgPeticion.msgAsignePrecio();
+			MsgPeticion.msgAsigneDato(2);
 			entrada = Main.teclado.nextLine();
 			if (ValidarDatoDeProducto.checkPrecio(entrada)) {
 				precio = Double.parseDouble(entrada);
