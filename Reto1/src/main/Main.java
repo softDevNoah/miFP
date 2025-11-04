@@ -17,7 +17,7 @@ public class Main {
 		
 		while (seleccionPrograma != 2) {
 			MostrarMensajeInformativo.msgBienvenida();
-			teclado.nextLine().trim();
+			teclado.nextLine();
 			
 			seleccionPrograma = MostrarMensajeDePeticion.menuOpciones("Operaciones disponibles", opcionesMenu, "Seleccione una operación");
 			
@@ -29,8 +29,9 @@ public class Main {
 					e.printStackTrace();
 				}
 			}
-			else if (seleccionPrograma == 1)
+			else if (seleccionPrograma == 1) {
 				baseDeDatos = MenuAdmin.ejecutarAdmin(baseDeDatos);
+			}
 			System.out.println("\n".repeat(10));
 		}
 		

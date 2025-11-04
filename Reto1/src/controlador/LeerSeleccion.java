@@ -4,6 +4,9 @@ import main.Main;
 import modelo.*;
 import vista.*;
 
+/**
+ * 
+ */
 public class LeerSeleccion {
 	
 	public static int seleccionarProducto(Producto productos[], String opcion) {
