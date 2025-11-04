@@ -20,6 +20,10 @@ public class MostrarMensajeDeError {
 			"No se ha encontrado un producto acorde a este criterio de búsqueda.---------------------",
 			"No se puede añadir más productos a la cesta, total máximo permitido: 250€. Lo sentimos.-",
 			"Esta máquina no admite ingresar más de 250€.--------------------------------------------",
+			"El nombre que intenta asignar no tiene letras, pruebe con otro, por favor.--------------",
+			"El ID que intenta asignar, ya existe en otro producto, intente otro por favor.----------",
+			"El ID del producto no puede ser 0, debe ser un número entero positivo.------------------",
+			"El precio de un producto debe ser mínimo 35 céntimos y máximo 5 euros.------------------"
 	};
 	
 	public static void mostrarError(int indiceDeError) {

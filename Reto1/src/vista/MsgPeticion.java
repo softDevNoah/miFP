@@ -23,7 +23,7 @@ public class MsgPeticion {
 			
 			System.out.printf("\n\t·····> %s: ", peticion);
 			
-			entrada = Main.teclado.nextLine();
+			entrada = Main.teclado.nextLine().trim();
 			
 			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
 				
@@ -59,7 +59,7 @@ public class MsgPeticion {
 	}
 	
 	public static void msgAsigneDato(int opcion) {
-		String datos[] = {"nombre", "precio"};
+		String datos[] = {"nombre", "precio", "ID único"};
 		
 		System.out.printf("\t·····> Asigne un %s al producto, por favor: ", datos[opcion -1]);
 	}

@@ -10,8 +10,6 @@ public class Operaciones {
 		Producto	nuevoProducto;
 		Producto	productosActualizados[];
 		int			cantidadActual;
-		boolean		idUnico = false;
-		int			id = 1;
 		
 		cantidadActual = productos.length;
 		nuevoProducto = new Producto();
@@ -19,6 +17,7 @@ public class Operaciones {
 		nuevoProducto.nombre = RecogerDatoDeProducto.recogerNombre(productos);
 		nuevoProducto.categoria = RecogerDatoDeProducto.recogerCategoria(nuevoProducto.categorias);
 		nuevoProducto.precio = RecogerDatoDeProducto.recogerPrecio();
+		nuevoProducto.idUnico = RecogerDatoDeProducto.recogerIDUnico(productos);
 		
 		if (MsgPeticion.menuOpciones("¿Desea cancelar y volver atrás?", null, "Introduzca una opción") == 0)
 			return (productos);
@@ -30,14 +29,6 @@ public class Operaciones {
 
 		productosActualizados[cantidadActual] = nuevoProducto;
 		
-		while (!idUnico) {
-			if (LeerSeleccion.checkIDUnico(productosActualizados, id)) {
-				nuevoProducto.idUnico = id;
-				idUnico = true;
-			}
-			else
-				id++;
-		}
 		MostrarMensajeInformativo.msgOperacionRealizadaCorrectamente(1);
 		return (productosActualizados);
 	}
@@ -89,6 +80,8 @@ public class Operaciones {
 			MostrarMensajeDeError.mostrarError(9);
 		return (productos);
 	}
+	
+	
 	public static Producto[] eliminarProducto(Producto productos[]) {
 	
 		Producto	productosActualizados[];

@@ -13,7 +13,8 @@ public class RecogerDatoDeProducto {
 		
 		do {
 			MsgPeticion.msgAsigneCategoria(categorias);
-			entrada = Main.teclado.nextLine();
+			entrada = Main.teclado.nextLine().trim();
+
 			if (checkCategoria(entrada, categorias))
 				esCorrecto = true;
 		} while (!esCorrecto);
@@ -29,7 +30,8 @@ public class RecogerDatoDeProducto {
 		
 		do {
 			MsgPeticion.msgAsigneDato(1);
-			entrada = Main.teclado.nextLine();
+			entrada = Main.teclado.nextLine().trim();
+			
 			if (checkNombre(entrada, productos))
 				esCorrecto = true;			
 		} while (!esCorrecto);
@@ -46,15 +48,53 @@ public class RecogerDatoDeProducto {
 		
 		do {
 			MsgPeticion.msgAsigneDato(2);
-			entrada = Main.teclado.nextLine();
+			entrada = Main.teclado.nextLine().trim();
+			
 			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroDecimal(entrada)) {
 				precio = Double.parseDouble(entrada);
-				esCorrecto = true;
+				if (precio < 0.35 || precio > 5)
+					MostrarMensajeDeError.mostrarError(16);
+				else
+					esCorrecto = true;
 			}
 			
 		} while (!esCorrecto);
 		
 		return (precio);
+	}
+	
+	
+	public static int recogerIDUnico(Producto productos[]) {
+		
+		String	entrada; 
+		
+		int		idUnico = 0;
+		boolean	esCorrecto;
+		
+		do {
+			esCorrecto = true;
+			
+			MsgPeticion.msgAsigneDato(3);
+			entrada = Main.teclado.nextLine().trim();
+			
+			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
+				idUnico = Integer.parseInt(entrada);
+				
+				if (idUnico == 0) {
+					MostrarMensajeDeError.mostrarError(15);
+					esCorrecto = false;
+				}
+				else if (!LeerSeleccion.checkIDUnico(productos, idUnico)){
+					MostrarMensajeDeError.mostrarError(14);
+					esCorrecto = false;
+				}
+			}
+			else
+				esCorrecto = false;
+			
+		} while (!esCorrecto);
+		
+		return (idUnico);
 	}
 	
 	private static boolean checkCategoria(String entrada, String categorias[]) {
@@ -76,8 +116,18 @@ public class RecogerDatoDeProducto {
 	
 		boolean	esCorrecto = true;
 		int		totalProductos = productos.length;
+		boolean	hayLetras = false;
 		
-		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && (ValidarTipoDeEntrada.checkSoloAlfanumerico(entrada))) {
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada.trim()) && (ValidarTipoDeEntrada.checkSoloAlfanumerico(entrada.trim()))) {
+			
+			for (int i = 0; i < entrada.trim().length(); i++) {
+				if (Character.isLetter(entrada.trim().charAt(i)))
+					hayLetras = true;
+			}
+			if (!hayLetras) {
+				MostrarMensajeDeError.mostrarError(13);
+				return (!esCorrecto);
+			}
 			for (int i = 0; i < totalProductos; i++) {
 				if (entrada.equals(productos[i].nombre)) {
 					esCorrecto = false;
@@ -85,8 +135,10 @@ public class RecogerDatoDeProducto {
 				}
 			}
 		}
+		
 		else
 			esCorrecto = false;
+		
 		return (esCorrecto);
 	}
 	

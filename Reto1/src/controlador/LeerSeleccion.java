@@ -15,7 +15,7 @@ public class LeerSeleccion {
 			System.out.printf("\t------>>>>>> ¿Qué producto desea %s? <<<<<<------\n\n", opcion);
 			System.out.print("\t·····> Escriba únicamente el ID del producto:\t");
 			
-			entrada = Main.teclado.nextLine();
+			entrada = Main.teclado.nextLine().trim();
 			
 			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
 				
@@ -51,7 +51,7 @@ public class LeerSeleccion {
 			System.out.printf("\t------>>>>>> ¿Qué producto desea añadir a la cesta? <<<<<<------\n");
 			System.out.print("\n\tEscriba el nº del producto: ");
 			
-			entrada = Main.teclado.nextLine();
+			entrada = Main.teclado.nextLine().trim();
 			
 			if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloNumeroPositivoEntero(entrada)) {
 				
@@ -93,7 +93,8 @@ public class LeerSeleccion {
 			System.out.printf("\t\t3.- Precio\t(original: \"%.2f\")\n\n", producto.precio);
 			System.out.print("\t·····> Seleccione un dato, por favor: ");
 	
-			entrada = Main.teclado.nextLine();
+			entrada = Main.teclado.nextLine().trim();
+			
 			if ((ValidarTipoDeEntrada.estaDentroDeLimites(entrada)) && (entrada.equals("1") || entrada.equals("2") || entrada.equals("3"))) {
 				esCorrecto = true;
 				tipoDato = Integer.parseInt(entrada);

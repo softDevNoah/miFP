@@ -58,16 +58,35 @@ public class ValidarTipoDeEntrada {
 	public static boolean checkSoloNumeroDecimal(String entrada) {
 		
 		boolean esCorrecto = true;
+		boolean	hayNums = false;
 		int		numPuntos = 0;
 
 		for (int i = 0; i < entrada.length(); i++) {
-			if (!Character.isDigit(entrada.charAt(i)) && entrada.charAt(i) != '.')
-				esCorrecto = false;
-			if (entrada.charAt(i) == '.')
+			
+			if (Character.isDigit(entrada.charAt(i)))
+				hayNums = true;
+			
+			else if (entrada.charAt(i) == '.') {
+				
 				numPuntos++;
+				
+				if (numPuntos > 1) {
+					esCorrecto = false;
+					MostrarMensajeDeError.mostrarError(5);
+					return (esCorrecto);
+				}
+			}
+			else {
+				esCorrecto = false;
+				MostrarMensajeDeError.mostrarError(5);
+				return (esCorrecto);
+			}		
 		}
-		if (!esCorrecto || numPuntos > 1)
+		
+		if (!hayNums) {
 			MostrarMensajeDeError.mostrarError(5);
+			return (hayNums);
+		}
 		return (esCorrecto);
 	}
 }

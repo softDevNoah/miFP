@@ -25,7 +25,8 @@ public class IniciarSesion {
 		
 		do {
 			MsgPeticion.msgIntroduzcaDatoSesion(1);
-			entrada = Main.teclado.nextLine();
+			entrada = Main.teclado.nextLine().trim();
+			
 			if (ValidarUsuarioYContraseña.checkUsuario(entrada, administradores))
 				esCorrecto = true;
 
@@ -39,6 +40,7 @@ public class IniciarSesion {
 			do {
 				MsgPeticion.msgIntroduzcaDatoSesion(2);
 				entrada = Main.teclado.nextLine();
+				
 				if (ValidarUsuarioYContraseña.checkContraseña(entrada, administradores, numUsuario))
 					esCorrecto = true;
 			} while (!esCorrecto);
