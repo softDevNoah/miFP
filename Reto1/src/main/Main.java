@@ -12,10 +12,10 @@ public class Main {
 	public static void main(String[] args) {
 		
 		BaseDeDatos baseDeDatos = new BaseDeDatos();
-		int			seleccionPrograma;
-		String		opcionesMenu[] = {"Comprar productos", "Administrar máquina expendedora"};
+		int			seleccionPrograma = -1;
+		String		opcionesMenu[] = {"Comprar productos", "Administrar máquina expendedora", "Apagar máquina expendedora"};
 		
-		while (true) {
+		while (seleccionPrograma != 2) {
 			MostrarMensajeInformativo.msgBienvenida();
 			teclado.nextLine();
 			
@@ -31,9 +31,13 @@ public class Main {
 			}
 			else if (seleccionPrograma == 1)
 				baseDeDatos = MenuAdmin.ejecutarAdmin(baseDeDatos);
-			
-			System.out.println("\n".repeat(50));	
+			System.out.println("\n".repeat(10));	
 		}
-	}
-
+		
+		System.out.println("\n\n················································································································");
+		System.out.printf("	         ---------->>> Apagando máquina... ¡Hasta la próxima! <<<<<--------------\n");
+		System.out.println("················································································································\n");
+		
+		teclado.close();
+	}	
 }

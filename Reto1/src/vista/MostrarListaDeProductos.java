@@ -57,13 +57,13 @@ public class MostrarListaDeProductos {
 		int	cantidadProductos = productosCesta.length;
 		
 		if (cantidadProductos > 0) {
-			System.out.printf("\n------>>>>>>Resumen de compra, cesta con %d productos<<<<<<------\n", cantidadProductos);
+			System.out.printf("\n------>>>>>> Resumen de compra, cesta con %d productos <<<<<<------\n", cantidadProductos);
 			System.out.println("\n\tNombre\t\tCategoría\tPrecio");
 			System.out.println("\t______\t\t_________\t______\n");
 			for (int i = 0; i < cantidadProductos; i++)
 				System.out.printf("\t%s\t\t%s\t\t%.2f€)\n\n", productosCesta[i].nombre, productosCesta[i].categoria, productosCesta[i].precio);
 		}
-		System.out.printf("\tPrecio total sin IVA: %.2f €\n", precioTotal);
+		System.out.printf("\t---> El importe total sería %.2f€ + %.2f€ de IVA = %.2f€.\n", precioTotal, precioTotal * 0.10, precioTotal * 1.10);
 	}
 
 }

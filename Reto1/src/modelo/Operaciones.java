@@ -131,7 +131,6 @@ public class Operaciones {
 		
 		Producto	productosActualizados[];
 		int			cantidadActual;
-		double		precioTotal;
 		
 		cantidadActual = cestaDeCompra.length;
 			
@@ -142,9 +141,9 @@ public class Operaciones {
 		
 		productosActualizados[cantidadActual] = producto;
 		
-		precioTotal = calcularPrecioTotal(0, productosActualizados);
-
-		MostrarListaDeProductos.mostrarCestaCompra(productosActualizados, precioTotal);
+		System.out.println("\n\n················································································································");
+		System.out.printf("			---------->>> Se ha añadido 1 ud de %s CORRECTAMENTE ✔ <<<--------------\n", producto.nombre);
+		System.out.println("················································································································\n");
 		
 		return (productosActualizados);
 	}

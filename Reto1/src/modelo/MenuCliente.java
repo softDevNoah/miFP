@@ -16,7 +16,8 @@ public class MenuCliente {
 		boolean		seguirComprando = true;
 		
 		int			decisionDeCompra = 0;
-		String		opcionesDeCompra[] = {"Terminar la compra y pagar ya", "Comprar otro producto de otra categoría", "Comprar otro producto dentro de esta categoría"};
+		String		opcionesDeCompra[] = {"Acceder a resumen de compra", "Comprar otro producto de otra categoría", "Comprar otro producto dentro de esta categoría"};
+		
 		if (productos.length > 0) {
 				
 			while (seguirComprando) {
@@ -33,8 +34,14 @@ public class MenuCliente {
 						cestaDeCompra = Operaciones.añadirProductoALaCesta(cestaDeCompra, producto);
 						decisionDeCompra = MsgPeticion.menuOpciones("Operaciones disponibles", opcionesDeCompra, "Elija una operación");
 						if (decisionDeCompra == 0) {
-							seguirEnMismaCategoria = false;
-							seguirComprando = false;
+							MostrarListaDeProductos.mostrarCestaCompra(cestaDeCompra, precioTotal);
+							if (MsgPeticion.menuOpciones("¿He terminado de añadir productos?", null, "Seleccione una respuesta:") == 0) {
+								seguirEnMismaCategoria = false;
+								seguirComprando = false;
+							}
+							else
+								seguirEnMismaCategoria = false;
+								
 						}
 						else if (decisionDeCompra == 1)
 							seguirEnMismaCategoria = false;				
@@ -47,11 +54,11 @@ public class MenuCliente {
 				}
 			}
 			
-			precioTotal *= 1.21;
 			
-			System.out.printf("\t---> El precio total con IVA incluido es: %.2f€\n", precioTotal);
 			
-			if (MsgPeticion.menuOpciones("¿Desea terminar la compra y realizar el pago ahora?", null, "Introduzca una opción") == 0) {
+			
+			
+			if (MsgPeticion.menuOpciones("¿Está de acuerdo con el importe total y desea pagar?", null, "Introduzca una opción") == 0) {
 				Pagar.pasarelaDePago(precioTotal);
 			}
 			else			

@@ -34,20 +34,20 @@ public class IniciarSesion {
 		
 		if (esCorrecto) {
 			numUsuario = ValidarUsuarioYContraseña.indiceUsuario(entrada, administradores);
-			
-			esCorrecto = false;
-			
-			do {
-				MsgPeticion.msgIntroduzcaDatoSesion(2);
-				entrada = Main.teclado.nextLine();
-				
-				if (ValidarUsuarioYContraseña.checkContraseña(entrada, administradores, numUsuario))
-					esCorrecto = true;
-			} while (!esCorrecto);
+
+		MsgPeticion.msgIntroduzcaDatoSesion(2);
+		entrada = Main.teclado.nextLine();
+		
+		esCorrecto = false;
+		
+		if (ValidarUsuarioYContraseña.checkContraseña(entrada, administradores, numUsuario))
+			esCorrecto = true;
+
 		}
-		if (esCorrecto)
+		if (esCorrecto) {
 			MostrarMensajeInformativo.msgEstadoSesionCorrecto(administradores[numUsuario].nombre, 1);
-		usuarioIniciado = administradores[numUsuario].nombre;
+			usuarioIniciado = administradores[numUsuario].nombre;
+		}
 		return (esCorrecto);
 	}
 }

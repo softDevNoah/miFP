@@ -36,7 +36,7 @@ public class MostrarMensajeInformativo {
 		String opciones[] = {"Nuevo producto", "Modificar producto", "Eliminar producto", "Salir"};
 		
 		System.out.println("\n\n················································································································");
-		System.out.printf("			---------->>> Operación seleccionada: %s. <<<<<--------------\n", opciones[opcion - 1]);
+		System.out.printf("			---------->>>>> Operación seleccionada: %s. <<<<<--------------\n", opciones[opcion - 1]);
 		System.out.println("················································································································\n");	
 
 	}	
@@ -46,7 +46,7 @@ public class MostrarMensajeInformativo {
 		String operaciones[] = {"AÑADIDO", "MODIFICADO", "ELIMINADO"};
 		
 		System.out.println("\n\n················································································································");
-		System.out.printf("			---------->>> Se ha %s un producto CORRECTAMENTE ✔ <<<<<--------------\n", operaciones[operacion - 1]);
+		System.out.printf("			---------->>>>> Se ha %s un producto CORRECTAMENTE ✔ <<<<<--------------\n", operaciones[operacion - 1]);
 		System.out.println("················································································································\n");
 	}	
 	
