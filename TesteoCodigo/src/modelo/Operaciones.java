@@ -104,7 +104,7 @@ public class Operaciones {
 				MostrarMensajeInformativo.msgOperacionRealizadaCorrectamente(3);
 				return (productosActualizados);
 			}
-			System.out.println("\n\t\t------->>>> Cancelando... <<<<-------\n");
+			System.out.println("\n\t\t------->>>>\tCancelando...\t<<<<-------\n");
 		}
 		else
 			MostrarMensajeDeError.mostrarError(9);

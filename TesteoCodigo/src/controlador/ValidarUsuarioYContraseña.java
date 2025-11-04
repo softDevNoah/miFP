@@ -22,7 +22,7 @@ public class ValidarUsuarioYContraseña {
 	
 	public static int indiceUsuario(String entrada, Usuario administradores[]) {
 	
-		int	indiceUsuario = 0;
+		int	indiceUsuario = -1;
 		
 		for (int i = 0; i < 4; i++) {
 			if (entrada.equals(administradores[i].nombre))

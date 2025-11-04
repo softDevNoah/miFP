@@ -32,7 +32,7 @@ public class MenuAdmin {
 					break;
 				case 4:
 					MostrarMensajeInformativo.msgOperacionSeleccionada(4);
-					MostrarMensajeInformativo.msgEstadoSesionCorrecto(usuarioIniciado, 1);
+					MostrarMensajeInformativo.msgEstadoSesionCorrecto(usuarioIniciado, 2);
 					sesionIniciada = false;
 					break;
 			}

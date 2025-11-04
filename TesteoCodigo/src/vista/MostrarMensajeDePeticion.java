@@ -3,7 +3,7 @@ package vista;
 import controlador.*;
 import main.*;
 
-public class MsgPeticion {
+public class MostrarMensajeDePeticion {
 
 	public static int menuOpciones(String titulo, String opciones[], String peticion) {
 		

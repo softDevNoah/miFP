@@ -22,12 +22,12 @@ public class MostrarMensajeInformativo {
 	}
 	
 	
-	public static void msgEstadoSesionCorrecto(String usuario, int indiceDeMensaje) {
+	public static void msgEstadoSesionCorrecto(String usuario, int opcion) {
 		
 		String estados[] = {"iniciada adecuadamente. Bienvenidx,", "finalizada adecuadamente. Hasta la próxima,"};
 		
 		System.out.println("\n\n*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*");
-		System.out.printf("											[✔]Sesión %s %s!\n", estados[indiceDeMensaje], usuario);
+		System.out.printf("											[✔]Sesión %s %s!\n", estados[opcion - 1], usuario);
 		System.out.println("*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*\n\n");	
 	}
 		

@@ -24,7 +24,7 @@ public class IniciarSesion {
 		int		numUsuario = 0;
 		
 		do {
-			MostrarMensajeDePeticion.msgIntroduzcaDatoSesion(0);
+			MostrarMensajeDePeticion.msgIntroduzcaDatoSesion(1);
 			entrada = Main.teclado.nextLine().trim();
 			
 			if (ValidarUsuarioYContraseña.checkUsuario(entrada, administradores))
@@ -35,7 +35,7 @@ public class IniciarSesion {
 		if (esCorrecto) {
 			numUsuario = ValidarUsuarioYContraseña.indiceUsuario(entrada, administradores);
 
-		MostrarMensajeDePeticion.msgIntroduzcaDatoSesion(1);
+		MostrarMensajeDePeticion.msgIntroduzcaDatoSesion(2);
 		entrada = Main.teclado.nextLine();
 		
 		esCorrecto = false;
