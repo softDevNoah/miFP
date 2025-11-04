@@ -8,8 +8,8 @@ public class MenuAdmin {
 		
 		boolean	sesionIniciada;
 		int		opcionElegida = -1;
-		String		usuarioIniciado = "";
-		String operaciones[] = {"Nuevo producto", "Modificar producto", "Eliminar producto", "Salir"};
+		String	usuarioIniciado = "";
+		String	operaciones[] = {"Nuevo producto", "Modificar producto", "Eliminar producto", "Salir"};
 		
 		sesionIniciada = IniciarSesion.intentoDeInicio(baseDeDatosMasActual.administradores, usuarioIniciado);
 		
