@@ -107,7 +107,7 @@ public class LeerSeleccion {
 		return (tipoDato);
 	}
 	
-	public static int busquedaPorIdUnico(Producto productos[], int numeroID) {
+	private static int busquedaPorIdUnico(Producto productos[], int numeroID) {
 		
 		int	indiceProducto = -1;
 		int	cantidadActual = productos.length;

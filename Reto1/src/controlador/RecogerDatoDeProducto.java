@@ -141,6 +141,4 @@ public class RecogerDatoDeProducto {
 		
 		return (esCorrecto);
 	}
-	
-	
 }

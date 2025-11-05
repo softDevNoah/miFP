@@ -147,14 +147,4 @@ public class Operaciones {
 		
 		return (productosActualizados);
 	}
-	
-	public static double calcularPrecioTotal(int iva, Producto cestaDeCompra[]) {
-		double precioTotal = 0;
-		
-		for (int i = 0; i < cestaDeCompra.length; i++) 
-			precioTotal += cestaDeCompra[i].precio;
-		if (iva == 0)
-			return (precioTotal);
-		return (precioTotal *= 1.21);
-	}
 }

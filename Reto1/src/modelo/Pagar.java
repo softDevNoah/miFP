@@ -53,7 +53,7 @@ public class Pagar {
 		System.out.println("\n\n\t------>>>>>> Gracias por su compra <<<<<<------");
 	}		
 
-	public static void desglosarCambio(double cambio) {
+	private static void desglosarCambio(double cambio) {
 		int [] billetes= {200, 100, 50, 20, 10, 5, 2, 1};
 		int [] monedas= {50, 20, 10, 5, 2, 1};
 		
@@ -78,41 +78,5 @@ public class Pagar {
 			}
 		}
 	
-	}
-
-	public static double[][] expandirArrayDouble(double[][] arrayAntiguo, double[][] arrDatosNuevos) {
-		int numFilasAntiguo = arrayAntiguo.length;
-		int numColAntiguo = (numFilasAntiguo > 0) ? arrayAntiguo[0].length : 0;
-		int numFilasDatosNuevos = arrDatosNuevos.length;
-		int numColDatosNuevos = arrDatosNuevos[0].length;
-		double[][] arrayExpandido;
-
-		if (numFilasAntiguo == 0) {
-			arrayExpandido = new double[numFilasDatosNuevos][numColDatosNuevos];
-
-			for (int i = 0; i < numFilasDatosNuevos; i++) {
-				for (int j = 0; j < numColDatosNuevos; j++) {
-					arrayExpandido[i][j] = arrDatosNuevos[i][j];
-				}
-			}
-		} else {
-			arrayExpandido = new double[numFilasAntiguo + numFilasDatosNuevos][numColAntiguo];
-
-			for (int i = 0; i < numFilasAntiguo; i++) {
-				for (int j = 0; j < numColAntiguo; j++) {
-					arrayExpandido[i][j] = arrayAntiguo[i][j];
-				}
-			}
-
-			for (int i = 0; i < numFilasDatosNuevos; i++) {
-				for (int j = 0; j < numColDatosNuevos; j++) {
-					arrayExpandido[numFilasAntiguo + i][j] = arrDatosNuevos[i][j];
-				}
-			}
-
-		}
-
-		return arrayExpandido;
-	}
-	
+	}	
 }

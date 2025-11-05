@@ -1,5 +1,7 @@
 package modelo;
 
+import controlador.ValidarUsuarioYContraseña;
+import main.Main;
 import	vista.*;
 
 public class MenuAdmin {
@@ -11,7 +13,7 @@ public class MenuAdmin {
 		String	usuarioIniciado = "";
 		String	operaciones[] = {"Nuevo producto", "Modificar producto", "Eliminar producto", "Salir"};
 		
-		sesionIniciada = IniciarSesion.intentoDeInicio(baseDeDatosMasActual.administradores, usuarioIniciado);
+		sesionIniciada = intentoDeInicio(baseDeDatosMasActual.administradores, usuarioIniciado);
 		
 		while (sesionIniciada) {
 			
@@ -42,4 +44,47 @@ public class MenuAdmin {
 		return (baseDeDatosMasActual);
 	}
 	
+	private static boolean intentoDeInicio(Usuario administradores[], String usuarioIniciado) {
+		
+		boolean	sesionIniciada = false;
+		
+		if (recogerUsuarioYContraseña(administradores, usuarioIniciado))
+				sesionIniciada = true;
+		
+		return (sesionIniciada);
+	}
+	
+	private static boolean recogerUsuarioYContraseña(Usuario administradores[], String usuarioIniciado) {
+		
+		boolean	esCorrecto = false;
+		String	entrada;
+		int		numUsuario = 0;
+		
+		do {
+			MostrarMensajeDePeticion.msgIntroduzcaDatoSesion(0);
+			entrada = Main.teclado.nextLine().trim();
+			
+			if (ValidarUsuarioYContraseña.checkUsuario(entrada, administradores))
+				esCorrecto = true;
+
+		}while (!esCorrecto);
+		
+		if (esCorrecto) {
+			numUsuario = ValidarUsuarioYContraseña.indiceUsuario(entrada, administradores);
+
+		MostrarMensajeDePeticion.msgIntroduzcaDatoSesion(1);
+		entrada = Main.teclado.nextLine();
+		
+		esCorrecto = false;
+		
+		if (ValidarUsuarioYContraseña.checkContraseña(entrada, administradores, numUsuario))
+			esCorrecto = true;
+
+		}
+		if (esCorrecto) {
+			MostrarMensajeInformativo.msgEstadoSesionCorrecto(administradores[numUsuario].nombre, 1);
+			usuarioIniciado = administradores[numUsuario].nombre;
+		}
+		return (esCorrecto);
+	}
 }
