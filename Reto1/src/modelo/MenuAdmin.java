@@ -1,7 +1,7 @@
 package modelo;
 
-import controlador.ValidarUsuarioYContraseña;
-import main.Main;
+import controlador.*;
+import main.*;
 import	vista.*;
 
 public class MenuAdmin {
@@ -64,20 +64,20 @@ public class MenuAdmin {
 			MostrarMensajeDePeticion.msgIntroduzcaDatoSesion(0);
 			entrada = Main.teclado.nextLine().trim();
 			
-			if (ValidarUsuarioYContraseña.checkUsuario(entrada, administradores))
+			if (checkUsuario(entrada, administradores))
 				esCorrecto = true;
 
 		}while (!esCorrecto);
 		
 		if (esCorrecto) {
-			numUsuario = ValidarUsuarioYContraseña.indiceUsuario(entrada, administradores);
+			numUsuario = indiceUsuario(entrada, administradores);
 
 		MostrarMensajeDePeticion.msgIntroduzcaDatoSesion(1);
 		entrada = Main.teclado.nextLine();
 		
 		esCorrecto = false;
 		
-		if (ValidarUsuarioYContraseña.checkContraseña(entrada, administradores, numUsuario))
+		if (checkContraseña(entrada, administradores, numUsuario))
 			esCorrecto = true;
 
 		}
@@ -86,5 +86,46 @@ public class MenuAdmin {
 			usuarioIniciado = administradores[numUsuario].nombre;
 		}
 		return (esCorrecto);
+	}
+	
+	private static boolean checkUsuario(String entrada, Usuario administradores[]) {
+		
+		boolean existe = false;
+		
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloAlfanumerico(entrada)) {
+			for (int i = 0; i < 4; i++) {
+				if (entrada.equals(administradores[i].nombre))
+					existe = true;
+			}
+			if (!existe)
+				MostrarMensajeDeError.usuarioNoExiste(entrada);
+		}
+		return (existe);
+	}
+	
+	private static int indiceUsuario(String entrada, Usuario administradores[]) {
+	
+		int	indiceUsuario = 0;
+		
+		for (int i = 0; i < 4; i++) {
+			if (entrada.equals(administradores[i].nombre))
+				indiceUsuario = i;
+		}
+		
+		return (indiceUsuario);
+	}
+	
+	private static boolean checkContraseña(String entrada, Usuario administradores[], int indiceUsuario) {
+		
+		boolean existe = true;
+		if (ValidarTipoDeEntrada.estaDentroDeLimites(entrada) && ValidarTipoDeEntrada.checkSoloAlfanumerico(entrada)) {
+			if (!entrada.equals(administradores[indiceUsuario].contraseña)) {
+				existe = false;
+				MostrarMensajeDeError.mostrarError(7);
+			}
+		}
+		else
+			existe = false;
+		return (existe);
 	}
 }

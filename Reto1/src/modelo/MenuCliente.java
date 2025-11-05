@@ -55,7 +55,7 @@ public class MenuCliente {
 			}
 
 			if (MostrarMensajeDePeticion.menuOpciones("¿Está de acuerdo con el importe total y desea pagar?", null, "Introduzca una opción") == 0) {
-				Pagar.pasarelaDePago(precioTotal);
+				Operaciones.pasarelaDePago(precioTotal);
 			}
 			else			
 				System.out.println("\n\t------->>>> Cancelando compra... <<<<-------\n");
