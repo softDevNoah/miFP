@@ -82,7 +82,7 @@ public class MenuAdmin {
 
 		}
 		if (esCorrecto) {
-			MostrarMensajeInformativo.msgEstadoSesionCorrecto(administradores[numUsuario].nombre, 1);
+			MostrarMensajeInformativo.msgEstadoSesionCorrecto(administradores[numUsuario].nombre, 0);
 			usuarioIniciado = administradores[numUsuario].nombre;
 		}
 		return (esCorrecto);
