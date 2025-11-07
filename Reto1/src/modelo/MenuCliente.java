@@ -3,8 +3,20 @@ package modelo;
 import controlador.*;
 import vista.*;
 
+/**
+ * Esta clase gestiona el flujo principal de la parte del programa que gestiona la venta de productos en una máquina expendedora.
+ * Muestra un menú de operaciones y ejecuta según se seleccione.
+ * Acumula productos seleccionados en una cesta de la compra a la cual se puede acceder para realizar una consulta de la misma.
+ * Cuando el usuario lo indica puede terminar la compra, pagando o cancelando la compra.
+ */
 public class MenuCliente {
 	
+	/**Muestra opciones de compra de diferentes productos según su categoría, para despues realizar la operación seleccionada.
+	 * Crea y gestiona una cesta de la compra que contendrá un array de los productos seleccionados.
+	 * Solo ejecuta el proceso de compra, no devuelve nada.
+	 * 
+	 * @param productos - Array completo de productos disponibles en la máquina expendedora
+	 */
 	public static void ejecutarCliente(Producto productos[]) {
 		
 		Producto 	cestaDeCompra[] = new Producto[0];

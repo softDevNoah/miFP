@@ -6,6 +6,15 @@ import vista.*;
 
 public class Operaciones {
 
+	/**
+	 * Crea un nuevo producto y se agrega a array de productos existentes en la máquina.
+	 * Se asignan los valores de los atributos del producto añadido.
+	 * Al final se ofrece cancelar la operación y solo devuelve los productos con el nuevo si no se cancela.
+	 * Si se cancela, devuelve el array originalmente recibido.
+	 * 
+	 * @param productos - Array completo de productos disponibles en la máquina expendedora
+	 * @return Array completo de productos disponibles en la máquina expendedora con el nuevo producto o el array sin modificar
+	 */
 	public static Producto[] nuevoProducto(Producto productos[]) {
 		
 		Producto	nuevoProducto;
@@ -34,6 +43,15 @@ public class Operaciones {
 		return (productosActualizados);
 	}
 
+	/**
+	 * Si existen productos en la máquina, se selecciona producto. Si no existen, se muestra un mensaje de error.
+	 * Si la selección es correcta,se modifican los valores de los atributos del producto seleccionado.
+	 * Al final se ofrece cancelar la operación y solo devuelve el array de productos con los cambios incluidos si no se cancela.
+	 * Si se cancela la operación, devuelve el array de productos con el producto seleccionado sin ningún cambio.
+	 * 
+	 * @param productos - Array completo de productos disponibles en la máquina expendedora
+	 * @return Array de productos modificado o sin modificar
+	 */
 	public static Producto[] modificarProducto(Producto[] productos) {
 		int			indiceProducto;
 		int			tipoDato = -1;
@@ -82,7 +100,16 @@ public class Operaciones {
 		return (productos);
 	}
 	
-	
+	/**
+	 * Si existen productos en la máquina, se selecciona producto. Si no existen, se muestra un mensaje de error.
+	 * Si la selección es correcta, se pide confirmacón para el borrado. Solo si se confirma la operación, se crea un array
+	 * de productos copiando todos los productos del array originzal excepto el producto seleccionado, devolviendo el array
+	 * modificado.
+	 * Si no, se cancela la operación mostrando un mensaje y devuelve el array sin cambios.
+	 * 
+	 * @param productos - Array completo de productos disponibles en la máquina expendedora
+	 * @return Array de productos modificado o sin modificar
+	 */
 	public static Producto[] eliminarProducto(Producto productos[]) {
 	
 		Producto	productosActualizados[];
@@ -112,6 +139,13 @@ public class Operaciones {
 		return (productos);
 	}
 	
+	/**
+	 * Busca un producto por medio de su ID en el array de productos existentes en la máquina.
+	 * 
+	 * @param productos - Array completo de productos disponibles en la máquina expendedora
+	 * @param idUnico - valor indicado como ID del supuesto producto
+	 * @return El indice del producto si es encontrado, -1 en caso contrario.
+	 */
 	public static int buscarPorID(Producto productos[], int idUnico) {
 		
 		int		cantidadActual = productos.length;
@@ -128,6 +162,13 @@ public class Operaciones {
 		return (indiceActualProducto);
 	}
 	
+	/**
+	 * Se añade un producto a un array de productos que representa la cesta de la compra.
+	 * 
+	 * @param cestaDeCompra - Array con los productos añadidos en el proceso de compra.
+	 * @param producto - producto que se pretende añadir al array de la cesta de la compra.
+	 * @return El array de cesta de la compra con el producto añadido (actualizada).
+	 */
 	public static Producto[] añadirProductoALaCesta(Producto cestaDeCompra[], Producto producto) {
 		
 		Producto	productosActualizados[];
@@ -149,6 +190,13 @@ public class Operaciones {
 		return (productosActualizados);
 	}
 	
+	/**
+	 * Pide saldo de manera consecutiva hasta que se alcance el precioTotal,
+	 * posteriormente se calcula su cambio y este se desglosa en en los billetes/monedas mínimos.
+	 * Va mostrando saldo introducido e importe pendiente.
+	 * 
+	 * @param precioTotal - valor a pagar por los productos comprados.
+	 */
 	public static void pasarelaDePago(double precioTotal) {
 		
 		double	dineroIntroducido = 0.0;
@@ -196,6 +244,11 @@ public class Operaciones {
 		System.out.println("\n\n\t------>>>>>> Gracias por su compra <<<<<<------");
 	}		
 
+	/**
+	 * Divide el cambio en billetes y monedas, y muestra la cantidad de cada uno de estos segun corresponda.
+	 * 
+	 * @param cambio - cantidad que debe desglosarse.
+	 */
 	private static void desglosarCambio(double cambio) {
 		int [] billetes= {200, 100, 50, 20, 10, 5, 2, 1};
 		int [] monedas= {50, 20, 10, 5, 2, 1};

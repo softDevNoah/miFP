@@ -2,8 +2,15 @@ package vista;
 
 import modelo.*;
 
+/**
+ * Gestiona la visualizacion en pantalla de los elementos de array de de productos existentes en una máquina expendedora.
+ */
 public class MostrarListaDeProductos {
 
+	/**
+	 * Muestra la lista completa de productos y sus atributos correspondientes. Si no hay, muestra un mensaje de error.
+	 * @param productos - Array completo de productos disponibles en la máquina expendedora.
+	 */
 	public static void mostrarListaCompleta(Producto productos[]) {
 		
 		int	numActualProductos = productos.length;
@@ -19,6 +26,11 @@ public class MostrarListaDeProductos {
 			MostrarMensajeDeError.mostrarError(9);
 	}
 	
+	/**
+	 * Muestra productos existentes según la categoría ingresada, si es que los hay. Si no los hay, muestra un mensaje de error.
+	 * @param productos - Array completo de productos disponibles en la máquina expendedora.
+	 * @param categoría - Filtro para mostrar solo los productos que sean de esa categoría.
+	 */
 	public static void mostrarPorCategoria(Producto productos[], String categoria) {
 		
 		int	numActualProductos = productos.length;
@@ -52,6 +64,11 @@ public class MostrarListaDeProductos {
 			MostrarMensajeDeError.mostrarError(9);
 	}
 	
+	/**
+	 * Muestra los productos que hay en la cesta de la compra, cuando los hay.
+	 * @param productosCesta - Array con los productos añadidos en el proceso de compra.
+	 * @param precioTotal - valor que contiene la suma del precio de todos los productos que hay en el array de cesta de la compra.
+	 */
 	public static void mostrarCestaCompra(Producto productosCesta[], double precioTotal) {
 		
 		int	cantidadProductos = productosCesta.length;

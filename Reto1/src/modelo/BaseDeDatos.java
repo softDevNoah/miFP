@@ -1,10 +1,18 @@
 package modelo;
 
+/**
+	 * Clase del objeto BaseDeDatos, que como su nombre indica hará de base de datos, y tiene como atributos
+	 *  un array de objetos de clase Producto y un array de objetos de clase Usuario, que son los administradores.
+	 */
 public class BaseDeDatos {
 	
 	public Producto	productos[];
 	public Usuario 	administradores[];
 	
+	/**
+	 * Constructor del objeto de esta clase, inicializará los valores de sus atributos automáticamente.
+	 * Crea 16 productos básicos y 4 usuarios estándar.
+	 */
 	public BaseDeDatos() {
 		
 		this.productos = new Producto[16];
@@ -22,8 +30,11 @@ public class BaseDeDatos {
 		}
 	}
 
-
-	private Producto[] setearProductosIniciales(Producto productos[]) {
+	/**
+	 * Asigna valores a los atributos de los elementos del array de {@code Producto}
+	 * @param productos - Array vacío de productos disponibles en la máquina expendedora.
+	 * @return Retorna el array inicializado
+	 */	private Producto[] setearProductosIniciales(Producto productos[]) {
 		
 		String	nombresIniciales[] = {"Agua", "Fanta", "Zumo", "Monster", "Vegano", "Chorizo", "Vegetal", "Mixto",
 									"Donete", "Zebra", "Palmera", "Cruasán", "KitKat", "Mars", "Kinder", "Twix"};
