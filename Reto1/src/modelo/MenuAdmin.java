@@ -10,10 +10,9 @@ public class MenuAdmin {
 		
 		boolean	sesionIniciada;
 		int		opcionElegida = -1;
-		String	usuarioIniciado = "";
 		String	operaciones[] = {"Nuevo producto", "Modificar producto", "Eliminar producto", "Salir"};
 		
-		sesionIniciada = intentoDeInicio(baseDeDatosMasActual.administradores, usuarioIniciado);
+		sesionIniciada = intentoDeInicio(baseDeDatosMasActual.administradores);
 		
 		while (sesionIniciada) {
 			
@@ -34,7 +33,7 @@ public class MenuAdmin {
 					break;
 				case 4:
 					MostrarMensajeInformativo.msgOperacionSeleccionada(4);
-					MostrarMensajeInformativo.msgEstadoSesionCorrecto(usuarioIniciado, 1);
+					MostrarMensajeInformativo.msgEstadoSesionCorrecto("", 1);
 					sesionIniciada = false;
 					break;
 			}
@@ -44,17 +43,17 @@ public class MenuAdmin {
 		return (baseDeDatosMasActual);
 	}
 	
-	private static boolean intentoDeInicio(Usuario administradores[], String usuarioIniciado) {
+	private static boolean intentoDeInicio(Usuario administradores[]) {
 		
 		boolean	sesionIniciada = false;
 		
-		if (recogerUsuarioYContraseña(administradores, usuarioIniciado))
+		if (recogerUsuarioYContraseña(administradores))
 				sesionIniciada = true;
 		
 		return (sesionIniciada);
 	}
 	
-	private static boolean recogerUsuarioYContraseña(Usuario administradores[], String usuarioIniciado) {
+	private static boolean recogerUsuarioYContraseña(Usuario administradores[]) {
 		
 		boolean	esCorrecto = false;
 		String	entrada;
@@ -81,10 +80,8 @@ public class MenuAdmin {
 			esCorrecto = true;
 
 		}
-		if (esCorrecto) {
+		if (esCorrecto)
 			MostrarMensajeInformativo.msgEstadoSesionCorrecto(administradores[numUsuario].nombre, 0);
-			usuarioIniciado = administradores[numUsuario].nombre;
-		}
 		return (esCorrecto);
 	}
 	
