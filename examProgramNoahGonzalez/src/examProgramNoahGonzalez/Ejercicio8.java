@@ -1,0 +1,301 @@
+package examProgramNoahGonzalez;
+
+import java.util.Scanner;
+
+public class Ejercicio8 {
+
+	private static Scanner teclado = new Scanner(System.in); 
+	private static String entrada;
+	
+	public static void main(String[] args) {
+	
+		int		opcionElegida;
+		double	precio = 25.99;
+		double	iva = 0.21;
+		double	result;
+		
+		do {
+			opcionElegida = seleccionarOperacionMenu();
+			
+			switch (opcionElegida) {
+				case 0:
+					msgOperacionSeleccionada(opcionElegida);
+					System.out.println("\n\nHasta la próxima.\n+++++++++++++++++++++++++");
+					break;
+				case 1:
+					operacionesAritmeticas(opcionElegida);
+					break;
+				case 2:
+					decimal(opcionElegida);
+					break;
+				case 3:
+					guardar5productos(opcionElegida);
+					break;
+				case 4:
+					msgOperacionSeleccionada(opcionElegida);
+					result = calcularPrecio(precio, iva);
+					System.out.printf("El precio de %.2f€, con impuestos es de: %.2f€\n", precio, result);
+					imprimirLinea();
+					break;
+				case 5:
+					login();
+					break;
+			}
+		} while (opcionElegida != 0);
+		teclado.close();
+	}
+
+	private static void login() {
+		boolean userOkey = false;
+		boolean pwOkey = false;
+		
+		
+		
+		System.out.println("Usuario: ");
+		String user = entrada = teclado.nextLine().trim().toLowerCase();
+		if (user.equals("admin"))
+			userOkey = true;
+		System.out.println("Clave: ");
+		String pw = entrada = teclado.nextLine().trim().toLowerCase();
+		if (pw.equals("admin"))
+			pwOkey = true;
+		System.out.println("\n\n");
+		if (userOkey && pwOkey)
+			System.out.println("Ongi etorri / Bienvenido!");
+		else
+			System.out.println("Usuario desconocido. Erebiltzaile ezezaguna");
+	}
+	
+	private static void operacionesAritmeticas(int opcionElegida) {
+		
+		int 	op1, op2;
+		
+		msgOperacionSeleccionada(opcionElegida);
+		imprimirLinea();
+
+		op1 = solicitaNum("Dame el primer número entero: ");
+		op2 = solicitaNum("Dame el segundo número entero: ");
+		
+		System.out.printf("La suma de a + b es: %d\n", op1 + op2);
+		System.out.printf("La resta de a - b es: %d\n", op1 - op2);
+		System.out.printf("La multiplicación de a * b es: %d\n", op1 * op2);
+		
+		if (op2 != 0)
+			System.out.printf("La división de a / b es: %.2f\n", (double)op1 / op2);	
+		else
+			System.out.println("División por 0");	
+		imprimirLinea();
+	}
+	
+	private static void decimal(int opcionElegida) {
+		
+		double	num;
+		double	resto = 0;
+		
+		msgOperacionSeleccionada(opcionElegida);
+		imprimirLinea();
+		
+		num = solicitaNumDecimal("Dame un número: ");
+		resto = num % 1;
+		System.out.printf("La parte entera del numero %.2f es %d y la parte decimal es %d\n", num, (int)num / 1, (int)(resto * 100));
+		imprimirLinea();
+	}
+	
+	private static void guardar5productos(int opcionElegida) {
+		
+		String	productos[] = {"", "", "", "", ""};
+		
+		msgOperacionSeleccionada(opcionElegida);
+		imprimirLinea();
+		
+		for (int i = 0; i < productos.length; i++) {
+			System.out.printf("Dame el producto %d: ", i + 1);
+			productos[i] = solicitarProducto();
+		}
+		imprimirListadoProductos(productos);
+		imprimirLinea();
+	}
+	
+	private static double calcularPrecio(double precio, double iva) {
+		
+		double	result;
+		
+		imprimirLinea();
+		result = precio + (precio * iva);
+		
+		return (result);
+	}
+	
+	private static void imprimirLinea() {
+		System.out.println("-----------------------------------·");
+	}
+	
+	private static void msgOperacionSeleccionada(int opcionElegida) {
+		System.out.printf("Ejecutando opción %d\n", opcionElegida);
+	} 
+	
+	private static int seleccionarOperacionMenu() {
+		
+		boolean	esCorrecto;
+		int		opcionElegida = -1;
+		
+		do {
+			esCorrecto = true;
+			
+			imprimirMenu();
+			opcionElegida = solicitaNumOpcionMenu();
+			if (opcionElegida != -1)
+				System.out.printf("Has seleccionado la opción %d\n\n", opcionElegida);
+			else
+				esCorrecto = false;
+		} while (!esCorrecto);
+		return (opcionElegida);
+	}
+	
+	private static void imprimirMenu() {
+		System.out.println("\nMenu de opciones:");
+		System.out.println("0 - Salir");
+		System.out.println("1 - Operacioines Aritméticas");
+		System.out.println("2 - Decimales");
+		System.out.println("3 - Guardar Productos");
+		System.out.println("4 - Calcula Precio");
+		System.out.println("5 - Login\n");
+		System.out.print("Elige una opción: ");
+	}
+	
+	private static void imprimirListadoProductos(String productos[]) {
+		System.out.println("----- Listado de productos -----\n");
+		for (int i = 0; i < productos.length; i++) {
+			System.out.printf("Producto %d: %s\n", i + 1, productos[i]);
+		}
+	}
+	
+	private static String solicitarProducto() {
+		
+		do {
+			entrada = teclado.nextLine().trim();
+		} while (entrada.isEmpty());
+		
+		return (entrada);
+	}
+	
+	private static double solicitaNumDecimal(String peticion) {
+		
+		boolean	esNegativo;
+		boolean esCorrecto;
+		double	num;
+		
+		do {
+			esCorrecto = true;
+			esNegativo = false;
+			
+			System.out.printf("%s", peticion);
+			entrada = teclado.nextLine().trim();
+			
+			if (entrada.charAt(0) == '-') {
+				entrada = entrada.substring(1);
+				esNegativo = true;
+			}
+			else if (entrada.charAt(0) == '+')
+				entrada = entrada.substring(1);
+			
+			if (!checkNumDecimal(entrada))
+				esCorrecto = false;
+			
+		} while (!esCorrecto);
+		
+		num = Double.parseDouble(entrada);
+		
+		if (esNegativo)
+			num *= -1;
+		
+		return (num);
+	}
+	
+	private static int solicitaNum(String peticion) {
+		
+		boolean	esNegativo;
+		boolean esCorrecto;
+		int		num;
+		
+		do {
+			esCorrecto = true;
+			esNegativo = false;
+			
+			System.out.printf("%s", peticion);
+			entrada = teclado.nextLine().trim();
+			
+			if (entrada.charAt(0) == '-') {
+				entrada = entrada.substring(1);
+				esNegativo = true;
+			}
+			else if (entrada.charAt(0) == '+')
+				entrada = entrada.substring(1);
+			
+			if (!checkNum(entrada))
+				esCorrecto = false;
+			
+		} while (!esCorrecto);
+		
+		num = Integer.parseInt(entrada);
+		
+		if (esNegativo)
+			num *= -1;
+		
+		return (num);
+	}
+	
+	private static int solicitaNumOpcionMenu() {
+		
+		int	num = -1;
+		
+		entrada = teclado.nextLine().trim();
+		
+		if (entrada.isEmpty() || entrada.length() > 1 || !checkNum(entrada))
+			return (num);	
+		
+		num = Integer.parseInt(entrada);
+		
+		if (num < 0 || num > 5)
+			return (-1);
+		
+		return (num);
+	}
+	
+	private static boolean checkNumDecimal(String entrada) {
+		
+		boolean esCorrecto = true;
+		char	c = ' ';
+		int		puntos = 0;
+		boolean	hayNumeros = false;
+		
+		for (int i = 0; i < entrada.length(); i++) {
+			c = entrada.charAt(i);
+			if (c == '.')
+				puntos++;
+			if (Character.isDigit(c))
+				hayNumeros = true;
+			if (!Character.isDigit(c) && c != '.'){
+				esCorrecto = false;
+			}
+		}
+		if (puntos > 1 || !hayNumeros)
+			esCorrecto = false;
+		return (esCorrecto);
+	}
+	
+	private static boolean checkNum(String entrada) {
+		
+		boolean esCorrecto = true;
+		char	c = ' ';
+		
+		for (int i = 0; i < entrada.length(); i++) {
+			c = entrada.charAt(i);
+			if (!Character.isDigit(c)){
+				esCorrecto = false;
+			}
+		}
+		
+		return (esCorrecto);
+	}
+}
