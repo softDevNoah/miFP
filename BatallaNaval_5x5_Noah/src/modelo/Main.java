@@ -42,7 +42,7 @@ public class Main {
 				}
 			}
 			
-			if (x < 0 || x > 5 || y < 0 || y > 5 )
+			if (x < 0 || x > 4 || y < 0 || y > 4 )
 				System.out.println("Coordenadas incorrectas, se penalizará una tirada...");
 			else {
 				
