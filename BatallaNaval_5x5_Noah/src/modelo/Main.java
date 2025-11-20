@@ -13,7 +13,7 @@ public class Main {
 	public static int y;
 	public static int maxTiradas = 15;
 	public static int tiradas = 0;
-	public static String tableroInterno[][] = { {" ", "D", "D", "D", " "}, {"F", " ", " ", " ", " "}, {"F", " ", "S", "F", "F"}, {" ", " ", "S", " ", " "}, {" ", " ", " ", "S", "S"}};
+	public static String tableroInterno[][] = { {" ", "D", "D", "D", " "}, {"f", " ", " ", " ", " "}, {"f", " ", "s", "F", "F"}, {" ", " ", "s", " ", " "}, {" ", " ", " ", "S", "S"}};
 	public static String tableroJuego[][] = { {" ", " ", " ", " ", " "}, {" ", " ", " ", " ", " "}, {" ", " ", " ", " ", " "}, {" ", " ", " ", " ", " "}, {" ", " ", " ", " ", " "}};;
 	
 	public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class Main {
 		int		tamañoDestructor = 3, tamañoFragata = 2, tamañoSubmarino = 2;
 				
 		do {
-			int	tocadoDestructor = 0, tocadaFragata = 0, tocadoSubmarino = 0;
+			int	tocadoDestructor = 0, tocadaFragata1 = 0,  tocadaFragata2 = 0, tocadoSubmarino1 = 0, tocadoSubmarino2 = 0;
 			int	fragHundidas = 0, submaHundidos = 0;
 			
 			haTerminado = false;
@@ -84,13 +84,21 @@ public class Main {
 							else
 								System.out.println("\n---->>> Tirada repetida... se penalizará una tirada...");
 						}
-						else if (tableroInterno[x][y] == "F") {
+						else if (tableroInterno[x][y] == "F" || tableroInterno[x][y] == "f") {
 							if (tableroJuego[x][y] != "X") {
 								tableroJuego[x][y] = "X";
-								tocadaFragata++;
-								if (tocadaFragata == tamañoFragata) {
+								if (tableroInterno[x][y] == "F")
+									tocadaFragata1++;
+								else
+									tocadaFragata2++;
+								if (tocadaFragata1 == tamañoFragata) {
 									System.out.println("\n-------------------------- ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡FRAGATA HUNDIDA!!!!!!!!!!!!!!!--------------------------\n");
-									tocadaFragata = 0;
+									tocadaFragata1 = 0;
+									fragHundidas++;
+								}
+								else if (tocadaFragata2 == tamañoFragata) {
+									System.out.println("\n-------------------------- ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡FRAGATA HUNDIDA!!!!!!!!!!!!!!!--------------------------\n");
+									tocadaFragata2 = 0;
 									fragHundidas++;
 								}
 								else
@@ -101,14 +109,23 @@ public class Main {
 							else
 								System.out.println("\n---->>> Tirada repetida... se penalizará una tirada...");
 						}
-						else if (tableroInterno[x][y] == "S") {
+						else if (tableroInterno[x][y] == "S" || tableroInterno[x][y] == "s") {
 							if (tableroJuego[x][y] != "X") {
 								tableroJuego[x][y] = "X";
-								tocadoSubmarino++;
-								if (tocadoSubmarino == tamañoSubmarino) {
+								if (tableroInterno[x][y] == "S")
+									tocadoSubmarino1++;
+								else
+									tocadoSubmarino2++;
+								
+								if (tocadoSubmarino1 == tamañoSubmarino) {
 									System.out.println("\n-------------------------- ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡SUBMARINO HUNDIDO!!!!!!!!!!!!!!! --------------------------\n");
-									tocadoSubmarino = 0;
+									tocadoSubmarino1 = 0;
 									submaHundidos++;
+								}
+								else if (tocadoSubmarino2 == tamañoSubmarino) {
+										System.out.println("\n-------------------------- ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡SUBMARINO HUNDIDO!!!!!!!!!!!!!!! --------------------------\n");
+										tocadoSubmarino2 = 0;
+										submaHundidos++;
 								}
 								else
 									System.out.println("\n---->>> Submarino tocado... \n");
