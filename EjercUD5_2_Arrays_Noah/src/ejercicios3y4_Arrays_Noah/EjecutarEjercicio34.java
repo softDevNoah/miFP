@@ -1,14 +1,14 @@
-package EjercUD5_2_Arrays_Noah;
+package ejercicios3y4_Arrays_Noah;
 
-public class EjecutarEjercicio {
+public class EjecutarEjercicio34 {
 
 	public static void	ejercicio1() {
 		
 		int	edades[];
 		
-		Main.num = MetodAux.menuOpciones("¿Desea introducir las edades manualmente?", null, "Indique su respuesta");
+		Main34.num = MetodAux.menuOpciones("¿Desea introducir las edades manualmente?", null, "Indique su respuesta");
 		
-		if (Main.num == 0)
+		if (Main34.num == 0)
 			edades = recoge20Edades();
 		else 
 			edades = inventa20Edades();
@@ -36,11 +36,11 @@ public class EjecutarEjercicio {
 			edadValida = false;
 			
 			System.out.println("\t- Introduzca la edad:");
-			Main.entrada = Main.teclado.nextLine().trim();
+			Main34.entrada = Main34.teclado.nextLine().trim();
 			
 			if (MetodAux.checkSoloNumeroPositivoEntero()) {
 				
-				edad = Integer.parseInt(Main.entrada);
+				edad = Integer.parseInt(Main34.entrada);
 			
 				if (edad < 18 || edad > 35) {
 					System.out.println("Error: los estudiantes de este curso solo pueden tener entre 18 y 35 años.");

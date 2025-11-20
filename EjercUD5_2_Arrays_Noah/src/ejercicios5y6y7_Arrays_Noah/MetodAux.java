@@ -1,4 +1,4 @@
-package EjercUD5_2_Arrays_Noah;
+package ejercicios5y6y7_Arrays_Noah;
 
 public class MetodAux {
 	
@@ -29,11 +29,11 @@ public class MetodAux {
 			
 			System.out.printf("\n\t·····> %s: ", peticion);
 			
-			Main.entrada = Main.teclado.nextLine().trim();
+			Main567.entrada = Main567.teclado.nextLine().trim();
 			
-			if (!Main.entrada.isEmpty() && checkSoloNumeroPositivoEntero()) {
+			if (!Main567.entrada.isEmpty() && checkSoloNumeroPositivoEntero()) {
 				
-				opcionSeleccionada = Integer.parseInt(Main.entrada);
+				opcionSeleccionada = Integer.parseInt(Main567.entrada);
 				
 				if ((opcionSeleccionada < 1) || (opcionSeleccionada > opciones.length)) {
 					System.out.println("\t-------> Error: opción incorrecta...");
@@ -52,10 +52,10 @@ public class MetodAux {
 	public static boolean checkSoloNumeroPositivoEntero() {
 		boolean esCorrecto = true;
 
-		for (int i = 0; i < Main.entrada.length(); i++) {
-			if (i == 0 && Main.entrada.charAt(i) == '+')
+		for (int i = 0; i < Main567.entrada.length(); i++) {
+			if (i == 0 && Main567.entrada.charAt(i) == '+')
 				i++;
-			if (!Character.isDigit(Main.entrada.charAt(i)))
+			if (!Character.isDigit(Main567.entrada.charAt(i)))
 				esCorrecto = false;
 		}
 		if (!esCorrecto)
@@ -63,4 +63,12 @@ public class MetodAux {
 		return (esCorrecto);
 	}
 	
+	public static void pintarLinea(String c, int num) {
+		
+		System.out.println();
+		for(int i = 0; i < num; i++)
+			System.out.printf("%s", c);
+		System.out.println();
+	
+	}
 }
