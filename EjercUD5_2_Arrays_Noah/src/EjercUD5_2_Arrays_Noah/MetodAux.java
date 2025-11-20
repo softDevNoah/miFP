@@ -1,58 +1,6 @@
 package EjercUD5_2_Arrays_Noah;
 
-import java.util.Scanner;
-
 public class MetodAux {
-
-	private static Scanner	teclado = new Scanner(System.in);
-	private static String	entrada;
-	private static int		num;
-	
-	public static boolean decideSioNo() {
-		
-		
-		boolean	introducirEdades = false;
-		do {
-			System.out.println("***Solo escriba \"S\" (Sí) o \"N\" (No), por favor.");
-			entrada = teclado.nextLine();
-			
-		}while (checkSN(entrada));
-		if(entrada.equals("S"))
-			introducirEdades = true;
-		return (introducirEdades);
-	}
-	
-	private static boolean checkSN(String entrada) {
-		
-		String si = "S";
-		String no = "N";
-		
-		if (!entrada.equals(si) && !entrada.equals(no))
-			return (false);
-		else
-			return (true);
-	}
-	
-	public static int	checkNumPositivo() {
-		
-		boolean	esNum;
-		
-		do {
-			esNum = true;
-			entrada = teclado.nextLine();
-			for (int i = 0; i < entrada.length(); i++) {
-				if (!Character.isDigit(entrada.charAt(i))) {
-					esNum = false;
-					break;
-				}
-				if (!esNum)
-					System.out.println("Error: introduzca únicamente un número entero (mayor de 0), por favor.");
-			}
-		}while (!esNum);
-		
-		num = Integer.parseInt(entrada);
-		return (num);
-	}
 	
 	public static int	calcularMedia(int numeros[]) {
 		
@@ -63,4 +11,56 @@ public class MetodAux {
 		}
 		return (total / numeros.length);
 	}
+	
+	public static int menuOpciones(String titulo, String opciones[], String peticion) {
+		
+		String	siNo[] = {"Sí", "No"};
+		int		opcionSeleccionada = 0;
+		boolean	esCorrecto;
+		
+		if (opciones == null)
+			opciones = siNo;
+		do {
+			esCorrecto = true;
+			System.out.printf("\n\n\t------> %s <<<<<<------\n\n", titulo);
+			
+			for (int i = 0; i < opciones.length; i++) 
+				System.out.printf("\t\t%d.- %s.\n", i + 1, opciones[i]);
+			
+			System.out.printf("\n\t·····> %s: ", peticion);
+			
+			Main.entrada = Main.teclado.nextLine().trim();
+			
+			if (!Main.entrada.isEmpty() && checkSoloNumeroPositivoEntero()) {
+				
+				opcionSeleccionada = Integer.parseInt(Main.entrada);
+				
+				if ((opcionSeleccionada < 1) || (opcionSeleccionada > opciones.length)) {
+					System.out.println("\t-------> Error: opción incorrecta...");
+					esCorrecto = false;
+				}
+			}
+			else 
+				esCorrecto = false;
+			
+			
+		} while (!esCorrecto);
+		
+		return (opcionSeleccionada - 1);
+	}
+	
+	public static boolean checkSoloNumeroPositivoEntero() {
+		boolean esCorrecto = true;
+
+		for (int i = 0; i < Main.entrada.length(); i++) {
+			if (i == 0 && Main.entrada.charAt(i) == '+')
+				i++;
+			if (!Character.isDigit(Main.entrada.charAt(i)))
+				esCorrecto = false;
+		}
+		if (!esCorrecto)
+			System.out.println("\t----->>>> Error: introduzca únicamente un número entero (mayor de 0), por favor.");
+		return (esCorrecto);
+	}
+	
 }
