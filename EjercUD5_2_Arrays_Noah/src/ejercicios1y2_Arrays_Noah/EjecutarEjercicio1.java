@@ -3,7 +3,6 @@ package ejercicios1y2_Arrays_Noah;
 /**
  * Esta clase desarrolla el ejercicio 1. Se pide adquirir las edades de 20 estudiantes, mostrarlas y calcular y mostrar la media aritmética.
  */
-
 public class EjecutarEjercicio1 {
 
 	/**
@@ -84,7 +83,7 @@ public class EjecutarEjercicio1 {
 	 * @param numeros - un array de números enteros
 	 * @return int media aritmética
 	 */
-	public static int	calcularMedia(int numeros[]) {
+	private static int	calcularMedia(int numeros[]) {
 		
 		int	total = 0;
 		
