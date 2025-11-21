@@ -5,7 +5,8 @@ public class EjecutarEjercicio2 {
 	public static void ejercicio2() {
 		
 		int numeros[] = new int[20];
-		int suma, producto;
+		int suma;
+		long producto;
 		
 		numeros = cargarTabla(numeros);
 		suma = sumaPares(numeros);
@@ -18,7 +19,7 @@ public class EjecutarEjercicio2 {
 	private static int generarNumero() {
 		int numRandom;
 		
-		numRandom = (int)Math.floor(Math.random() * (101 - 99) + 1);
+		numRandom = (int)(Math.random() * 100) + 1; // (max - min + 1) - min
 		
 		return (numRandom);
 	}
@@ -35,42 +36,44 @@ public class EjecutarEjercicio2 {
 		
 		int total = 0;
 		
-		for (int i = 0; i < numeros.length; i++)
+		for (int i = 0; i < numeros.length; i+=2)
 			total+= numeros[i];
 	
 		return (total);
 	}
 	
-	private static int prodImpares(int numeros[]) {
-		int producto = 0;
+	private static long prodImpares(int numeros[]) {
+		long producto = 1;
 		
-		for (int i = 0; i < numeros.length; i++)
-			producto += numeros[i];
+		for (int i = 1; i < numeros.length; i+=2)
+			producto *= (long)numeros[i];
 		
 		return (producto);
 	}
 	
 	
-	private static void imprimirDatos(int numeros[], int suma, int producto) {
+	private static void imprimirDatos(int numeros[], int suma, long producto) {
 		
-		System.out.printf("La lista completa de números es: %d", numeros[0]);
+		System.out.printf("\tLa lista completa de números es:\n\t\t%d", numeros[0]);
 		for (int i = 1; i < numeros.length; i++)
 			System.out.printf(", %d", numeros[i]);
-		System.out.println(".");
+		System.out.println(".\n");
 		
-		System.out.println("La suma de los números en posiciones pares es: ");
+		System.out.println("\t***Aviso: se está considerando posiciones conforme se usa en programación,\n\tpor tanto la primera posición es la posición 0 y no la 1... ***\n\n");
 		
-		System.out.printf("%d", numeros[0]);
+		System.out.println("\tLa suma de los números en posiciones pares es: ");
+		
+		System.out.printf("\t\t%d", numeros[0]);
 		for (int i = 2; i < numeros.length; i += 2)
 			System.out.printf(" + %d", numeros[i]);
-		System.out.printf("= %d.\n", suma);
+		System.out.printf(" = %d.\n\n", suma);
 		
-		System.out.println("El producto de los números en posiciones impares es: ");
+		System.out.println("\tEl producto de los números en posiciones impares es: ");
 		
-		System.out.printf("%d", numeros[0]);
-		for (int i = 1; i < numeros.length; i += 2)
+		System.out.printf("\t\t%d", numeros[1]);
+		for (int i = 3; i < numeros.length; i += 2)
 			System.out.printf(" * %d", numeros[i]);
-		System.out.printf("= %d.\n", suma);
+		System.out.printf(" = %d.\n\n", producto);
 		
 	}
 }

@@ -105,7 +105,7 @@ public class EjecutarEjercicio1 {
 		
 		System.out.println("\n\n\t- Se procede a generar aleatoriamente las edades de 20 estudiantes ficticios:\n\n");
 		for (int i = 0; i < edades.length; i++) 
-			edades[i] = (int)Math.floor(Math.random() * (100 - 65) + 18);
+			edades[i] = (int)Math.floor(Math.random() * (35 - 18 + 1) + 18); //(max - min - 1) + min
 
 		return (edades);
 	}
