@@ -22,13 +22,13 @@ public class Main12 {
 				case 0:
 					MetodAux.pintarLinea("~", 71);
 					System.out.println("\n\tEjecutando Ejercicio 1...\n");
-					EjecutarEjercicio12.ejercicio1();
+					EjecutarEjercicio1.ejercicio1();
 					MetodAux.pintarLinea("~", 71);
 					break;
 				case 1:
 					MetodAux.pintarLinea("~", 71);
 					System.out.println("\n\tEjecutando Ejercicio 2...\n");
-//					EjecutarEjercicio.ejercicio2();
+					EjecutarEjercicio2.ejercicio2();
 					MetodAux.pintarLinea("~", 71);
 					break;
 			}

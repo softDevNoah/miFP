@@ -2,15 +2,7 @@ package ejercicios1y2_Arrays_Noah;
 
 public class MetodAux {
 	
-	public static int	calcularMedia(int numeros[]) {
-		
-		int	total = 0;
-		
-		for (int i = 0; i < numeros.length; i++) {
-			total += numeros[i];
-		}
-		return (total / numeros.length);
-	}
+	
 	
 	public static int menuOpciones(String titulo, String opciones[], String peticion) {
 		
