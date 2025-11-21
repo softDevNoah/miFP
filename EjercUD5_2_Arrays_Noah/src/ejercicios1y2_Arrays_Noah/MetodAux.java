@@ -42,6 +42,7 @@ public class MetodAux {
 	}
 	
 	public static boolean checkSoloNumeroPositivoEntero() {
+		
 		boolean esCorrecto = true;
 
 		for (int i = 0; i < Main12.entrada.length(); i++) {
@@ -50,16 +51,20 @@ public class MetodAux {
 			if (!Character.isDigit(Main12.entrada.charAt(i)))
 				esCorrecto = false;
 		}
+		
 		if (!esCorrecto)
 			System.out.println("\t----->>>> Error: introduzca únicamente un número entero (mayor de 0), por favor.");
+		
 		return (esCorrecto);
 	}
 	
 	public static void pintarLinea(String c, int num) {
 		
 		System.out.println();
+		
 		for(int i = 0; i < num; i++)
 			System.out.printf("%s", c);
+		
 		System.out.println();
 	
 	}
