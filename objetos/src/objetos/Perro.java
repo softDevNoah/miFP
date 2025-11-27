@@ -12,6 +12,7 @@ public class Perro {
 	String	raza;
 	
 	public Perro() {
+		
 		nombre = "VACIO";
 		edad = -1;
 		vacunado = false;
