@@ -7,7 +7,7 @@ import ejercicios1y2_Arrays_Noah.MetodAux;
 public class Main34 {
 
 	public static Scanner	teclado = new Scanner(System.in);
-	public static String	entrada;
+	public static String		entrada;
 	public static int		num;
 	
 	public static void main(String[] args) {
@@ -24,18 +24,18 @@ public class Main34 {
 				case 0:
 					MetodAux.pintarLinea("~", 71);
 					System.out.println("\n\tEjecutando Ejercicio 3...\n");
-					EjecutarEjercicio34.ejercicio1();
+					EjecutarEjercicio34.ejercicio3();
 					MetodAux.pintarLinea("~", 71);
 					break;
 				case 1:
 					MetodAux.pintarLinea("~", 71);
 					System.out.println("\n\tEjecutando Ejercicio 4...\n");
-//					EjecutarEjercicio.ejercicio2();
+					EjecutarEjercicio34.ejercicio4();
 					MetodAux.pintarLinea("~", 71);
 					break;
 			}
 					
-		} while(num != 7);
+		} while(num != 2);
 		MetodAux.pintarLinea("~", 71);
 		System.out.println("\t\t- Saliendo del programa...");
 		
