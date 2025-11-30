@@ -1,10 +1,8 @@
 package ejercicios3y4_Arrays_Noah;
 
-import java.util.Scanner;
+public class Ejercicios {
 
-public class EjecutarEjercicio34 {
-
-	public static void	ejercicio3() {
+	public static void	ejecutar3() {
 		
 		int	tabla[];
 		
@@ -55,10 +53,10 @@ public class EjecutarEjercicio34 {
 		return (numRandom);
 	}
 	
-	public static void ejercicio4() {
+	public static void ejecutar4() {
 		
 		String	nombres[];
-		int		notas[] = new int[10];
+		int		notas[];
 		int		estadisticas[];
 		
 		
@@ -72,71 +70,66 @@ public class EjecutarEjercicio34 {
 	}
 	
 	
-	private static void mostrarTodosDatos(String nombres[], int notas[]) {
-		
-		for (int i = 0; i < 10; i++) {
-			System.out.printf("\tLa nota de %s es un %d.\n", nombres[i], notas[i]);
-		}
-		System.out.println();
-	}
-	
 	private static String[] cargarArrayNombres() {
 		
-		Scanner	teclado = new Scanner(System.in);
 		String	nombres[] = new String[10];
 		String	entrada;
 		
 		for (int i = 0; i < nombres.length; i++) {
-			System.out.printf("Por favor, introduzca nombre completo del alumno nº %d de la lista: ", i + 1);
-			entrada = teclado.nextLine();
-			if (!entrada.isBlank())
-				nombres[i] = entrada;
-			else
+			System.out.printf("Nombre completo del alumno nº %d: ", i + 1);
+			entrada = Main34.teclado.nextLine();
+			if (entrada.isBlank())
 				i--;
+			nombres[i] = entrada;	
 			System.out.println();
 		}
-		teclado.close();
 		return (nombres);
 	}
 	
 	private static int[] cargarArrayNotas() {
 		
-		Scanner	teclado = new Scanner(System.in);
 		int		notas[] = new int[10];
 		String	entrada;
 		int		num;
 		
 		for (int i = 0; i < notas.length; i++) {
-			System.out.printf("Por favor, introduzca la nota del alumno nº %d de la lista: ", i + 1);
-			entrada = teclado.nextLine();
-			
+			System.out.printf("Nota del alumno nº %d: ", i + 1);
+			entrada = Main34.teclado.nextLine();
+			num = -1;
 			if (!entrada.isBlank()) {
-				if (entrada.length() == 1 && Character.isDigit(entrada.charAt(i))) {
+				if (Main34.checkSoloNumeroPositivoEntero(entrada)) {
 					num = Integer.parseInt(entrada);
 					if (num < 0 || num > 10)
 						num = -1;
-					else
+					else {
+						notas[i] = num;
 						i++;
+					}
 				}
 			}
+			if (num == -1)
+				System.out.println("\t----->>>> Error: solo números del 0 al 10, por favor.");
 			i--;
 			System.out.println();
 		}
-		teclado.close();
 		return (notas);
 	}
 	
+	private static void mostrarTodosDatos(String nombres[], int notas[]) {
+		
+		for (int i = 0; i < nombres.length; i++) {
+			System.out.printf("\tLa nota de %s es un %d.\n", nombres[i], notas[i]);
+		}
+		System.out.println();
+	}	
+	
 	private static int[] calculoDatos(String nombres[], int notas[]) {
 		
-		int	media = 0;
-		int	menor = 10;
-		int	mayor = 0;
-		int	alumnoPeor = 0;
-		int	alumnoMejor = 0;
+		int	media = 0, menor = 10, mayor = 0, alumnoPeor = 0, alumnoMejor = 0;
 		
 		int	estadisticas[] = new int[5];
 		
-		media = MetodAux.calcularMedia(notas);
+		media = calcularMedia(notas);
 
 		for (int i = 0; i < notas.length; i++){
 			if (notas[i] > mayor)
@@ -164,7 +157,18 @@ public class EjecutarEjercicio34 {
 		
 		System.out.printf("La nota media de la clase ha sido un %d.\n", estadisticas[0]);
 		System.out.printf("La peor nota de la clase ha sido un %d, de %s.\n", estadisticas[1], nombres[estadisticas[3]]);
-		System.out.printf("La mejor nota de la classe ha sido un %d, de %s.\n", estadisticas[2], nombres[estadisticas[4]]);
+		System.out.printf("La mejor nota de la clase ha sido un %d, de %s.\n", estadisticas[2], nombres[estadisticas[4]]);
 		
 	}
+	
+	private static int	calcularMedia(int numeros[]) {
+	
+		int	total = 0;
+		
+		for (int i = 0; i < numeros.length; i++) {
+			total += numeros[i];
+		}
+		return (total / numeros.length);
+	}	
+	
 }
