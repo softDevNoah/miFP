@@ -2,12 +2,24 @@ package ejercicios3y4_Arrays_Noah;
 
 import java.util.Scanner;
 
+/**
+ * Esta clase contiene el método main de la entrega 2/3 de Arrays. También contiene métodos auxiliares que son utilizados
+ * durante la ejecución del programa.
+ * Tiene 3 atributos estáticos, que se usarán desde diversos métodos.
+ */
 public class Main34 {
 
 	public static Scanner	teclado = new Scanner(System.in);
 	public static String		entrada;
 	public static int		num;
 	
+	/**
+	 * Este es el método main. Muestra un menú de los ejercicios que se pueden ejecutar.
+	 * Mientras la opción elegida sea válida, la ejecutará. Si no, vuelve a mostrar el menú.
+	 * Al final, cierra la variable de tipo Scanner.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		String	menu[] = {"Ejecutar ejercicio 3", "Ejecutar ejercicio 4", "Salir del programa"};
@@ -40,6 +52,13 @@ public class Main34 {
 		teclado.close();
 	}
 
+	/**
+	 * Método auxiliar que recibe un caracter y un número entero, y mediante un bucle,
+	 * imprime dicho caracter tantas veces como dicho número indica.
+	 * 
+	 * @param c - caracter que se desea imprimir.
+	 * @param num - cantidad de veces que se imprimirá.
+	 */
 	private static void pintarLinea(String c, int num) {
 		
 		System.out.println();
@@ -97,6 +116,14 @@ public class Main34 {
 		return (opcionSeleccionada - 1);
 	}
 	
+	/**
+	 * Método auxiliar que valida si una entrada por teclado es un número entero positivo.
+	 * De serlo, devuelve un booleano con valor true, y en caso contrario, con valor false.
+	 * Se asume que la entrada no está vacía. Admite números positivos signados.
+	 * 
+	 * @param entrada - String que contiene los datos introducidos por teclado.
+	 * @return esCorrecto - true si es un n1 positivo entero, false en caso contrario
+	 */
 	public static boolean checkSoloNumeroPositivoEntero(String entrada) {
 		boolean esCorrecto = true;
 
