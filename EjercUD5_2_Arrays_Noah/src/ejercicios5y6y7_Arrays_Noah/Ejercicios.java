@@ -1,7 +1,13 @@
 package ejercicios5y6y7_Arrays_Noah;
 
+/**
+ * Esta clase contiene los ejercicios 5, 6 y 7 y sus respectivos métodos. 
+ */
 public class Ejercicios {
 
+	/**
+	 * 
+	 */
 	public static void	ejecutar5() {
 		
 		char		sorteo[];
@@ -19,7 +25,13 @@ public class Ejercicios {
 		
 	}
 
-	
+	/**
+	 * 
+	 * @param numTiradas
+	 * @param valorMin
+	 * @param valorMax
+	 * @return
+	 */
 	private static char[] generarSorteo(int numTiradas, int valorMin, int valorMax) {
 		
 		char sorteo[] = new char[numTiradas];
@@ -31,7 +43,10 @@ public class Ejercicios {
 		return (sorteo);
 	}
 	
-	//mostrar en 15 columnas
+	/**
+	 * 
+	 * @param arraySorteo
+	 */
 	private static void	mostrarSorteo(char arraySorteo[]) {
 		
 		int iter = 0;
@@ -45,7 +60,7 @@ public class Ejercicios {
 		System.out.println();
 		MetodAux.pintarLinea("____", 20);
 		
-		//contenido del array distribuido en 15 columnas:
+		//contenido del array distribuido en 15 columnas, segun enunciado:
 		do {
 			System.out.printf("\t|");
 			for (int j = 0; j < 9 && iter < arraySorteo.length; j++) {
@@ -59,6 +74,13 @@ public class Ejercicios {
 		
 	}
 	
+	/**
+	 * 
+	 * @param arraySorteo
+	 * @param valorMin
+	 * @param valorMax
+	 * @return
+	 */
 	private static int[] contarFrecuencias(char arraySorteo[], int valorMin, int valorMax) {
 		
 		int	contador = valorMax - valorMin + 1;
@@ -76,6 +98,12 @@ public class Ejercicios {
 		return (frecuencias);
 	}
 
+	/**
+	 * 
+	 * @param arrayFrecuencias
+	 * @param valorMin
+	 * @param valorMax
+	 */
 	private static void mostrarFrecuencias(int arrayFrecuencias[], int valorMin, int valorMax) {
 		
 		System.out.println("\tCantidad de veces que se ha repetido cada letra en el sorteo:");
@@ -84,38 +112,115 @@ public class Ejercicios {
 		
 	}
 	
-/*--------------------------------------------------------------------------------------------------------------------------*/
-	
+	/**
+	 * 
+	 */
 	public static void	ejecutar6() {
 			
-			
+		int	valorMin, valorMax, tamaño;
+		int	tabla[];
+		
+		valorMin = 1;
+		valorMax = 100;
+		tamaño = 20;
+		
+		tabla = cargarTabla(tamaño, valorMin, valorMax);
+		System.out.println("Tabla original:");
+		mostrarArray(tabla);
+		tabla = invertirTabla(tabla);
+		System.out.println("Tabla invertida:");
+		mostrarArray(tabla);
 	}
 		
-//	private static int[] cargarTabla(int n, int valorMin, int valorMax) {
-//		
-//		
-//	}
-//	
-//	private static int[] invertirTabla(int array[]){
-//		
-//	}
-//
-//	private static void mostrarArray(int array[]) {
-//		
-//		
-//	}	
+	/**
+	 * 
+	 * @param n
+	 * @param valorMin
+	 * @param valorMax
+	 * @return
+	 */
+	private static int[] cargarTabla(int n, int valorMin, int valorMax) {
+		
+		int	tabla[] = new int[n];
+		
+		for (int i = 0; i < n; i++)
+			tabla[i] = (int)Math.floor(Math.random() * (valorMax - valorMin + 1) + valorMin);
+		
+		return (tabla);
+	}
 	
+	/**
+	 * 
+	 * @param array
+	 * @return
+	 */
+	private static int[] invertirTabla(int array[]){
+		
+		int tmp = 0;
+		for (int i = 0, j = array.length - 1; i < j; i++, j--) {
+			tmp = array[i];
+			array[i] = array[j];
+			array[j] = tmp;
+		}
+		return (array);
+	}
 
-/*--------------------------------------------------------------------------------------------------------------------------*/
-
+	/**
+	 * 
+	 */
+	private static void mostrarArray(int array[]) {
+		
+		System.out.print("\t");
+		for (int i = 0; i < array.length - 1; i++)
+			System.out.printf("%d, ", array[i]);
+		System.out.printf("%d.\n\n", array[array.length -1]);
+	}	
 	
+	/**
+	 * 
+	 */
 	public static void	ejecutar7() {
 		
-
+		int	valorMin, valorMax, tamaño;
+		int	tabla[];
+		
+		valorMin = 0;
+		valorMax = 5;//elijo un valor bajo para aumentar la cantidad de 0 por probabilidad
+		tamaño = 20;
+		
+		tabla = cargarTabla(tamaño, valorMin, valorMax);
+		System.out.println("Situación original:");
+		mostrarArray(tabla);
+		tabla = moverCerosFinal(tabla);
+		System.out.println("Situación final:");
+		mostrarArray(tabla);
 		
 	}
 	
-//	private static int[] moverCerosFinal(int array[]){
-//			
-//		}
+	/**
+	 * 
+	 * @param array
+	 * @return
+	 */
+	private static int[] moverCerosFinal(int array[]){
+		
+		int tmp1 = 0;
+		
+		//el bucle exterior asegura que no quede NINGUN cero mal por error, haciendo varias veces el proceso
+		//si no, a veces algun cero queda por la izquierda
+		for (int i = 0; i < array.length; i++) {
+			
+			for (int j = 0; j < array.length; j++) {
+				if (array[j] == 0) {
+					for (int k = j; k < array.length - 1; k++) {
+						tmp1 = array[k];
+						array[k] = array[k + 1];
+						array[k + 1] = tmp1;
+					}
+				}
+			}
+		}
+		return (array);
+		
+	}
 }

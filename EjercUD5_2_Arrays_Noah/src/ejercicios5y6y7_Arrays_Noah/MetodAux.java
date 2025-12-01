@@ -1,17 +1,22 @@
 package ejercicios5y6y7_Arrays_Noah;
 
+/**
+ * Esta clase contiene métodos considerados auxiliares, es decir, pueden ser llamados para validaciones o tareas
+ * menores que son repetitivas.
+ */
 public class MetodAux {
 	
-	public static int	calcularMedia(int numeros[]) {
-		
-		int	total = 0;
-		
-		for (int i = 0; i < numeros.length; i++) {
-			total += numeros[i];
-		}
-		return (total / numeros.length);
-	}
-	
+	/**
+	 * Este método ofrece un menú de opciones, numeradas a partir del 1, con un título previo y una petición posterior.
+	 * Retorna un nº entero que sirve de índice para señalar cuál ha sido la opción seleccionada por el usuario
+	 * a través del teclado. Además, integra una validación tal que si el usuario introduce una opción que no
+	 * es válida, vuelve a mostrar todo de nuevo.
+	 * 
+	 * @param titulo - String que encabezará el menú
+	 * @param opciones - Listado de opciones que se mostrará con formato por pantalla (si es null, será opcion de Si/No)
+	 * @param peticion - String que pide al usuario ingresar la selección deseada.
+	 * @return int que hace de índice para indicar la opción seleccionada
+	 */
 	public static int menuOpciones(String titulo, String opciones[], String peticion) {
 		
 		String	siNo[] = {"Sí", "No"};
@@ -49,6 +54,11 @@ public class MetodAux {
 		return (opcionSeleccionada - 1);
 	}
 	
+	/**
+	 * Este método analiza un String para verificar si contiene solamente un nº entero positivo o no.
+	 * 
+	 * @return boolean esCorrecto con valor true si es un entero positivo y false en caso contrario
+	 */
 	public static boolean checkSoloNumeroPositivoEntero() {
 		boolean esCorrecto = true;
 
@@ -63,6 +73,12 @@ public class MetodAux {
 		return (esCorrecto);
 	}
 	
+	/**
+	 * Este método recibe un String y un nº entero (num) e imprime por pantalla dicho String num veces.
+	 * 
+	 * @param c - String que se desea imprimir repetidamente
+	 * @param num - número que indica cuántas veces se desea imprimir por pantalla el String
+	 */
 	public static void pintarLinea(String c, int num) {
 		
 		System.out.println();
