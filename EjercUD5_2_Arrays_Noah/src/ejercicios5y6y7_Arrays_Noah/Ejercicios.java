@@ -6,7 +6,10 @@ package ejercicios5y6y7_Arrays_Noah;
 public class Ejercicios {
 
 	/**
-	 * 
+	 * Este método contiene todo el funcionamiento lógico del ejercicio  de la entrega 3/3 de Arrays.
+	 * Tiene dos variables, un array de char y otro de int. Este array de char se carga de caracteres
+	 * asignados aleatoriamente, de la a minúscula a la z minúscula en este caso. Se muestra con formato
+	 * de 15 columnas, se contabiliza cuántas veces aparece cada letra y se muestra por pantalla.
 	 */
 	public static void	ejecutar5() {
 		
@@ -26,11 +29,14 @@ public class Ejercicios {
 	}
 
 	/**
+	 * Este método crea un array de char de tamaño numTiradas (int que recibe), y usa el código ASCII para poder
+	 * determinar cuáles son los caracteres que abarcará este array, indicados por parametro (ints valorMin
+	 *  y valorMax), haciendo casteo de datos para poder almacenarlo correctamente. 
 	 * 
-	 * @param numTiradas
-	 * @param valorMin
-	 * @param valorMax
-	 * @return
+	 * @param numTiradas - int que determina el tamaño del array
+	 * @param valorMin - nº entero que es el código ASCII del valor mínimo del rango de caracteres
+	 * @param valorMax - nº entero que es el código ASCII del valor máximo del rango de caracteres
+	 * @return sorteo - array de char con los caracteres aleatorios dentro del rango indicado
 	 */
 	private static char[] generarSorteo(int numTiradas, int valorMin, int valorMax) {
 		
@@ -44,8 +50,10 @@ public class Ejercicios {
 	}
 	
 	/**
+	 * Este método muestra por pantalla los caracteres del array tipo char, con un formato de tabla de 15 columnas.
+	 * En las columnas a partir de la 10, se imprime conservando las proporciones para que se vea ordenado.
 	 * 
-	 * @param arraySorteo
+	 * @param arraySorteo - array de char con los caracteres
 	 */
 	private static void	mostrarSorteo(char arraySorteo[]) {
 		
@@ -75,11 +83,12 @@ public class Ejercicios {
 	}
 	
 	/**
+	 * Este método contabiliza las apariciones de cada caracter en la tabla (array de char).
 	 * 
-	 * @param arraySorteo
-	 * @param valorMin
-	 * @param valorMax
-	 * @return
+	 * @param arraySorteo - array de caracteres del sorteo
+	 * @param valorMin - nº entero que es el código ASCII del valor mínimo del rango de caracteres
+	 * @param valorMax - nº entero que es el código ASCII del valor máximo del rango de caracteres
+	 * @return frecuencias - array de int con el nº de apariciones de cada caracter en el mismo orden secuencial ASCII
 	 */
 	private static int[] contarFrecuencias(char arraySorteo[], int valorMin, int valorMax) {
 		
@@ -99,10 +108,12 @@ public class Ejercicios {
 	}
 
 	/**
+	 * Este método muestra por pantalla la frecuencia de aparición de cada caracter en el sorteo. En este caso,
+	 * como son letras, en el mensaje aparece letras en vez de caracteres.
 	 * 
-	 * @param arrayFrecuencias
-	 * @param valorMin
-	 * @param valorMax
+	 * @param arrayFrecuencias - array de int con el nº de apariciones de cada caracter en el mismo orden secuencial ASCII
+	 * @param valorMin - nº entero que es el código ASCII del valor mínimo del rango de caracteres
+	 * @param valorMax - nº entero que es el código ASCII del valor máximo del rango de caracteres
 	 */
 	private static void mostrarFrecuencias(int arrayFrecuencias[], int valorMin, int valorMax) {
 		
@@ -113,7 +124,9 @@ public class Ejercicios {
 	}
 	
 	/**
-	 * 
+	 * Este método contiene todo el funcionamiento lógico del ejercicio 6 de la entrega 3/3 de Arrays.
+	 * Se genera un array de int de en este caso 20 números, se muestra, después se invierte usando solamente un int auxiliar
+	 * y se imprime por pantalla el array ya modificado.
 	 */
 	public static void	ejecutar6() {
 			
@@ -133,11 +146,12 @@ public class Ejercicios {
 	}
 		
 	/**
+	 * Este método recibe los valores necesarios para crear un array de enteros aleatorios dentro del rango indicado.
 	 * 
-	 * @param n
-	 * @param valorMin
-	 * @param valorMax
-	 * @return
+	 * @param n - tamaño del array de enteros que se crea
+	 * @param valorMin - nº entero de valor mínimo del rango
+	 * @param valorMax - nº entero de valor máximo del rango
+	 * @return tabla - array de int con los valores asignados
 	 */
 	private static int[] cargarTabla(int n, int valorMin, int valorMax) {
 		
@@ -150,9 +164,11 @@ public class Ejercicios {
 	}
 	
 	/**
+	 * Este método usa una variable int temporal para ir intercambiando de sitio cada valor. Solo se recorre la mitad del
+	 * array en el bucle. Finalmente devuelve el array ya invertido.
 	 * 
-	 * @param array
-	 * @return
+	 * @param array - array de int original
+	 * @return array - el array recibido, con los valores invertidos de posición
 	 */
 	private static int[] invertirTabla(int array[]){
 		
@@ -166,7 +182,9 @@ public class Ejercicios {
 	}
 
 	/**
+	 * Este método imprime un array por pantalla con formato de listado.
 	 * 
+	 * @param array - array de int 
 	 */
 	private static void mostrarArray(int array[]) {
 		
@@ -177,7 +195,9 @@ public class Ejercicios {
 	}	
 	
 	/**
-	 * 
+	 * Este método contiene todo el funcionamiento lógico del ejercicio 7 de la entrega 3/3 de Arrays.
+	 * Crea una tabla, en este caso un array de int, lo carga con valores entre 0 y valorMax, y luego
+	 * de mostrarlo por pantalla, mueve los ceros a las últimas posiciones y vuelve a mostrarlo.
 	 */
 	public static void	ejecutar7() {
 		
@@ -198,9 +218,12 @@ public class Ejercicios {
 	}
 	
 	/**
+	 * Este método recibe un array de int, y mediante bucles y una variable int temporal, va sustituyendo la posición
+	 * de cada 0 que se encuentra hacia el final. Este proceso lo repite tantas veces como posiciones tiene, asegurando
+	 * que no quede ningún 0 a la izquierda de otro número distinto. En esta propuesta, los 0 se mueven, no se escriben.
 	 * 
-	 * @param array
-	 * @return
+	 * @param array - array de int con los valores ya cargados.
+	 * @return array - el array con los 0 movidos a la derecha, en caso de tenerlos.
 	 */
 	private static int[] moverCerosFinal(int array[]){
 		
