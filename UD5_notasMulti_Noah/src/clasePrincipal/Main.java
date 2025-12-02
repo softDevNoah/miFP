@@ -154,16 +154,88 @@ public class Main {
 	 * @param notas
 	 * @return
 	 */
-	private static int[][][] cargarEstadisticas(String estudiantes[], int notas[][]) {
+	private static int[][][][] cargarEstadisticas(String estudiantes[], int notas[][]) {
 		
-		int	estadisticas[][][] = new int[3][estudiantes.length][];
+		int	estadisticas[][][][] = new int[3][][][];
+				
+		int	datosEstudiantes[][][];
+		int	datosMaterias[][][];
+		int	datosTotal[][][];
 		
-//		for ( int i = 0; estudiantes.length; i++)
-//			estadisticas[0][i] = new int[4];
-			
+		datosEstudiantes = cargarPorEstudiante(estudiantes, notas);
+		datosMaterias = cargarPorMateria(estudiantes, notas);
+		datosTotal = cargarPorTotal(estudiantes, notas);
+		
+		estadisticas[0] = datosEstudiantes;
+		estadisticas[1] = datosMaterias;
+		estadisticas[2] = datosTotal;
 		
 		return (estadisticas);
 	}
+	
+	
+	private static int[][][] cargarPorEstudiante(String estudiantes[], int notas[][]){
+		
+		int estadisticas[][][] = new int [estudiantes.length][6][];
+		
+		for (int i = 0; i < estudiantes.length; i++) {
+			for (int j = 0; j < 6; j++) {
+				if (j != 2 && j != 4)
+					estadisticas[i][j] = new int[1];
+			}
+		}
+		
+		return (estadisticas);
+	}
+	
+	private static int[][][] cargarPorMateria(String estudiantes[], int notas[][]){
+		
+		int estadisticas[][][] = new int [estudiantes.length][6][];
+		
+		for (int i = 0; i < notas[0].length; i++) {
+			for (int j = 0; j < 6; j++) {
+				if (j != 1)
+					estadisticas[i][j] = new int[1];
+			}
+		}
+		
+		estadisticas[0] = cargarMedia(notas[0]);
+		
+		return (estadisticas);
+	}
+	
+	private static int[][][] cargarPorTotal(String estudiantes[], int notas[][]){
+		
+		int estadisticas[][][] = new int [1][5][];
+		
+		for (int i = 0; i < 5; i++) {
+			if (i != 1 && i != 2)
+				estadisticas[0][i] = new int[1];
+			else
+				estadisticas[0][i] = new int[3];
+		
+		}
+		return (estadisticas);
+	}
+	
+	private static int cargarMedia(int arrayNum[]) {
+		
+		int total;
+		int media;
+		
+		total = 0;
+		media = 0;
+		for (int i = 0; i < arrayNum.length; i++) {
+			total += arrayNum[i];
+		}
+		media = total / arrayNum.length;
+		
+		return (media);
+	}
+	
+	//metodo cargarPorMateria(estadisticas)
+	//metodo cargarPorTotal(estadisticas)
+	
 	
 	/**
 	 * Este método muestra por pantalla los resultados estadísticos tras analizar y comparar
