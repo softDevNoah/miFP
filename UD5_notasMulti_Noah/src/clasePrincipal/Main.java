@@ -72,8 +72,8 @@ public class Main {
 		do {
 			esCorrecto = true;
 			System.out.printf("\tPor favor, ingrese %s: ", peticion[indicePeticion]);
+			entrada = teclado.nextLine().trim();
 			if (!entrada.isBlank()) {
-				entrada = teclado.nextLine().trim();
 				for (int i = 0; i < entrada.length(); i++) {
 					if (!Character.isAlphabetic(entrada.charAt(i)) && entrada.charAt(i) != ' ')
 						esCorrecto = false;
