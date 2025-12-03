@@ -173,6 +173,7 @@ public class Main {
 		int	total, media;
 		int	numSuspensos;
 		int	notaMasAlta, notaMasBaja;
+		int index = 0;
 		
 		//reservar memoria para todos menos el listado de materias suspendidas
 		for (int i = 0; i < estudiantes.length; i++) {
@@ -202,9 +203,12 @@ public class Main {
 			}
 			if (numSuspensos > 0) {
 				porEstudiante[i][1] = new int[numSuspensos];
-				for ( int k = 0; k < numSuspensos; k++) {
-					if (notas[i][k] < 5)
-						porEstudiante[i][1][k] = k;
+				index = 0;
+				for ( int j = 0; j < materias.length; j++) {
+					if (notas[i][j] < 5) {
+						porEstudiante[i][1][index] = j;
+						index++;
+					}
 				}
 			}
 			else {//si la materia es -1 significa que no suspendio nada
@@ -279,7 +283,7 @@ public class Main {
 			porMateria[i][3][0] = notaMasBaja;			
 			
 			//quien obtuvo las mejores/peores notas de esa materia
-			for (int j = 0; j < notas[j][i]; j++) {
+			for (int j = 0; j < estudiantes.length; j++) {
 				if (notas[j][i] == notaMasBaja)
 					porMateria[i][4][0] = j;
 				else if (notas[j][i] == notaMasAlta)
@@ -305,8 +309,9 @@ public class Main {
 		int porTotal[][][] = new int [1][5][];
 		int	total = 0, media = 0;
 		int	notaMasBaja = 10, notaMasAlta = 0;
+		int	alumnoMasSuspensos= -1;
 		int	totalSuspensosAlumno = 0, totalSuspensosMateria = 0;
-		int	masSuspensos = 0, masSuspensosPorMateria = 0;
+		int	masSuspensos = -1, masSuspensosPorMateria = 0;
 		
 		
 		//espacio de memoria reservado completo
@@ -331,7 +336,7 @@ public class Main {
 			for (int j = 0; j < materias.length; j++) {
 				if (notas[i][j] < notaMasBaja)
 					notaMasBaja = notas[i][j];
-				else if (notas[i][j] > notaMasAlta)
+				if (notas[i][j] > notaMasAlta)
 					notaMasAlta = notas[i][j];
 			}
 		}
@@ -345,7 +350,7 @@ public class Main {
 					porTotal[0][2][1] = i;
 					porTotal[0][2][2] = j;
 				}
-				else if (notas[i][j] == notaMasAlta) {
+				if (notas[i][j] == notaMasAlta) {
 					porTotal[0][1][1] = i;
 					porTotal[0][1][2] = j;
 				}
@@ -358,32 +363,30 @@ public class Main {
 			for (int i = 0; i < estudiantes.length; i++)	{
 				totalSuspensosAlumno = 0;
 				for (int j = 0; j < materias.length; j++) {
-					if (notas[i][j] < 5) {
-						totalSuspensosAlumno++;
-					}
-					masSuspensos = totalSuspensosAlumno;
+					if (notas[i][j] < 5) 
+						totalSuspensosAlumno++;	
 				}
-				totalSuspensosAlumno = 0;
-				for (int j = 0; j < materias.length; j++) {
-					if (notas[i][j] < 5) {
-						totalSuspensosAlumno++;
-					}
-					if (totalSuspensosAlumno == masSuspensos)
-						porTotal[0][3][0] = i;
+				if (totalSuspensosAlumno > masSuspensos) {
+					masSuspensos = totalSuspensosAlumno;
+					alumnoMasSuspensos = i;
 				}
 			}
-			
+			if (totalSuspensosAlumno != -1)
+					porTotal[0][3][0] = alumnoMasSuspensos;
+			else
+				porTotal[0][3][0] = 0;
+					
 			//materia con mas suspensos
 			for (int i = 0; i < materias.length; i++)	{
 				totalSuspensosMateria = 0;
 				for (int j = 0; j < notas.length; j++) {
-					if (notas[i][j] < 5) {
+					if (notas[j][i] < 5) {
 						totalSuspensosMateria++;
 					}
 				}
 				if (masSuspensosPorMateria <= totalSuspensosMateria) {
 					masSuspensosPorMateria = totalSuspensosMateria;
-					porTotal[0][3][0] = i;
+					porTotal[0][4][0] = i;
 				}
 			}
 			
@@ -417,11 +420,11 @@ public class Main {
 		for (int i = 0; i < estudiantes.length; i++) {
 			System.out.printf("\t\t %s:\n", estudiantes[i]);
 			System.out.printf("\t\t\t- Su media es %d/10.\n", estadisticas[0][i][0][0]);
-			if (estadisticas[0][0][1][0] == -1)
+			if (estadisticas[0][i][1][0] == -1)
 				System.out.printf("\t\t\t- No suspendió ninguna asignatura.\n");
 			else {
 				System.out.printf("\t\t\t- Suspendió %d materia(s): ", estadisticas[0][i][1].length);
-				if (estadisticas[0][0][1].length > 1) {
+				if (estadisticas[0][i][1].length > 1) {
 					for (int j = 0; j < estadisticas[0][0][1].length - 1; j++) {
 						System.out.printf("%s, ", materias[estadisticas[0][i][1][j]]);
 					}
@@ -454,7 +457,7 @@ public class Main {
 		
 		System.out.printf("\t\t\t- La media de notas es de %d/10.\n", estadisticas[2][0][0][0]);
 		System.out.printf("\t\t\t- La nota más alta obtenida es de un %d, la obtuvo %s en la materia de %s.\n", estadisticas[2][0][1][0], estudiantes[estadisticas[2][0][1][1]], materias[estadisticas[2][0][1][2]]);
-		System.out.printf("\t\t\t- La nota más alta obtenida es de un %d, la obtuvo %s en la materia de %s.\n", estadisticas[2][0][2][0], estudiantes[estadisticas[2][0][2][1]], materias[estadisticas[2][0][2][2]]);
+		System.out.printf("\t\t\t- La nota más baja obtenida es de un %d, la obtuvo %s en la materia de %s.\n", estadisticas[2][0][2][0], estudiantes[estadisticas[2][0][2][1]], materias[estadisticas[2][0][2][2]]);
 		System.out.printf("\t\t\t- El alumno que más asignaturas suspendió fue %s.\n", estudiantes[estadisticas[2][0][3][0]]);
 		System.out.printf("\t\t\t- La materia con mayor número de suspensos es %s.\n", materias[estadisticas[2][0][4][0]]);
 	}
