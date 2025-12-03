@@ -4,7 +4,16 @@ import java.util.Scanner;
 
 /**
  * Esta clase recoge todos los métodos necesarios para ejecutar el ejercicio multiNotas. Como es solo un ejercicio,
- * no se muestra menú.
+ * no se muestra menú, simplemente un mensaje de bienvenida, y la ejecucion del ejercicio (recogida, tratamiento e
+ * impresión de los datos.
+ * Se podría simplificar mucho más para mantenerlo: usar 3 arrays tridimensionales en vez de uno de 4 dimensiones, crear métodos
+ * auxiliares para tareas más aisladas y repetitivas...
+ * Faltan validaciones para gestionar mayor cantidad de errores e idealmente se haría adaptable a cualquier cantidad
+ * de alumnos y materias (escalable).
+ * 
+ * Se ha hecho así para trabajar más la parte mental de manejar arrays multidimensionales y visualizar mejor el funcionamiento
+ * interno al recorrerlos o ir cargándolos de datos, es decir, ha sido en gran medida una decisión personal para integrar mejor
+ * los conocimientos sobre arrays multidimensionales para mi forma de aprender.
  */
 public class Main {
 
@@ -26,9 +35,12 @@ public class Main {
 		int		notas[][];
 		int		estadisticas[][][][];
 		
+		System.out.println("Bienvenidx! Se va a ejecutar una sola vez el programa de notas. Solo se admiten 5 estudiantes.\n\n");
+
 		estudiantes = cargarEstudiantes(5);
 		notas = cargarNotas(estudiantes);
 		estadisticas = cargarEstadisticas(estudiantes, notas);
+		
 		mostrarEstadisticas(estadisticas, estudiantes);
 		teclado.close();
 	}
@@ -166,7 +178,17 @@ public class Main {
 		return (estadisticas);
 	}
 	
-	//falta reservar memoria para porEstudiante[i*5][j] donde j == 2 y j == 4, que es variable
+	/**
+	 * Este método se encarga de generar las estadísticas de cada estudiante, y devolver un array tridimensional que será parte del
+	 * array de 3 dimensiones que contiene todas las estadísticas (estudiantes, materias y total).
+	 * Recibe los datos que necesita y mediante bucles, analiza e itera numerosas veces para realizar cada analítica en orden.
+	 * Tiene pocas o ninguna validación de los datos recibidos, así que asume que son correctos y no-null.
+	 * Tiene comentarios explicativos pero desarrolla todo sin llamar a ningún otro método. 
+	 * 
+	 * @param estudiantes - Array de String con los nombres completos de los estudiantes
+	 * @param notas - Array bidimensional de int con las notas de cada estudiante de todas las asignaturas.
+	 * @return estadisticasPorEstudiante - Array tridimensional con los datos estadísticos de cada estudiante
+	 */
 	private static int[][][] cargarPorEstudiante(String estudiantes[], int notas[][]){
 		
 		int porEstudiante[][][] = new int [estudiantes.length][6][];
@@ -225,7 +247,7 @@ public class Main {
 			for ( int j = 0; j < materias.length; j++) {
 				if (notas[i][j] < notaMasBaja)
 					notaMasBaja = notas[i][j];
-				else if (notas[i][j] > notaMasAlta)
+				if (notas[i][j] > notaMasAlta)
 					notaMasAlta = notas[i][j];
 			}
 			porEstudiante[i][2][0] = notaMasAlta;
@@ -242,7 +264,17 @@ public class Main {
 		return (porEstudiante);
 	}
 	
-	//falta reservar memoria para porMateria[i*3][j] donde j == 1, que es variable
+	/**
+	 * Este método se encarga de generar las estadísticas de cada materia, y devolver un array tridimensional que será parte del
+	 * array de 3 dimensiones que contiene todas las estadísticas (estudiantes, materias y total).
+	 * Recibe los datos que necesita y mediante bucles, analiza e itera numerosas veces para realizar cada analítica en orden.
+	 * Tiene pocas o ninguna validación de los datos recibidos, así que asume que son correctos y no-null.
+	 * Tiene comentarios explicativos pero desarrolla todo sin llamar a ningún otro método. 
+	 * 
+	 * @param estudiantes - Array de String con los nombres completos de los estudiantes
+	 * @param notas - Array bidimensional de int con las notas de cada estudiante de todas las asignaturas.
+	 * @return estadisticasPorMateria - Array tridimensional con los datos estadísticos de cada materia
+	 */
 	private static int[][][] cargarPorMateria(String estudiantes[], int notas[][]){
 		
 		int porMateria[][][] = new int [materias.length][6][];
@@ -304,6 +336,17 @@ public class Main {
 		return (porMateria);
 	}
 	
+	/**
+	 * Este método se encarga de generar las estadísticas genéricas, y devolver un array tridimensional que será parte del
+	 * array de 3 dimensiones que contiene todas las estadísticas (estudiantes, materias y total).
+	 * Recibe los datos que necesita y mediante bucles, analiza e itera numerosas veces para realizar cada analítica en orden.
+	 * Tiene pocas o ninguna validación de los datos recibidos, así que asume que son correctos y no-null.
+	 * Tiene comentarios explicativos pero desarrolla todo sin llamar a ningún otro método.
+	 * 
+	 * @param estudiantes - Array de String con los nombres completos de los estudiantes
+	 * @param notas - Array bidimensional de int con las notas de cada estudiante de todas las asignaturas.
+	 * @return estadisticasPorTotal - Array tridimensional con los datos estadísticos de análisis genérico
+	 */
 	private static int[][][] cargarPorTotal(String estudiantes[], int notas[][]){
 		
 		int porTotal[][][] = new int [1][5][];
@@ -371,7 +414,7 @@ public class Main {
 					alumnoMasSuspensos = i;
 				}
 			}
-			if (totalSuspensosAlumno != -1)
+			if (alumnoMasSuspensos != -1)
 					porTotal[0][3][0] = alumnoMasSuspensos;
 			else
 				porTotal[0][3][0] = 0;
@@ -425,13 +468,13 @@ public class Main {
 			else {
 				System.out.printf("\t\t\t- Suspendió %d materia(s): ", estadisticas[0][i][1].length);
 				if (estadisticas[0][i][1].length > 1) {
-					for (int j = 0; j < estadisticas[0][0][1].length - 1; j++) {
+					for (int j = 0; j < estadisticas[0][i][1].length - 1; j++) {
 						System.out.printf("%s, ", materias[estadisticas[0][i][1][j]]);
 					}
 					System.out.printf("%s.\n", materias[estadisticas[0][i][1][estadisticas[0][i][1].length - 1]]);
 				}
 				else				
-					System.out.printf("%s. ", materias[estadisticas[0][i][1][0]]);
+					System.out.printf("%s. \n", materias[estadisticas[0][i][1][0]]);
 				
 			}
 			System.out.printf("\t\t\t- La nota más alta que obtuvo fue de un %d en la materia de %s.\n", estadisticas[0][i][2][0], materias[estadisticas[0][i][3][0]]);
@@ -461,28 +504,5 @@ public class Main {
 		System.out.printf("\t\t\t- El alumno que más asignaturas suspendió fue %s.\n", estudiantes[estadisticas[2][0][3][0]]);
 		System.out.printf("\t\t\t- La materia con mayor número de suspensos es %s.\n", materias[estadisticas[2][0][4][0]]);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }
