@@ -9,8 +9,6 @@ public class MainBusquedas {
 
 	public static Scanner	teclado = new Scanner(System.in);
 	public static String	entrada = "";
-	public static int		num = 0;
-	public static boolean	esCorrecto = true;
 	
 	/**
 	 * 
@@ -22,12 +20,10 @@ public class MainBusquedas {
 		String	opciones[] = {"Introducir un valor", "Encontrar un valor", "Eliminar un valor", "Salir del programa"};	
 		int		matrix[] = null;
 		
-		
 		pintarLinea("~ ", 35);
 		System.out.println("\t\t---- ¡Bienvenidx al juego de la matrix! ----\n\n");
 				
 		do {
-			esCorrecto = true;
 			opcion = menuOpciones("Operaciones disponibles", opciones, "Seleccione una opción, por favor");
 			
 			switch (opcion) {
@@ -48,6 +44,7 @@ public class MainBusquedas {
 					break;
 			}
 		} while (opcion != 3);
+		
 		pintarLinea("~", 70);
 		System.out.println("\n\t\t---- ¡Hasta la próxima! ----\n");
 		pintarLinea("~ ", 35);
