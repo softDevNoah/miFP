@@ -24,6 +24,7 @@ public class MainBusquedas {
 		System.out.println("\t\t---- ¡Bienvenidx al juego de la matrix! ----\n\n");
 				
 		do {
+			Operaciones.mostrarMatrix(matrix);
 			opcion = menuOpciones("Operaciones disponibles", opciones, "Seleccione una opción, por favor");
 			
 			switch (opcion) {
@@ -114,7 +115,7 @@ public class MainBusquedas {
 		}
 		
 		if (!esCorrecto)
-			System.out.println("\t----->>>> Error: introduzca únicamente un número entero (mayor de 0), por favor.");
+			System.out.println("\n\t----->>>> Error: introduzca únicamente un número entero (mayor de 0), por favor.");
 		
 		return (esCorrecto);
 	}

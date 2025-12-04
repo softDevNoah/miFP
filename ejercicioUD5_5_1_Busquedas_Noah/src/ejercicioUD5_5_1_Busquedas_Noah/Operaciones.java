@@ -14,6 +14,7 @@ public class Operaciones {
 		
 		int tamaño = 0;
 		int	matrixNueva[] = null;
+		int	num;
 		
 		if (esPosibleOperar(matrix, 1)) {
 			if (matrix == null) {
@@ -24,7 +25,11 @@ public class Operaciones {
 				matrixNueva = new int[tamaño + 1];
 				matrixNueva = copiarValores(matrix, matrixNueva);
 			}
-			matrixNueva[tamaño] = pedirNumero();
+			num = pedirNumero();
+			if (localizaValor(num, matrix) == -1)
+				matrixNueva[tamaño] = num;
+			else
+				System.out.println("\t----->>>> Error: el número que quieres añadir ya está dentro de la matrix.");
 		}
 		return(matrixNueva);
 	}
@@ -62,7 +67,7 @@ public class Operaciones {
 	 * @param matrix
 	 * @return
 	 */
-	private static int localizaValor(int matrix[]) {
+	private static int localizaValor(int num, int matrix[]) {
 		
 		int	index = -1;
 		
@@ -81,7 +86,7 @@ public class Operaciones {
 
 		switch (operacion) {
 			case 1:
-				if ((matrix != null && matrix.length < 10) || matrix == null)
+				if (matrix != null && matrix.length == 10)
 					esPosible = false;
 				break;
 			case 2:
@@ -153,5 +158,26 @@ public class Operaciones {
 		} while (!esCorrecto);
 		System.out.println();
 		return (num);
+	}
+	
+	public static void mostrarMatrix(int matrix[]) {
+		
+		MainBusquedas.pintarLinea("* ", 50);
+		System.out.print("\t\t\t----- MATRIX -----\n");
+	
+		if (matrix != null) {
+			System.out.print("\n\t\t|  ");
+			for ( int i = 0; i < matrix.length; i++) {
+				System.out.printf("%d  |  ", matrix[i]);
+			}
+		}
+		else {
+			MainBusquedas.pintarLinea("... estoy vacía ... :( ...", 3);
+		}
+		
+		System.out.println();
+		MainBusquedas.pintarLinea("* ", 50);
+		
+		
 	}
 }
