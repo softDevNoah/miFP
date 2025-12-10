@@ -26,12 +26,17 @@ public class Operaciones {
 				matrixNueva = copiarValores(matrix, matrixNueva);
 			}
 			num = pedirNumero();
-			if (localizaValor(num, matrix) == -1)
+			if (localizaValor(num, matrix) == -1) {
 				matrixNueva[tamaño] = num;
+				return(matrixNueva);
+			}
 			else
 				System.out.println("\t----->>>> Error: el número que quieres añadir ya está dentro de la matrix.");
 		}
-		return(matrixNueva);
+		else
+			System.out.println("\t----->>>> Error: no queda espacio para nuevos valores.");
+		
+		return (matrix);
 	}
 	
 	/**
@@ -39,13 +44,19 @@ public class Operaciones {
 	 * @param matrix
 	 * @return
 	 */
-	public static int[] encontrarValor(int matrix[]) {
+	public static void encontrarValor(int matrix[]) {
+		
+		int index = -1, num;
 		
 		if (esPosibleOperar(matrix, 2))	{
-			;
+			num = pedirNumero();
+			index = localizaValor(num, matrix);
 		}
-		
-		return(matrix);
+		if (index != -1) {
+			System.out.printf("\t - El valor que busca está en la posición nº %d de la matrix (las posiciones empiezan desde 0).\n\n", index);
+		}
+		else
+			System.out.println("\t - El valor que busca no está en la matrix.\n");
 	}
 
 	/**
@@ -55,10 +66,29 @@ public class Operaciones {
 	 */
 	public static int[] eliminarValor(int matrix[]) {
 	
-		if (esPosibleOperar(matrix, 3))	{
-			;
-		}
+		int num, index = -1;
+		int	matrixNueva[] = null;
 		
+		if (esPosibleOperar(matrix, 3))	{
+			num = pedirNumero();
+			index = localizaValor(num, matrix);
+			if (index != -1) {
+				if (matrix.length == 1)
+					return (null);
+				matrixNueva = new int[matrix.length - 1];
+				for (int i = 0, j = 0; i < matrixNueva.length; i++, j++) {
+					if (num == matrix[i])
+						j++;
+					matrixNueva[i] = matrix[j];
+					
+				}
+				return (matrixNueva);
+			}
+			else
+				System.out.println("\t----->>>> Error: el nº que desea eliminar no está en la matrix.");
+		}
+		else
+			System.out.println("\t----->>>> Error: la matrix está ya vacía.");
 		return(matrix);
 	}
 	
@@ -71,7 +101,12 @@ public class Operaciones {
 		
 		int	index = -1;
 		
-		
+		if (matrix != null) {
+			for (int i = 0; i < matrix.length; i++) {
+				if (matrix[i] == num)
+					index = i;
+			}
+		}
 		return(index);
 	}
 	

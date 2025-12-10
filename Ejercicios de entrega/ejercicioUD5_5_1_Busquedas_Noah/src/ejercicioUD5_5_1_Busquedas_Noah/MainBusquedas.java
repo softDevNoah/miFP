@@ -3,7 +3,9 @@ package ejercicioUD5_5_1_Busquedas_Noah;
 import java.util.Scanner;
 
 /**
- * 
+ * 																		LISTADO DE ERRORES:
+ * 																			- error1: Cuando la matrix se llena, empieza desde cero
+ * 																			- error2: admite numeros repetidos cuando se ingresan nuevos en la matrix
  */
 public class MainBusquedas {
 
@@ -35,7 +37,7 @@ public class MainBusquedas {
 					break;
 				case 1:
 					msgEjecutandoOpcion(1);
-					matrix = Operaciones.encontrarValor(matrix);
+					Operaciones.encontrarValor(matrix);
 					pintarLinea("~", 70);
 					break;
 				case 2:
