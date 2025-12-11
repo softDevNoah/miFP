@@ -3,11 +3,16 @@ package ejercicioUD6_2_Objetos_entrega1_Noah;
 import java.util.Scanner;
 
 /**
- * 
+ * Esta sencilla clase contiene un programa sin validaciones (se asume que los datos 
+ * introducidos son correctos, del tipo adecuado) que crea un objeto Taxi y le asigna
+ * los valores introducidos por el usuario por teclado.
+ * Luego imprime por pantalla los datos del Taxi y se termina.
  */
 public class TaxiApp {
 
 	/**
+	 * Método main con el funcionamiento del pequeño programa. Crea un objeto, le asigna
+	 * valores, los muestra y se termina.
 	 * 
 	 * @param args
 	 */
