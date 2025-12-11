@@ -3,9 +3,11 @@ package ejercicioUD5_5_1_Busquedas_Noah;
 import java.util.Scanner;
 
 /**
- * 																		LISTADO DE ERRORES:
- * 																			- error1: Cuando la matrix se llena, empieza desde cero
- * 																			- error2: admite numeros repetidos cuando se ingresan nuevos en la matrix
+ * Esta clase contiene el método main y otros métodos relacionados con el formateo de mensajes
+ * impresos por pantallas o la gestión del menú de operaciones del ejercicio.Tiene dos
+ * atributos estáticos que se usarán durante la ejecución del programa para recibir datos
+ * por teclado.
+ * 																		
  */
 public class MainBusquedas {
 
@@ -13,6 +15,9 @@ public class MainBusquedas {
 	public static String	entrada = "";
 	
 	/**
+	 * Este método main muestra al usuario por pantalla un menú de operaciones disponibles y el estado 
+	 * actualizado de la matrix. Cuando se selecciona una operación, se muestra un mensaje informativo por
+	 * pantalla y se ejecuta dicha operación. 
 	 * 
 	 * @param args
 	 */

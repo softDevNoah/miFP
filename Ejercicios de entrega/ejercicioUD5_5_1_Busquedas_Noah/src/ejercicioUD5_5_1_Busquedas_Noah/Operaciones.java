@@ -1,14 +1,20 @@
 package ejercicioUD5_5_1_Busquedas_Noah;
 
 /**
- * 
+ * Esta clase reune los métodos necesarios para manipular la matrix. Todas las operaciones son validadas para
+ * evitar errores o desbordamientos
  */
 public class Operaciones {
 
 	/**
+	 * Este método recibe un array de enteros (la matrix), revisa si contiene números y cuántos números,
+	 * pide al usuario que se ingrese un valor por teclado y verifica, siempre que haya espacio disponible,
+	 * si ese valor no se encuentra ya en la matrix. Si no está repetido, crea una nueva matrix, copia
+	 * los valores de la original, en la última posición disponible coloca el valor nuevo y devuelve esta
+	 * nueva matrix. Si no hubiera sido posible, muestra un mensaje de error y devuelve la matrix original.  
 	 * 
-	 * @param matrix
-	 * @return
+	 * @param matrix - array de int que puede ser null o contener hasta 10 números
+	 * @return matrix nueva si ha sido posible añadir el valor, o matrix original en caso contrario
 	 */
 	public static int[] ingresarValor(int matrix[]) {
 		
@@ -40,9 +46,12 @@ public class Operaciones {
 	}
 	
 	/**
+	 * Este método recibe un array de enteros (la matrix), revisa si contiene números y cuántos números,
+	 * pide al usuario que se ingrese un valor por teclado y verifica si dicho valor se encuentra ya en
+	 * la matrix. Después, indica en un mensaje impreso en pantalla si el valor se encuentra y en qué
+	 * posición o si no ha sido encontrado en la matrix.
 	 * 
-	 * @param matrix
-	 * @return
+	 * @param matrix - array de int que puede ser null o contener hasta 10 números
 	 */
 	public static void encontrarValor(int matrix[]) {
 		
@@ -60,9 +69,14 @@ public class Operaciones {
 	}
 
 	/**
+	 * Este método recibe un array de enteros (la matrix), revisa si contiene números y cuántos números,
+	 * pide al usuario que se ingrese un valor por teclado y verifica que contenga algún número y que
+	 * ese valor se encuentre ya en la matrix. Si no está, muestra un mensaje de error por pantalla, 
+	 * y devuelve la matrix original. Si está el valor dentro de la matrix, crea una nueva matrix y copia
+	 * todos los valores excepto el indicado por el usuario, y devuelve la nueva matrix. 
 	 * 
-	 * @param matrix
-	 * @return
+	 * @param matrix - array de int que puede ser null o contener hasta 10 números
+	 * @return matrix nueva si ha sido posible eliminar el valor, o matrix original en caso contrario
 	 */
 	public static int[] eliminarValor(int matrix[]) {
 	
@@ -93,9 +107,14 @@ public class Operaciones {
 	}
 	
 	/**
+	 * Este método recibe un array de enteros (la matrix), revisa si contiene números y cuántos números,
+	 * y verifica que contenga algún número y que el valor de num se encuentre ya en la matrix.
+	 * Si no está, devuelve -1. Si está el valor dentro de la matrix, devuelve el índice donde se encuentra
+	 * dentro de la matrix. 
 	 * 
-	 * @param matrix
-	 * @return
+	 * @param num - número entero introducido previamente por el usuario que se desea localizar
+	 * @param matrix - array de int que puede ser null o contener hasta 10 números
+	 * @return index - número entero que representa la posición dentro del array o un valor que representa que no está
 	 */
 	private static int localizaValor(int num, int matrix[]) {
 		
@@ -111,9 +130,12 @@ public class Operaciones {
 	}
 	
 	/**
+	 * Este método recibe un array de enteros (la matrix), revisa si contiene números y cuántos números,
+	 * y verifica que cumple los requisitos para realizar una operacion, indicada con un entero por 
+	 * parámetros. Si es posible realizar la operación, devuelve true, en caso contrario false. 
 	 * 
-	 * @param matrix
-	 * @return
+	 * @param matrix - array de int que puede ser null o contener hasta 10 números
+	 * @return boolean esPosible, con valor true si se puede realizar la operacion indicada o false en caso contrario
 	 */
 	private static boolean esPosibleOperar(int matrix[], int operacion) {
 		
@@ -138,9 +160,11 @@ public class Operaciones {
 	}
 
 	/**
-	 * 
-	 * @param matrix
-	 * @return
+	 * Este método recibe un array de enteros (la matrix), un array de enteros (matrixNueva), y
+	 * copia los valores de la original a la nueva.
+	 *  
+	 * @param matrix - array de int que puede ser null o contener hasta 10 números
+	 * @return matrixNueva - array de int con los valores ya copiados
 	 */
 	private static int[] copiarValores(int matrixOriginal[], int matrixNueva[]) {
 		
@@ -150,6 +174,13 @@ public class Operaciones {
 		return (matrixNueva);
 	}
 	
+	/**
+	 * Este método revisa un String que recibe por parámetro para verificar si su contenido es
+	 * exclusivamente un número entero. Devuelve un boolean con el resultado de dicha verificación.
+	 * 
+	 * @param entrada - String cuyo contenido será verificado
+	 * @return boolean esCorrecto con valor true si efectivamente es un número entero o false en caso contrario.
+	 */
 	private static boolean checkNumero(String entrada) {
 		
 		boolean esCorrecto = true;
@@ -177,6 +208,13 @@ public class Operaciones {
 		return (esCorrecto);
 	}
 	
+	/**
+	 * Este método solicita por teclado al usuario wque introduzca un número entero, luego verifica que lo que
+	 * se ha introducido es efectivamente un número entero y cuando lo es, lo devuelve. Si no lo es, vuelve a pedirlo
+	 * nuevamente.
+	 * 
+	 * @return int num - número introducido por el usuario que ha sido validado
+	 */
 	private static int pedirNumero() {
 		
 		int 	num = 0;
@@ -195,6 +233,12 @@ public class Operaciones {
 		return (num);
 	}
 	
+	/**
+	 * Este método imprime con formato una matrix (array de int) que recibe por parámetro, con un formato
+	 * determinado.
+	 * 
+	 * @param matrix - array de int que puede ser null o contener hasta 10 números
+	 */
 	public static void mostrarMatrix(int matrix[]) {
 		
 		MainBusquedas.pintarLinea("* ", 50);
