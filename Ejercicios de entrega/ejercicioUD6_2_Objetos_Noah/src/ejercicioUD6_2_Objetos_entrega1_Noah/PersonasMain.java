@@ -29,7 +29,7 @@ public class PersonasMain {
 				
 			AuxMetods.pintarLinea("~", 71);
 			
-			System.out.print("\tPor favor inserta el nombre de la perspona: ");
+			System.out.print("\tPor favor inserta el nombre de la persona: ");
 			nombre = teclado.nextLine();
 			System.out.print("\tPor favor inserta el apellido de la persona: ");
 			apellido = teclado.nextLine();
@@ -52,24 +52,29 @@ public class PersonasMain {
 		}
 		AuxMetods.pintarLinea("~", 71);
 		
+		for ( int i = 0; i < 2; i++) {
+			System.out.printf("\nPersona %d:\n", i + 1);
+			System.out.printf("- Nombre = %s.\n", personas[i].getNombre());
+			System.out.printf("- Apellido = %s.\n", personas[i].getApellido());
+			System.out.printf("- Edad = %d.\n", personas[i].getEdad());
+			if (personas[i].getCasado())
+				System.out.print("- Estado civil = Casado/a.\n");
+			else
+				System.out.print("- Estado civil = Soltero/a.\n");
+			System.out.printf("- Nº del documento de identidad = %s.\n", personas[i].getNumeroDocumentoIdentidad());
+			
+		}
+		
 		if (personas[0].getEdad() > personas[1].getEdad())
 			idxMayor = 0;
 		else if (personas[0].getEdad() < personas[1].getEdad())
 			idxMayor = 1;
 		if (idxMayor == -1) {
-			System.out.println("Tienen la misma edad, se procede a elegir a la primera persona para mostrar los datos:");
+			System.out.println("\nTienen la misma edad... pero bueno, digamos... que...\n");
 			idxMayor = 0;
 		}
-		System.out.println("Los datos de la persona mayor de las dos son:");
-		System.out.printf("- Nombre = %s.\n", personas[idxMayor].getNombre());
-		System.out.printf("- Apellido = %s.\n", personas[idxMayor].getApellido());
-		System.out.printf("- Edad = %d.\n", personas[idxMayor].getEdad());
-		if (personas[idxMayor].getCasado())
-			System.out.print("- Estado civil = Casado/a.\n");
-		else
-			System.out.print("- Estado civil = Soltero/a.\n");
-		System.out.printf("- Nº del documento de identidad = %s.\n", personas[idxMayor].getNumeroDocumentoIdentidad());
 		
+		System.out.printf("\n\n%s %s es mayor.\n\n", personas[idxMayor].getNombre(), personas[idxMayor].getApellido());
 		AuxMetods.pintarLinea("~", 71);
 		teclado.close();
 
