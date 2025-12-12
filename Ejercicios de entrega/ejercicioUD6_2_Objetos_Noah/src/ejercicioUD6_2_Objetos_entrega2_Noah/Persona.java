@@ -217,5 +217,7 @@ public class Persona {
 		this.altura = altura;
 	}
 	
-	
+	public String getDNI() {
+		return(dni);
+	}
 }

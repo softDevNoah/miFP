@@ -18,14 +18,16 @@ public class MainObjetos2 {
 	 */
 	public static void main(String[] args) {
 	
-		String	nombre, sexo;
-		int		edad, imc;
-		double	peso, altura;
+		static String	nombre, sexo;
+		static int		edad;
+		static double	peso, altura;
 		
-		Persona personas[] = new Persona[3];
+		Persona caso1 = null;
+		Persona caso2 = null;
+		Persona caso3 = null;
+		Persona personas[] = {caso1, caso2, caso3};
 		
 		AuxMetods.pintarLinea("~", 71);
-		System.out.println();
 		
 		nombre = pedirString("el nombre");
 		edad = pedirEntero("la edad");
@@ -36,25 +38,25 @@ public class MainObjetos2 {
 		/* Se pide crear tres objetos y al objeto 1 se pide un constructor que no existe, porque
 		 * de los constructores que se han pedido, ninguno coincide...
 		 * Así que elijo el completo para poder usarlo.*/
-		personas[0] = new Persona(nombre, edad, "dniVacio",  sexo.charAt(0), peso, altura);
-		personas[0].generaDNI();
+		caso1 = new Persona(nombre, edad, "dniVacio",  sexo.charAt(0), peso, altura);
 		
-		System.out.println();
+		caso1.generaDNI();
+		
 		AuxMetods.pintarLinea("~", 71);
-		System.out.println();
 		
 		nombre = pedirString("el nombre");
 		edad = pedirEntero("la edad");
 		sexo = pedirString("el sexo (H/M)");
 		
-		personas[1] = new Persona(nombre, edad, sexo.charAt(0));
-		personas[1].generaDNI();
-		personas[1].setPeso(pedirDecimal("el peso"));
-		personas[1].setAltura(pedirDecimal("la altura"));
+		caso2 = new Persona(nombre, edad, sexo.charAt(0));
 		
-		System.out.println();
+		caso2.generaDNI();
+		caso2.setPeso(pedirDecimal("el peso"));
+		caso2.setAltura(pedirDecimal("la altura"));
+		
 		AuxMetods.pintarLinea("~", 71);
-		System.out.println();
+		
+		caso3 = new Persona();
 		
 		nombre = pedirString("el nombre");
 		edad = pedirEntero("la edad");
@@ -62,19 +64,53 @@ public class MainObjetos2 {
 		peso = pedirDecimal("el peso");
 		altura = pedirDecimal("la altura");
 		
-		personas[2].setNombre(nombre);
-		personas[2].setEdad(edad);
-		personas[2].setSexo(sexo.charAt(0));
-		personas[2].setPeso(peso);
-		personas[2].setAltura(altura);
-		personas[2].generaDNI();
 		
-		System.out.println();
+		caso3.setNombre(nombre);
+		caso3.setEdad(edad);
+		caso3.setSexo(sexo.charAt(0));
+		caso3.setPeso(peso);
+		caso3.setAltura(altura);
+		caso3.generaDNI();
+		
 		AuxMetods.pintarLinea("~", 71);
-		System.out.println();
+		
+		mostrarDatos(personas);
 		
 		
+		
+	}
+
+	private static void pedirDatos(int caso) {
+		
+		switch (caso) { 
+		case 1:
+			
+			break;
+		case 2:
+			
+			break;
+		case 3:
+			
+			break;
+		}
+	}
+	
+	private static void mostrarDatos(Persona personas[]) {
+		
+		String	nombre, sexo, dni;
+		int		edad;
+		double	peso, altura;
+
 		for (int i = 0; i < personas.length; i++) {
+			
+			nombre = personas[i].getNombre();
+			edad = personas[i].getEdad();
+			sexo = Character.toString(personas[i].getSexo());
+			peso =  personas[i].getPeso();
+			altura =  personas[i].getAltura();
+			dni = personas[i].getDNI();
+			
+			
 			if (personas[i].calcularIMC() < 0)
 				System.out.printf("- El IMC de %s está por debajo del umbral saludable.\n", personas[i].getNombre());
 			if (personas[i].calcularIMC() > 0)
@@ -86,11 +122,11 @@ public class MainObjetos2 {
 			else
 				System.out.printf("- %s es menor de edad.\n", personas[i].getNombre());
 			//imprimirDatos(personas[i])
+			System.out.printf("\n\t- %s tiene %d años, sexo %c, DNI %s, pesa %2.f kg y mide %2.f m.\n", nombre, 
+								edad, sexo, dni, peso, altura);
 		}
-		
-		
 	}
-
+	
 	private static String pedirString(String dato) {
 		
 		boolean esCorrecto = false;
@@ -100,8 +136,8 @@ public class MainObjetos2 {
 			
 			System.out.printf("\n\t- Por favor, ingresa %s de la persona: ", dato);
 			entrada = teclado.nextLine().trim();
-			if (entrada.isBlank())
-				esCorrecto = false;
+			if (!entrada.isBlank())
+				esCorrecto = true;
 		} while (!esCorrecto);
 		
 		return (valor);
