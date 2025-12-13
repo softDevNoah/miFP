@@ -22,7 +22,7 @@ public class Persona {
 	}
 	
 	/**
-	 * Constructor parcialmente vacío que instancia un objeto Persona con los datos por defecto,
+	 * Constructor parcial que instancia un objeto Persona con los datos por defecto,
 	 * excepto el nombre, la edad y el sexo.
 	 * 
 	 * @param nombre - nombre que se asignará
@@ -37,7 +37,7 @@ public class Persona {
 	}
 	
 	/**
-	 * Constructor que recibe por parámetro todos los valores de todos los atributos para un objeto Persona.
+	 * Constructor completo que recibe por parámetro todos los valores de todos los atributos para un objeto Persona.
 	 * De este modo se sobrescriben los valores que tendría por defecto.
 	 * 
 	 * @param nombre - String que se asignará a la persona como nombre
@@ -128,7 +128,7 @@ public class Persona {
 		/*Las letras del array de char letras[], no son accidentalmente así. Según el algoritmo para el dni debe ser así.*/
 		String	dni;
 		
-		int num = (int)Math.random() * 100000000;
+		int num = (int)(Math.random() * 100000000);
 		
 		resto = num % 23;
 		
@@ -183,6 +183,7 @@ public class Persona {
 	 */
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
+		comprobarSexo(this.sexo);
 	}
 
 	/**
